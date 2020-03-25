@@ -10,7 +10,7 @@ library(tidyverse)
 ```
 
 
-We now create a larger data set in the global environment, called 'diamond_df'. This is based on the diamonds data set that is provided as part of the tidyverse
+We now create a larger data set in the global environment, called 'diamond_df'. This is based on the diamonds data set that is provided as part of the tidyverse.
 
 ```{r}
 diamond_df <- diamonds
