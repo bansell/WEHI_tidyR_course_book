@@ -1,0 +1,620 @@
+# Week 2. Part 2: dplyr {-}
+
+
+The dplyr package, part of the tidyverse, is designed to make manipulating and transforming data as simple and intuitive as possible.  
+
+A guiding principle for tidyverse packages (and RStudio), is to minimize the number of keystrokes and characters required to get the results you want. To this end, as for ggplot, in dplyr, quotation marks for the column names of data frames are often not required.
+Another key feature of the tidyverse data wrangling packages such as dplyr, is that the input to and output from all functions, are data frames.
+
+
+dplyr features a handful of key functions, also termed 'verbs', which can be combined to achieve very specific results. You will notice similarities to the functions available in Microsoft Excel. 
+
+We will explore the first of these verbs using the mpg_df dataset created earlier. If starting from a new Rstudio session you should run the following code:
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+library(tidyverse)
+
+mpg_df <- mpg
+
+```
+
+## filter() 
+
+The filter() function subsets the rows in a data frame by testing against a conditional statement. The output from a successful filter()  will be a data frame with fewer rows than the input data frame.
+
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-filter.png)
+
+
+Let's filter the mpg_df data for cars manufacturered in the year 1999:
+
+```{r}
+mpg_df %>% filter(year == 1999)
+```
+
+Here we are 'sending' the mpg_df data frame into the function filter(), which tests each value in the year column for the number 1999, and returns those rows where the filter() condition is TRUE.
+
+If you are working in an R text document (.R format) or directly in the console, after running this command you will see the dimensions of the output data frame printed in grey text above the column names. 
+
+
+Alternatively you can 'send' the output of filter (a data frame) into the dim() function.
+
+```{r}
+mpg_df %>% filter(year==1999) %>% dim()
+```
+
+We can also filter on character data. For example, let's take all vehicles in the 'midsize' class:
+
+```{r}
+mpg_df %>% filter(class=='midsize')
+```
+
+Can you filter mpg_df for all vehicles _except_ the hyundais?
+
+### Logical operations
+
+#### & and 
+We can achieve more specific filters by combining conditions across columns. For example, we use the "&" sign to filter for vehicles built in 1999 _and_ with mileage in the city (cty) greater than 18.
+
+```{r}
+mpg_df %>% filter(year == 1999 & cty > 18)
+```
+
+To see the entire output you can pipe the output from filter into a View() commmand
+
+```{r, eval=FALSE}
+mpg_df %>% filter(year==1999 & cty > 18) %>% View()
+```
+
+#### | or
+Alternatively we might want to filter for vehicles (i.e., rows) where the manufacturer is chevrolet _or_ the class is 'suv'. This requires the "|" symbol (shift + \\)
+
+
+```{r}
+mpg_df %>% filter(manufacturer=='chevrolet' | class=='suv')
+```
+
+#### and/or 
+
+To take it a step further we can combine & and | in the same filter command. Adding curved brackets will help to clarify the order of operations.
+
+Let's filter for the vehicles  where the manufacturer is chevrolet _or_ the class is 'suv', _and_ all vehicles with highway mileage less than 20.
+
+```{r}
+mpg_df %>% filter( (manufacturer=='chevrolet' | class=='suv') & hwy < 20) 
+```
+
+
+### str_detect() helper function
+
+Often we want to capture rows containing a particular sequence of letters. For example, there are 10 different vehicle models containing the letters '4wd'. We don't want to have to write an 'or' command with 10 alternatives.
+
+A much better way is to 'detect' the letters '4wd' in the model column, and return all rows where they are present, using str_detect().
+
+str_detect() is a command within filter() which requires the column name, followed by the letters (in quotes) to search for
+
+```{r}
+mpg_df %>% filter(str_detect(model,'4wd')) 
+```
+
+Note that the letter order and case have to be matched exactly.  
+
+How would you filter for all vehicles with automatic transmission?
+
+
+
+## select()
+
+Whereas filter() subsets a dataframe by row, select() returns a subset of the columns.
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-select.png)
+
+This function can take column names (even without quotes), or the column position number beginning at left.  
+Further, unlike in base R, commands within the brackets in select() do not need to be concatenated using c().
+
+Let's extract the car model, engine volume (displ) and highway mileage (hwy) from mpg_df:
+```{r}
+mpg_df %>% select(model, displ, hwy)
+```
+
+
+We can use '-' to extract all except particular column(s). For example, to drop the model and year columns:
+
+```{r}
+mpg_df %>% select(-model, -year)
+```
+
+We can also specify column _positions_. Take the data in columns number 1,5 and 11
+
+```{r}
+mpg_df %>% select(1,5,11)
+```
+
+Or combine column positions and names:
+```{r}
+mpg_df %>% select(1,3, cty, hwy)
+```
+ 
+### contains() helper function
+
+contains() is a helper function used with select(), which is analagous to the str_detect() helper used with filter().
+
+To select only columns with names containing the letter 'y':
+```{r}
+mpg_df %>% select(contains('y'))
+```
+contains() is also useful for selecting all column names featuring a certain character, e.g. contains('_')
+
+
+### starts_with() helper function
+
+start_with() and ends_with() offer more specificity for select(). If we want all columns begining with the letter 'c':
+```{r}
+mpg_df %>% select(starts_with('c'))
+```
+
+Happily we can even mix these helper functions with the standard select commands:
+
+```{r}
+mpg_df %>% select( 2, 1, class, contains('y'))
+```
+
+
+### everything() helper function
+
+Lastly for select(), a very useful helper is the everything() function, which returns all column names that have not been specified. It is often used when reordering all columns in a dataframe:
+
+
+```{r}
+mpg_df %>% select(class,displ,year,everything())
+```
+Note that the dimensions of the dataframe have not changed, merely the column order.
+
+
+## arrange()
+
+arrange() is the simplest of the dplyr functions, which orders rows according to values in a given column. The default is to order numbers from lowest -> highest.
+
+Let's try ordering the vehicles by engine size (displ)
+
+```{r}
+mpg_df %>% arrange(displ)
+```
+
+We can refine the order by giving additional columns of data. To order rows by manufacturer name (alphabetical), _then_ by engine size _then_ by city mileage:
+
+```{r}
+mpg_df %>% arrange(manufacturer, displ, cty )
+```
+
+### desc() helper function
+
+To invert the standard order, we can use the 'descending' desc() helper function. To find the most fuel-efficient vehicles when on the highway, we could use:
+
+```{r}
+mpg_df %>% arrange(desc(hwy))
+```
+
+## Chaining dplyr functions
+
+Coding from left-to-right using the pipe %>% allows us to make 'chains' of commands to achieve very specific results.
+
+Let's filter for the midsize vehicles, then select the columns class, manufacturer, displ and year, and arrange on engine size (displ):
+
+```{r}
+mpg_df %>% filter(class=='midsize') %>% 
+  select(class,manufacturer,displ,year) %>% 
+  arrange(displ)
+```
+
+Using line-breaks makes the order of operations very easy to read (and fix if necessary). Once we're happy with the output of this chain of functions, we can assign it to a new object (aka variable) in the environment:
+
+```{r}
+mpg_slim <- mpg_df %>% 
+  filter(class=='midsize') %>% 
+  select(class,manufacturer,displ,year) %>% 
+  arrange(displ)
+
+```
+Note that all of the functions will be performed _before_ the output is assigned into mpg_slim. Therefore even though mpg_slim is at the top of the code, it will contain the final output dataframe.  
+
+## Writing data to a file
+
+The new mpg_slim data frame could be saved to a file outside of the R session using write_tsv()
+
+write_tsv() creates a tab-separated file that can be read by applications like Excel. We first give the variable name, then the file name (ideally with a full directory location):
+
+On Mac:
+```{r, eval=FALSE}
+write_tsv(mpg_slim, '~/Desktop/mpg_slim_dataframe.tsv')
+```
+
+On PC:
+```{r, eval=FALSE}
+write_tsv(mpg_slim, 'C:/Users/ansell.b/Desktop/mpg_slim_dataframe.tsv')
+```
+
+We will learn how to read data in to R in the next chapter.
+
+
+## Chaining dplyr and ggplot
+
+We can also send the dplyr output directly into ggplot!
+
+```{r}
+ mpg_df %>% 
+  filter(class=='midsize') %>% 
+  select(class,manufacturer,displ,year) %>% 
+  arrange(displ) %>% 
+  ggplot(aes(x=class,y=displ)) + geom_boxplot()
+```
+
+Whereas this is very useful for quickly manipulating and plotting data, for readability you might prefer to separate the dplyr commands from the ggplot commands like so:
+
+```{r}
+
+#first create smaller dataset
+mpg_slim <- mpg_df %>% 
+  filter(class=='midsize') %>% 
+  select(class,manufacturer,displ,year) %>% 
+  arrange(displ)
+
+#then plot the distribution of engine volumes of 'midsize' cars
+mpg_slim %>% ggplot(aes(x=class,y=displ)) + geom_boxplot()
+```
+
+
+
+
+## mutate()
+
+Whereas the  the verbs we've covered so far modify the dimensions and order of the existing data frame, mutate() adds new columns of data, thus 'mutating' the contents and dimensions of the input data frame.
+
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-mutate.png) 
+
+To explore mutate we will use the diamond_df data frame from earlier. You can recreate if necessary:
+```{r}
+
+diamond_df <- ggplot2::diamonds
+
+```
+
+The price column for these diamonds is in US dollars. If we want to convert the price to Australian dollars we can (optimistically) multiply USD by 1.25. Here we create a new column called AUD, which will contain a new column where each row = price * 1.25.
+
+Because the number of columns is expanding, to easily see the results we can first drop the x/y/z dimension columns using select()
+
+```{r}
+diamond_df %>% select(-x, -y, -z) %>% mutate(AUD = price * 1.25)
+```
+
+We can also perform operations using only the data in existing columns. Here as above, the newly created column will contain the results of a mathematical operation, performed row by row.
+Let's calculate the US dollars per carat ('ppc') by dividing the price column by the carat column
+```{r}
+diamond_df %>% select(-x,-y,-z) %>% mutate(ppc = price/carat) 
+```
+
+
+### Challenge
+One carat weighs 0.2 grams. Can you chain multiple mutate() functions together to calculate for each diamond, the Australian Dollars per gram?
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+### Solution
+
+```{r}
+diamond_df %>% 
+  select(-x,-y,-z) %>% 
+  mutate(grams = 0.2 * carat) %>% 
+  mutate(AUD = price * 1.25) %>% 
+  mutate(aud_per_gram  = AUD/grams)
+```
+
+
+
+### ifelse() helper
+
+The mutate() function is very useful for making a new column of labels for the existing data.
+For example, to label outliers, or a sub-set of genes with particular characteristics. This is where ifelse() comes in.  
+ifelse() is a function that tests each value in a column of data for a particular condition (a logical test), and returns one answer when the condition==TRUE, and another when the condition==FALSE.  
+
+Specifically, ifelse() takes three commands: the condition to test, the output when TRUE, and the output when FALSE. To see how this works let's create a label for each diamond depending on whether we consider it 'expensive' (> \$5000) or 'cheap' (< \$5000).
+
+```{r}
+diamond_df %>% select(-x,-y,-z) %>% 
+  mutate(price_label = ifelse(price > 5000, 'expensive', 'cheap'))
+```
+Remember that we need two closing brackets, one for the mutate() function, and one for the ifelse() inside it.  
+
+It seems that the ifelse() function has worked. All the rows we can see are price < 5000 and labeled 'cheap'. But how can we be sure?  
+One option to check the new labels is to plot the price column as a histogram, and fill the bars according to price_label: 
+
+
+```{r}
+diamond_df %>% select(-x,-y,-z) %>% 
+  mutate(price_label = ifelse(price > 5000,'expensive','cheap')) %>% 
+  ggplot(aes(x=price, fill = price_label)) + 
+  geom_histogram()
+
+```
+Now we can be confident that ifelse() command has worked as intended. Another option for checking output is to use count(), which will be introduced below.
+
+
+### case_when() helper
+
+This function is useful but quite involved. I'm including it here for completeness, however beginners can feel free to skip down to the summarize() section and return to case_when() later.  
+
+At times we want to create a label column that tests multiple conditions. We can either put multiple ifelse() commands inside each other (and go mad), or use case_when()!
+
+This command takes multiple conditions and tests them in order. This is important to remember as all rows that satisfy the first condition will be tagged as such. There may be rows that satisfy more than one condition, so you should order the tests from specific to general, and keep track of how those ambiguous rows are being treated.  
+
+case_when() takes a conditional command in the same format as the first command in ifelse(), however only the action for the TRUE condition is given, separated with a tilde `~`.  
+The catch-all command for rows that do not satisfy any other conditions, is given  at the end.  
+Let's use case_when() to make a label for diamonds based on their clarity super-groups. For simplicy, we select only the clarity column as input. The current clarity categories are:   
+
+IF: internally flawless    
+VVS1 and 2: very very slight impurity 1 and 2  
+VS1 and 2: very slight impurity 1 and 2  
+SI1 and 2: slight impurity 1 and 2  
+I1: impurity  
+  
+Note that we are searching for similar conditions ('VVS' contains 'VS') and will have to be careful with the order of conditions. To create the super-groupings we will use a combination of str_detect() and equality `==` conditions.
+
+```{r}
+diamond_df %>% 
+  select(clarity) %>% 
+  mutate(clarity_group = case_when(clarity == 'IF' ~ 'flawless',
+                                   str_detect(clarity, 'VVS') ~ 'VV_slight',
+                                   str_detect(clarity, 'VS') ~ 'V_slight',
+                                   str_detect(clarity, 'SI') ~ 'slight',
+                                   clarity == 'I1' ~ 'impurity',
+                                   TRUE ~ 'other'))
+
+```
+
+Note that both VS1 and VS2 diamonds are now taged as 'V_slight', and similarliy  VVS1 and VVS2 are taged as 'VV_slight'. Because we have captured all clarity categories within the list of conditions, we dont expect the catch-all output, "other", to be present in the clarity_group column. We could use ` %>% count(clarity_group)`, introduced below, to check for the presence of unintended values such as 'other' or NA.
+These super-groups could now be used for coloring or faceting data in a plot, or creating summary statistics (see below).
+
+
+
+
+
+## summarize()
+
+The last of the dplyr verbs is summarize(), which as the name suggests, creates individual summary statistics from larger data sets.  
+
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-summarise.png)
+
+As for mutate(), the output of summarize() is qualitatively different from the input: it is  generally a smaller dataframe with a reduced representation of the input data.  
+Importantly, even though  the output of summarize() can be very small, it is still a dataframe.  
+Although not essential, it is also a good idea to specify new column names for the summary statistics that this function creates.  
+
+First we will calculate the mean price for the diamond_df dataframe by specifying a name for the new data, and then the function we want to apply to the price column:
+
+```{r}
+
+diamond_df %>% summarize(mean_price = mean(price))
+
+```
+
+The output is the smallest possible dataframe: 1 row X 1 column.  
+
+We can create additional summary statistics by adding them in a comma-separated sequence. For example, to calculate the standard deviation, mininum and maximum values, we create three additional columns: "sd_price", "min_price", and "max_price"
+
+
+```{r}
+
+diamond_df %>% summarize(mean_price = mean(price),
+                         sd_price = sd(price),
+                         min_price = min(price),
+                         max_price = max(price))
+
+```
+
+### n() helper
+
+When using summarize(), we can also count the number of rows being summarized, which can be important for interpreting the associated statistics. The simple function n() never takes any additional code, but simply counts rows:
+
+```{r}
+diamond_df %>% summarize(mean_price = mean(price),
+                         sd_price = sd(price),
+                         min_price = min(price),
+                         max_price = max(price),
+                         n_rows = n())
+
+```
+
+So far so good, however this seems like quite a lot of code to get the simple summary statistics.  The power of this function is really amplified in conjuction with the group_by() helper.
+
+## group_by() helper
+
+Although I've called group_by() a helper function, it is key to unleashing the power of nearly all dplyr functions.  
+group_by() allows us to create sub-groups based on labels in a particular column, and to run subsequent functions on all sub-groups. It is conceptually similar to facet_wrap() in ggplot, which applies the same plotting command to multiple subsets of the input dataframe.    
+
+For example the figure below is using group_by() as the first arrow, and summarize() as the second arrow. Three sub-groups, corresponding to e.g. three categories in column 1,  are represented in the light grey, blue and green rows. A summarize() command is then run on each sub-group, producing a results dataframe with only three rows, and new (dark blue) column names indicating the summary statistic.
+
+![](https://moderndive.com/previous_versions/v0.4.0/images/group_summary.png)
+
+For those interested in more details, group_by() is essentially creating a separate dataframe for each category in a specified column. To see this at work, look the structure str() of the diamonds data before and after grouping:
+
+```{r}
+diamond_df %>% str()
+```
+We have a single dataframe with 54K rows.  
+
+Now we group by cut:
+
+```{r}
+diamond_df %>% group_by(cut) %>% str()
+```
+
+The output of group_by() is a 'grouped_df' and all functions following will be applied separately to each sub-dataframe.  
+
+### group_by() %>% summarize()
+
+Returning to the above summarize() function, we can now quickly generate summary statistics for the diamonds in each clarity category by first grouping on this column name.
+
+
+```{r}
+
+diamond_df %>% group_by(clarity) %>% 
+  summarize(mean_price = mean(price),
+            sd_price = sd(price),
+            min_price = min(price),
+            max_price = max(price),
+            n_rows = n())
+
+```
+
+Huzzah!  
+
+By adding this simple command before summarize() we've created detailed statistics on each clarity category. We could split the input data further by grouping on more than one column. For example, what are the summary statistics for each clarity category within each cut?
+
+```{r}
+diamond_df %>% 
+  group_by(clarity, cut) %>% 
+  summarize(mean_price = mean(price),
+            sd_price = sd(price),
+            min_price = min(price),
+            max_price = max(price),
+            n_rows = n())
+
+```
+
+We now have 40 rows of summary statistics which gives a higher-resolution representation of the input data.  
+
+### group_by() %>% mutate()
+
+As mentioned, group_by() is compatible with all other dplyr functions. Sometimes we want both the original data _and_ the summary statistics in the output data frame. To do this, group_by() can be combined with mutate(), to make a new column of summary statistics (repeated many times) corresponding to the sub-grouping of interest. The new column of summary statistics is represented in darker colours in the right panel below.
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-group_by.png)
+
+
+To create a column containing the mean price for diamonds in each cut category _in addition to_ the input data, we can use group_by() before mutate():
+
+```{r}
+diamond_df %>% select(-x,-y,-z) %>% 
+  group_by(cut) %>% 
+  mutate(cut_meanprice = mean(price))
+```
+The new column now contains one of five possible values depending on the cut column.  
+From this we could then use a second mutate() to calculate the difference between each diamond price and the mean price for its cut category:
+
+```{r}
+diamond_df %>% select(-x,-y,-z) %>% 
+  group_by(cut) %>% 
+  mutate(cut_meanprice = mean(price)) %>% 
+  mutate(price_diff    = price - cut_meanprice) 
+
+```
+
+### ungroup() helper
+
+When running longer dplyr chains it is good practice to ungroup the data after the group_by() operations are run. To do this simply add `%>% ungroup()` at the end of the code block. Inappropriate preservation of groupings can sometimes cause your code to run very slowly and give unexpected results.
+
+
+### count() helper
+
+count() is a shortcut function that combines group_by() and summarize(), which is useful for counting 'character data', e.g. labels.
+
+To quickly count the number of diamonds in each cut category:
+
+```{r}
+diamond_df %>% count(cut)
+```
+
+And to count the number of diamonds in each cut and clarity category:
+```{r}
+diamond_df %>% count(cut,clarity)
+```
+Note that the count summary output column name is 'n'. This reflects that count() is using a summarize(n = n()) function in the background.
+
+
+### sample_n() helper
+
+The final helper for this session is sample_n() which takes a random sample of rows according to the number specified. To sample 10 rows from the entire diamond_df dataset:
+
+```{r}
+diamond_df %>% sample_n(10)
+```
+
+It can be more useful to sample rows from within sub-groups, by combining group_by() and sample_n(). Let's take 2 rows at random from each cut category:
+
+```{r}
+diamond_df %>% group_by(cut) %>% sample_n(2)
+```
+
+## Challenges
+
+What is the weight of the most expensive diamond in each clarity category?  
+
+Summarize the standard deviation of diamond weight in each cut category.  
+
+A z score is the (sample value - mean)/sd.
+
+Can you create a z score for the weight of each diamond relative to others of that cut? 
+
+What does the density distribution of z scores look like for each cut? 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Solutions  
+```{r}
+diamond_df %>% group_by(clarity) %>% summarize(maxPrice = max(price))
+```
+
+```{r}
+diamond_df %>% group_by(cut) %>% summarize(sdWt = sd(carat)) 
+
+```
+
+```{r}
+weight_z <- diamond_df %>% group_by(cut) %>% 
+  mutate(meanWt=mean(carat), 
+         sdWt = sd(carat),
+         z = (carat - meanWt)/sdWt) 
+```
+
+
+```{r}
+weight_z %>% ggplot(aes(x=z)) + geom_density(aes(col=cut))
+```
+
+
+
+
+
+## Summary
+
+Now you have worked through the key verbs of dplyr, and the associated helper functions which, together, allow you to efficiently subset, transform and summarize your data.  
+Whereas the diamond_df and mpg_df dataframes we have worked with so far are self-contained, readily available within R and clean, in the next chapter we will learn to read in external datasets, join different datasets and clean data.
+
+
+
+## Extra resources
+
+There are several great resources for consolidating and building on the material above.
+
+[R for Data Science Ch. 5 'Data transformation'](https://r4ds.had.co.nz/transform.html)  
+
+[Tidyverse resources](https://www.tidyverse.org/learn/)  
+
+[Introduction to open data science (Ocean Health Index)](http://ohi-science.org/data-science-training)  
+
+[Jenny Bryan's STAT545 course notes](https://stat545.com/dplyr-intro.html )
+
+

@@ -1,0 +1,156 @@
+
+# Week 2. Part 1: Subsetting vectors {-}
+
+
+A very common task in data wrangling is filtering or 'subsetting' down to a smaller set of potentially interesting values. 
+
+This short chapter is intended to give you a basic understanding of the operations that R is performing when filtering and evaluating data using the functions introduced in Chapter 5. Note that it is not necessary to have the tidyverse package loaded to complete this chapter - we are using 'base R' functions.
+
+First we will create a vector named 'beatles' containing the years of birth of The Beatles:  
+
+John Lennon: 1940, Ringo Starr: 1940, Paul McCartney: 1942 and George Harrison: 1943.
+
+```{r,error=TRUE}
+beatles <- c(1940,1940,1942,1943)
+```
+
+
+## Subset by position
+
+To hone in on different values in this vector we can request them based on their position in order 1 through 4.
+The position is given in square brackets
+
+```{r}
+beatles[1]
+```
+
+Returns just the value at the first position in the vector.  
+
+Importantly, we can subset for values at position 2 _and_ 3 by including a vector of numbers defining those positions.
+
+```{r}
+beatles[c(2,3)]
+```
+
+We can also request everything _but_ the value at a certain position, using the minus sign
+```{r}
+beatles[-3]
+```
+
+## Adding names
+
+To add additional information to the values we can give each a name, supplied as a vector of words:
+
+```{r}
+names(beatles) <- c('John','Ringo','Paul','George')
+```
+Notice how the beatles variable has now changed slightly in the Environment panel.  
+
+From now on every time a value is returned from the beatles vector, the Beatle member associated with that value is also returned.
+```{r}
+beatles[-3]
+```
+
+## Subset by condition
+
+In addition to subsetting a vector by the position of values, we can 'pose questions' about the set of values to R, which will be returned with TRUE or FALSE answers. 
+
+'Which Beatles date of birth is 1940'? To code this we ask for values 'exactly equal to' 1940, using the *==* sign.
+
+```{r}
+beatles == 1940
+```
+R returns 'TRUE' for values that satisfy our 'condition', and FALSE for those that don't.  
+
+'Which member(s) date of birth is before 1943?.' To code this we use the less-than < sign.
+
+
+
+```{r}
+beatles < 1943
+```
+
+R is assessing the value at each position, and returning an answer to our conditional question.  
+
+A way to directly subset this vector is to directly provide a vector of TRUE and FALSE values within square brackets, in a similar manner to specifying the positions, above.
+```{r}
+beatles[c(TRUE,FALSE,FALSE,TRUE)]
+```
+
+Note that the only values returned are in the 'TRUE' positions, in this case the values at position 1 and 4.  
+
+We can see that subsetting a vector is based on the presence of a 'TRUE' or 'FALSE' statement at each position along the vector.  
+
+In most cases when subsetting data, we want the values themselves, rather than the TRUE/FALSE evaluations.  
+Now that we know that i) conditional requests return TRUE/FALSE values, and ii) TRUE/FALSE values are the basis of sub-setting vectors, we can substitute the TRUE/FALSE vector in the brackets above for a conditional statement:
+
+```{r}
+beatles[beatles > 1940]
+```
+
+To check this, try running just the code within the square brackets.  
+It is timely to mention that in R, code is processed from the inside- to outside of brackets. Here, the conditional statement is evaluated and produces a vector of four TRUE / FALSE values. This logical vector is then used to sub-set the original vector, returning a subset of named numeric values.
+
+
+'Which Beatles were not born in 1942?.' To answer this we need to use a ! symbol that 'negates', or inverts the condition:
+
+```{r}
+beatles[ beatles!=1942 ]
+```
+
+To get an even more succinct answer, we could request only the names associated with the numeric values:
+```{r}
+names( beatles[ beatles != 1942] )
+```
+
+You will use these types of conditional statments regularly in the next chapter.
+
+
+## Challenge
+
+Create three different commands to return information about the Beatles born before 1943. You can use positional information, and/or conditional requests. 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Possible solutions
+
+```{r}
+beatles[beatles < 1943]
+```
+
+
+```{r}
+beatles[beatles != 1943]
+```
+
+
+```{r}
+beatles[-4]
+```
+
+
+```{r}
+beatles[c(1,2,3)]
+```
+
+
+```{r}
+beatles[names(beatles) != 'George']
+```
+
+
+
+
+
+
+
+
+
+
+
+

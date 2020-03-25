@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 2. Part 2: dplyr | Introduction to R - tidyverse</title>
+  <meta name="description" content="Week 2. Part 2: dplyr | Introduction to R - tidyverse" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 2. Part 2: dplyr | Introduction to R - tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 2. Part 2: dplyr | Introduction to R - tidyverse" />
+  
+  
+  
+
+<meta name="author" content="Brendan R. E. Ansell @ansellbr3" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-2-part-1-subsetting-vectors.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-part-1-the-basics.html"><a href="week-1-part-1-the-basics.html"><i class="fa fa-check"></i>Week 1. Part 1: The basics</a></li>
+<li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a><ul>
+<li class="chapter" data-level="1.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-look-around-rstudio"><i class="fa fa-check"></i><b>1.1</b> A look around RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="welcome-to-r.html"><a href="welcome-to-r.html#console-pane"><i class="fa fa-check"></i><b>1.2</b> Console Pane</a></li>
+<li class="chapter" data-level="1.3" data-path="welcome-to-r.html"><a href="welcome-to-r.html#environmenthistory-pane"><i class="fa fa-check"></i><b>1.3</b> Environment/History Pane</a></li>
+<li class="chapter" data-level="1.4" data-path="welcome-to-r.html"><a href="welcome-to-r.html#plotting-pane"><i class="fa fa-check"></i><b>1.4</b> Plotting Pane</a></li>
+<li class="chapter" data-level="1.5" data-path="welcome-to-r.html"><a href="welcome-to-r.html#open-a-new-r-script"><i class="fa fa-check"></i><b>1.5</b> Open a new R script</a></li>
+<li class="chapter" data-level="1.6" data-path="welcome-to-r.html"><a href="welcome-to-r.html#comments"><i class="fa fa-check"></i><b>1.6</b> Comments</a></li>
+<li class="chapter" data-level="1.7" data-path="welcome-to-r.html"><a href="welcome-to-r.html#executing-commands"><i class="fa fa-check"></i><b>1.7</b> Executing commands</a></li>
+<li class="chapter" data-level="1.8" data-path="welcome-to-r.html"><a href="welcome-to-r.html#simple-maths-in-r"><i class="fa fa-check"></i><b>1.8</b> Simple maths in R</a></li>
+<li class="chapter" data-level="1.9" data-path="welcome-to-r.html"><a href="welcome-to-r.html#help"><i class="fa fa-check"></i><b>1.9</b> Help!!</a></li>
+<li class="chapter" data-level="1.10" data-path="welcome-to-r.html"><a href="welcome-to-r.html#variables"><i class="fa fa-check"></i><b>1.10</b> Variables</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-note-on-variables"><i class="fa fa-check"></i><b>1.10.1</b> A note on variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>2</b> Vectors</a><ul>
+<li class="chapter" data-level="2.1" data-path="vectors.html"><a href="vectors.html#creating-numeric-vectors"><i class="fa fa-check"></i><b>2.1</b> Creating numeric vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors.html"><a href="vectors.html#character-vectors"><i class="fa fa-check"></i><b>2.2</b> Character vectors</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors.html"><a href="vectors.html#logical-vectors"><i class="fa fa-check"></i><b>2.3</b> Logical vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>3</b> Packages</a><ul>
+<li class="chapter" data-level="3.1" data-path="packages.html"><a href="packages.html#installing-packages"><i class="fa fa-check"></i><b>3.1</b> Installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-pipe.html"><a href="the-pipe.html"><i class="fa fa-check"></i><b>4</b> The pipe %&gt;%</a></li>
+<li class="chapter" data-level="5" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>5</b> Data frames</a></li>
+<li class="chapter" data-level="" data-path="week-1-part-2-making-beautiful-plots.html"><a href="week-1-part-2-making-beautiful-plots.html"><i class="fa fa-check"></i>Week 1. Part 2: Making beautiful plots</a><ul>
+<li class="chapter" data-level="" data-path="week-1-part-2-making-beautiful-plots.html"><a href="week-1-part-2-making-beautiful-plots.html#introductory-information"><i class="fa fa-check"></i>Introductory information</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html"><i class="fa fa-check"></i><b>6</b> ggplot2. A grammar of graphics</a></li>
+<li class="chapter" data-level="7" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html"><i class="fa fa-check"></i><b>7</b> Building a ggplot</a><ul>
+<li class="chapter" data-level="7.1" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#plot-background"><i class="fa fa-check"></i><b>7.1</b> Plot background</a></li>
+<li class="chapter" data-level="7.2" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#aesthetics-aes"><i class="fa fa-check"></i><b>7.2</b> Aesthetics aes()</a></li>
+<li class="chapter" data-level="7.3" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#geometric-representations-geom"><i class="fa fa-check"></i><b>7.3</b> Geometric representations geom()</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#a-note-about-and"><i class="fa fa-check"></i><b>7.3.1</b> A note about %&gt;% and +</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#adding-colour"><i class="fa fa-check"></i><b>7.4</b> Adding colour</a></li>
+<li class="chapter" data-level="7.5" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#adding-layers"><i class="fa fa-check"></i><b>7.5</b> Adding layers</a></li>
+<li class="chapter" data-level="7.6" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#facets"><i class="fa fa-check"></i><b>7.6</b> Facets</a></li>
+<li class="chapter" data-level="7.7" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#coordinate-space"><i class="fa fa-check"></i><b>7.7</b> Coordinate space</a></li>
+<li class="chapter" data-level="7.8" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#axis-labels"><i class="fa fa-check"></i><b>7.8</b> Axis labels</a></li>
+<li class="chapter" data-level="7.9" data-path="building-a-ggplot.html"><a href="building-a-ggplot.html#themes"><i class="fa fa-check"></i><b>7.9</b> Themes</a></li>
+</ul></li>
+<li><a href="week-1-part-3-making-more-beautiful-plots.html#week-1.-part-3-making-more-beautiful-plots">Week 1. Part 3: Making <em>more</em> beautiful plots</a><ul>
+<li class="chapter" data-level="" data-path="week-1-part-3-making-more-beautiful-plots.html"><a href="week-1-part-3-making-more-beautiful-plots.html"><i class="fa fa-check"></i>Introductory information</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bigger-data-54000-diamonds.html"><a href="bigger-data-54000-diamonds.html"><i class="fa fa-check"></i><b>8</b> Big(ger) Data: 54,000 diamonds</a><ul>
+<li class="chapter" data-level="8.1" data-path="bigger-data-54000-diamonds.html"><a href="bigger-data-54000-diamonds.html#summary-plots"><i class="fa fa-check"></i><b>8.1</b> Summary plots</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="bigger-data-54000-diamonds.html"><a href="bigger-data-54000-diamonds.html#free-examples"><i class="fa fa-check"></i><b>8.1.1</b> Free examples!</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="bigger-data-54000-diamonds.html"><a href="bigger-data-54000-diamonds.html#histograms"><i class="fa fa-check"></i><b>8.2</b> Histograms</a></li>
+<li class="chapter" data-level="8.3" data-path="bigger-data-54000-diamonds.html"><a href="bigger-data-54000-diamonds.html#density-plots"><i class="fa fa-check"></i><b>8.3</b> Density plots</a></li>
+<li class="chapter" data-level="8.4" data-path="bigger-data-54000-diamonds.html"><a href="bigger-data-54000-diamonds.html#box-plots"><i class="fa fa-check"></i><b>8.4</b> Box plots</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="saving-plots.html"><a href="saving-plots.html"><i class="fa fa-check"></i><b>9</b> Saving plots</a></li>
+<li class="chapter" data-level="10" data-path="challenge.html"><a href="challenge.html"><i class="fa fa-check"></i><b>10</b> Challenge</a><ul>
+<li class="chapter" data-level="10.1" data-path="challenge.html"><a href="challenge.html#solution"><i class="fa fa-check"></i><b>10.1</b> Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-part-1-subsetting-vectors.html"><a href="week-2-part-1-subsetting-vectors.html"><i class="fa fa-check"></i>Week 2. Part 1: Subsetting vectors</a><ul>
+<li class="chapter" data-level="10.2" data-path="week-2-part-1-subsetting-vectors.html"><a href="week-2-part-1-subsetting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>10.2</b> Subset by position</a></li>
+<li class="chapter" data-level="10.3" data-path="week-2-part-1-subsetting-vectors.html"><a href="week-2-part-1-subsetting-vectors.html#adding-names"><i class="fa fa-check"></i><b>10.3</b> Adding names</a></li>
+<li class="chapter" data-level="10.4" data-path="week-2-part-1-subsetting-vectors.html"><a href="week-2-part-1-subsetting-vectors.html#subset-by-condition"><i class="fa fa-check"></i><b>10.4</b> Subset by condition</a></li>
+<li class="chapter" data-level="10.5" data-path="week-2-part-1-subsetting-vectors.html"><a href="week-2-part-1-subsetting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>10.5</b> Challenge</a></li>
+<li class="chapter" data-level="10.6" data-path="week-2-part-1-subsetting-vectors.html"><a href="week-2-part-1-subsetting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>10.6</b> Possible solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html"><i class="fa fa-check"></i>Week 2. Part 2: dplyr</a><ul>
+<li class="chapter" data-level="10.7" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#filter"><i class="fa fa-check"></i><b>10.7</b> filter()</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#logical-operations"><i class="fa fa-check"></i><b>10.7.1</b> Logical operations</a></li>
+<li class="chapter" data-level="10.7.2" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#str_detect-helper-function"><i class="fa fa-check"></i><b>10.7.2</b> str_detect() helper function</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#select"><i class="fa fa-check"></i><b>10.8</b> select()</a><ul>
+<li class="chapter" data-level="10.8.1" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#contains-helper-function"><i class="fa fa-check"></i><b>10.8.1</b> contains() helper function</a></li>
+<li class="chapter" data-level="10.8.2" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#starts_with-helper-function"><i class="fa fa-check"></i><b>10.8.2</b> starts_with() helper function</a></li>
+<li class="chapter" data-level="10.8.3" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#everything-helper-function"><i class="fa fa-check"></i><b>10.8.3</b> everything() helper function</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#arrange"><i class="fa fa-check"></i><b>10.9</b> arrange()</a><ul>
+<li class="chapter" data-level="10.9.1" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#desc-helper-function"><i class="fa fa-check"></i><b>10.9.1</b> desc() helper function</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#chaining-dplyr-functions"><i class="fa fa-check"></i><b>10.10</b> Chaining dplyr functions</a></li>
+<li class="chapter" data-level="10.11" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#writing-data-to-a-file"><i class="fa fa-check"></i><b>10.11</b> Writing data to a file</a></li>
+<li class="chapter" data-level="10.12" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#chaining-dplyr-and-ggplot"><i class="fa fa-check"></i><b>10.12</b> Chaining dplyr and ggplot</a></li>
+<li class="chapter" data-level="10.13" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#mutate"><i class="fa fa-check"></i><b>10.13</b> mutate()</a><ul>
+<li class="chapter" data-level="10.13.1" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#challenge-2"><i class="fa fa-check"></i><b>10.13.1</b> Challenge</a></li>
+<li class="chapter" data-level="10.13.2" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#ifelse-helper"><i class="fa fa-check"></i><b>10.13.2</b> ifelse() helper</a></li>
+<li class="chapter" data-level="10.13.3" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#case_when-helper"><i class="fa fa-check"></i><b>10.13.3</b> case_when() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.14" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#summarize"><i class="fa fa-check"></i><b>10.14</b> summarize()</a><ul>
+<li class="chapter" data-level="10.14.1" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#n-helper"><i class="fa fa-check"></i><b>10.14.1</b> n() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.15" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#group_by-helper"><i class="fa fa-check"></i><b>10.15</b> group_by() helper</a><ul>
+<li class="chapter" data-level="10.15.1" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#group_by-summarize"><i class="fa fa-check"></i><b>10.15.1</b> group_by() %&gt;% summarize()</a></li>
+<li class="chapter" data-level="10.15.2" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#group_by-mutate"><i class="fa fa-check"></i><b>10.15.2</b> group_by() %&gt;% mutate()</a></li>
+<li class="chapter" data-level="10.15.3" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#ungroup-helper"><i class="fa fa-check"></i><b>10.15.3</b> ungroup() helper</a></li>
+<li class="chapter" data-level="10.15.4" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#count-helper"><i class="fa fa-check"></i><b>10.15.4</b> count() helper</a></li>
+<li class="chapter" data-level="10.15.5" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#sample_n-helper"><i class="fa fa-check"></i><b>10.15.5</b> sample_n() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.16" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#challenges"><i class="fa fa-check"></i><b>10.16</b> Challenges</a></li>
+<li class="chapter" data-level="10.17" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#solutions"><i class="fa fa-check"></i><b>10.17</b> Solutions</a></li>
+<li class="chapter" data-level="10.18" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#summary"><i class="fa fa-check"></i><b>10.18</b> Summary</a></li>
+<li class="chapter" data-level="10.19" data-path="week-2-part-2-dplyr.html"><a href="week-2-part-2-dplyr.html#extra-resources"><i class="fa fa-check"></i><b>10.19</b> Extra resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R - tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-2.-part-2-dplyr" class="section level1 unnumbered">
+<h1>Week 2. Part 2: dplyr</h1>
+<p>The dplyr package, part of the tidyverse, is designed to make manipulating and transforming data as simple and intuitive as possible.</p>
+<p>A guiding principle for tidyverse packages (and RStudio), is to minimize the number of keystrokes and characters required to get the results you want. To this end, as for ggplot, in dplyr, quotation marks for the column names of data frames are often not required.
+Another key feature of the tidyverse data wrangling packages such as dplyr, is that the input to and output from all functions, are data frames.</p>
+<p>dplyr features a handful of key functions, also termed ‘verbs’, which can be combined to achieve very specific results. You will notice similarities to the functions available in Microsoft Excel.</p>
+<p>We will explore the first of these verbs using the mpg_df dataset created earlier. If starting from a new Rstudio session you should run the following code:</p>
+<div id="filter" class="section level2">
+<h2><span class="header-section-number">10.7</span> filter()</h2>
+<p>The filter() function subsets the rows in a data frame by testing against a conditional statement. The output from a successful filter() will be a data frame with fewer rows than the input data frame.</p>
+<p><img src="http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-filter.png" /></p>
+<p>Let’s filter the mpg_df data for cars manufacturered in the year 1999:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1999</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 117 x 11
+##    manufacturer model              displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 audi         a4                   1.8  1999     4 auto(l5)   f        18    29 p     compact
+##  2 audi         a4                   1.8  1999     4 manual(m5) f        21    29 p     compact
+##  3 audi         a4                   2.8  1999     6 auto(l5)   f        16    26 p     compact
+##  4 audi         a4                   2.8  1999     6 manual(m5) f        18    26 p     compact
+##  5 audi         a4 quattro           1.8  1999     4 manual(m5) 4        18    26 p     compact
+##  6 audi         a4 quattro           1.8  1999     4 auto(l5)   4        16    25 p     compact
+##  7 audi         a4 quattro           2.8  1999     6 auto(l5)   4        15    25 p     compact
+##  8 audi         a4 quattro           2.8  1999     6 manual(m5) 4        17    25 p     compact
+##  9 audi         a6 quattro           2.8  1999     6 auto(l5)   4        15    24 p     midsize
+## 10 chevrolet    c1500 suburban 2wd   5.7  1999     8 auto(l4)   r        13    17 r     suv    
+## # … with 107 more rows</code></pre>
+<p>Here we are ‘sending’ the mpg_df data frame into the function filter(), which tests each value in the year column for the number 1999, and returns those rows where the filter() condition is TRUE.</p>
+<p>If you are working in an R text document (.R format) or directly in the console, after running this command you will see the dimensions of the output data frame printed in grey text above the column names.</p>
+<p>Alternatively you can ‘send’ the output of filter (a data frame) into the dim() function.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">1999</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">dim</span>()</a></code></pre></div>
+<pre><code>## [1] 117  11</code></pre>
+<p>We can also filter on character data. For example, let’s take all vehicles in the ‘midsize’ class:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(class<span class="op">==</span><span class="st">&#39;midsize&#39;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 41 x 11
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 audi         a6 quattro   2.8  1999     6 auto(l5)   4        15    24 p     midsize
+##  2 audi         a6 quattro   3.1  2008     6 auto(s6)   4        17    25 p     midsize
+##  3 audi         a6 quattro   4.2  2008     8 auto(s6)   4        16    23 p     midsize
+##  4 chevrolet    malibu       2.4  1999     4 auto(l4)   f        19    27 r     midsize
+##  5 chevrolet    malibu       2.4  2008     4 auto(l4)   f        22    30 r     midsize
+##  6 chevrolet    malibu       3.1  1999     6 auto(l4)   f        18    26 r     midsize
+##  7 chevrolet    malibu       3.5  2008     6 auto(l4)   f        18    29 r     midsize
+##  8 chevrolet    malibu       3.6  2008     6 auto(s6)   f        17    26 r     midsize
+##  9 hyundai      sonata       2.4  1999     4 auto(l4)   f        18    26 r     midsize
+## 10 hyundai      sonata       2.4  1999     4 manual(m5) f        18    27 r     midsize
+## # … with 31 more rows</code></pre>
+<p>Can you filter mpg_df for all vehicles <em>except</em> the hyundais?</p>
+<div id="logical-operations" class="section level3">
+<h3><span class="header-section-number">10.7.1</span> Logical operations</h3>
+<div id="and" class="section level4">
+<h4><span class="header-section-number">10.7.1.1</span> &amp; and</h4>
+<p>We can achieve more specific filters by combining conditions across columns. For example, we use the “&amp;” sign to filter for vehicles built in 1999 <em>and</em> with mileage in the city (cty) greater than 18.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1999</span> <span class="op">&amp;</span><span class="st"> </span>cty <span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 33 x 11
+##    manufacturer model   displ  year   cyl trans      drv     cty   hwy fl    class     
+##    &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     
+##  1 audi         a4        1.8  1999     4 manual(m5) f        21    29 p     compact   
+##  2 chevrolet    malibu    2.4  1999     4 auto(l4)   f        19    27 r     midsize   
+##  3 honda        civic     1.6  1999     4 manual(m5) f        28    33 r     subcompact
+##  4 honda        civic     1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+##  5 honda        civic     1.6  1999     4 manual(m5) f        25    32 r     subcompact
+##  6 honda        civic     1.6  1999     4 manual(m5) f        23    29 p     subcompact
+##  7 honda        civic     1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+##  8 hyundai      tiburon   2    1999     4 auto(l4)   f        19    26 r     subcompact
+##  9 hyundai      tiburon   2    1999     4 manual(m5) f        19    29 r     subcompact
+## 10 nissan       altima    2.4  1999     4 manual(m5) f        21    29 r     compact   
+## # … with 23 more rows</code></pre>
+<p>To see the entire output you can pipe the output from filter into a View() commmand</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">1999</span> <span class="op">&amp;</span><span class="st"> </span>cty <span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</a></code></pre></div>
+</div>
+<div id="or" class="section level4">
+<h4><span class="header-section-number">10.7.1.2</span> | or</h4>
+<p>Alternatively we might want to filter for vehicles (i.e., rows) where the manufacturer is chevrolet <em>or</em> the class is ‘suv’. This requires the “|” symbol (shift + \)</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(manufacturer<span class="op">==</span><span class="st">&#39;chevrolet&#39;</span> <span class="op">|</span><span class="st"> </span>class<span class="op">==</span><span class="st">&#39;suv&#39;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 72 x 11
+##    manufacturer model              displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 chevrolet    c1500 suburban 2wd   5.3  2008     8 auto(l4)   r        14    20 r     suv    
+##  2 chevrolet    c1500 suburban 2wd   5.3  2008     8 auto(l4)   r        11    15 e     suv    
+##  3 chevrolet    c1500 suburban 2wd   5.3  2008     8 auto(l4)   r        14    20 r     suv    
+##  4 chevrolet    c1500 suburban 2wd   5.7  1999     8 auto(l4)   r        13    17 r     suv    
+##  5 chevrolet    c1500 suburban 2wd   6    2008     8 auto(l4)   r        12    17 r     suv    
+##  6 chevrolet    corvette             5.7  1999     8 manual(m6) r        16    26 p     2seater
+##  7 chevrolet    corvette             5.7  1999     8 auto(l4)   r        15    23 p     2seater
+##  8 chevrolet    corvette             6.2  2008     8 manual(m6) r        16    26 p     2seater
+##  9 chevrolet    corvette             6.2  2008     8 auto(s6)   r        15    25 p     2seater
+## 10 chevrolet    corvette             7    2008     8 manual(m6) r        15    24 p     2seater
+## # … with 62 more rows</code></pre>
+</div>
+<div id="andor" class="section level4">
+<h4><span class="header-section-number">10.7.1.3</span> and/or</h4>
+<p>To take it a step further we can combine &amp; and | in the same filter command. Adding curved brackets will help to clarify the order of operations.</p>
+<p>Let’s filter for the vehicles where the manufacturer is chevrolet <em>or</em> the class is ‘suv’, <em>and</em> all vehicles with highway mileage less than 20.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>( (manufacturer<span class="op">==</span><span class="st">&#39;chevrolet&#39;</span> <span class="op">|</span><span class="st"> </span>class<span class="op">==</span><span class="st">&#39;suv&#39;</span>) <span class="op">&amp;</span><span class="st"> </span>hwy <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>) </a></code></pre></div>
+<pre><code>## # A tibble: 48 x 11
+##    manufacturer model              displ  year   cyl trans    drv     cty   hwy fl    class
+##    &lt;chr&gt;        &lt;chr&gt;              &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 chevrolet    c1500 suburban 2wd   5.3  2008     8 auto(l4) r        11    15 e     suv  
+##  2 chevrolet    c1500 suburban 2wd   5.7  1999     8 auto(l4) r        13    17 r     suv  
+##  3 chevrolet    c1500 suburban 2wd   6    2008     8 auto(l4) r        12    17 r     suv  
+##  4 chevrolet    k1500 tahoe 4wd      5.3  2008     8 auto(l4) 4        14    19 r     suv  
+##  5 chevrolet    k1500 tahoe 4wd      5.3  2008     8 auto(l4) 4        11    14 e     suv  
+##  6 chevrolet    k1500 tahoe 4wd      5.7  1999     8 auto(l4) 4        11    15 r     suv  
+##  7 chevrolet    k1500 tahoe 4wd      6.5  1999     8 auto(l4) 4        14    17 d     suv  
+##  8 dodge        durango 4wd          3.9  1999     6 auto(l4) 4        13    17 r     suv  
+##  9 dodge        durango 4wd          4.7  2008     8 auto(l5) 4        13    17 r     suv  
+## 10 dodge        durango 4wd          4.7  2008     8 auto(l5) 4         9    12 e     suv  
+## # … with 38 more rows</code></pre>
+</div>
+</div>
+<div id="str_detect-helper-function" class="section level3">
+<h3><span class="header-section-number">10.7.2</span> str_detect() helper function</h3>
+<p>Often we want to capture rows containing a particular sequence of letters. For example, there are 10 different vehicle models containing the letters ‘4wd’. We don’t want to have to write an ‘or’ command with 10 alternatives.</p>
+<p>A much better way is to ‘detect’ the letters ‘4wd’ in the model column, and return all rows where they are present, using str_detect().</p>
+<p>str_detect() is a command within filter() which requires the column name, followed by the letters (in quotes) to search for</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(model,<span class="st">&#39;4wd&#39;</span>)) </a></code></pre></div>
+<pre><code>## # A tibble: 74 x 11
+##    manufacturer model             displ  year   cyl trans      drv     cty   hwy fl    class 
+##    &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 chevrolet    k1500 tahoe 4wd     5.3  2008     8 auto(l4)   4        14    19 r     suv   
+##  2 chevrolet    k1500 tahoe 4wd     5.3  2008     8 auto(l4)   4        11    14 e     suv   
+##  3 chevrolet    k1500 tahoe 4wd     5.7  1999     8 auto(l4)   4        11    15 r     suv   
+##  4 chevrolet    k1500 tahoe 4wd     6.5  1999     8 auto(l4)   4        14    17 d     suv   
+##  5 dodge        dakota pickup 4wd   3.7  2008     6 manual(m6) 4        15    19 r     pickup
+##  6 dodge        dakota pickup 4wd   3.7  2008     6 auto(l4)   4        14    18 r     pickup
+##  7 dodge        dakota pickup 4wd   3.9  1999     6 auto(l4)   4        13    17 r     pickup
+##  8 dodge        dakota pickup 4wd   3.9  1999     6 manual(m5) 4        14    17 r     pickup
+##  9 dodge        dakota pickup 4wd   4.7  2008     8 auto(l5)   4        14    19 r     pickup
+## 10 dodge        dakota pickup 4wd   4.7  2008     8 auto(l5)   4        14    19 r     pickup
+## # … with 64 more rows</code></pre>
+<p>Note that the letter order and case have to be matched exactly.</p>
+<p>How would you filter for all vehicles with automatic transmission?</p>
+</div>
+</div>
+<div id="select" class="section level2">
+<h2><span class="header-section-number">10.8</span> select()</h2>
+<p>Whereas filter() subsets a dataframe by row, select() returns a subset of the columns.</p>
+<p><img src="http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-select.png" /></p>
+<p>This function can take column names (even without quotes), or the column position number beginning at left.<br />
+Further, unlike in base R, commands within the brackets in select() do not need to be concatenated using c().</p>
+<p>Let’s extract the car model, engine volume (displ) and highway mileage (hwy) from mpg_df:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(model, displ, hwy)</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 3
+##    model      displ   hwy
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;
+##  1 a4           1.8    29
+##  2 a4           1.8    29
+##  3 a4           2      31
+##  4 a4           2      30
+##  5 a4           2.8    26
+##  6 a4           2.8    26
+##  7 a4           3.1    27
+##  8 a4 quattro   1.8    26
+##  9 a4 quattro   1.8    25
+## 10 a4 quattro   2      28
+## # … with 224 more rows</code></pre>
+<p>We can use ‘-’ to extract all except particular column(s). For example, to drop the model and year columns:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>model, <span class="op">-</span>year)</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 9
+##    manufacturer displ   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 audi           1.8     4 auto(l5)   f        18    29 p     compact
+##  2 audi           1.8     4 manual(m5) f        21    29 p     compact
+##  3 audi           2       4 manual(m6) f        20    31 p     compact
+##  4 audi           2       4 auto(av)   f        21    30 p     compact
+##  5 audi           2.8     6 auto(l5)   f        16    26 p     compact
+##  6 audi           2.8     6 manual(m5) f        18    26 p     compact
+##  7 audi           3.1     6 auto(av)   f        18    27 p     compact
+##  8 audi           1.8     4 manual(m5) 4        18    26 p     compact
+##  9 audi           1.8     4 auto(l5)   4        16    25 p     compact
+## 10 audi           2       4 manual(m6) 4        20    28 p     compact
+## # … with 224 more rows</code></pre>
+<p>We can also specify column <em>positions</em>. Take the data in columns number 1,5 and 11</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">11</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 3
+##    manufacturer   cyl class  
+##    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;  
+##  1 audi             4 compact
+##  2 audi             4 compact
+##  3 audi             4 compact
+##  4 audi             4 compact
+##  5 audi             6 compact
+##  6 audi             6 compact
+##  7 audi             6 compact
+##  8 audi             4 compact
+##  9 audi             4 compact
+## 10 audi             4 compact
+## # … with 224 more rows</code></pre>
+<p>Or combine column positions and names:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">1</span>,<span class="dv">3</span>, cty, hwy)</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 4
+##    manufacturer displ   cty   hwy
+##    &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
+##  1 audi           1.8    18    29
+##  2 audi           1.8    21    29
+##  3 audi           2      20    31
+##  4 audi           2      21    30
+##  5 audi           2.8    16    26
+##  6 audi           2.8    18    26
+##  7 audi           3.1    18    27
+##  8 audi           1.8    18    26
+##  9 audi           1.8    16    25
+## 10 audi           2      20    28
+## # … with 224 more rows</code></pre>
+<div id="contains-helper-function" class="section level3">
+<h3><span class="header-section-number">10.8.1</span> contains() helper function</h3>
+<p>contains() is a helper function used with select(), which is analagous to the str_detect() helper used with filter().</p>
+<p>To select only columns with names containing the letter ‘y’:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">contains</span>(<span class="st">&#39;y&#39;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 4
+##     year   cyl   cty   hwy
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1  1999     4    18    29
+##  2  1999     4    21    29
+##  3  2008     4    20    31
+##  4  2008     4    21    30
+##  5  1999     6    16    26
+##  6  1999     6    18    26
+##  7  2008     6    18    27
+##  8  1999     4    18    26
+##  9  1999     4    16    25
+## 10  2008     4    20    28
+## # … with 224 more rows</code></pre>
+<p>contains() is also useful for selecting all column names featuring a certain character, e.g. contains(’_’)</p>
+</div>
+<div id="starts_with-helper-function" class="section level3">
+<h3><span class="header-section-number">10.8.2</span> starts_with() helper function</h3>
+<p>start_with() and ends_with() offer more specificity for select(). If we want all columns begining with the letter ‘c’:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;c&#39;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 3
+##      cyl   cty class  
+##    &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
+##  1     4    18 compact
+##  2     4    21 compact
+##  3     4    20 compact
+##  4     4    21 compact
+##  5     6    16 compact
+##  6     6    18 compact
+##  7     6    18 compact
+##  8     4    18 compact
+##  9     4    16 compact
+## 10     4    20 compact
+## # … with 224 more rows</code></pre>
+<p>Happily we can even mix these helper functions with the standard select commands:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>( <span class="dv">2</span>, <span class="dv">1</span>, class, <span class="kw">contains</span>(<span class="st">&#39;y&#39;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 7
+##    model      manufacturer class    year   cyl   cty   hwy
+##    &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1 a4         audi         compact  1999     4    18    29
+##  2 a4         audi         compact  1999     4    21    29
+##  3 a4         audi         compact  2008     4    20    31
+##  4 a4         audi         compact  2008     4    21    30
+##  5 a4         audi         compact  1999     6    16    26
+##  6 a4         audi         compact  1999     6    18    26
+##  7 a4         audi         compact  2008     6    18    27
+##  8 a4 quattro audi         compact  1999     4    18    26
+##  9 a4 quattro audi         compact  1999     4    16    25
+## 10 a4 quattro audi         compact  2008     4    20    28
+## # … with 224 more rows</code></pre>
+</div>
+<div id="everything-helper-function" class="section level3">
+<h3><span class="header-section-number">10.8.3</span> everything() helper function</h3>
+<p>Lastly for select(), a very useful helper is the everything() function, which returns all column names that have not been specified. It is often used when reordering all columns in a dataframe:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(class,displ,year,<span class="kw">everything</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 11
+##    class   displ  year manufacturer model        cyl trans      drv     cty   hwy fl   
+##    &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
+##  1 compact   1.8  1999 audi         a4             4 auto(l5)   f        18    29 p    
+##  2 compact   1.8  1999 audi         a4             4 manual(m5) f        21    29 p    
+##  3 compact   2    2008 audi         a4             4 manual(m6) f        20    31 p    
+##  4 compact   2    2008 audi         a4             4 auto(av)   f        21    30 p    
+##  5 compact   2.8  1999 audi         a4             6 auto(l5)   f        16    26 p    
+##  6 compact   2.8  1999 audi         a4             6 manual(m5) f        18    26 p    
+##  7 compact   3.1  2008 audi         a4             6 auto(av)   f        18    27 p    
+##  8 compact   1.8  1999 audi         a4 quattro     4 manual(m5) 4        18    26 p    
+##  9 compact   1.8  1999 audi         a4 quattro     4 auto(l5)   4        16    25 p    
+## 10 compact   2    2008 audi         a4 quattro     4 manual(m6) 4        20    28 p    
+## # … with 224 more rows</code></pre>
+<p>Note that the dimensions of the dataframe have not changed, merely the column order.</p>
+</div>
+</div>
+<div id="arrange" class="section level2">
+<h2><span class="header-section-number">10.9</span> arrange()</h2>
+<p>arrange() is the simplest of the dplyr functions, which orders rows according to values in a given column. The default is to order numbers from lowest -&gt; highest.</p>
+<p>Let’s try ordering the vehicles by engine size (displ)</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(displ)</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 11
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class     
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     
+##  1 honda        civic        1.6  1999     4 manual(m5) f        28    33 r     subcompact
+##  2 honda        civic        1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+##  3 honda        civic        1.6  1999     4 manual(m5) f        25    32 r     subcompact
+##  4 honda        civic        1.6  1999     4 manual(m5) f        23    29 p     subcompact
+##  5 honda        civic        1.6  1999     4 auto(l4)   f        24    32 r     subcompact
+##  6 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact   
+##  7 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact   
+##  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact   
+##  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact   
+## 10 honda        civic        1.8  2008     4 manual(m5) f        26    34 r     subcompact
+## # … with 224 more rows</code></pre>
+<p>We can refine the order by giving additional columns of data. To order rows by manufacturer name (alphabetical), <em>then</em> by engine size <em>then</em> by city mileage:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(manufacturer, displ, cty )</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 11
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact
+##  2 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact
+##  3 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact
+##  4 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact
+##  5 audi         a4 quattro   2    2008     4 auto(s6)   4        19    27 p     compact
+##  6 audi         a4           2    2008     4 manual(m6) f        20    31 p     compact
+##  7 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact
+##  8 audi         a4           2    2008     4 auto(av)   f        21    30 p     compact
+##  9 audi         a4 quattro   2.8  1999     6 auto(l5)   4        15    25 p     compact
+## 10 audi         a6 quattro   2.8  1999     6 auto(l5)   4        15    24 p     midsize
+## # … with 224 more rows</code></pre>
+<div id="desc-helper-function" class="section level3">
+<h3><span class="header-section-number">10.9.1</span> desc() helper function</h3>
+<p>To invert the standard order, we can use the ‘descending’ desc() helper function. To find the most fuel-efficient vehicles when on the highway, we could use:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(hwy))</a></code></pre></div>
+<pre><code>## # A tibble: 234 x 11
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class     
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     
+##  1 volkswagen   jetta        1.9  1999     4 manual(m5) f        33    44 d     compact   
+##  2 volkswagen   new beetle   1.9  1999     4 manual(m5) f        35    44 d     subcompact
+##  3 volkswagen   new beetle   1.9  1999     4 auto(l4)   f        29    41 d     subcompact
+##  4 toyota       corolla      1.8  2008     4 manual(m5) f        28    37 r     compact   
+##  5 honda        civic        1.8  2008     4 auto(l5)   f        25    36 r     subcompact
+##  6 honda        civic        1.8  2008     4 auto(l5)   f        24    36 c     subcompact
+##  7 toyota       corolla      1.8  1999     4 manual(m5) f        26    35 r     compact   
+##  8 toyota       corolla      1.8  2008     4 auto(l4)   f        26    35 r     compact   
+##  9 honda        civic        1.8  2008     4 manual(m5) f        26    34 r     subcompact
+## 10 honda        civic        1.6  1999     4 manual(m5) f        28    33 r     subcompact
+## # … with 224 more rows</code></pre>
+</div>
+</div>
+<div id="chaining-dplyr-functions" class="section level2">
+<h2><span class="header-section-number">10.10</span> Chaining dplyr functions</h2>
+<p>Coding from left-to-right using the pipe %&gt;% allows us to make ‘chains’ of commands to achieve very specific results.</p>
+<p>Let’s filter for the midsize vehicles, then select the columns class, manufacturer, displ and year, and arrange on engine size (displ):</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(class<span class="op">==</span><span class="st">&#39;midsize&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb155-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(class,manufacturer,displ,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(displ)</a></code></pre></div>
+<pre><code>## # A tibble: 41 x 4
+##    class   manufacturer displ  year
+##    &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt;
+##  1 midsize volkswagen     1.8  1999
+##  2 midsize volkswagen     1.8  1999
+##  3 midsize volkswagen     2    2008
+##  4 midsize volkswagen     2    2008
+##  5 midsize toyota         2.2  1999
+##  6 midsize toyota         2.2  1999
+##  7 midsize chevrolet      2.4  1999
+##  8 midsize chevrolet      2.4  2008
+##  9 midsize hyundai        2.4  1999
+## 10 midsize hyundai        2.4  1999
+## # … with 31 more rows</code></pre>
+<p>Using line-breaks makes the order of operations very easy to read (and fix if necessary). Once we’re happy with the output of this chain of functions, we can assign it to a new object (aka variable) in the environment:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">mpg_slim &lt;-<span class="st"> </span>mpg_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb157-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(class<span class="op">==</span><span class="st">&#39;midsize&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb157-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(class,manufacturer,displ,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb157-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(displ)</a></code></pre></div>
+<p>Note that all of the functions will be performed <em>before</em> the output is assigned into mpg_slim. Therefore even though mpg_slim is at the top of the code, it will contain the final output dataframe.</p>
+</div>
+<div id="writing-data-to-a-file" class="section level2">
+<h2><span class="header-section-number">10.11</span> Writing data to a file</h2>
+<p>The new mpg_slim data frame could be saved to a file outside of the R session using write_tsv()</p>
+<p>write_tsv() creates a tab-separated file that can be read by applications like Excel. We first give the variable name, then the file name (ideally with a full directory location):</p>
+<p>On Mac:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">write_tsv</span>(mpg_slim, <span class="st">&#39;~/Desktop/mpg_slim_dataframe.tsv&#39;</span>)</a></code></pre></div>
+<p>On PC:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">write_tsv</span>(mpg_slim, <span class="st">&#39;C:/Users/ansell.b/Desktop/mpg_slim_dataframe.tsv&#39;</span>)</a></code></pre></div>
+<p>We will learn how to read data in to R in the next chapter.</p>
+</div>
+<div id="chaining-dplyr-and-ggplot" class="section level2">
+<h2><span class="header-section-number">10.12</span> Chaining dplyr and ggplot</h2>
+<p>We can also send the dplyr output directly into ggplot!</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"> mpg_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(class<span class="op">==</span><span class="st">&#39;midsize&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb160-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(class,manufacturer,displ,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb160-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(displ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb160-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>class,<span class="dt">y=</span>displ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p>Whereas this is very useful for quickly manipulating and plotting data, for readability you might prefer to separate the dplyr commands from the ggplot commands like so:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="co">#first create smaller dataset</span></a>
+<a class="sourceLine" id="cb161-2" data-line-number="2">mpg_slim &lt;-<span class="st"> </span>mpg_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb161-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(class<span class="op">==</span><span class="st">&#39;midsize&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb161-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(class,manufacturer,displ,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb161-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(displ)</a>
+<a class="sourceLine" id="cb161-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb161-7" data-line-number="7"><span class="co">#then plot the distribution of engine volumes of &#39;midsize&#39; cars</span></a>
+<a class="sourceLine" id="cb161-8" data-line-number="8">mpg_slim <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>class,<span class="dt">y=</span>displ)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
+</div>
+<div id="mutate" class="section level2">
+<h2><span class="header-section-number">10.13</span> mutate()</h2>
+<p>Whereas the the verbs we’ve covered so far modify the dimensions and order of the existing data frame, mutate() adds new columns of data, thus ‘mutating’ the contents and dimensions of the input data frame.</p>
+<p><img src="http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-mutate.png" /></p>
+<p>To explore mutate we will use the diamond_df data frame from earlier. You can recreate if necessary:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">diamond_df &lt;-<span class="st"> </span>ggplot2<span class="op">::</span>diamonds</a></code></pre></div>
+<p>The price column for these diamonds is in US dollars. If we want to convert the price to Australian dollars we can (optimistically) multiply USD by 1.25. Here we create a new column called AUD, which will contain a new column where each row = price * 1.25.</p>
+<p>Because the number of columns is expanding, to easily see the results we can first drop the x/y/z dimension columns using select()</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>x, <span class="op">-</span>y, <span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">AUD =</span> price <span class="op">*</span><span class="st"> </span><span class="fl">1.25</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 8
+##    carat cut       color clarity depth table price   AUD
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+##  1 0.23  Ideal     E     SI2      61.5    55   326  408.
+##  2 0.21  Premium   E     SI1      59.8    61   326  408.
+##  3 0.23  Good      E     VS1      56.9    65   327  409.
+##  4 0.290 Premium   I     VS2      62.4    58   334  418.
+##  5 0.31  Good      J     SI2      63.3    58   335  419.
+##  6 0.24  Very Good J     VVS2     62.8    57   336  420 
+##  7 0.24  Very Good I     VVS1     62.3    57   336  420 
+##  8 0.26  Very Good H     SI1      61.9    55   337  421.
+##  9 0.22  Fair      E     VS2      65.1    61   337  421.
+## 10 0.23  Very Good H     VS1      59.4    61   338  422.
+## # … with 53,930 more rows</code></pre>
+<p>We can also perform operations using only the data in existing columns. Here as above, the newly created column will contain the results of a mathematical operation, performed row by row.
+Let’s calculate the US dollars per carat (‘ppc’) by dividing the price column by the carat column</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>x,<span class="op">-</span>y,<span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ppc =</span> price<span class="op">/</span>carat) </a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 8
+##    carat cut       color clarity depth table price   ppc
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+##  1 0.23  Ideal     E     SI2      61.5    55   326 1417.
+##  2 0.21  Premium   E     SI1      59.8    61   326 1552.
+##  3 0.23  Good      E     VS1      56.9    65   327 1422.
+##  4 0.290 Premium   I     VS2      62.4    58   334 1152.
+##  5 0.31  Good      J     SI2      63.3    58   335 1081.
+##  6 0.24  Very Good J     VVS2     62.8    57   336 1400 
+##  7 0.24  Very Good I     VVS1     62.3    57   336 1400 
+##  8 0.26  Very Good H     SI1      61.9    55   337 1296.
+##  9 0.22  Fair      E     VS2      65.1    61   337 1532.
+## 10 0.23  Very Good H     VS1      59.4    61   338 1470.
+## # … with 53,930 more rows</code></pre>
+<div id="challenge-2" class="section level3">
+<h3><span class="header-section-number">10.13.1</span> Challenge</h3>
+<p>One carat weighs 0.2 grams. Can you chain multiple mutate() functions together to calculate for each diamond, the Australian Dollars per gram?
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+### Solution</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>x,<span class="op">-</span>y,<span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb167-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">grams =</span> <span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>carat) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb167-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">AUD =</span> price <span class="op">*</span><span class="st"> </span><span class="fl">1.25</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb167-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">aud_per_gram  =</span> AUD<span class="op">/</span>grams)</a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 10
+##    carat cut       color clarity depth table price  grams   AUD aud_per_gram
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;
+##  1 0.23  Ideal     E     SI2      61.5    55   326 0.046   408.        8859.
+##  2 0.21  Premium   E     SI1      59.8    61   326 0.042   408.        9702.
+##  3 0.23  Good      E     VS1      56.9    65   327 0.046   409.        8886.
+##  4 0.290 Premium   I     VS2      62.4    58   334 0.0580  418.        7198.
+##  5 0.31  Good      J     SI2      63.3    58   335 0.062   419.        6754.
+##  6 0.24  Very Good J     VVS2     62.8    57   336 0.048   420         8750 
+##  7 0.24  Very Good I     VVS1     62.3    57   336 0.048   420         8750 
+##  8 0.26  Very Good H     SI1      61.9    55   337 0.052   421.        8101.
+##  9 0.22  Fair      E     VS2      65.1    61   337 0.044   421.        9574.
+## 10 0.23  Very Good H     VS1      59.4    61   338 0.046   422.        9185.
+## # … with 53,930 more rows</code></pre>
+</div>
+<div id="ifelse-helper" class="section level3">
+<h3><span class="header-section-number">10.13.2</span> ifelse() helper</h3>
+<p>The mutate() function is very useful for making a new column of labels for the existing data.
+For example, to label outliers, or a sub-set of genes with particular characteristics. This is where ifelse() comes in.<br />
+ifelse() is a function that tests each value in a column of data for a particular condition (a logical test), and returns one answer when the condition==TRUE, and another when the condition==FALSE.</p>
+<p>Specifically, ifelse() takes three commands: the condition to test, the output when TRUE, and the output when FALSE. To see how this works let’s create a label for each diamond depending on whether we consider it ‘expensive’ (&gt; $5000) or ‘cheap’ (&lt; $5000).</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>x,<span class="op">-</span>y,<span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_label =</span> <span class="kw">ifelse</span>(price <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000</span>, <span class="st">&#39;expensive&#39;</span>, <span class="st">&#39;cheap&#39;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 8
+##    carat cut       color clarity depth table price price_label
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;      
+##  1 0.23  Ideal     E     SI2      61.5    55   326 cheap      
+##  2 0.21  Premium   E     SI1      59.8    61   326 cheap      
+##  3 0.23  Good      E     VS1      56.9    65   327 cheap      
+##  4 0.290 Premium   I     VS2      62.4    58   334 cheap      
+##  5 0.31  Good      J     SI2      63.3    58   335 cheap      
+##  6 0.24  Very Good J     VVS2     62.8    57   336 cheap      
+##  7 0.24  Very Good I     VVS1     62.3    57   336 cheap      
+##  8 0.26  Very Good H     SI1      61.9    55   337 cheap      
+##  9 0.22  Fair      E     VS2      65.1    61   337 cheap      
+## 10 0.23  Very Good H     VS1      59.4    61   338 cheap      
+## # … with 53,930 more rows</code></pre>
+<p>Remember that we need two closing brackets, one for the mutate() function, and one for the ifelse() inside it.</p>
+<p>It seems that the ifelse() function has worked. All the rows we can see are price &lt; 5000 and labeled ‘cheap’. But how can we be sure?<br />
+One option to check the new labels is to plot the price column as a histogram, and fill the bars according to price_label:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>x,<span class="op">-</span>y,<span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb171-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_label =</span> <span class="kw">ifelse</span>(price <span class="op">&gt;</span><span class="st"> </span><span class="dv">5000</span>,<span class="st">&#39;expensive&#39;</span>,<span class="st">&#39;cheap&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb171-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>price, <span class="dt">fill =</span> price_label)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb171-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_histogram</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="672" />
+Now we can be confident that ifelse() command has worked as intended. Another option for checking output is to use count(), which will be introduced below.</p>
+</div>
+<div id="case_when-helper" class="section level3">
+<h3><span class="header-section-number">10.13.3</span> case_when() helper</h3>
+<p>This function is useful but quite involved. I’m including it here for completeness, however beginners can feel free to skip down to the summarize() section and return to case_when() later.</p>
+<p>At times we want to create a label column that tests multiple conditions. We can either put multiple ifelse() commands inside each other (and go mad), or use case_when()!</p>
+<p>This command takes multiple conditions and tests them in order. This is important to remember as all rows that satisfy the first condition will be tagged as such. There may be rows that satisfy more than one condition, so you should order the tests from specific to general, and keep track of how those ambiguous rows are being treated.</p>
+<p>case_when() takes a conditional command in the same format as the first command in ifelse(), however only the action for the TRUE condition is given, separated with a tilde <code>~</code>.<br />
+The catch-all command for rows that do not satisfy any other conditions, is given at the end.<br />
+Let’s use case_when() to make a label for diamonds based on their clarity super-groups. For simplicy, we select only the clarity column as input. The current clarity categories are:</p>
+<p>IF: internally flawless<br />
+VVS1 and 2: very very slight impurity 1 and 2<br />
+VS1 and 2: very slight impurity 1 and 2<br />
+SI1 and 2: slight impurity 1 and 2<br />
+I1: impurity</p>
+<p>Note that we are searching for similar conditions (‘VVS’ contains ‘VS’) and will have to be careful with the order of conditions. To create the super-groupings we will use a combination of str_detect() and equality <code>==</code> conditions.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(clarity) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb172-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">clarity_group =</span> <span class="kw">case_when</span>(clarity <span class="op">==</span><span class="st"> &#39;IF&#39;</span> <span class="op">~</span><span class="st"> &#39;flawless&#39;</span>,</a>
+<a class="sourceLine" id="cb172-4" data-line-number="4">                                   <span class="kw">str_detect</span>(clarity, <span class="st">&#39;VVS&#39;</span>) <span class="op">~</span><span class="st"> &#39;VV_slight&#39;</span>,</a>
+<a class="sourceLine" id="cb172-5" data-line-number="5">                                   <span class="kw">str_detect</span>(clarity, <span class="st">&#39;VS&#39;</span>) <span class="op">~</span><span class="st"> &#39;V_slight&#39;</span>,</a>
+<a class="sourceLine" id="cb172-6" data-line-number="6">                                   <span class="kw">str_detect</span>(clarity, <span class="st">&#39;SI&#39;</span>) <span class="op">~</span><span class="st"> &#39;slight&#39;</span>,</a>
+<a class="sourceLine" id="cb172-7" data-line-number="7">                                   clarity <span class="op">==</span><span class="st"> &#39;I1&#39;</span> <span class="op">~</span><span class="st"> &#39;impurity&#39;</span>,</a>
+<a class="sourceLine" id="cb172-8" data-line-number="8">                                   <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &#39;other&#39;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 2
+##    clarity clarity_group
+##    &lt;ord&gt;   &lt;chr&gt;        
+##  1 SI2     slight       
+##  2 SI1     slight       
+##  3 VS1     V_slight     
+##  4 VS2     V_slight     
+##  5 SI2     slight       
+##  6 VVS2    VV_slight    
+##  7 VVS1    VV_slight    
+##  8 SI1     slight       
+##  9 VS2     V_slight     
+## 10 VS1     V_slight     
+## # … with 53,930 more rows</code></pre>
+<p>Note that both VS1 and VS2 diamonds are now taged as ‘V_slight’, and similarliy VVS1 and VVS2 are taged as ‘VV_slight’. Because we have captured all clarity categories within the list of conditions, we dont expect the catch-all output, “other”, to be present in the clarity_group column. We could use <code>%&gt;% count(clarity_group)</code>, introduced below, to check for the presence of unintended values such as ‘other’ or NA.
+These super-groups could now be used for coloring or faceting data in a plot, or creating summary statistics (see below).</p>
+</div>
+</div>
+<div id="summarize" class="section level2">
+<h2><span class="header-section-number">10.14</span> summarize()</h2>
+<p>The last of the dplyr verbs is summarize(), which as the name suggests, creates individual summary statistics from larger data sets.</p>
+<p><img src="http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-summarise.png" /></p>
+<p>As for mutate(), the output of summarize() is qualitatively different from the input: it is generally a smaller dataframe with a reduced representation of the input data.<br />
+Importantly, even though the output of summarize() can be very small, it is still a dataframe.<br />
+Although not essential, it is also a good idea to specify new column names for the summary statistics that this function creates.</p>
+<p>First we will calculate the mean price for the diamond_df dataframe by specifying a name for the new data, and then the function we want to apply to the price column:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">mean_price =</span> <span class="kw">mean</span>(price))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   mean_price
+##        &lt;dbl&gt;
+## 1      3933.</code></pre>
+<p>The output is the smallest possible dataframe: 1 row X 1 column.</p>
+<p>We can create additional summary statistics by adding them in a comma-separated sequence. For example, to calculate the standard deviation, mininum and maximum values, we create three additional columns: “sd_price”, “min_price”, and “max_price”</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">mean_price =</span> <span class="kw">mean</span>(price),</a>
+<a class="sourceLine" id="cb176-2" data-line-number="2">                         <span class="dt">sd_price =</span> <span class="kw">sd</span>(price),</a>
+<a class="sourceLine" id="cb176-3" data-line-number="3">                         <span class="dt">min_price =</span> <span class="kw">min</span>(price),</a>
+<a class="sourceLine" id="cb176-4" data-line-number="4">                         <span class="dt">max_price =</span> <span class="kw">max</span>(price))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   mean_price sd_price min_price max_price
+##        &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt;     &lt;int&gt;
+## 1      3933.    3989.       326     18823</code></pre>
+<div id="n-helper" class="section level3">
+<h3><span class="header-section-number">10.14.1</span> n() helper</h3>
+<p>When using summarize(), we can also count the number of rows being summarized, which can be important for interpreting the associated statistics. The simple function n() never takes any additional code, but simply counts rows:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">mean_price =</span> <span class="kw">mean</span>(price),</a>
+<a class="sourceLine" id="cb178-2" data-line-number="2">                         <span class="dt">sd_price =</span> <span class="kw">sd</span>(price),</a>
+<a class="sourceLine" id="cb178-3" data-line-number="3">                         <span class="dt">min_price =</span> <span class="kw">min</span>(price),</a>
+<a class="sourceLine" id="cb178-4" data-line-number="4">                         <span class="dt">max_price =</span> <span class="kw">max</span>(price),</a>
+<a class="sourceLine" id="cb178-5" data-line-number="5">                         <span class="dt">n_rows =</span> <span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##   mean_price sd_price min_price max_price n_rows
+##        &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
+## 1      3933.    3989.       326     18823  53940</code></pre>
+<p>So far so good, however this seems like quite a lot of code to get the simple summary statistics. The power of this function is really amplified in conjuction with the group_by() helper.</p>
+</div>
+</div>
+<div id="group_by-helper" class="section level2">
+<h2><span class="header-section-number">10.15</span> group_by() helper</h2>
+<p>Although I’ve called group_by() a helper function, it is key to unleashing the power of nearly all dplyr functions.<br />
+group_by() allows us to create sub-groups based on labels in a particular column, and to run subsequent functions on all sub-groups. It is conceptually similar to facet_wrap() in ggplot, which applies the same plotting command to multiple subsets of the input dataframe.</p>
+<p>For example the figure below is using group_by() as the first arrow, and summarize() as the second arrow. Three sub-groups, corresponding to e.g. three categories in column 1, are represented in the light grey, blue and green rows. A summarize() command is then run on each sub-group, producing a results dataframe with only three rows, and new (dark blue) column names indicating the summary statistic.</p>
+<p><img src="https://moderndive.com/previous_versions/v0.4.0/images/group_summary.png" /></p>
+<p>For those interested in more details, group_by() is essentially creating a separate dataframe for each category in a specified column. To see this at work, look the structure str() of the diamonds data before and after grouping:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</a></code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    53940 obs. of  10 variables:
+##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels &quot;Fair&quot;&lt;&quot;Good&quot;&lt;..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels &quot;D&quot;&lt;&quot;E&quot;&lt;&quot;F&quot;&lt;&quot;G&quot;&lt;..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels &quot;I1&quot;&lt;&quot;SI2&quot;&lt;&quot;SI1&quot;&lt;..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num  61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num  55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
+<p>We have a single dataframe with 54K rows.</p>
+<p>Now we group by cut:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(cut) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</a></code></pre></div>
+<pre><code>## Classes &#39;grouped_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:  53940 obs. of  10 variables:
+##  $ carat  : num  0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels &quot;Fair&quot;&lt;&quot;Good&quot;&lt;..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels &quot;D&quot;&lt;&quot;E&quot;&lt;&quot;F&quot;&lt;&quot;G&quot;&lt;..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels &quot;I1&quot;&lt;&quot;SI2&quot;&lt;&quot;SI1&quot;&lt;..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num  61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num  55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int  326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num  3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num  3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num  2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...
+##  - attr(*, &quot;groups&quot;)=Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:   5 obs. of  2 variables:
+##   ..$ cut  : Ord.factor w/ 5 levels &quot;Fair&quot;&lt;&quot;Good&quot;&lt;..: 1 2 3 4 5
+##   ..$ .rows:List of 5
+##   .. ..$ : int  9 92 98 124 125 129 130 205 228 242 ...
+##   .. ..$ : int  3 5 11 18 19 21 36 37 38 43 ...
+##   .. ..$ : int  6 7 8 10 20 22 23 24 25 26 ...
+##   .. ..$ : int  2 4 13 15 16 27 46 54 55 57 ...
+##   .. ..$ : int  1 12 14 17 40 41 42 52 53 56 ...
+##   ..- attr(*, &quot;.drop&quot;)= logi TRUE</code></pre>
+<p>The output of group_by() is a ‘grouped_df’ and all functions following will be applied separately to each sub-dataframe.</p>
+<div id="group_by-summarize" class="section level3">
+<h3><span class="header-section-number">10.15.1</span> group_by() %&gt;% summarize()</h3>
+<p>Returning to the above summarize() function, we can now quickly generate summary statistics for the diamonds in each clarity category by first grouping on this column name.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(clarity) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_price =</span> <span class="kw">mean</span>(price),</a>
+<a class="sourceLine" id="cb184-3" data-line-number="3">            <span class="dt">sd_price =</span> <span class="kw">sd</span>(price),</a>
+<a class="sourceLine" id="cb184-4" data-line-number="4">            <span class="dt">min_price =</span> <span class="kw">min</span>(price),</a>
+<a class="sourceLine" id="cb184-5" data-line-number="5">            <span class="dt">max_price =</span> <span class="kw">max</span>(price),</a>
+<a class="sourceLine" id="cb184-6" data-line-number="6">            <span class="dt">n_rows =</span> <span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 6
+##   clarity mean_price sd_price min_price max_price n_rows
+##   &lt;ord&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
+## 1 I1           3924.    2807.       345     18531    741
+## 2 SI2          5063.    4260.       326     18804   9194
+## 3 SI1          3996.    3799.       326     18818  13065
+## 4 VS2          3925.    4042.       334     18823  12258
+## 5 VS1          3839.    4012.       327     18795   8171
+## 6 VVS2         3284.    3822.       336     18768   5066
+## 7 VVS1         2523.    3335.       336     18777   3655
+## 8 IF           2865.    3920.       369     18806   1790</code></pre>
+<p>Huzzah!</p>
+<p>By adding this simple command before summarize() we’ve created detailed statistics on each clarity category. We could split the input data further by grouping on more than one column. For example, what are the summary statistics for each clarity category within each cut?</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb186-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(clarity, cut) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb186-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_price =</span> <span class="kw">mean</span>(price),</a>
+<a class="sourceLine" id="cb186-4" data-line-number="4">            <span class="dt">sd_price =</span> <span class="kw">sd</span>(price),</a>
+<a class="sourceLine" id="cb186-5" data-line-number="5">            <span class="dt">min_price =</span> <span class="kw">min</span>(price),</a>
+<a class="sourceLine" id="cb186-6" data-line-number="6">            <span class="dt">max_price =</span> <span class="kw">max</span>(price),</a>
+<a class="sourceLine" id="cb186-7" data-line-number="7">            <span class="dt">n_rows =</span> <span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 40 x 7
+## # Groups:   clarity [8]
+##    clarity cut       mean_price sd_price min_price max_price n_rows
+##    &lt;ord&gt;   &lt;ord&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt;     &lt;int&gt;  &lt;int&gt;
+##  1 I1      Fair           3704.    3099.       584     18531    210
+##  2 I1      Good           3597.    2285.       361     11548     96
+##  3 I1      Very Good      4078.    2720.       511     15984     84
+##  4 I1      Premium        3947.    2827.       345     16193    205
+##  5 I1      Ideal          4336.    2671.       413     16538    146
+##  6 SI2     Fair           5174.    3928.       536     18308    466
+##  7 SI2     Good           4580.    3901.       335     18788   1081
+##  8 SI2     Very Good      4989.    4126.       383     18692   2100
+##  9 SI2     Premium        5546.    4488.       345     18784   2949
+## 10 SI2     Ideal          4756.    4252.       326     18804   2598
+## # … with 30 more rows</code></pre>
+<p>We now have 40 rows of summary statistics which gives a higher-resolution representation of the input data.</p>
+</div>
+<div id="group_by-mutate" class="section level3">
+<h3><span class="header-section-number">10.15.2</span> group_by() %&gt;% mutate()</h3>
+<p>As mentioned, group_by() is compatible with all other dplyr functions. Sometimes we want both the original data <em>and</em> the summary statistics in the output data frame. To do this, group_by() can be combined with mutate(), to make a new column of summary statistics (repeated many times) corresponding to the sub-grouping of interest. The new column of summary statistics is represented in darker colours in the right panel below.</p>
+<p><img src="http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-group_by.png" /></p>
+<p>To create a column containing the mean price for diamonds in each cut category <em>in addition to</em> the input data, we can use group_by() before mutate():</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>x,<span class="op">-</span>y,<span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(cut) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb188-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cut_meanprice =</span> <span class="kw">mean</span>(price))</a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 8
+## # Groups:   cut [5]
+##    carat cut       color clarity depth table price cut_meanprice
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;         &lt;dbl&gt;
+##  1 0.23  Ideal     E     SI2      61.5    55   326         3458.
+##  2 0.21  Premium   E     SI1      59.8    61   326         4584.
+##  3 0.23  Good      E     VS1      56.9    65   327         3929.
+##  4 0.290 Premium   I     VS2      62.4    58   334         4584.
+##  5 0.31  Good      J     SI2      63.3    58   335         3929.
+##  6 0.24  Very Good J     VVS2     62.8    57   336         3982.
+##  7 0.24  Very Good I     VVS1     62.3    57   336         3982.
+##  8 0.26  Very Good H     SI1      61.9    55   337         3982.
+##  9 0.22  Fair      E     VS2      65.1    61   337         4359.
+## 10 0.23  Very Good H     VS1      59.4    61   338         3982.
+## # … with 53,930 more rows</code></pre>
+<p>The new column now contains one of five possible values depending on the cut column.<br />
+From this we could then use a second mutate() to calculate the difference between each diamond price and the mean price for its cut category:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>x,<span class="op">-</span>y,<span class="op">-</span>z) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb190-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(cut) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb190-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cut_meanprice =</span> <span class="kw">mean</span>(price)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb190-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff    =</span> price <span class="op">-</span><span class="st"> </span>cut_meanprice) </a></code></pre></div>
+<pre><code>## # A tibble: 53,940 x 9
+## # Groups:   cut [5]
+##    carat cut       color clarity depth table price cut_meanprice price_diff
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+##  1 0.23  Ideal     E     SI2      61.5    55   326         3458.     -3132.
+##  2 0.21  Premium   E     SI1      59.8    61   326         4584.     -4258.
+##  3 0.23  Good      E     VS1      56.9    65   327         3929.     -3602.
+##  4 0.290 Premium   I     VS2      62.4    58   334         4584.     -4250.
+##  5 0.31  Good      J     SI2      63.3    58   335         3929.     -3594.
+##  6 0.24  Very Good J     VVS2     62.8    57   336         3982.     -3646.
+##  7 0.24  Very Good I     VVS1     62.3    57   336         3982.     -3646.
+##  8 0.26  Very Good H     SI1      61.9    55   337         3982.     -3645.
+##  9 0.22  Fair      E     VS2      65.1    61   337         4359.     -4022.
+## 10 0.23  Very Good H     VS1      59.4    61   338         3982.     -3644.
+## # … with 53,930 more rows</code></pre>
+</div>
+<div id="ungroup-helper" class="section level3">
+<h3><span class="header-section-number">10.15.3</span> ungroup() helper</h3>
+<p>When running longer dplyr chains it is good practice to ungroup the data after the group_by() operations are run. To do this simply add <code>%&gt;% ungroup()</code> at the end of the code block. Inappropriate preservation of groupings can sometimes cause your code to run very slowly and give unexpected results.</p>
+</div>
+<div id="count-helper" class="section level3">
+<h3><span class="header-section-number">10.15.4</span> count() helper</h3>
+<p>count() is a shortcut function that combines group_by() and summarize(), which is useful for counting ‘character data’, e.g. labels.</p>
+<p>To quickly count the number of diamonds in each cut category:</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(cut)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   cut           n
+##   &lt;ord&gt;     &lt;int&gt;
+## 1 Fair       1610
+## 2 Good       4906
+## 3 Very Good 12082
+## 4 Premium   13791
+## 5 Ideal     21551</code></pre>
+<p>And to count the number of diamonds in each cut and clarity category:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(cut,clarity)</a></code></pre></div>
+<pre><code>## # A tibble: 40 x 3
+##    cut   clarity     n
+##    &lt;ord&gt; &lt;ord&gt;   &lt;int&gt;
+##  1 Fair  I1        210
+##  2 Fair  SI2       466
+##  3 Fair  SI1       408
+##  4 Fair  VS2       261
+##  5 Fair  VS1       170
+##  6 Fair  VVS2       69
+##  7 Fair  VVS1       17
+##  8 Fair  IF          9
+##  9 Good  I1         96
+## 10 Good  SI2      1081
+## # … with 30 more rows</code></pre>
+<p>Note that the count summary output column name is ‘n’. This reflects that count() is using a summarize(n = n()) function in the background.</p>
+</div>
+<div id="sample_n-helper" class="section level3">
+<h3><span class="header-section-number">10.15.5</span> sample_n() helper</h3>
+<p>The final helper for this session is sample_n() which takes a random sample of rows according to the number specified. To sample 10 rows from the entire diamond_df dataset:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 10 x 10
+##    carat cut       color clarity depth table price     x     y     z
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  0.71 Premium   H     VS1      62.8    58  2398  5.7   5.67  3.57
+##  2  1.01 Premium   G     SI2      63      59  3923  6.38  6.32  4   
+##  3  1.54 Very Good G     VS1      63.4    57 14433  7.28  7.36  4.64
+##  4  1.09 Premium   G     SI2      61.3    60  3601  6.66  6.59  4.06
+##  5  1.24 Very Good G     VS1      60.2    58  9738  6.96  7     4.2 
+##  6  0.71 Premium   F     SI1      62.7    57  2633  5.68  5.65  3.55
+##  7  1.52 Fair      D     SI2      56.3    61  7702  7.7   7.62  4.31
+##  8  1.5  Premium   H     SI2      62.3    60  8490  7.22  7.3   4.52
+##  9  0.42 Premium   E     VS2      60.9    59   958  4.81  4.85  2.94
+## 10  0.26 Very Good F     SI1      59.6    55   590  4.18  4.24  2.51</code></pre>
+<p>It can be more useful to sample rows from within sub-groups, by combining group_by() and sample_n(). Let’s take 2 rows at random from each cut category:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(cut) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 10 x 10
+## # Groups:   cut [5]
+##    carat cut       color clarity depth table price     x     y     z
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  1.9  Fair      H     SI2      67.1    64  8576  7.57  7.52  5.06
+##  2  1    Fair      H     SI1      67.6    59  4665  6.03  5.95  4.05
+##  3  1.5  Good      I     VS2      61.3    61  8920  7.31  7.38  4.5 
+##  4  0.39 Good      F     SI1      63.6    58   921  4.65  4.6   2.94
+##  5  0.26 Very Good E     VVS2     62.6    58   597  4.07  4.11  2.56
+##  6  0.41 Very Good E     SI2      63.5    55   818  4.73  4.69  2.99
+##  7  1.14 Premium   G     SI2      60.4    59  4884  6.8   6.78  4.1 
+##  8  1.28 Premium   G     VS1      60.9    58  9335  7.01  7.09  4.29
+##  9  2.59 Ideal     J     VS1      61.7    56 16465  8.83  8.77  5.43
+## 10  1    Ideal     J     SI1      59.2    62  3929  6.47  6.5   3.84</code></pre>
+</div>
+</div>
+<div id="challenges" class="section level2">
+<h2><span class="header-section-number">10.16</span> Challenges</h2>
+<p>What is the weight of the most expensive diamond in each clarity category?</p>
+<p>Summarize the standard deviation of diamond weight in each cut category.</p>
+<p>A z score is the (sample value - mean)/sd.</p>
+<p>Can you create a z score for the weight of each diamond relative to others of that cut?</p>
+<p>What does the density distribution of z scores look like for each cut?</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+</div>
+<div id="solutions" class="section level2">
+<h2><span class="header-section-number">10.17</span> Solutions</h2>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(clarity) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">maxPrice =</span> <span class="kw">max</span>(price))</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 2
+##   clarity maxPrice
+##   &lt;ord&gt;      &lt;int&gt;
+## 1 I1         18531
+## 2 SI2        18804
+## 3 SI1        18818
+## 4 VS2        18823
+## 5 VS1        18795
+## 6 VVS2       18768
+## 7 VVS1       18777
+## 8 IF         18806</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(cut) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">sdWt =</span> <span class="kw">sd</span>(carat)) </a></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   cut        sdWt
+##   &lt;ord&gt;     &lt;dbl&gt;
+## 1 Fair      0.516
+## 2 Good      0.454
+## 3 Very Good 0.459
+## 4 Premium   0.515
+## 5 Ideal     0.433</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">weight_z &lt;-<span class="st"> </span>diamond_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(cut) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb204-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">meanWt=</span><span class="kw">mean</span>(carat), </a>
+<a class="sourceLine" id="cb204-3" data-line-number="3">         <span class="dt">sdWt =</span> <span class="kw">sd</span>(carat),</a>
+<a class="sourceLine" id="cb204-4" data-line-number="4">         <span class="dt">z =</span> (carat <span class="op">-</span><span class="st"> </span>meanWt)<span class="op">/</span>sdWt) </a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">weight_z <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>z)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">col=</span>cut))</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">10.18</span> Summary</h2>
+<p>Now you have worked through the key verbs of dplyr, and the associated helper functions which, together, allow you to efficiently subset, transform and summarize your data.<br />
+Whereas the diamond_df and mpg_df dataframes we have worked with so far are self-contained, readily available within R and clean, in the next chapter we will learn to read in external datasets, join different datasets and clean data.</p>
+</div>
+<div id="extra-resources" class="section level2">
+<h2><span class="header-section-number">10.19</span> Extra resources</h2>
+<p>There are several great resources for consolidating and building on the material above.</p>
+<p><a href="https://r4ds.had.co.nz/transform.html">R for Data Science Ch. 5 ‘Data transformation’</a></p>
+<p><a href="https://www.tidyverse.org/learn/">Tidyverse resources</a></p>
+<p><a href="http://ohi-science.org/data-science-training">Introduction to open data science (Ocean Health Index)</a></p>
+<p><a href="https://stat545.com/dplyr-intro.html">Jenny Bryan’s STAT545 course notes</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-2-part-1-subsetting-vectors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
