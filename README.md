@@ -1,2 +1,2 @@
 # WEHI_tidyR_course_book
-Introduction to R - Tidyverse
+Introduction to R - tidyverse
