@@ -5,7 +5,7 @@
 
 ## Introductory information {-}
 
-This tutorial leads on from the Week 1 Part 2 tutorial. We now explore approaches for plotting large datasets. If you have opened a new R session in RStudio, you can open your Week_2_tidyverse.R file, and reload the tidyverse package:
+This tutorial leads on from the Week 1 Part 2 tutorial. We now explore approaches for plotting large datasets. If you have opened a new R session in RStudio, you can open your Week_1_tidyverse.R file, and reload the tidyverse package:
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 library(tidyverse)
@@ -44,6 +44,7 @@ https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png
 First let's view the first 6 rows of the diamond_df dataset
 
 ![diamond anatomy](https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png)
+  
 img from: https://www.diamond.pro/education/diamond-depth-and-table/  
 <br>
 
@@ -69,9 +70,10 @@ diamond_df %>%
 ```
 
 Because there are 54K points here the plot is essentially useless. What can we do to get more information about the relationship?  
+
 ## geom_jitter()
 
-This adds some random scatter to the points which can reduce over-plotting. Note that to avoid mis-representing the price, we should set the jitter height to 0.
+The geom_jitter() command adds some random scatter to the points which can reduce over-plotting. Note that to avoid mis-representing the price, we should set the jitter height to 0.
 
 ```{r}
 diamond_df %>% 
@@ -114,6 +116,7 @@ diamond_df %>%
   ggplot(aes(x=cut, y=price)) + geom_col()
 
 ```
+     
 From this we can see the total value of the Ideal cut diamonds alone is > $70 million!
 
 ### Free examples!
@@ -203,7 +206,8 @@ To create box plot from our data we use (no prizes here) geom_boxplot()!
 ```{r}
 diamond_df %>% ggplot(aes(x=cut, y=price)) + geom_boxplot()
 ```
-The points indicate outlier values [i.e., those greater than Q3 + (1.5xIQR) ].  
+<br>
+The points indicate outlier values [i.e., those greater than Q3 + (1.5 x IQR)].  
 
 We can overlay a boxplot on the scatterplot for the entire dataset, to fully communicate both the raw and summary data. 
 Here we reduce the width of the jitter points slightly, and set the IQR box to be fully transparent using alpha.  
@@ -263,14 +267,14 @@ ggplot includes a neat function ggsave() which allows us to save plots in many f
 By default ggsave() will save the most recent plot. It writes a file depending on the extension you provide. To save the plot that is currently in your Plots window:
 
 
-```{r,eval=FALSE}
+```{r, eval=FALSE}
 ggsave('~/Desktop/WEHI_tidyR_course/my_ggplot.pdf', width=5,height=4)
 ```
 
 To save a specific plot, its possible to store the plot as a variable, which is given to ggsave():
 
-```{r}
-myplot <- mpg %>% ggplot(aes(x=displ, y=cty)) + geom_point(aes(colour =class))
+```{r, eval=FALSE}
+myplot <- mpg %>% ggplot(aes(x=displ, y=cty)) + geom_point(aes(colour = class))
 
 ggsave(plot = myplot, '~/Desktop/WEHI_tidyR_course/my_ggplot.pdf', width = 5, height = 4)
 ```

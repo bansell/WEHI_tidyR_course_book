@@ -7,11 +7,15 @@ A very common task in data wrangling is filtering or 'subsetting' down to a smal
 
 This short chapter is intended to give you a basic understanding of the operations that R is performing when filtering and evaluating data using the functions introduced in Chapter 5. Note that it is not necessary to have the tidyverse package loaded to complete this chapter - we are using 'base R' functions.
 
-First we will create a vector named 'beatles' containing the years of birth of The Beatles:  
+First create a new .R file, and save as 'Week_2_tidyverse.R' in your Desktop WEHI_tidyR_course folder.
+
+<br>
+
+To start, we will create a vector named 'beatles' containing the years of birth of The Beatles:  
 
 John Lennon: 1940, Ringo Starr: 1940, Paul McCartney: 1942 and George Harrison: 1943.
 
-```{r,error=TRUE}
+```{r}
 beatles <- c(1940,1940,1942,1943)
 ```
 
@@ -19,13 +23,13 @@ beatles <- c(1940,1940,1942,1943)
 ## Subset by position
 
 To hone in on different values in this vector we can request them based on their position in order 1 through 4.
-The position is given in square brackets
+We give the position of the value we want in square brackets. To print the value in position 1:
 
 ```{r}
 beatles[1]
 ```
 
-Returns just the value at the first position in the vector.  
+
 
 Importantly, we can subset for values at position 2 _and_ 3 by including a vector of numbers defining those positions.
 
@@ -80,7 +84,7 @@ beatles[c(TRUE,FALSE,FALSE,TRUE)]
 
 Note that the only values returned are in the 'TRUE' positions, in this case the values at position 1 and 4.  
 
-We can see that subsetting a vector is based on the presence of a 'TRUE' or 'FALSE' statement at each position along the vector.  
+We can see that the process of subsetting depends on the presence of 'TRUE' or 'FALSE' at each position along the vector.  
 
 In most cases when subsetting data, we want the values themselves, rather than the TRUE/FALSE evaluations.  
 Now that we know that i) conditional requests return TRUE/FALSE values, and ii) TRUE/FALSE values are the basis of sub-setting vectors, we can substitute the TRUE/FALSE vector in the brackets above for a conditional statement:
@@ -93,7 +97,7 @@ To check this, try running just the code within the square brackets.
 It is timely to mention that in R, code is processed from the inside- to outside of brackets. Here, the conditional statement is evaluated and produces a vector of four TRUE / FALSE values. This logical vector is then used to sub-set the original vector, returning a subset of named numeric values.
 
 
-'Which Beatles were not born in 1942?.' To answer this we need to use a ! symbol that 'negates', or inverts the condition:
+'Which Beatles were not born in 1942?' To answer this we need to use a ! symbol that 'negates', or inverts the condition:
 
 ```{r}
 beatles[ beatles!=1942 ]

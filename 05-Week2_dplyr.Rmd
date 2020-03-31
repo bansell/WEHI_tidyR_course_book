@@ -113,7 +113,7 @@ mpg %>% filter(is.na(year))
 The mpg data set doesn't contain any missing values, however in later chapters we will encounter them.  
 
 Any rows with a missing value in the year column would be dropped using the code
-```{r}
+```{r, eval = FALSE}
 mpg %>% filter(!is.na(year))
 ```
 
@@ -565,7 +565,8 @@ And to count the number of diamonds in each cut and clarity category:
 ```{r}
 diamond_df %>% count(cut,clarity)
 ```
-Note that the count summary output column name is 'n'. This reflects that count() is using a summarize(n = n()) function in the background.
+Note that the count summary output column name is 'n'.  
+This reflects that count() is running summarize(n = n()) in the background.
 
 
 ### sample_n() helper

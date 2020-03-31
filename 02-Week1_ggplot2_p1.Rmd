@@ -5,16 +5,16 @@
 
 ## Introductory information {-}
 
-This tutorial leads on from the Week 1 Part 1 tutorial. If you have opened a new R session in RStudio, first create a new .R text file and save it as Week_2_tidyverse.R in your Desktop WEHI_tidyR_course folder.  
+This tutorial leads on from the Week 1 Part 1 tutorial. If you have opened a new R session in RStudio, you can open and continue to work in your Week_1_tidyverse.R file.
 
-Now load the tidyverse package:
+First, reload the tidyverse package:
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 library(tidyverse)
 ```
 
 
-## ggplot2. A grammar of graphics
+## ggplot2. A grammar of graphics {-}
 
 
 The ggplot2 package is widely used and valued for its simple, consistent approach to making plots.
