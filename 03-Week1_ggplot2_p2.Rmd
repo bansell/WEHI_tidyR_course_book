@@ -1,16 +1,18 @@
 
-# Week 1. Part 3: Making _more_ beautiful plots {-}
+# Week 1. Part 3 {-}
+
+# Making _more_ beautiful plots
 
 ## Introductory information {-}
 
-This tutorial leads on from the Week 1 Part 2 tutorial. We now explore approaches for plotting large datasets. If you have opened a new R session in RStudio, first load the tidyverse package:
+This tutorial leads on from the Week 1 Part 2 tutorial. We now explore approaches for plotting large datasets. If you have opened a new R session in RStudio, you can open your Week_2_tidyverse.R file, and reload the tidyverse package:
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 library(tidyverse)
 ```
 
 
-We now create a larger data set in the global environment, called 'diamond_df'. This is based on the diamonds data set that is provided as part of the tidyverse.
+We now create a larger data set in the global environment, called 'diamond_df'. This is based on the diamonds data set that is provided as part of the tidyverse
 
 ```{r}
 diamond_df <- diamonds
@@ -24,7 +26,7 @@ set.seed(1234) ; diamond_df <- diamond_df %>% sample_n(2500)
 
 
 
-# Big(ger) Data: 54,000 diamonds 
+## Big(ger) Data: 54,000 diamonds 
 
 When ploting a small dataset such as mpg_df, its possible to visualize every individual data point. This is impractical for large datasets, where we run into the problem of 'overplotting'. We therefore need approaches for managing over-plotting. These include but aren't limited to:
 
@@ -42,7 +44,8 @@ https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png
 First let's view the first 6 rows of the diamond_df dataset
 
 ![diamond anatomy](https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png)
-img from: https://www.diamond.pro/education/diamond-depth-and-table/
+img from: https://www.diamond.pro/education/diamond-depth-and-table/  
+<br>
 
 ```{r}
 diamond_df %>% head()
@@ -188,7 +191,9 @@ diamond_df %>% ggplot(aes(x = price)) + geom_density(aes(colour =cut))
 ## Box plots
 
 ![anatomy of a box plot](https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png)
-img from: https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png
+img from: https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png  
+<br>
+
 Box plots, or 'box & wisker plots' are another essential tool for data analysis, which are related to histograms and density plots. Box plots summarize the distribution of a set of values by displaying the minimum and maximum values, the median (i.e. middle-ranked value), and the range of the middle 50% of values (interquartile range).   
 The wisker line extending above and below the IQR box define  Q3 + (1.5 x IQR), and Q1 - (1.5 x IQR) respectively. You can read more about box plots [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51).  
 
@@ -251,7 +256,7 @@ diamond_df %>%
 ```
 
 
-# Saving plots
+## Saving plots
 
 ggplot includes a neat function ggsave() which allows us to save plots in many formats 
 
@@ -259,7 +264,7 @@ By default ggsave() will save the most recent plot. It writes a file depending o
 
 
 ```{r,eval=FALSE}
-ggsave('~/Desktop/my_ggplot.pdf', width=5,height=4)
+ggsave('~/Desktop/WEHI_tidyR_course/my_ggplot.pdf', width=5,height=4)
 ```
 
 To save a specific plot, its possible to store the plot as a variable, which is given to ggsave():
@@ -267,11 +272,11 @@ To save a specific plot, its possible to store the plot as a variable, which is 
 ```{r}
 myplot <- mpg %>% ggplot(aes(x=displ, y=cty)) + geom_point(aes(colour =class))
 
-ggsave(plot = myplot, '~/Desktop/my_ggplot.pdf', width = 5, height = 4)
+ggsave(plot = myplot, '~/Desktop/WEHI_tidyR_course/my_ggplot.pdf', width = 5, height = 4)
 ```
 In general, if you want to increase the size of points and text, then reduce the dimensions of the plot; and vice versa.
 
-# Challenge 
+## Challenge 
 
 Based on what you've learnt, can you make a scatter plot that shows the relationship between diamond carat and price, with points coloured by clarity (reduced in size to 0.2), and faceted by cut?
 

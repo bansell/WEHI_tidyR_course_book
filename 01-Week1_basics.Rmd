@@ -1,25 +1,15 @@
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE)
-
-dataDir="~/Git/WEHI_tidyRcourse/"
-
-library(tidyverse)
-
-```
-
-# Week 1. Part 1: The basics {-}
+# Week 1. Part 1 {-}
 
 # Welcome to R!
 
 R is a computer programing language that is increasingly used for 'data science', that is, the manipulation, summarization, and visualization of large datasets. Data comes in many shapes and sizes, however this course is designed to teach you the skills to work with tabular data (rows and columns) such as is often handled in Microsoft Excel. 
 
 
-An example of 'tabular data' is shown below. This data concerns different models of car, which we will return to later. Ignore the code block (in grey) for now.
+An example of 'tabular data' is shown below. This data concerns different models of car, which we will return to later. 
 
 
-```{r, hide=TRUE, eval=TRUE}
+```{r, results='markup', message=FALSE,warning=FALSE, echo=FALSE}
+library(tidyverse)
 mpg %>% head()
 ```
 
@@ -28,8 +18,7 @@ mpg %>% head()
 To get the best out of R, we recommend using the **RStudio** software which you should now have installed on your computer.  
 Open RStudio.  You will see 3 windows (aka 'panes'). Each window has a different function.
 
-![New RStudio session](https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2ef8e78bed6277dd48bd2b96d/af132/diagrams/rstudio-console.png)
-img from: https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2ef8e78bed6277dd48bd2b96d/af132/diagrams/rstudio-console.png 
+![](https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2ef8e78bed6277dd48bd2b96d/af132/diagrams/rstudio-console.png)
 
 
 ## Console Pane
@@ -43,8 +32,13 @@ The History pane contains a list of commands you have previously entered.
 At the bottom right is the plotting ('Plots') pane. Here you can immediately see the results of the R code you use to make graphs/charts. There are other tabs here as well which we will introduce later.
 
 ## Open a new R script
-Because we want to save our code to return to and build on, or use to refresh our memory later, we want to save it in a text file.
-Go to **File > New File > R Script**. A new pane will appear at the top left. Save this empty text file as 'Week_1_tidyverse.R' in a convenient location.
+
+Because we want to save our code to return to and build on, or use to refresh our memory later, we want to save it in a text file.  
+
+I recommend that you create a folder on your Desktop named **WEHI_tidyR_course**
+
+
+Go to **File > New File > R Script**. A new pane will appear at the top left. Save this empty text file as 'Week_1_tidyverse.R' within the new Desktop folder.
 
 From now on we will type commands in to the text file, and see the results of our commands either in the console pane, or the plotting pane.
 
@@ -214,7 +208,7 @@ Here we are accessing the power of R, which is designed to do lots of computatio
 
 <!-- #to here [2h work] -->
 
-# Vectors
+## Vectors
 
 In making the long_x variable, we are making a 'vector'. In this case, it is a sequence of numbers. A technical definition for a vector is 'a sequence of values of the same data type.'
 
@@ -228,7 +222,7 @@ The three data types we need to understand for now are:
 
 For example, whole numbers can be added, subtracted and so forth. This 'numeric' data type is qualitatively different to a word. Words hold meaning, but can't be sensibly used in a mathematical equation. TRUE and FALSE have specific, logical meaning for computers. Most of what we do in R is turned into TRUE/FALSE problems which are evaluated 'under the hood.'
 
-## Creating numeric vectors
+### Creating numeric vectors
 
 Above we used a shortcut to create a vector of 50 numbers ( 1:50 ). Ordinarily, we need to enclose values in brackets, separated by commas. The values also need to be 'concatenated' using a function called c().
 
@@ -241,7 +235,7 @@ numeric_vector <- c(5,12,22)
 
 
 
-## Character vectors
+### Character vectors
 
 Character values are written in quotation marks, and character vectors are also constructed using c().
 
@@ -258,7 +252,7 @@ numeric_vector + char_vector
 
 Nothing sensible. R will return an error.  
 
-## Logical vectors
+### Logical vectors
 
 Finally we can create a vector of logical values. Note that for TRUE and FALSE (always in upper case), quotation marks aren't used.
 
@@ -290,7 +284,7 @@ position3: 22 + 0 = 22
 
 This is called 'type coercion,' which we'll return to later.
 
-# Packages
+## Packages
 
 As mentioned above, many developers have built 1000s of functions and shared them with the R user community to help make everyone's work easier and more efficient. These functions (short programs) are generally packaged up together in (wait for it) **'Packages'**. For example, the 'tidyverse' package is a compilation of many different functions, all of which help with data transformation and visualization. Packages also contain data, which is often included to assist new users with learning the available functions.
 
@@ -298,7 +292,7 @@ To access this wealth of pre-existing functions, we install packages from the [C
 
 ...and if you want the all scripts from The Office (American series) in tabular form, [there's a package for that.](https://cran.r-project.org/web/packages/schrute/index.html)
 
-## Installing packages
+### Installing packages
 
 To install a package from CRAN, use the 'install.packages()' function:
 ```{r, echo=TRUE, eval = FALSE}
@@ -322,7 +316,7 @@ library(tidyverse)
 
 Note that to install a package requires the package name in quotations. Once installed, to load it we drop the quotation marks.
 
-# The pipe %>%
+## The pipe %>%
 
 When using functions provided in the tidyverse package, we suggest to write your commands from left to right. This makes reading, and finding bugs in the code, a lot easier. To write code in this way requires a specific symbol, called **the pipe** which allows the code to be processed in a left-right manner.
 
@@ -359,7 +353,7 @@ head(mpg_df)
 
 
 
-# Data frames
+## Data frames
 
 The final concept we need to understand before starting to make plots in R, are **'data frames'**. The vectors we created above are a simple type of 'data structure'. Whereas vectors can be thought of as a 1-dimensional data structure (a sequence of values), data frames are a 2D data structure.  
 

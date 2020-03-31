@@ -1,16 +1,20 @@
 
-# Week 1. Part 2: Making beautiful plots {-}
+# Week 1. Part 2 {-}
+
+# Making beautiful plots
 
 ## Introductory information {-}
 
-This tutorial leads on from the Week 1 Part 1 tutorial. If you have opened a new R session in RStudio, first load the tidyverse package:
+This tutorial leads on from the Week 1 Part 1 tutorial. If you have opened a new R session in RStudio, first create a new .R text file and save it as Week_2_tidyverse.R in your Desktop WEHI_tidyR_course folder.  
+
+Now load the tidyverse package:
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 library(tidyverse)
 ```
 
 
-# ggplot2. A grammar of graphics
+## ggplot2. A grammar of graphics
 
 
 The ggplot2 package is widely used and valued for its simple, consistent approach to making plots.
@@ -37,7 +41,7 @@ We will cover each below.
 
 The philosophy of ggplot is much better explained by the package author, Hadley Wickham [here](https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/331924275X/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=hadlwick-20&linkId=a961c648243cf3ab7f2bb237b5a4ba1a). For now, we just need to be aware that ggplots are constructed by specifying the different components that we want to display, based on underlying information in a data frame.
 
-# Building a ggplot
+## Building a ggplot
 
 We are going to use the mpg_df data set created previously. If this is not visible in your environement pane, you can recreate it now:
 

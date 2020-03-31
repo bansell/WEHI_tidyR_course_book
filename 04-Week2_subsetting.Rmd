@@ -1,6 +1,7 @@
 
-# Week 2. Part 1: Subsetting vectors {-}
+# Week 2. Part 1 {-}
 
+# Subsetting vectors
 
 A very common task in data wrangling is filtering or 'subsetting' down to a smaller set of potentially interesting values. 
 
@@ -62,7 +63,7 @@ beatles == 1940
 ```
 R returns 'TRUE' for values that satisfy our 'condition', and FALSE for those that don't.  
 
-'Which member(s) date of birth is before 1943?.' To code this we use the less-than < sign.
+'Which member(s) date of birth is before 1943?' To code this we use the less-than < sign.
 
 
 

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Tidying and joining data | Introduction to R - tidyverse</title>
+  <meta name="description" content="11 Tidying and joining data | Introduction to R - tidyverse" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Tidying and joining data | Introduction to R - tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Tidying and joining data | Introduction to R - tidyverse" />
+  
+  
+  
+
+<meta name="author" content="Brendan R. E. Ansell @ansellbr3" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="week-3.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-part-1.html"><a href="week-1-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
+<li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a><ul>
+<li class="chapter" data-level="1.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-look-around-rstudio"><i class="fa fa-check"></i><b>1.1</b> A look around RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="welcome-to-r.html"><a href="welcome-to-r.html#console-pane"><i class="fa fa-check"></i><b>1.2</b> Console Pane</a></li>
+<li class="chapter" data-level="1.3" data-path="welcome-to-r.html"><a href="welcome-to-r.html#environmenthistory-pane"><i class="fa fa-check"></i><b>1.3</b> Environment/History Pane</a></li>
+<li class="chapter" data-level="1.4" data-path="welcome-to-r.html"><a href="welcome-to-r.html#plotting-pane"><i class="fa fa-check"></i><b>1.4</b> Plotting Pane</a></li>
+<li class="chapter" data-level="1.5" data-path="welcome-to-r.html"><a href="welcome-to-r.html#open-a-new-r-script"><i class="fa fa-check"></i><b>1.5</b> Open a new R script</a></li>
+<li class="chapter" data-level="1.6" data-path="welcome-to-r.html"><a href="welcome-to-r.html#comments"><i class="fa fa-check"></i><b>1.6</b> Comments</a></li>
+<li class="chapter" data-level="1.7" data-path="welcome-to-r.html"><a href="welcome-to-r.html#executing-commands"><i class="fa fa-check"></i><b>1.7</b> Executing commands</a></li>
+<li class="chapter" data-level="1.8" data-path="welcome-to-r.html"><a href="welcome-to-r.html#simple-maths-in-r"><i class="fa fa-check"></i><b>1.8</b> Simple maths in R</a></li>
+<li class="chapter" data-level="1.9" data-path="welcome-to-r.html"><a href="welcome-to-r.html#help"><i class="fa fa-check"></i><b>1.9</b> Help!!</a></li>
+<li class="chapter" data-level="1.10" data-path="welcome-to-r.html"><a href="welcome-to-r.html#variables"><i class="fa fa-check"></i><b>1.10</b> Variables</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-note-on-variables"><i class="fa fa-check"></i><b>1.10.1</b> A note on variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>2</b> Vectors</a><ul>
+<li class="chapter" data-level="2.1" data-path="vectors.html"><a href="vectors.html#creating-numeric-vectors"><i class="fa fa-check"></i><b>2.1</b> Creating numeric vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="vectors.html"><a href="vectors.html#character-vectors"><i class="fa fa-check"></i><b>2.2</b> Character vectors</a></li>
+<li class="chapter" data-level="2.3" data-path="vectors.html"><a href="vectors.html#logical-vectors"><i class="fa fa-check"></i><b>2.3</b> Logical vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>3</b> Packages</a><ul>
+<li class="chapter" data-level="3.1" data-path="packages.html"><a href="packages.html#installing-packages"><i class="fa fa-check"></i><b>3.1</b> Installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-pipe.html"><a href="the-pipe.html"><i class="fa fa-check"></i><b>4</b> The pipe %&gt;%</a></li>
+<li class="chapter" data-level="5" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>5</b> Data frames</a></li>
+<li class="chapter" data-level="" data-path="week-1-part-2.html"><a href="week-1-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
+<li class="chapter" data-level="6" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html"><i class="fa fa-check"></i><b>6</b> Making beautiful plots</a><ul>
+<li class="chapter" data-level="" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#introductory-information"><i class="fa fa-check"></i>Introductory information</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html"><i class="fa fa-check"></i><b>7</b> ggplot2. A grammar of graphics</a><ul>
+<li class="chapter" data-level="7.1" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#building-a-ggplot"><i class="fa fa-check"></i><b>7.1</b> Building a ggplot</a></li>
+<li class="chapter" data-level="7.2" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#plot-background"><i class="fa fa-check"></i><b>7.2</b> Plot background</a></li>
+<li class="chapter" data-level="7.3" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#aesthetics-aes"><i class="fa fa-check"></i><b>7.3</b> Aesthetics aes()</a></li>
+<li class="chapter" data-level="7.4" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#geometric-representations-geom"><i class="fa fa-check"></i><b>7.4</b> Geometric representations geom()</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#a-note-about-and"><i class="fa fa-check"></i><b>7.4.1</b> A note about %&gt;% and +</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#adding-colour"><i class="fa fa-check"></i><b>7.5</b> Adding colour</a></li>
+<li class="chapter" data-level="7.6" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#adding-layers"><i class="fa fa-check"></i><b>7.6</b> Adding layers</a></li>
+<li class="chapter" data-level="7.7" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#facets"><i class="fa fa-check"></i><b>7.7</b> Facets</a></li>
+<li class="chapter" data-level="7.8" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#coordinate-space"><i class="fa fa-check"></i><b>7.8</b> Coordinate space</a></li>
+<li class="chapter" data-level="7.9" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#axis-labels"><i class="fa fa-check"></i><b>7.9</b> Axis labels</a></li>
+<li class="chapter" data-level="7.10" data-path="ggplot2-a-grammar-of-graphics.html"><a href="ggplot2-a-grammar-of-graphics.html#themes"><i class="fa fa-check"></i><b>7.10</b> Themes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-1-part-3.html"><a href="week-1-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
+<li class="chapter" data-level="8" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html"><i class="fa fa-check"></i><b>8</b> Making <em>more</em> beautiful plots</a><ul>
+<li class="chapter" data-level="" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#introductory-information-1"><i class="fa fa-check"></i>Introductory information</a></li>
+<li class="chapter" data-level="8.1" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#bigger-data-54000-diamonds"><i class="fa fa-check"></i><b>8.1</b> Big(ger) Data: 54,000 diamonds</a></li>
+<li class="chapter" data-level="8.2" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#summary-plots"><i class="fa fa-check"></i><b>8.2</b> Summary plots</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#free-examples"><i class="fa fa-check"></i><b>8.2.1</b> Free examples!</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#histograms"><i class="fa fa-check"></i><b>8.3</b> Histograms</a></li>
+<li class="chapter" data-level="8.4" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#density-plots"><i class="fa fa-check"></i><b>8.4</b> Density plots</a></li>
+<li class="chapter" data-level="8.5" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#box-plots"><i class="fa fa-check"></i><b>8.5</b> Box plots</a></li>
+<li class="chapter" data-level="8.6" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#saving-plots"><i class="fa fa-check"></i><b>8.6</b> Saving plots</a></li>
+<li class="chapter" data-level="8.7" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#challenge"><i class="fa fa-check"></i><b>8.7</b> Challenge</a></li>
+<li class="chapter" data-level="8.8" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#solution"><i class="fa fa-check"></i><b>8.8</b> Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-part-1.html"><a href="week-2-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
+<li class="chapter" data-level="9" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html"><i class="fa fa-check"></i><b>9</b> Subsetting vectors</a><ul>
+<li class="chapter" data-level="9.1" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>9.1</b> Subset by position</a></li>
+<li class="chapter" data-level="9.2" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#adding-names"><i class="fa fa-check"></i><b>9.2</b> Adding names</a></li>
+<li class="chapter" data-level="9.3" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#subset-by-condition"><i class="fa fa-check"></i><b>9.3</b> Subset by condition</a></li>
+<li class="chapter" data-level="9.4" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>9.4</b> Challenge</a></li>
+<li class="chapter" data-level="9.5" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>9.5</b> Possible solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-2-part-2.html"><a href="week-2-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
+<li class="chapter" data-level="10" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>10</b> Manipulating data with dplyr</a><ul>
+<li class="chapter" data-level="10.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>10.1</b> filter()</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#logical-operations"><i class="fa fa-check"></i><b>10.1.1</b> Logical operations</a></li>
+<li class="chapter" data-level="10.1.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#str_detect-helper-function"><i class="fa fa-check"></i><b>10.1.2</b> str_detect() helper function</a></li>
+<li class="chapter" data-level="10.1.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#is.na-helper"><i class="fa fa-check"></i><b>10.1.3</b> is.na() helper</a></li>
+<li class="chapter" data-level="10.1.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#complete.cases-helper"><i class="fa fa-check"></i><b>10.1.4</b> complete.cases() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#select"><i class="fa fa-check"></i><b>10.2</b> select()</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#contains-helper-function"><i class="fa fa-check"></i><b>10.2.1</b> contains() helper function</a></li>
+<li class="chapter" data-level="10.2.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#starts_with-helper-function"><i class="fa fa-check"></i><b>10.2.2</b> starts_with() helper function</a></li>
+<li class="chapter" data-level="10.2.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#everything-helper-function"><i class="fa fa-check"></i><b>10.2.3</b> everything() helper function</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#arrange"><i class="fa fa-check"></i><b>10.3</b> arrange()</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#desc-helper-function"><i class="fa fa-check"></i><b>10.3.1</b> desc() helper function</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#chaining-dplyr-functions"><i class="fa fa-check"></i><b>10.4</b> Chaining dplyr functions</a></li>
+<li class="chapter" data-level="10.5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#writing-data-to-a-file"><i class="fa fa-check"></i><b>10.5</b> Writing data to a file</a></li>
+<li class="chapter" data-level="10.6" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#chaining-dplyr-and-ggplot"><i class="fa fa-check"></i><b>10.6</b> Chaining dplyr and ggplot</a></li>
+<li class="chapter" data-level="10.7" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#mutate"><i class="fa fa-check"></i><b>10.7</b> mutate()</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#challenge-2"><i class="fa fa-check"></i><b>10.7.1</b> Challenge</a></li>
+<li class="chapter" data-level="10.7.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#solution-1"><i class="fa fa-check"></i><b>10.7.2</b> Solution</a></li>
+<li class="chapter" data-level="10.7.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#ifelse-helper"><i class="fa fa-check"></i><b>10.7.3</b> ifelse() helper</a></li>
+<li class="chapter" data-level="10.7.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#case_when-helper"><i class="fa fa-check"></i><b>10.7.4</b> case_when() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#summarize"><i class="fa fa-check"></i><b>10.8</b> summarize()</a><ul>
+<li class="chapter" data-level="10.8.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#n-helper"><i class="fa fa-check"></i><b>10.8.1</b> n() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-helper"><i class="fa fa-check"></i><b>10.9</b> group_by() helper</a><ul>
+<li class="chapter" data-level="10.9.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-summarize"><i class="fa fa-check"></i><b>10.9.1</b> group_by() %&gt;% summarize()</a></li>
+<li class="chapter" data-level="10.9.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-mutate"><i class="fa fa-check"></i><b>10.9.2</b> group_by() %&gt;% mutate()</a></li>
+<li class="chapter" data-level="10.9.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#ungroup-helper"><i class="fa fa-check"></i><b>10.9.3</b> ungroup() helper</a></li>
+<li class="chapter" data-level="10.9.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#count-helper"><i class="fa fa-check"></i><b>10.9.4</b> count() helper</a></li>
+<li class="chapter" data-level="10.9.5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#sample_n-helper"><i class="fa fa-check"></i><b>10.9.5</b> sample_n() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#challenges"><i class="fa fa-check"></i><b>10.10</b> Challenges</a></li>
+<li class="chapter" data-level="10.11" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#solutions"><i class="fa fa-check"></i><b>10.11</b> Solutions</a></li>
+<li class="chapter" data-level="10.12" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#summary"><i class="fa fa-check"></i><b>10.12</b> Summary</a></li>
+<li class="chapter" data-level="10.13" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#extra-resources"><i class="fa fa-check"></i><b>10.13</b> Extra resources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-3.html"><a href="week-3.html"><i class="fa fa-check"></i>Week 3</a></li>
+<li class="chapter" data-level="11" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html"><i class="fa fa-check"></i><b>11</b> Tidying and joining data</a><ul>
+<li class="chapter" data-level="11.1" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#reading-in-data"><i class="fa fa-check"></i><b>11.1</b> Reading in data</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#read_excel"><i class="fa fa-check"></i><b>11.1.1</b> read_excel()</a></li>
+<li class="chapter" data-level="11.1.2" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#read_csv"><i class="fa fa-check"></i><b>11.1.2</b> read_csv()</a></li>
+<li class="chapter" data-level="11.1.3" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#read_delim"><i class="fa fa-check"></i><b>11.1.3</b> read_delim()</a></li>
+<li class="chapter" data-level="11.1.4" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#read_tsv"><i class="fa fa-check"></i><b>11.1.4</b> read_tsv()</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#reshaping-data"><i class="fa fa-check"></i><b>11.2</b> Reshaping data</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#pivot_wider"><i class="fa fa-check"></i><b>11.2.1</b> pivot_wider()</a></li>
+<li class="chapter" data-level="11.2.2" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#pivot_longer"><i class="fa fa-check"></i><b>11.2.2</b> pivot_longer()</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#separating-and-uniting-columns"><i class="fa fa-check"></i><b>11.3</b> Separating and uniting columns</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#separate"><i class="fa fa-check"></i><b>11.3.1</b> separate()</a></li>
+<li class="chapter" data-level="11.3.2" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#str_split-unnest"><i class="fa fa-check"></i><b>11.3.2</b> str_split() %&gt;% unnest()</a></li>
+<li class="chapter" data-level="11.3.3" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#rename"><i class="fa fa-check"></i><b>11.3.3</b> rename()</a></li>
+<li class="chapter" data-level="11.3.4" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#unite"><i class="fa fa-check"></i><b>11.3.4</b> unite()</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#remove-variables"><i class="fa fa-check"></i><b>11.4</b> Remove variables</a></li>
+<li class="chapter" data-level="11.5" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>11.5</b> Joining dataframes</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#left_join"><i class="fa fa-check"></i><b>11.5.1</b> left_join()</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#plotting-challenge"><i class="fa fa-check"></i><b>11.6</b> Plotting challenge</a></li>
+<li class="chapter" data-level="11.7" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#solution-2"><i class="fa fa-check"></i><b>11.7</b> Solution</a></li>
+<li class="chapter" data-level="11.8" data-path="tidying-and-joining-data.html"><a href="tidying-and-joining-data.html#summary-1"><i class="fa fa-check"></i><b>11.8</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R - tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidying-and-joining-data" class="section level1">
+<h1><span class="header-section-number">11</span> Tidying and joining data</h1>
+<p>This session will focus on reading information into R and ‘tidying’ it into a form that makes manipulation and plotting as easy as possible.<br />
+The tidyr functions within the eponymous tidyverse are designed to help users to convert data into a ‘tidy format’. There are three simple principals for tidy data:</p>
+<ul>
+<li>each column represents a single measurement type
+<!-- avoid refering to columns as 'variables' given that this term is used interchangeably for R objects --></li>
+<li>each row represents a single observation</li>
+<li>each cell contains a single value</li>
+</ul>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png" /></p>
+<p>The context for this session is that your colleague hears that you have successfully completed the first sessions of the WEHI tidyverse R course 😊, and asks you to plot some data for their upcoming lab talk. They send you results from a differential gene expression experiment, and want you to plot the significant genes according to their Gene Ontology (GO) terms.</p>
+<p>They send you four files:</p>
+<ul>
+<li><strong>entrez_logFC.xlsx</strong>, a results table containing the entrez gene ID, log2 fold-change (logFC) and adjusted P value for each significant gene (Microsoft Excel format)</li>
+<li><strong>Hs_entrez_annot.csv</strong>, the gene names and descriptions for each entrez gene ID (comma-separated values)</li>
+<li><strong>GO_entrez.txt</strong>, the entrez IDs corresponding to different GO terms (space-separated values); and,</li>
+<li><strong>GO_term_defin.tsv</strong>, a table of descriptions for each GO term (tab-separated values)</li>
+</ul>
+<p>To access these files, download and unzip <a href="https://www.dropbox.com/sh/hihrdes1gom7e9h/AABKerUadszjBANjYXcPaTaVa?dl=0">this folder</a> into your Desktop WEHI_tidyR_course folder.</p>
+<p>Feel free to open the text files (.csv ; .txt ; .tsv) in TextEdit or another editor to see the data, but make sure not to make any changes.</p>
+<p>Unfortunately not all of the files come in a tidy form, so we will need to improve them according to the tidy data principals using the functions below, and then join them together to make the final plot.</p>
+<p>First let’s create a new .R text file, save as ‘Week_3_tidyverse.R’ in the WEHI_tidyR_course folder, and load the tidyverse package</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>Now we can read the data files into R.</p>
+<div id="reading-in-data" class="section level2">
+<h2><span class="header-section-number">11.1</span> Reading in data</h2>
+<div id="read_excel" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> read_excel()</h3>
+<p>Broadly speaking there are two ways to read an excel file into R.<br />
+<br>
+You can click ‘Import Dataset’ in the Environment tab (top right pane) &gt;&gt; ‘From Excel…’ &gt;&gt; ‘Browse…’ &gt;&gt; navigate to your WEHI_tidyR_course folder and select the file ‘entrez_logFC.xlsx’.<br />
+In the ‘Options’ section check ‘First row as names’, then click ‘Import’.</p>
+<p>The excel table is now imported into a variable called ‘entrez_logFC’ and you will see that code appears in the console similar to this:</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb216-2" data-line-number="2">entrez_logFC &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;~/Desktop/WEHI_tidyR_course/data_files/entrez_logFC.xlsx&quot;</span>)</a></code></pre></div>
+<p>You can copy and paste this code into your R text file so that next time you run your code, the table is imported without you having to go through the point-and-click route.</p>
+<p>The alternative way is to directly type and run the code as it appears above.</p>
+<p>Your colleague has also provide text files in the form of csv (comma-separated values), tsv (tab-separated values), and txt (space-separated values), which require slightly different read functions.</p>
+</div>
+<div id="read_csv" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> read_csv()</h3>
+<p>The read_csv() function from tidyr is used when you select ‘Import Dataset’ &gt;&gt; ‘From text (readr)…’ and set the ‘Import Options’ Delimeter to ‘comma’.<br />
+Alternatively you can directly call read_csv() as follows, and assign the output into a new variable ‘Hs_entrez_annot’</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">Hs_entrez_annot &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Desktop/WEHI_tidyR_course/data_files/Hs_entrez_annot.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   entrez_id = col_double(),
+##   annot_type = col_character(),
+##   annot_text = col_character()
+## )</code></pre>
+<p>This message indicates the names and type of data that has been assigned for each column. col_double() denotes a type of numeric data.</p>
+</div>
+<div id="read_delim" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> read_delim()</h3>
+<p>For the white space-separated file “GO_entrez.txt” (which is far from tidy), it is best to use a more flexible read function called read_delim(). This function allows us to directly specify the delimiter (i.e., the character used to separate the columns). In this case we will use <code>delim=' '</code> to indicate that the columns are separated by a white space, and assign the output into a new variable ‘GO_entrez’</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">GO_entrez &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="st">&#39;~/Desktop/WEHI_tidyR_course/data_files/GO_entrez.txt&#39;</span>,</a>
+<a class="sourceLine" id="cb219-2" data-line-number="2">                        <span class="dt">delim =</span> <span class="st">&#39; &#39;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   rowname = col_double(),
+##   go_entrez = col_character()
+## )</code></pre>
+<p>We can see that the GO_entrez variable contains two columns, ‘rowname’ and ‘go_entrez’.</p>
+</div>
+<div id="read_tsv" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> read_tsv()</h3>
+<p>Lastly we will read the “GO_term_defin.tsv” which is tab-separated (aka ‘tab-delimited’), using read_tsv(). The data will be assigned to a new variable ‘GO_terms’</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">GO_terms &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&#39;~/Desktop/WEHI_tidyR_course/data_files/GO_term_defin.tsv&#39;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   GOID = col_character(),
+##   DEFINITION = col_character(),
+##   BP = col_character(),
+##   CC = col_character(),
+##   MF = col_character()
+## )</code></pre>
+<p>We see that the new variable contains a dataframe with five columns, all of which are character data.<br />
+Note that this tsv file could also be read in using read_delim(), specifying the tab delimeter as <code>delim = '\t'</code>. The .csv file could be read using the same function, with <code>delim = ','</code>.</p>
+</div>
+</div>
+<div id="reshaping-data" class="section level2">
+<h2><span class="header-section-number">11.2</span> Reshaping data</h2>
+<p>Let’s have a look at the newly created dataframes. Starting with entrez_logFC</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">entrez_logFC <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   entrez_id logFC adj_Pval
+##       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1       722  3.54  0.00113
+## 2       725  5.62  0.0295 
+## 3      1378  3.46  0.0315 
+## 4      2302  3.37  0.0486 
+## 5      5777  3.93  0.0204 
+## 6     55061  2.76  0.0225</code></pre>
+<p>This dataframe conforms to the tidy data principals. Each row represents an ‘observation’ (a different entrez gene ID), and each column represents a different measurement type (log fold-change in RNA abundance, and adjusted p. value). Further, each cell contains a single value.<br />
+This is what we are aiming for with the other data sets.</p>
+<p>Now to check Hs_entrez_annot</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">Hs_entrez_annot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   entrez_id annot_type annot_text                               
+##       &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;                                    
+## 1        21 symbol     ABCA3                                    
+## 2        21 gene_name  ATP binding cassette subfamily A member 3
+## 3        90 symbol     ACVR1                                    
+## 4        90 gene_name  activin A receptor type 1                
+## 5        91 symbol     ACVR1B                                   
+## 6        91 gene_name  activin A receptor type 1B</code></pre>
+<p>This is not tidy, because each observation (the entrez_id) is duplicated into 2 rows. The annotation type (‘annot_type’: symbol or gene name) should ideally be individual columns, containing the correpsonding annotation_text (‘annot_text’).</p>
+<div id="pivot_wider" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> pivot_wider()</h3>
+<p>To modify this table so that it conforms to the tidy principals, we need to ‘reshape’ it. We need a function that can convert the labels in the ‘annot_type’ column into two new column names, and assort the data in ‘annot_text’ according to their respective new column names.</p>
+<p>The function for this job is pivot_wider()</p>
+<div class="figure">
+<img src="https://thinkr.fr/wp-content/uploads/long_wide.png" alt="thinkr.fr/wp-content/uploads/long_wide.png" />
+<p class="caption">thinkr.fr/wp-content/uploads/long_wide.png</p>
+</div>
+<p>pivot_wider() requires two commands, both of which are column names in the original table.</p>
+<p><code>names_from</code> indicates the column containing the labels which will be come the new column names.<br />
+<code>values from</code> indicates the column containing the values that will populate the the new columns.<br />
+To transform the illustrative table above at left (<code>df_long</code>) into the result at right, would require:<br />
+<code>df_long %&gt;% pivot_wider(names_from = V1, values_from = V2)</code>.<br />
+Note that the ‘shape’ of the dataframe is being converted from longer (more rows) to wider (more columns).</p>
+<p>In our case, to reshape Hs_entrez_annot, we will use the column names annot_type, and annot_text:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">Hs_entrez_annot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> annot_type, <span class="dt">values_from =</span> annot_text)</a></code></pre></div>
+<pre><code>## # A tibble: 153 x 3
+##    entrez_id symbol gene_name                                    
+##        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                        
+##  1        21 ABCA3  ATP binding cassette subfamily A member 3    
+##  2        90 ACVR1  activin A receptor type 1                    
+##  3        91 ACVR1B activin A receptor type 1B                   
+##  4       156 ADRBK1 adrenergic, beta, receptor kinase 1          
+##  5       207 AKT1   v-akt murine thymoma viral oncogene homolog 1
+##  6       566 AZU1   azurocidin 1                                 
+##  7       596 BCL2   B-cell CLL/lymphoma 2                        
+##  8       655 BMP7   bone morphogenetic protein 7                 
+##  9       722 C4BPA  complement component 4 binding protein alpha 
+## 10       725 C4BPB  complement component 4 binding protein beta  
+## # … with 143 more rows</code></pre>
+<p>Whereas the original table has 306 rows, the output of pivot_wider() has only 153 rows. This is because the rows are de-duplicated as the new columns are created.<br />
+Given that the output is in ‘tidy’ format, we can assign it to a new variable ‘Hs_entz_annot_tidy’</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">Hs_entz_annot_tidy &lt;-<span class="st"> </span>Hs_entrez_annot <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb229-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> annot_type, </a>
+<a class="sourceLine" id="cb229-3" data-line-number="3">              <span class="dt">values_from =</span> annot_text)</a></code></pre></div>
+<p>Note that because we only have two labels in the annot_type column, we are replacing the existing two columns with only two new columns. As such the shape of the output technically isnt any wider than the input dataframe. However when there are more than two unique labels in the <code>names_from</code> column, the output will be wider than the input.</p>
+</div>
+<div id="pivot_longer" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> pivot_longer()</h3>
+<p>The function that complements pivot_wider() is of course pivot_longer(). This function does not create tidy data, because it duplicates rows. However the ‘long format’ output from pivot_longer() is often required for ggplot, where each aesthetic or facet category must be a single column of values; and for left_join(), introduced below.</p>
+<div class="figure">
+<img src="https://thinkr.fr/wp-content/uploads/wide_long.png" alt="thinkr.fr/wp-content/uploads/wide_long.png" />
+<p class="caption">thinkr.fr/wp-content/uploads/wide_long.png</p>
+</div>
+<p>pivot_longer() takes three commands, specifying</p>
+<ol style="list-style-type: decimal">
+<li>a vector of the names of the columns to convert to labels in long form <code>cols =</code>,<br />
+</li>
+<li>a name for the new column containing the labels from 1: <code>names_to =</code>,<br />
+</li>
+<li>a name for the new column containing the values corresponding to 1: <code>values_to =</code></li>
+</ol>
+<p>Note that pivot_wider(), requires the new column names in quotes.</p>
+<p>So for the figure above, to convert from the left table (<code>df_wide</code>) to the long table at right, would require:
+<code>df_wide %&gt;% pivot_longer(cols = c(X2,X3,X4), names_to = 'V1', values_to = 'V2')</code></p>
+<p>Let’s see how this can be applied to the GO_terms dataframe</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">GO_terms </a></code></pre></div>
+<pre><code>## # A tibble: 12 x 5
+##    GOID    DEFINITION                 BP                    CC       MF          
+##    &lt;chr&gt;   &lt;chr&gt;                      &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;       
+##  1 GO:190… Any process that stops, p… negative regulation … &lt;NA&gt;     &lt;NA&gt;        
+##  2 GO:004… The directed movement of … vesicle transport al… &lt;NA&gt;     &lt;NA&gt;        
+##  3 GO:001… The phosphorylation of pe… peptidyl-threonine p… &lt;NA&gt;     &lt;NA&gt;        
+##  4 GO:000… Any process that stops, p… negative regulation … &lt;NA&gt;     &lt;NA&gt;        
+##  5 GO:006… The series of molecular s… Wnt signaling pathwa… &lt;NA&gt;     &lt;NA&gt;        
+##  6 GO:000… The chemical reactions an… ubiquinone metabolic… &lt;NA&gt;     &lt;NA&gt;        
+##  7 GO:009… The lipid bilayer surroun… &lt;NA&gt;                  lamella… &lt;NA&gt;        
+##  8 GO:001… The cell cycle process in… female meiosis chrom… &lt;NA&gt;     &lt;NA&gt;        
+##  9 GO:003… Catalysis of the transfer… &lt;NA&gt;                  &lt;NA&gt;     kynurenine …
+## 10 GO:190… Any process that activate… positive regulation … &lt;NA&gt;     &lt;NA&gt;        
+## 11 GO:001… The chemical reactions an… fucose catabolic pro… &lt;NA&gt;     &lt;NA&gt;        
+## 12 GO:004… Catalysis of the reaction… &lt;NA&gt;                  &lt;NA&gt;     cysteine-S-…</code></pre>
+<p>The BP, CC and MF columns relate to ‘Biological Process’, ‘Cellular Component’ and ‘Molecular Function’ ontologies within the <a href="http://geneontology.org/docs/ontology-documentation/">Gene Ontology framework</a>.</p>
+<p>We can see there are many NA values in these columns, as each GOID relates to a single type of ontology. That is, if there is text in BP, then CC and MF will be NA values.<br />
+If we consider the text in this table as individual ‘values’ then the table is technically tidy, but the information is sparsely populated throughout.</p>
+<p>To eliminate the NA values we first use pivot_longer(), with the aim of converting to long format those columns containing ontology descriptions: BP,CC, and MF.<br />
+The new column for labels will be ‘ONTOLOGY’, and the new column containing the associated text will be ‘DESCRIPTION’</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">GO_terms <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(BP,CC,MF),  </a>
+<a class="sourceLine" id="cb232-3" data-line-number="3">               <span class="dt">names_to =</span> <span class="st">&#39;ONTOLOGY&#39;</span>,</a>
+<a class="sourceLine" id="cb232-4" data-line-number="4">               <span class="dt">values_to =</span> <span class="st">&#39;DESCRIPTION&#39;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 36 x 4
+##    GOID    DEFINITION                     ONTOLOGY DESCRIPTION                   
+##    &lt;chr&gt;   &lt;chr&gt;                          &lt;chr&gt;    &lt;chr&gt;                         
+##  1 GO:190… Any process that stops, preve… BP       negative regulation of vesicl…
+##  2 GO:190… Any process that stops, preve… CC       &lt;NA&gt;                          
+##  3 GO:190… Any process that stops, preve… MF       &lt;NA&gt;                          
+##  4 GO:004… The directed movement of a ve… BP       vesicle transport along micro…
+##  5 GO:004… The directed movement of a ve… CC       &lt;NA&gt;                          
+##  6 GO:004… The directed movement of a ve… MF       &lt;NA&gt;                          
+##  7 GO:001… The phosphorylation of peptid… BP       peptidyl-threonine phosphoryl…
+##  8 GO:001… The phosphorylation of peptid… CC       &lt;NA&gt;                          
+##  9 GO:001… The phosphorylation of peptid… MF       &lt;NA&gt;                          
+## 10 GO:000… Any process that stops, preve… BP       negative regulation of humora…
+## # … with 26 more rows</code></pre>
+<p>Now the data is in long form, with the GOID and DEFINITION columns duplicated. All of the NA values are now in a single column (DESCRIPTION). We can easily filter out these NA values, and assign the new dataframe to a variable ‘GO_terms_long’</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">GO_terms_long &lt;-<span class="st"> </span>GO_terms <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols      =</span>  <span class="kw">c</span>(BP, CC, MF),  </a>
+<a class="sourceLine" id="cb234-3" data-line-number="3">               <span class="dt">names_to  =</span> <span class="st">&#39;ONTOLOGY&#39;</span>,</a>
+<a class="sourceLine" id="cb234-4" data-line-number="4">               <span class="dt">values_to =</span> <span class="st">&#39;DESCRIPTION&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb234-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(DESCRIPTION))</a></code></pre></div>
+<p>Importantly, in cases where there are 10s of column names to convert to long format, it is simpler to use <code>cols =</code> to specify those columns that we <em>don’t</em> want to convert, which are usually the left-most columns.<br />
+This is done with the <code>-</code> symbol we previously used with select(), and for negative vector sub-setting.<br />
+To achieve the same result as above using this approach:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">GO_terms_long &lt;-<span class="st"> </span>GO_terms <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols      =</span>  <span class="op">-</span><span class="kw">c</span>(GOID, DEFINITION),  </a>
+<a class="sourceLine" id="cb235-3" data-line-number="3">               <span class="dt">names_to  =</span> <span class="st">&#39;ONTOLOGY&#39;</span>,</a>
+<a class="sourceLine" id="cb235-4" data-line-number="4">               <span class="dt">values_to =</span> <span class="st">&#39;DESCRIPTION&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb235-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(DESCRIPTION))</a></code></pre></div>
+<p><code>cols</code> can also take the other helpers used with select(), such as starts_with(), contains() etc.</p>
+</div>
+</div>
+<div id="separating-and-uniting-columns" class="section level2">
+<h2><span class="header-section-number">11.3</span> Separating and uniting columns</h2>
+<p>So far we have reshaped data where the input conforms to the third principal of ‘tidiness’: each cell contains a single value. When this is not the case, we may need to split values into several columns, using separate(); or combine values into a single column using unite().</p>
+<p>GO_entrez is certainly the messiest of the datasets we have been provided. Let’s take look:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">GO_entrez <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   rowname go_entrez                                                              
+##     &lt;dbl&gt; &lt;chr&gt;                                                                  
+## 1       1 GO_0002924_722,725,1378,2302,5777,55061                                
+## 2       2 GO_0006743_3156,4704,10229,23590,27235,29914,51004,51117,51805,56997,5…
+## 3       3 GO_0016321_4292,5347,728637                                            
+## 4       4 GO_0018107_90,91,156,207,566,596,655,790,801,805,808,817,983,1020,1111…
+## 5       5 GO_0019317_2523,2524,2526,2527,2528,2529,2530,10690,84750              
+## 6       6 GO_0036137_883,2806,51166,56267</code></pre>
+<p>The dataframe has two columns: ‘rownames’ which is a meaningless sequence of integers, and ‘go_entrez’ which appears to contain GO IDs interspersed with underscores, and a long string of comma-separated entrez IDs.</p>
+<p>We will need to make several changes to produce a long-format table of GO terms and corresponding entrez IDs in consecutive rows.</p>
+<p>First, we should separate the go_entrez column into three, containing the ‘GO’ prefix, the code, and the string of entrez IDs.</p>
+<div id="separate" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> separate()</h3>
+<p>The tidyr separate() function takes a column name as the first command, and separates it into a number of new columns (a vector of names of our choosing, in quotes), according to a particular character delimiter, the ‘separator’ or ‘sep’.</p>
+<p>The <code>sep =</code> command has the same role as <code>delim =</code> in read_delim() above.</p>
+<p>Let’s split the go_entrez column into three new columns named ‘prefix’,‘code_only’ and ‘entrez_multi’, according to the underscore <code>_</code> character:</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">GO_entrez <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb238-2" data-line-number="2"><span class="st">  </span><span class="kw">separate</span>(go_entrez, </a>
+<a class="sourceLine" id="cb238-3" data-line-number="3">           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;prefix&#39;</span>,<span class="st">&#39;code_only&#39;</span>,<span class="st">&#39;entrez_multi&#39;</span>),</a>
+<a class="sourceLine" id="cb238-4" data-line-number="4">           <span class="dt">sep =</span> <span class="st">&#39;_&#39;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 11 x 4
+##    rowname prefix code_only entrez_multi                                         
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                                                
+##  1       1 GO     0002924   722,725,1378,2302,5777,55061                         
+##  2       2 GO     0006743   3156,4704,10229,23590,27235,29914,51004,51117,51805,…
+##  3       3 GO     0016321   4292,5347,728637                                     
+##  4       4 GO     0018107   90,91,156,207,566,596,655,790,801,805,808,817,983,10…
+##  5       5 GO     0019317   2523,2524,2526,2527,2528,2529,2530,10690,84750       
+##  6       6 GO     0036137   883,2806,51166,56267                                 
+##  7       7 GO     0047496   1176,1201,1780,2647,3064,3799,5048,5590,5861,6845,81…
+##  8       8 GO     0061289   2625,55366                                           
+##  9       9 GO     0097232   21,27074                                             
+## 10      10 GO     1901609   254263                                               
+## 11      11 GO     1903638   9141</code></pre>
+<p>Note that the code_only column contains only integers but remains encoded as ‘character data’.</p>
+<p>Its possible to allow R to guess the data types for newly created columns by including <code>convert = TRUE</code> at the end of the above command.</p>
+<p>Here however we want to preserve the leading 0s in code_only which would be dropped if this column was converted to the numeric data type.</p>
+<p>Let’s store the output of separate() as a new variable named ‘GO_entrez_sep’</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">GO_entrez_sep &lt;-<span class="st"> </span>GO_entrez <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb240-2" data-line-number="2"><span class="st">  </span><span class="kw">separate</span>(go_entrez, </a>
+<a class="sourceLine" id="cb240-3" data-line-number="3">           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;prefix&#39;</span>,<span class="st">&#39;code_only&#39;</span>,<span class="st">&#39;entrez_multi&#39;</span>),</a>
+<a class="sourceLine" id="cb240-4" data-line-number="4">           <span class="dt">sep =</span> <span class="st">&#39;_&#39;</span>)</a></code></pre></div>
+<p>Next we have to deal with the long string of entrez IDs in the ‘entrez_multi’ column.<br />
+This is particularly tricky as there are uneven numbers of entrez IDs associated with each GO term.
+A separate() function will run in to problems when columns are highly uneven, and the maximum length of values is unknown.</p>
+</div>
+<div id="str_split-unnest" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> str_split() %&gt;% unnest()</h3>
+<p>Alternatively, we can use a pair of functions called str_split() and unnest() to quickly solve the problem.<br />
+str_split() stands for ‘string_split’ which relates to splitting a long sequence of characters (aka a ‘string’) according to a particular delimiter. str_split() is similar to separate(), but instead of creating new columns, it creates a ‘nested list’ of values which are hidden from us. To split up the values according to a particular delimeter we use <code>pattern =</code>, which functions similarly to separate() <code>sep =</code> and read_delim() <code>delim =</code>.</p>
+<p>The unnest() command that follows inserts each value in the nested list (corresponding to individual entrez IDs in our case) into is own row, and duplicates the data in other columns. In this way, unnest() essentially performs a pivot_longer() function in order to reveal all of the previously hidden values.</p>
+<p>Whereas the nested values aren’t visible in the console output, you can see them presented as a vector if you pipe your output to View().</p>
+<p>First we give the str_split() command inside mutate() to create a new column containing the nested list of entrez IDs.</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">GO_entrez_sep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">entz_nest =</span> <span class="kw">str_split</span>(entrez_multi, <span class="dt">pattern =</span> <span class="st">&#39;,&#39;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 11 x 5
+##    rowname prefix code_only entrez_multi                                entz_nest
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                                       &lt;list&gt;   
+##  1       1 GO     0002924   722,725,1378,2302,5777,55061                &lt;chr [6]&gt;
+##  2       2 GO     0006743   3156,4704,10229,23590,27235,29914,51004,51… &lt;chr [13…
+##  3       3 GO     0016321   4292,5347,728637                            &lt;chr [3]&gt;
+##  4       4 GO     0018107   90,91,156,207,566,596,655,790,801,805,808,… &lt;chr [79…
+##  5       5 GO     0019317   2523,2524,2526,2527,2528,2529,2530,10690,8… &lt;chr [9]&gt;
+##  6       6 GO     0036137   883,2806,51166,56267                        &lt;chr [4]&gt;
+##  7       7 GO     0047496   1176,1201,1780,2647,3064,3799,5048,5590,58… &lt;chr [35…
+##  8       8 GO     0061289   2625,55366                                  &lt;chr [2]&gt;
+##  9       9 GO     0097232   21,27074                                    &lt;chr [2]&gt;
+## 10      10 GO     1901609   254263                                      &lt;chr [1]&gt;
+## 11      11 GO     1903638   9141                                        &lt;chr [1]&gt;</code></pre>
+<p>Now we can drop the entrez_multi column because we have captured it in entz_nest, and check the output using View()</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">GO_entrez_sep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb243-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">entz_nest =</span> <span class="kw">str_split</span>(entrez_multi, <span class="dt">pattern =</span> <span class="st">&#39;,&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb243-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>( <span class="op">-</span>entrez_multi ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb243-4" data-line-number="4"><span class="st">  </span><span class="kw">View</span>()</a></code></pre></div>
+<p>Finally we can unnest() the entz_nest column, using <code>col = entz_nest</code>, which produces a long-form table</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">GO_entrez_sep <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb244-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">entz_nest =</span> <span class="kw">str_split</span>(entrez_multi, <span class="dt">pattern =</span> <span class="st">&#39;,&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb244-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>( <span class="op">-</span>entrez_multi ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb244-4" data-line-number="4"><span class="st">  </span><span class="kw">unnest</span>(<span class="dt">col =</span> entz_nest)</a></code></pre></div>
+<pre><code>## # A tibble: 155 x 4
+##    rowname prefix code_only entz_nest
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    
+##  1       1 GO     0002924   722      
+##  2       1 GO     0002924   725      
+##  3       1 GO     0002924   1378     
+##  4       1 GO     0002924   2302     
+##  5       1 GO     0002924   5777     
+##  6       1 GO     0002924   55061    
+##  7       2 GO     0006743   3156     
+##  8       2 GO     0006743   4704     
+##  9       2 GO     0006743   10229    
+## 10       2 GO     0006743   23590    
+## # … with 145 more rows</code></pre>
+</div>
+<div id="rename" class="section level3">
+<h3><span class="header-section-number">11.3.3</span> rename()</h3>
+<p>Given that the entz_nest colum is no longer a nested list, we might want to rename it. The rename() function can help here. It simply takes the form ‘new column name’ = ‘existing name’:</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">GO_entrez_sep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">entz_nest =</span> <span class="kw">str_split</span>(entrez_multi, <span class="dt">pattern =</span> <span class="st">&#39;,&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb246-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>( <span class="op">-</span>entrez_multi ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb246-4" data-line-number="4"><span class="st">  </span><span class="kw">unnest</span>(<span class="dt">col =</span> entz_nest) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb246-5" data-line-number="5"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">entrez_id =</span> entz_nest)</a></code></pre></div>
+<pre><code>## # A tibble: 155 x 4
+##    rowname prefix code_only entrez_id
+##      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;    
+##  1       1 GO     0002924   722      
+##  2       1 GO     0002924   725      
+##  3       1 GO     0002924   1378     
+##  4       1 GO     0002924   2302     
+##  5       1 GO     0002924   5777     
+##  6       1 GO     0002924   55061    
+##  7       2 GO     0006743   3156     
+##  8       2 GO     0006743   4704     
+##  9       2 GO     0006743   10229    
+## 10       2 GO     0006743   23590    
+## # … with 145 more rows</code></pre>
+<p>We can write the results of this chain of commands into a new variable ‘GO_entrez_sep_long’</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">GO_entrez_sep_long &lt;-<span class="st"> </span>GO_entrez_sep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb248-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">entz_nest =</span> <span class="kw">str_split</span>(entrez_multi, <span class="dt">pattern =</span> <span class="st">&#39;,&#39;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb248-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>( <span class="op">-</span>entrez_multi ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb248-4" data-line-number="4"><span class="st">  </span><span class="kw">unnest</span>(<span class="dt">col =</span> entz_nest) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb248-5" data-line-number="5"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">entrez_id =</span> entz_nest)</a></code></pre></div>
+</div>
+<div id="unite" class="section level3">
+<h3><span class="header-section-number">11.3.4</span> unite()</h3>
+<p>The final step is to combine the GO prefix (‘GO’) and the code_only columns to produce a GO ID in the same form as that in the GOID column of GO_terms_long (created above).</p>
+<p>To check the desired output:</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">GO_terms_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GOID)</a></code></pre></div>
+<pre><code>## # A tibble: 12 x 1
+##    GOID      
+##    &lt;chr&gt;     
+##  1 GO:1901609
+##  2 GO:0047496
+##  3 GO:0018107
+##  4 GO:0002924
+##  5 GO:0061289
+##  6 GO:0006743
+##  7 GO:0097232
+##  8 GO:0016321
+##  9 GO:0036137
+## 10 GO:1903638
+## 11 GO:0019317
+## 12 GO:0047804</code></pre>
+<p>The unite() function is the complement of separate(), and requires two arguments: a name for the new column that will contain the united values, and a vector of the names of the columns to unite.<br />
+We can optionally provide a separator (<code>sep =</code>) to insert between the combined values. If we don’t add a command here the values will be separated by underscores <code>_</code>.<br />
+In this case we want to insert a colon <code>:</code> to reproduce the desired GOID</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">GO_entrez_sep_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unite</span>(GOID, <span class="kw">c</span>(prefix, code_only), <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 155 x 3
+##    rowname GOID       entrez_id
+##      &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;    
+##  1       1 GO:0002924 722      
+##  2       1 GO:0002924 725      
+##  3       1 GO:0002924 1378     
+##  4       1 GO:0002924 2302     
+##  5       1 GO:0002924 5777     
+##  6       1 GO:0002924 55061    
+##  7       2 GO:0006743 3156     
+##  8       2 GO:0006743 4704     
+##  9       2 GO:0006743 10229    
+## 10       2 GO:0006743 23590    
+## # … with 145 more rows</code></pre>
+<p>Now we can drop the meaningless rowname column, store the result as “GO_entrez_long”, and we’re finally done with GO_entrez!</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">GO_entrez_long &lt;-<span class="st"> </span>GO_entrez_sep_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb253-2" data-line-number="2"><span class="st">  </span><span class="kw">unite</span>(GOID, <span class="kw">c</span>(prefix, code_only), <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb253-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>rowname)</a></code></pre></div>
+</div>
+</div>
+<div id="remove-variables" class="section level2">
+<h2><span class="header-section-number">11.4</span> Remove variables</h2>
+<p>In the process of tidying up the data we created several variables in intermediates states of completeness. We can now remove these variables together with the original untidy input data, using the rm() function.<br />
+Happily because all of our commands are saved in a text file (and backed up!!) we can reproduce these variables later on if required.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="kw">rm</span>(Hs_entrez_annot)</a>
+<a class="sourceLine" id="cb254-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb254-3" data-line-number="3"><span class="kw">rm</span>(GO_terms)</a>
+<a class="sourceLine" id="cb254-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb254-5" data-line-number="5"><span class="kw">rm</span>(GO_entrez)</a>
+<a class="sourceLine" id="cb254-6" data-line-number="6"><span class="kw">rm</span>(GO_entrez_sep)</a>
+<a class="sourceLine" id="cb254-7" data-line-number="7"><span class="kw">rm</span>(GO_entrez_sep_long)</a></code></pre></div>
+</div>
+<div id="joining-dataframes" class="section level2">
+<h2><span class="header-section-number">11.5</span> Joining dataframes</h2>
+<p>Now that we have converted the three untidy input datasets into tidy format (Hs_entz_annot_tidy), or long format (GO_entrez_long, GO_terms_long) we can begin joining them together into a single dataframe from which to plot the fold-change per gene, coloured by GO term.</p>
+<div id="left_join" class="section level3">
+<h3><span class="header-section-number">11.5.1</span> left_join()</h3>
+<p>Joining two or more different datasets can be a very tricky task in standard spreadsheeting programs, but is vastly simplified in the tidyverse.</p>
+<p>The main requirement is to have a ‘joint key’, that is, a column in both dataframes that contains at least one identical value.<br />
+left_join() is the workhorse of the tidy R joining functions, so called because the first dataframe that is specified (in code from left to right) appears in the left-most columns of the resulting dataframe.</p>
+<p>In the image below, the dataframe ‘b’ is being joined to ‘a’ using left_join(), and the ‘joint key’ is x1.<br />
+Note that the x1 column contains two identical values (A and B), but C is unique to ‘a’ and D is unique to ‘b’.<br />
+The output of left_join(), will contain the entire left-side dataframe (‘a’), and the additional columns from ‘b’ populated with values for all rows where the joint key is matching. NA will appear in cells for which there is no match in ‘b’.
+<img src="images/ljoin.png" width="150%" /></p>
+<p>The other important thing about left_join() is that any rows where the joint key is duplicated in the right-side dataframe, will also be duplicated in the left-side. For example, if ‘b’ contained the rows<br />
+‘B’ ‘F’<br />
+‘B’ ‘T’<br />
+<br>
+then the result would include the rows<br />
+‘B’ ‘2’ ‘F’<br />
+‘B’ ‘2’ ‘T’</p>
+<p><br>
+<br></p>
+<p>Our first task is to join the the entrez_logFC results table with the gene annotations in Hs_entz_annot_tidy. We will use the joint key ‘entrez_id’.<br />
+<br></p>
+<p>Consistent with the previous sections, we will use the pipe <code>%&gt;%</code> to ‘send’ the left-side dataframe (entrez_logFC) into a left_join() where we specify the right-side dataframe. We give the column name of the joint key, in quotes, in the <code>by =</code> command.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">entrez_logFC <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(Hs_entz_annot_tidy, <span class="dt">by =</span> <span class="st">&#39;entrez_id&#39;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 19 x 5
+##    entrez_id  logFC adj_Pval symbol gene_name                                    
+##        &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                        
+##  1       722  3.54   0.00113 C4BPA  complement component 4 binding protein alpha 
+##  2       725  5.62   0.0295  C4BPB  complement component 4 binding protein beta  
+##  3      1378  3.46   0.0315  CR1    complement component 3b/4b receptor 1 (Knops…
+##  4      2302  3.37   0.0486  FOXJ1  forkhead box J1                              
+##  5      5777  3.93   0.0204  PTPN6  protein tyrosine phosphatase, non-receptor t…
+##  6     55061  2.76   0.0225  SUSD4  sushi domain containing 4                    
+##  7      2523 -1.53   0.00091 FUT1   fucosyltransferase 1 (H blood group)         
+##  8      2524 -1.38   0.0434  FUT2   fucosyltransferase 2                         
+##  9      2526 -1.46   0.0268  FUT4   fucosyltransferase 4                         
+## 10      2527 -0.930  0.00605 FUT5   fucosyltransferase 5                         
+## 11      2528 -2.91   0.0494  FUT6   fucosyltransferase 6                         
+## 12      2529 -0.767  0.0185  FUT7   fucosyltransferase 7 (alpha (1,3) fucosyltra…
+## 13      2530 -0.705  0.0213  FUT8   fucosyltransferase 8 (alpha (1,6) fucosyltra…
+## 14     10690 -1.32   0.0396  FUT9   fucosyltransferase 9 (alpha (1,3) fucosyltra…
+## 15     84750 -0.756  0.00960 FUT10  fucosyltransferase 10 (alpha (1,3) fucosyltr…
+## 16       883  9.95   0.0483  CCBL1  cysteine conjugate-beta lyase, cytoplasmic   
+## 17      2806  4.26   0.0179  GOT2   glutamic-oxaloacetic transaminase 2          
+## 18     51166  4.1    0.0417  AADAT  aminoadipate aminotransferase                
+## 19     56267  3.73   0.0406  CCBL2  cysteine conjugate-beta lyase 2</code></pre>
+<p>The result contains the symbols and gene_names columns from Hs_entz_annot_tidy, appended to the entire entrez_logFC dataframe.</p>
+<p>We will store this result in a new variable ‘entrez_logFC_annot’</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">entrez_logFC_annot &lt;-<span class="st"> </span>entrez_logFC <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(Hs_entz_annot_tidy, <span class="dt">by =</span> <span class="st">&#39;entrez_id&#39;</span>)</a></code></pre></div>
+<p>Let’s try the second of three left_join()s required to complete the data set. We will use the same code to join entrez_logFC_annot and GO_entrez_long, also using ‘entrez_id’ as the joint key.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">entrez_logFC_annot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(GO_entrez_long, <span class="dt">by =</span> <span class="st">&#39;entrez_id&#39;</span>)</a></code></pre></div>
+<pre><code>## Error: Can&#39;t join on &#39;entrez_id&#39; x &#39;entrez_id&#39; because of incompatible types (character / numeric)</code></pre>
+<p>Okay that didnt work 😬<br />
+It looks like somewhere along the line the entrez_id in GO_entrez_long was converted from numeric data into character data.<br />
+The joint key has to contain at least one <em>identical</em> value, down to the data type. To remedy this we will use mutate() to convert the entrez_id column in GO_entrez_long into numeric data, and overwrite the variable.</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">GO_entrez_long &lt;-<span class="st"> </span>GO_entrez_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">entrez_id =</span> <span class="kw">as.numeric</span>(entrez_id))</a></code></pre></div>
+<p>! Always be careful when overwriting variables. If you make a mistake it can produce incorrect results downstream.</p>
+<p><br></p>
+<p>Now let’s try the left_join() using the identical data type for the joint key.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">entrez_logFC_annot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(GO_entrez_long, <span class="dt">by =</span> <span class="st">&#39;entrez_id&#39;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 19 x 6
+##    entrez_id  logFC adj_Pval symbol gene_name                             GOID   
+##        &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;                                 &lt;chr&gt;  
+##  1       722  3.54   0.00113 C4BPA  complement component 4 binding prote… GO:000…
+##  2       725  5.62   0.0295  C4BPB  complement component 4 binding prote… GO:000…
+##  3      1378  3.46   0.0315  CR1    complement component 3b/4b receptor … GO:000…
+##  4      2302  3.37   0.0486  FOXJ1  forkhead box J1                       GO:000…
+##  5      5777  3.93   0.0204  PTPN6  protein tyrosine phosphatase, non-re… GO:000…
+##  6     55061  2.76   0.0225  SUSD4  sushi domain containing 4             GO:000…
+##  7      2523 -1.53   0.00091 FUT1   fucosyltransferase 1 (H blood group)  GO:001…
+##  8      2524 -1.38   0.0434  FUT2   fucosyltransferase 2                  GO:001…
+##  9      2526 -1.46   0.0268  FUT4   fucosyltransferase 4                  GO:001…
+## 10      2527 -0.930  0.00605 FUT5   fucosyltransferase 5                  GO:001…
+## 11      2528 -2.91   0.0494  FUT6   fucosyltransferase 6                  GO:001…
+## 12      2529 -0.767  0.0185  FUT7   fucosyltransferase 7 (alpha (1,3) fu… GO:001…
+## 13      2530 -0.705  0.0213  FUT8   fucosyltransferase 8 (alpha (1,6) fu… GO:001…
+## 14     10690 -1.32   0.0396  FUT9   fucosyltransferase 9 (alpha (1,3) fu… GO:001…
+## 15     84750 -0.756  0.00960 FUT10  fucosyltransferase 10 (alpha (1,3) f… GO:001…
+## 16       883  9.95   0.0483  CCBL1  cysteine conjugate-beta lyase, cytop… GO:003…
+## 17      2806  4.26   0.0179  GOT2   glutamic-oxaloacetic transaminase 2   GO:003…
+## 18     51166  4.1    0.0417  AADAT  aminoadipate aminotransferase         GO:003…
+## 19     56267  3.73   0.0406  CCBL2  cysteine conjugate-beta lyase 2       GO:003…</code></pre>
+<p>Now we have a GO ID column, the gene annotations and the original entrez_logFC data.
+<br></p>
+<p>Let’s store the result of left_join() as a variable ‘entrez_logFC_GO’</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">entrez_logFC_GO &lt;-<span class="st"> </span>entrez_logFC_annot <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(GO_entrez_long, <span class="dt">by =</span> <span class="st">&#39;entrez_id&#39;</span>)</a></code></pre></div>
+<p>Finally, we will create a variable ‘complete_table’ by joining in the GO term descriptions in GO_terms_long. This time, the joint key will be the ‘GOID’ column</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">complete_table &lt;-<span class="st"> </span>entrez_logFC_GO <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(GO_terms_long, <span class="dt">by =</span> <span class="st">&#39;GOID&#39;</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="plotting-challenge" class="section level2">
+<h2><span class="header-section-number">11.6</span> Plotting challenge</h2>
+<p>With the input data tidied and joined we have all of the information required to make a nice plot illustrating the change in gene expression for genes beloning to different Gene Ontolgies.
+<br>
+Your colleague has sketched out an idea for a plot. Can you now produce the plot below using complete_table and ggplot?</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+</div>
+<div id="solution-2" class="section level2">
+<h2><span class="header-section-number">11.7</span> Solution</h2>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">complete_table <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb265-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> symbol, <span class="dt">y =</span> logFC)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb265-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> DESCRIPTION), <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb265-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">lty=</span><span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb265-5" data-line-number="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>DESCRIPTION, <span class="dt">scales=</span><span class="st">&#39;free_y&#39;</span>, <span class="dt">ncol=</span><span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb265-6" data-line-number="6"><span class="st">  </span><span class="kw">ylim</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb265-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>() </a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+</div>
+<div id="summary-1" class="section level2">
+<h2><span class="header-section-number">11.8</span> Summary</h2>
+<p>Once you have finished the ☕ your grateful colleague has bought you, consider the skills you have acquired so far. You can make a wide variety of plots from datasets large and small; subset, transform and summarize data with dplyr, and tidy and join uncooperative datasets.<br />
+Together these skills allow you to answer interesting questions about your data more quickly, and if necessary, reproduce hours of work instantly and exactly.</p>
+<p>The final piece of the puzzle is to be able to <em>automate</em> the drudge work of cleaning data and running the same analysis on multiple data sets — the subject of Week 4.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="week-3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

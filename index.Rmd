@@ -2,6 +2,8 @@
 title: "Introduction to R - tidyverse"
 author: "Brendan R. E. Ansell @ansellbr3"
 site: bookdown::bookdown_site
+output:
+  bookdown::gitbook: default
 ---
 
 

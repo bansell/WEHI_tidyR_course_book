@@ -1,5 +1,6 @@
-# Week 2. Part 2: dplyr {-}
+# Week 2. Part 2 {-}
 
+# Manipulating data with dplyr
 
 The dplyr package, part of the tidyverse, is designed to make manipulating and transforming data as simple and intuitive as possible.  
 
@@ -9,7 +10,7 @@ Another key feature of the tidyverse data wrangling packages such as dplyr, is t
 
 dplyr features a handful of key functions, also termed 'verbs', which can be combined to achieve very specific results. You will notice similarities to the functions available in Microsoft Excel. 
 
-We will explore the first of these verbs using the mpg_df dataset created earlier. If starting from a new Rstudio session you should run the following code:
+We will explore the first of these verbs using the mpg_df dataset created earlier. If starting from a new Rstudio session you should open Week_2_tidyverse.R and run the following code:
 
 ```{r, echo=FALSE,warning=FALSE,message=FALSE}
 library(tidyverse)
@@ -100,6 +101,37 @@ mpg_df %>% filter(str_detect(model,'4wd'))
 Note that the letter order and case have to be matched exactly.  
 
 How would you filter for all vehicles with automatic transmission?
+
+### is.na() helper
+
+If there are `NA` (missing) values in a particular column, we can inspect or drop them using the is.na() helper. 
+
+To check for the presence of NA values in the year column, for example:
+```{r}
+mpg %>% filter(is.na(year))
+```
+The mpg data set doesn't contain any missing values, however in later chapters we will encounter them.  
+
+Any rows with a missing value in the year column would be dropped using the code
+```{r}
+mpg %>% filter(!is.na(year))
+```
+
+### complete.cases() helper
+
+Similar to is.na(), we can check for the presence of NA values across all columns of a dataframe using complete.cases(). This function is not part of the tidyverse package, so it requires a period `.` within the brackets, to indicate that we want to search across the entire dataframe.  
+To filter for only the rows with no missing values:
+
+```{r}
+mpg %>% filter( complete.cases(.) )
+```
+
+And to filter for all rows with a missing value in at least one column:
+```{r}
+mpg %>% filter( !complete.cases(.) )
+```
+
+
 
 
 
@@ -304,6 +336,7 @@ One carat weighs 0.2 grams. Can you chain multiple mutate() functions together t
 <br>
 <br>
 <br>
+
 ### Solution
 
 ```{r}

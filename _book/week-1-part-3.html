@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Welcome to R! | Introduction to R - tidyverse</title>
-  <meta name="description" content="1 Welcome to R! | Introduction to R - tidyverse" />
+  <title>Week 1. Part 3 | Introduction to R - tidyverse</title>
+  <meta name="description" content="Week 1. Part 3 | Introduction to R - tidyverse" />
   <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Welcome to R! | Introduction to R - tidyverse" />
+  <meta property="og:title" content="Week 1. Part 3 | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Welcome to R! | Introduction to R - tidyverse" />
+  <meta name="twitter:title" content="Week 1. Part 3 | Introduction to R - tidyverse" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="week-1-part-1.html"/>
-<link rel="next" href="week-1-part-2.html"/>
+<link rel="prev" href="making-beautiful-plots.html"/>
+<link rel="next" href="making-more-beautiful-plots.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -276,258 +276,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="welcome-to-r" class="section level1">
-<h1><span class="header-section-number">1</span> Welcome to R!</h1>
-<p>R is a computer programing language that is increasingly used for ‘data science’, that is, the manipulation, summarization, and visualization of large datasets. Data comes in many shapes and sizes, however this course is designed to teach you the skills to work with tabular data (rows and columns) such as is often handled in Microsoft Excel.</p>
-<p>An example of ‘tabular data’ is shown below. This data concerns different models of car, which we will return to later.</p>
-<pre><code>## # A tibble: 6 x 11
-##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
-## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact
-## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compact
-## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compact
-## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compact
-## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact
-## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</code></pre>
-<div id="a-look-around-rstudio" class="section level2">
-<h2><span class="header-section-number">1.1</span> A look around RStudio</h2>
-<p>To get the best out of R, we recommend using the <strong>RStudio</strong> software which you should now have installed on your computer.<br />
-Open RStudio. You will see 3 windows (aka ‘panes’). Each window has a different function.</p>
-<p><img src="https://d33wubrfki0l68.cloudfront.net/9a23d664f0f49bc2ef8e78bed6277dd48bd2b96d/af132/diagrams/rstudio-console.png" /></p>
-</div>
-<div id="console-pane" class="section level2">
-<h2><span class="header-section-number">1.2</span> Console Pane</h2>
-<p>On the left hand side you have the ‘console’. You can enter commands (code that R can ‘understand’) in this window, and you will get a response to your commands (‘output’) here too. The console is useful for trying out code, but will not save any of your code, so we don’t recommend that you use it exclusively.</p>
-</div>
-<div id="environmenthistory-pane" class="section level2">
-<h2><span class="header-section-number">1.3</span> Environment/History Pane</h2>
-<p>At the top right is the environment pane. Data that you create, or that you import from other places, will be listed here. This data is available for you to access at any time while your RStudio session is open. It is therefore said to be ‘in the working environment.’<br />
-The History pane contains a list of commands you have previously entered.</p>
-</div>
-<div id="plotting-pane" class="section level2">
-<h2><span class="header-section-number">1.4</span> Plotting Pane</h2>
-<p>At the bottom right is the plotting (‘Plots’) pane. Here you can immediately see the results of the R code you use to make graphs/charts. There are other tabs here as well which we will introduce later.</p>
-</div>
-<div id="open-a-new-r-script" class="section level2">
-<h2><span class="header-section-number">1.5</span> Open a new R script</h2>
-<p>Because we want to save our code to return to and build on, or use to refresh our memory later, we want to save it in a text file.</p>
-<p>I recommend that you create a folder on your Desktop named <strong>WEHI_tidyR_course</strong></p>
-<p>Go to <strong>File &gt; New File &gt; R Script</strong>. A new pane will appear at the top left. Save this empty text file as ‘Week_1_tidyverse.R’ within the new Desktop folder.</p>
-<p>From now on we will type commands in to the text file, and see the results of our commands either in the console pane, or the plotting pane.</p>
-</div>
-<div id="comments" class="section level2">
-<h2><span class="header-section-number">1.6</span> Comments</h2>
-<p>When working in R it is very handy to make notes to yourself about what the code is doing.
-In R, any text that appears after the hash symbol ‘#’ is called a ‘comment.’ R can’t see this text, and won’t try to run it as commands. Comments are useful for reminding your future self what you were aiming to do with a particular line of code, and what was or wasnt working.</p>
-<p>We will use comments extensively in this course.</p>
-<p>Try writing your first comment in your R text file (top left panel)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">#This is a comment. ignored by R but useful for me!</span></a></code></pre></div>
-</div>
-<div id="executing-commands" class="section level2">
-<h2><span class="header-section-number">1.7</span> Executing commands</h2>
-<p>Executing commands, also called ‘running code’ is the process of submitting a command to your computer, which does some computation and returns an answer. There are a few ways to do this in RStudio. We can:</p>
-<ul>
-<li>select the line(s) of code using the mouse, and then click ‘Run’ at the top right corner of the R text file.</li>
-<li>click anyware on the line of code and click ’Run</li>
-<li>click anyware on the line of code and type Cmd + Return (mac), or Ctrl + Return (pc)</li>
-</ul>
-<p>We suggest the third option, which is fastest.</p>
-<p>When you type in, and then run the commands shown in the grey boxes below, you should see the result in the Console pane at bottom left.</p>
-</div>
-<div id="simple-maths-in-r" class="section level2">
-<h2><span class="header-section-number">1.8</span> Simple maths in R</h2>
-<p>We can use R as a caculator to do simple maths</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">100</span> </a></code></pre></div>
-<pre><code>## [1] 101</code></pre>
-<p>More complex calculator functions are ‘built in’ to R, which is the reason it is popular among mathematicians and statisticians.<br />
-To use these functions, we first type the function, then enter the number of interest between round brackets.</p>
-<p>For example, to take the log or square root of 100:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">log</span>(<span class="dv">100</span>)</a></code></pre></div>
-<pre><code>## [1] 4.60517</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">sqrt</span>(<span class="dv">100</span>)</a></code></pre></div>
-<pre><code>## [1] 10</code></pre>
-<p>Notice that the ‘square root’ function is abbreviated to ‘sqrt()’. This is to make writing R code faster, however the draw back is that some functions are hard to remember, or to interpret.</p>
-</div>
-<div id="help" class="section level2">
-<h2><span class="header-section-number">1.9</span> Help!!</h2>
-<p>To find out more about what a function in R does, add a ‘?’ before the function name, and leave the round brackets empty. Then run the code:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co">#get help on R functions by using &quot;?&quot;</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">?<span class="kw">sqrt</span>()</a></code></pre></div>
-<p>You will see the ‘Help’ pane at bottom right springs to life. These help documents give detailed explanations about the function, including how it is used, what input it requires, and, most importantly at the bottom <strong>Examples</strong>!</p>
-<p>You can copy and paste these examples in to your R text file, select and then run them. You should see the output indended by the function authors.</p>
-<p>NB dont worry for now that the sqrt() example is quite complicated.
-NBB all R ‘functions’ are little programs that were written by other people. There are 1000s of functions available for R, which makes your life simpler because you dont have to program them all from scratch.</p>
-</div>
-<div id="variables" class="section level2">
-<h2><span class="header-section-number">1.10</span> Variables</h2>
-<p>A ‘variable’ is a bit of tricky concept, but very important for understanding R. Essentially, a variable is a symbol that we use in place of another value. Usually the other value is a larger/longer form of data. We can tell R to store a lot of data, for example, in a variable named ‘x’.<br />
-When we execute the command ‘x’, R returns all of the data that we stored there.</p>
-<p>For now however we’ll just use a tiny data set: the number 5.
-To store some data in a variable, we need to use a special symbol ‘&lt;-’ which in our case tells R to ‘assign the value 5 to the variable x’. This is called the ‘assignment operator’.</p>
-<p>Let’s see how this works</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># create a variable called &#39;x&#39;, that will contain the number 5.</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="dv">5</span></a></code></pre></div>
-<p>R won’t return anything in the Console, but note that you now have a new entry in the ‘Environment pane’.
-The variable name is at the left (‘x’) and the value that is stored in that variable, is displayed on the right (5).</p>
-<p>We can now use ‘x’ in place of 5:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">x <span class="op">+</span><span class="st"> </span><span class="dv">20</span></a></code></pre></div>
-<pre><code>## [1] 25</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">x <span class="op">*</span><span class="st"> </span><span class="dv">50</span></a></code></pre></div>
-<pre><code>## [1] 250</code></pre>
-<p>Can you work out what the * symbol is used for in R?</p>
-<div id="a-note-on-variables" class="section level3">
-<h3><span class="header-section-number">1.10.1</span> A note on variables</h3>
-<p>Variables are sometimes refered to as ‘objects’. In R there are different conventions about how to name variables, but most importantly they:</p>
-<ul>
-<li>cannot begin with a number</li>
-<li>should begin with an alphabetical letter</li>
-</ul>
-<p>Variables are also case sensitive:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">X</a></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;X&#39; not found</code></pre>
-<p>As we can see, ‘x’ is not the same as ‘X’.</p>
-<p>Variables can take any name, but its best to use something that makes sense to you, and will likely make sense to others who may read your code.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">R_at_WEHI &lt;-<span class="st"> </span><span class="dv">100</span></a></code></pre></div>
-<p>For example, this code will work, but is not very intitive to humans:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">log</span>(R_at_WEHI)</a></code></pre></div>
-<pre><code>## [1] 4.60517</code></pre>
-<p>You may be wondering “why bother with assigning variables, when its less text to type ‘100’?”</p>
-<p>This is because we can store huge amounts of data in a single variable. For example, we can store a list of 50 numbers in a variable, and do maths on them all at once.</p>
-<p>First we create a list of 50 numbers, using a quick trick ‘1:50’ which means ‘every whole number from 1 to 50’.</p>
-<p>Let’s make a variable called ‘long_x’ that stores 1:50.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">long_x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">50</span></a></code></pre></div>
-<p>Now we can multiply every number by 10</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">long_x <span class="op">*</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
-<pre><code>##  [1]  10  20  30  40  50  60  70  80  90 100 110 120 130 140 150 160 170 180 190
-## [20] 200 210 220 230 240 250 260 270 280 290 300 310 320 330 340 350 360 370 380
-## [39] 390 400 410 420 430 440 450 460 470 480 490 500</code></pre>
-<p>Here we are accessing the power of R, which is designed to do lots of computations based on a single line of code.</p>
-<!-- #to here [2h work] -->
-</div>
-</div>
-<div id="vectors" class="section level2">
-<h2><span class="header-section-number">1.11</span> Vectors</h2>
-<p>In making the long_x variable, we are making a ‘vector’. In this case, it is a sequence of numbers. A technical definition for a vector is ‘a sequence of values of the same data type.’</p>
-<p>To better understand this we need to think about ‘types of data’.</p>
-<p>The three data types we need to understand for now are:</p>
-<ul>
-<li>numbers (‘numeric’)</li>
-<li>words (‘characters’), and</li>
-<li>TRUE/FALSE (‘logical’)</li>
-</ul>
-<p>For example, whole numbers can be added, subtracted and so forth. This ‘numeric’ data type is qualitatively different to a word. Words hold meaning, but can’t be sensibly used in a mathematical equation. TRUE and FALSE have specific, logical meaning for computers. Most of what we do in R is turned into TRUE/FALSE problems which are evaluated ‘under the hood.’</p>
-<div id="creating-numeric-vectors" class="section level3">
-<h3><span class="header-section-number">1.11.1</span> Creating numeric vectors</h3>
-<p>Above we used a shortcut to create a vector of 50 numbers ( 1:50 ). Ordinarily, we need to enclose values in brackets, separated by commas. The values also need to be ‘concatenated’ using a function called c().</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="co">#This new variable will contain a vector of numbers, which in this case is a concatenation of 5, 12 and 22.</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">numeric_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">12</span>,<span class="dv">22</span>)</a></code></pre></div>
-</div>
-<div id="character-vectors" class="section level3">
-<h3><span class="header-section-number">1.11.2</span> Character vectors</h3>
-<p>Character values are written in quotation marks, and character vectors are also constructed using c().</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">char_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;dog&#39;</span>,<span class="st">&#39;cat&#39;</span>,<span class="st">&#39;pidgeon&#39;</span>)</a></code></pre></div>
-<p>What happens when you add a character vector to a numeric vector?</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">numeric_vector <span class="op">+</span><span class="st"> </span>char_vector </a></code></pre></div>
-<pre><code>## Error in numeric_vector + char_vector: non-numeric argument to binary operator</code></pre>
-<p>Nothing sensible. R will return an error.</p>
-</div>
-<div id="logical-vectors" class="section level3">
-<h3><span class="header-section-number">1.11.3</span> Logical vectors</h3>
-<p>Finally we can create a vector of logical values. Note that for TRUE and FALSE (always in upper case), quotation marks aren’t used.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">logi_vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">TRUE</span>,<span class="ot">FALSE</span>)</a></code></pre></div>
-<p>TRUE and FALSE appear in coloured text, indicating that they have a special meaning in the R language.</p>
-<p>What happens when we add logical data to numeric data?</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">numeric_vector <span class="op">+</span><span class="st"> </span>logi_vector</a></code></pre></div>
-<pre><code>## [1]  6 13 22</code></pre>
-<p>Can you work out how R has calculated this answer?</p>
-<p>Essentially, the logical data has been automatically converted to numeric data.<br />
-The TRUE values become 1, and FALSE become 0.</p>
-<p>Another thing to note is that the values in the vector have been added in their respective orders:</p>
-<p>position1: 5 + 1 = 6<br />
-position2: 12 + 1 = 13<br />
-position3: 22 + 0 = 22</p>
-<p>This is called ‘type coercion,’ which we’ll return to later.</p>
-</div>
-</div>
-<div id="packages" class="section level2">
-<h2><span class="header-section-number">1.12</span> Packages</h2>
-<p>As mentioned above, many developers have built 1000s of functions and shared them with the R user community to help make everyone’s work easier and more efficient. These functions (short programs) are generally packaged up together in (wait for it) <strong>‘Packages’</strong>. For example, the ‘tidyverse’ package is a compilation of many different functions, all of which help with data transformation and visualization. Packages also contain data, which is often included to assist new users with learning the available functions.</p>
-<p>To access this wealth of pre-existing functions, we install packages from the <a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">Comprehensive R Archive Network (CRAN)</a></p>
-<p>…and if you want the all scripts from The Office (American series) in tabular form, <a href="https://cran.r-project.org/web/packages/schrute/index.html">there’s a package for that.</a></p>
-<div id="installing-packages" class="section level3">
-<h3><span class="header-section-number">1.12.1</span> Installing packages</h3>
-<p>To install a package from CRAN, use the ‘install.packages()’ function:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co">#install packages using the package names in quotes </span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="kw">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</a></code></pre></div>
-<p>This will spit out a lot of text into the console as the package is being installed. Once complete you should have a message</p>
-<p><code>The downloaded binary packages are in...</code> followed by a long directory name.</p>
-<p>To access the package functions in our RStudio session, we <strong>load the package</strong> like so:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co">#load packages using library(package_name), and drop the quotes</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<p>Note that to install a package requires the package name in quotations. Once installed, to load it we drop the quotation marks.</p>
-</div>
-</div>
-<div id="the-pipe" class="section level2">
-<h2><span class="header-section-number">1.13</span> The pipe %&gt;%</h2>
-<p>When using functions provided in the tidyverse package, we suggest to write your commands from left to right. This makes reading, and finding bugs in the code, a lot easier. To write code in this way requires a specific symbol, called <strong>the pipe</strong> which allows the code to be processed in a left-right manner.</p>
-<p>The pipe symbol looks like this: <strong>%&gt;%</strong></p>
-<p>It is a pain to type manually, so we suggest you use a shortcut: <strong>CMD + SHIFT + M</strong> (mac) or <strong>CTRL + SHIFT + M</strong> (pc).
-It takes a little practice, but quickly enables a great increase in your coding speed. The pipe-based method of coding can help new users to become <a href="https://www.r-bloggers.com/are-you-fluent-in-r/">‘fluent in R’</a>.</p>
-<p>Let’s try using the pipe with some data that is packaged up with the tidyverse, called the ‘miles per gallon (mpg)’ data set. This is the data set you saw above, containing information on the mechanical features of different models of car.</p>
-<p>First we will assign the currently hidden mpg data set to an explicit variable ‘mpg_df’ in our environment.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">mpg_df &lt;-<span class="st"> </span>mpg</a></code></pre></div>
-<p>Now we access the contents of mpg_df, and ‘send it into a function’ called head(). The head() function returns the first six rows of a data set (or first six values in a vector) to the console.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co">#see the first six rows of the mpg data set</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#call mpg_df first, then &#39;send it into&#39; the head function, using the pipe %&gt;%</span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb33-5" data-line-number="5">mpg_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 11
-##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
-## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact
-## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compact
-## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compact
-## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compact
-## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact
-## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</code></pre>
-<p>Note that unlike the log() and c() functions we used earlier, here the brackets after head() are empty. This still works because the pipe %&gt;% is <em>sending the mpg_df dataset into the head() function</em>.</p>
-<p>It has the same outcome as:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">head</span>(mpg_df)</a></code></pre></div>
-</div>
-<div id="data-frames" class="section level2">
-<h2><span class="header-section-number">1.14</span> Data frames</h2>
-<p>The final concept we need to understand before starting to make plots in R, are <strong>‘data frames’</strong>. The vectors we created above are a simple type of ‘data structure’. Whereas vectors can be thought of as a 1-dimensional data structure (a sequence of values), data frames are a 2D data structure.</p>
-<p>Data frames have both rows and columns. Each column is infact a vector, containing a single type of data. Data frames generally have column names, which we can treat in the same way as a variable.</p>
-<p>For example, let’s combine our three vectors into a data frame, using the data_frame() function:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co">#combine vectors of the same length into a data frame</span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb36-3" data-line-number="3">new_df &lt;-<span class="st"> </span><span class="kw">data_frame</span>(numeric_vector, char_vector, logi_vector)</a></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">new_df</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
-##   numeric_vector char_vector logi_vector
-##            &lt;dbl&gt; &lt;chr&gt;       &lt;lgl&gt;      
-## 1              5 dog         TRUE       
-## 2             12 cat         TRUE       
-## 3             22 pidgeon     FALSE</code></pre>
-<p>Importantly, each column in a data frame must have the same number of values (i.e., the same number of rows).</p>
-<p>This will be a familiar data structure for those who use Microsoft Excel, and is very popular in data science.</p>
-<p>To make plots in R for this tutorial, we must provide our data in data frame form.</p>
-
-</div>
+<div id="week-1.-part-3" class="section level1 unnumbered">
+<h1>Week 1. Part 3</h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="week-1-part-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="week-1-part-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="making-beautiful-plots.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="making-more-beautiful-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
