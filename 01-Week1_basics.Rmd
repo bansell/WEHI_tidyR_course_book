@@ -2,7 +2,7 @@
 
 # Welcome to R!
 
-R is a computer programing language that is increasingly used for 'data science', that is, the manipulation, summarization, and visualization of large datasets. Data comes in many shapes and sizes, however this course is designed to teach you the skills to work with tabular data (rows and columns) such as is often handled in Microsoft Excel. 
+R is a computer programming language that is increasingly used for 'data science', that is, the manipulation, summarization, and visualization of large datasets. Data comes in many shapes and sizes, however this course is designed to teach you the skills to work with tabular data (rows and columns) such as is often handled in Microsoft Excel. 
 
 
 An example of 'tabular data' is shown below. This data concerns different models of car, which we will return to later. 
@@ -45,7 +45,7 @@ From now on we will type commands in to the text file, and see the results of ou
 ## Comments
 
 When working in R it is very handy to make notes to yourself about what the code is doing.
-In R, any text that appears after the hash symbol '#' is called a 'comment.' R can't see this text, and won't try to run it as commands. Comments are useful for reminding your future self what you were aiming to do with a particular line of code, and what was or wasnt working.
+In R, any text that appears after the hash symbol '#' is called a 'comment.' R can't see this text, and won't try to run it as commands. Comments are useful for reminding your future self what you were aiming to do with a particular line of code, and what was or wasn't working.
 
 We will use comments extensively in this course.
 
@@ -64,8 +64,8 @@ Try writing your first comment in your R text file (top left panel)
 Executing commands, also called 'running code' is the process of submitting a command to your computer, which does some computation and returns an answer. There are a few ways to do this in RStudio. We can:  
 
 * select the line(s) of code using the mouse, and then click 'Run' at the top right corner of the R text file.
-* click anyware on the line of code and click 'Run
-* click anyware on the line of code and type Cmd + Return (mac), or Ctrl + Return (pc)
+* click anywhere on the line of code and click 'Run
+* click anywhere on the line of code and type Cmd + Return (mac), or Ctrl + Return (pc)
 
 We suggest the third option, which is fastest.
 
@@ -74,7 +74,7 @@ When you type in, and then run the commands shown in the grey boxes below, you s
 
 ## Simple maths in R
 
-We can use R as a caculator to do simple maths
+We can use R as a calculator to do simple maths
 ```{r}
 1 + 100 
 ```
@@ -109,10 +109,10 @@ To find out more about what a function in R does, add a '?' before the function 
 
 You will see the 'Help' pane at bottom right springs to life. These help documents give detailed explanations about the function, including how it is used, what input it requires, and, most importantly at the bottom **Examples**!  
 
-You can copy and paste these examples in to your R text file, select and then run them. You should see the output indended by the function authors.  
+You can copy and paste these examples in to your R text file, select and then run them. You should see the output intended by the function authors.  
 
-NB dont worry for now that the sqrt() example is quite complicated.
-NBB all R 'functions' are little programs that were written by other people. There are 1000s of functions available for R, which makes your life simpler because you dont have to program them all from scratch.
+NB don't worry for now that the sqrt() example is quite complicated.
+NBB all R 'functions' are little programs that were written by other people. There are 1000s of functions available for R, which makes your life simpler because you don't have to program them all from scratch.
 
 ## Variables
 
@@ -151,7 +151,7 @@ Can you work out what the * symbol is used for in R?
 
 ### A note on variables
 
-Variables are sometimes refered to as 'objects'. In R there are different conventions about how to name variables, but most importantly they:  
+Variables are sometimes referred to as 'objects'. In R there are different conventions about how to name variables, but most importantly they:  
 
 * cannot begin with a number
 * should begin with an alphabetical letter
@@ -173,7 +173,7 @@ R_at_WEHI <- 100
 
 ```
 
-For example, this code will work, but is not very intitive to humans:
+For example, this code will work, but is not very intuitive to humans:
 
 ```{r}
 
@@ -240,7 +240,7 @@ numeric_vector <- c(5,12,22)
 Character values are written in quotation marks, and character vectors are also constructed using c().
 
 ```{r}
-char_vector <- c('dog','cat','pidgeon')
+char_vector <- c('dog','cat','pigeon')
 
 ```
 
@@ -254,7 +254,7 @@ Nothing sensible. R will return an error.
 
 ### Logical vectors
 
-Finally we can create a vector of logical values. Note that for TRUE and FALSE (always in upper case), quotation marks aren't used.
+Finally we can create a vector of logical values. Note that for TRUE and FALSE (always in upper case), quotation marks aren't used. Here we create a vector of three logical values:
 
 
 ```{r}
@@ -357,7 +357,7 @@ head(mpg_df)
 
 The final concept we need to understand before starting to make plots in R, are **'data frames'**. The vectors we created above are a simple type of 'data structure'. Whereas vectors can be thought of as a 1-dimensional data structure (a sequence of values), data frames are a 2D data structure.  
 
-Data frames have both rows and columns. Each column is infact a vector, containing a single type of data. Data frames generally have column names, which we can treat in the same way as a variable.  
+Data frames have both rows and columns. Each column is in fact a vector, containing a single type of data. Data frames generally have column names, which we can treat in the same way as a variable.  
 
 For example, let's combine our three vectors into a data frame, using the data_frame() function:
 

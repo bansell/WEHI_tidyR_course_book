@@ -1,0 +1,175 @@
+
+# Week 4. Part 3 {-} 
+
+
+Now that we are happy with the code to analyse and visualize screening plate 1, it's time to make a few small tweaks to turn the analysis script into a loop.
+
+Remember to load the tidyverse package if you are starting in a fresh Rstudio session:
+```{r, message=FALSE,warning=FALSE}
+library(tidyverse)
+```
+
+
+## list.files()
+
+list.files() is used to check the names of all files in a particular folder. 
+In order to 'loop through' all five screening results files, we first need to store the file names in a variable.
+
+```{r}
+list.files('~/Desktop/WEHI_tidyR_course/screening_plates/')
+```
+
+list.files() returns a vector of character values corresponding to file names. To show only the .csv files, we can use `pattern = '.csv'`.  Let's assign this vector to a variable 'plate_files'
+
+```{r}
+plate_files <- list.files('~/Desktop/WEHI_tidyR_course/screening_plates/', pattern='.csv')
+```
+
+
+## Extract filenames {#extract-filenames}
+
+Downstream we want to write pdf files from ggsave(). Therefore we want to use the file names but not the '.csv' extension. Let's remove it using str_remove(). 
+The modified values can be assigned to 'plate_names'
+
+```{r}
+plate_names <- str_remove(plate_files, pattern = ".csv")
+```
+
+## Variable inputs & outputs
+
+After setting up the plate_names vector, it remains to use paste() in place of fixed file names, so that the input and output file names will change as the for loop progresses.
+
+Let's get a test for loop running, to paste '_test' after each filename:
+```{r}
+for(i in plate_names){
+
+    result_test <- paste(i, 'test', sep="_")
+  
+    print(result_test)
+  }
+```
+
+
+The inputs to this script that must vary are the raw data file names (PLATEx.csv).  
+The outputs that must vary are the filenames given to the ggsave(), and write_csv() commands. Remember that the input files and output files live in different sub-folders. For convenience these lines are reproduced below (no need to run this code):
+
+```{r, eval=FALSE}
+
+screen_plate <- read_csv('~/Desktop/WEHI_tidyR_course/screening_plates/PLATE1.csv')
+
+ggsave('~/Desktop/WEHI_tidyR_course/screening_results/plate_tileplot.pdf', width=6, height=3.5)
+
+write_csv(hits, path = '~/Desktop/WEHI_tidyR_course/screening_results/plate_hits.csv')
+```
+
+How can we use paste to allow the input and output file names to vary? To avoid overwriting the results files as the loop progresses, as for the input file name, each output file name must be produced by a paste() command that includes the variable 'i'.  
+
+We can write a for loop that creates a different input file name, and two respective output file names, for each value ('i') in the plate_names vector. 
+
+The three file names will be stored in variables 'in_file', 'out_plot' and 'out_table'.  
+Given that we want filenames without white space, we will set the paste(sep = ) command to `""`, i.e. no space.
+
+
+```{r}
+
+for(i in plate_names){
+  
+  in_file <- paste("~/Desktop/WEHI_tidyR_course/screening_plates/", i,'.csv', sep="")
+  
+  out_plot <- paste("~/Desktop/WEHI_tidyR_course/screening_results/", i,'_tileplot.pdf', sep="")
+  
+  out_table <- paste("~/Desktop/WEHI_tidyR_course/screening_results/", i,'_hits.csv', sep="")
+  
+  print (c(in_file, out_plot, out_table))
+  
+  
+  }
+
+```
+
+
+## Looping through plates
+
+Now it's simply a matter of 'wrapping' the existing analysis code within the curly brackets of the for loop, and replacing the file name code with the in_file, out_plot and out_table variables.  Note that the intermediate plots, and the code steps from Part 2 that don't create new variables, are omitted below.  
+
+You could create a new .R script called Week_4_analysis_loop.R, copy in the code below and fire away!
+
+
+
+```{r, message=FALSE,warning=FALSE}
+
+library(tidyverse)
+
+plate_files <- list.files('~/Desktop/WEHI_tidyR_course/screening_plates/', pattern='.csv')
+
+plate_names <- str_remove(plate_files, pattern = ".csv")
+
+for(i in plate_names){
+
+#set up the variable file names  
+  
+  in_file <- paste("~/Desktop/WEHI_tidyR_course/screening_plates/",   i,'.csv', sep="")
+  
+  out_plot <- paste("~/Desktop/WEHI_tidyR_course/screening_results/", i,'_tileplot.pdf', sep="")
+  
+  out_table <- paste("~/Desktop/WEHI_tidyR_course/screening_results/", i,'_hits.csv', sep="")
+  
+  
+
+#analysis code
+  
+screen_plate <- read_csv(in_file)
+
+
+plate_long <- screen_plate %>% 
+  pivot_longer(cols = starts_with('C'), names_to = 'COL', values_to = 'LUMIN')
+
+plate_long_num <- plate_long %>% 
+  mutate(ROW_num = str_remove(ROW,'R')) %>% mutate(ROW_num = as.numeric(ROW_num)) %>% 
+  mutate(COL_num = str_remove(COL,'C')) %>% mutate(COL_num = as.numeric(COL_num))
+
+plate_long_num %>% 
+  ggplot(aes(x=COL_num,y=ROW_num)) + 
+  geom_tile(aes(fill=LUMIN)) +
+  scale_fill_viridis_c() +
+  scale_y_reverse()
+
+#plot output
+ggsave(out_plot, width=6, height=3.5)
+
+
+plate_tagged <- plate_long_num %>% 
+  mutate(well_tag = case_when(COL_num %in% c(1,23,25,47) ~ 'posCTRL',
+                              COL_num %in% c(2,24,26,48) ~ 'negCTRL',
+                              TRUE ~ 'test'))
+
+neg_summ <- plate_tagged %>% 
+  filter(well_tag=='negCTRL') %>% 
+  summarize(mean_neg = mean(LUMIN),
+            sd_neg= sd(LUMIN))
+
+meanNeg <- neg_summ %>% pull(mean_neg)
+
+sdNeg <- neg_summ %>% pull(sd_neg)
+
+plate_zScores <- plate_tagged %>% 
+  filter(well_tag=='test') %>% 
+  mutate(z_score = (LUMIN - meanNeg) / sdNeg) 
+
+hits <- plate_zScores %>% filter(z_score < (-4) | z_score > 4)
+
+#table output
+write_csv(hits, path = out_table)
+
+}
+```
+
+
+
+
+You just processed 6400 experimental results in a couple of seconds `r emo::ji('popper')`. You can use the time you would have spent copying sheets and formulas in Excel to check the screening_results folder, and start planning the validation experiments for your potential anti-cancer compounds!
+
+
+
+
+

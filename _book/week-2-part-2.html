@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="subsetting-vectors.html"/>
+<link rel="prev" href="sub-setting-vectors.html"/>
 <link rel="next" href="manipulating-data-with-dplyr.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,6 +49,15 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162666902-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162666902-1');
+</script>
 
 
 <style type="text/css">
@@ -127,6 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-1-part-1.html"><a href="week-1-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
@@ -187,20 +197,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#solution"><i class="fa fa-check"></i><b>3.9</b> Solution</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-2-part-1.html"><a href="week-2-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
-<li class="chapter" data-level="4" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html"><i class="fa fa-check"></i><b>4</b> Subsetting vectors</a><ul>
-<li class="chapter" data-level="4.1" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>4.1</b> Subset by position</a></li>
-<li class="chapter" data-level="4.2" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#adding-names"><i class="fa fa-check"></i><b>4.2</b> Adding names</a></li>
-<li class="chapter" data-level="4.3" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#subset-by-condition"><i class="fa fa-check"></i><b>4.3</b> Subset by condition</a></li>
-<li class="chapter" data-level="4.4" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>4.4</b> Challenge</a></li>
-<li class="chapter" data-level="4.5" data-path="subsetting-vectors.html"><a href="subsetting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>4.5</b> Possible solutions</a></li>
+<li class="chapter" data-level="4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html"><i class="fa fa-check"></i><b>4</b> Sub-setting vectors</a><ul>
+<li class="chapter" data-level="4.1" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>4.1</b> Subset by position</a></li>
+<li class="chapter" data-level="4.2" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#adding-names"><i class="fa fa-check"></i><b>4.2</b> Adding names</a></li>
+<li class="chapter" data-level="4.3" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-condition"><i class="fa fa-check"></i><b>4.3</b> Subset by condition</a></li>
+<li class="chapter" data-level="4.4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>4.4</b> Challenge</a></li>
+<li class="chapter" data-level="4.5" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>4.5</b> Possible solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-2-part-2.html"><a href="week-2-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
 <li class="chapter" data-level="5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulating data with dplyr</a><ul>
 <li class="chapter" data-level="5.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>5.1</b> filter()</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#logical-operations"><i class="fa fa-check"></i><b>5.1.1</b> Logical operations</a></li>
 <li class="chapter" data-level="5.1.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#str_detect-helper-function"><i class="fa fa-check"></i><b>5.1.2</b> str_detect() helper function</a></li>
-<li class="chapter" data-level="5.1.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#is.na-helper"><i class="fa fa-check"></i><b>5.1.3</b> is.na() helper</a></li>
-<li class="chapter" data-level="5.1.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#complete.cases-helper"><i class="fa fa-check"></i><b>5.1.4</b> complete.cases() helper</a></li>
+<li class="chapter" data-level="5.1.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#in-helper"><i class="fa fa-check"></i><b>5.1.3</b> %in% helper</a></li>
+<li class="chapter" data-level="5.1.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#is.na-helper"><i class="fa fa-check"></i><b>5.1.4</b> is.na() helper</a></li>
+<li class="chapter" data-level="5.1.5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#complete.cases-helper"><i class="fa fa-check"></i><b>5.1.5</b> complete.cases() helper</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#select"><i class="fa fa-check"></i><b>5.2</b> select()</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#contains-helper-function"><i class="fa fa-check"></i><b>5.2.1</b> contains() helper function</a></li>
@@ -232,7 +243,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.10" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#challenges"><i class="fa fa-check"></i><b>5.10</b> Challenges</a></li>
 <li class="chapter" data-level="5.11" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#solutions"><i class="fa fa-check"></i><b>5.11</b> Solutions</a></li>
 <li class="chapter" data-level="5.12" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#summary"><i class="fa fa-check"></i><b>5.12</b> Summary</a></li>
-<li class="chapter" data-level="5.13" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#extra-resources"><i class="fa fa-check"></i><b>5.13</b> Extra resources</a></li>
+<li class="chapter" data-level="5.13" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#cheat-sheets"><i class="fa fa-check"></i><b>5.13</b> Cheat sheets!</a><ul>
+<li class="chapter" data-level="5.13.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#ggplot-example"><i class="fa fa-check"></i><b>5.13.1</b> ggplot example</a></li>
+<li class="chapter" data-level="5.13.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#dplyr-example"><i class="fa fa-check"></i><b>5.13.2</b> dplyr example</a></li>
+</ul></li>
+<li class="chapter" data-level="5.14" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#extra-resources"><i class="fa fa-check"></i><b>5.14</b> Extra resources</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-3.html"><a href="week-3.html"><i class="fa fa-check"></i>Week 3</a></li>
 <li class="chapter" data-level="6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html"><i class="fa fa-check"></i><b>6</b> Reading, tidying &amp; joining data</a><ul>
@@ -250,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate"><i class="fa fa-check"></i><b>6.3.1</b> separate()</a></li>
 <li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#str_split-unnest"><i class="fa fa-check"></i><b>6.3.2</b> str_split() %&gt;% unnest()</a></li>
 <li class="chapter" data-level="6.3.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#rename"><i class="fa fa-check"></i><b>6.3.3</b> rename()</a></li>
-<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite"><i class="fa fa-check"></i><b>6.3.4</b> unite()</a></li>
+<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite-unite"><i class="fa fa-check"></i><b>6.3.4</b> unite() {unite}</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#removing-variables"><i class="fa fa-check"></i><b>6.4</b> Removing variables</a></li>
 <li class="chapter" data-level="6.5" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>6.5</b> Joining dataframes</a><ul>
@@ -260,6 +275,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#solution-2"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
 <li class="chapter" data-level="6.8" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#summary-1"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="week-4-part-1.html"><a href="week-4-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
+<li class="chapter" data-level="7" data-path="automating-your-work.html"><a href="automating-your-work.html"><i class="fa fa-check"></i><b>7</b> Automating your work</a><ul>
+<li class="chapter" data-level="7.1" data-path="automating-your-work.html"><a href="automating-your-work.html#experimental-design"><i class="fa fa-check"></i><b>7.1</b> Experimental design</a></li>
+<li class="chapter" data-level="7.2" data-path="automating-your-work.html"><a href="automating-your-work.html#for-loops"><i class="fa fa-check"></i><b>7.2</b> For loops</a></li>
+<li class="chapter" data-level="7.3" data-path="automating-your-work.html"><a href="automating-your-work.html#paste"><i class="fa fa-check"></i><b>7.3</b> paste()</a></li>
+<li class="chapter" data-level="7.4" data-path="automating-your-work.html"><a href="automating-your-work.html#catching-loop-results"><i class="fa fa-check"></i><b>7.4</b> Catching loop results</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-vector"><i class="fa fa-check"></i><b>7.4.1</b> Catch in vector</a></li>
+<li class="chapter" data-level="7.4.2" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-data-frame"><i class="fa fa-check"></i><b>7.4.2</b> Catch in data frame</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-4-part-2.html"><a href="week-4-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a><ul>
+<li class="chapter" data-level="7.5" data-path="week-4-part-2.html"><a href="week-4-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
+<li class="chapter" data-level="7.6" data-path="week-4-part-2.html"><a href="week-4-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
+<li class="chapter" data-level="7.6.2" data-path="week-4-part-2.html"><a href="week-4-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="week-4-part-2.html"><a href="week-4-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="week-4-part-2.html"><a href="week-4-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="week-4-part-3.html"><a href="week-4-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a><ul>
+<li class="chapter" data-level="7.9" data-path="week-4-part-3.html"><a href="week-4-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
+<li class="chapter" data-level="7.10" data-path="week-4-part-3.html"><a href="week-4-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
+<li class="chapter" data-level="7.11" data-path="week-4-part-3.html"><a href="week-4-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
+<li class="chapter" data-level="7.12" data-path="week-4-part-3.html"><a href="week-4-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
+<li class="chapter" data-level="8" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>8</b> Factors</a></li>
 </ul>
 
       </nav>
@@ -285,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="subsetting-vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sub-setting-vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="manipulating-data-with-dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

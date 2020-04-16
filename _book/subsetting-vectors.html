@@ -49,6 +49,15 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162666902-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162666902-1');
+</script>
 
 
 <style type="text/css">
@@ -260,6 +269,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#solution-2"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
 <li class="chapter" data-level="6.8" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#summary-1"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="preface-1.html"><a href="preface-1.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="preface-1.html"><a href="preface-1.html#before-we-begin-1"><i class="fa fa-check"></i>Before we begin</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -283,6 +295,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This short chapter is intended to give you a basic understanding of the operations that R is performing when filtering and evaluating data using the functions introduced in Chapter 5. Note that it is not necessary to have the tidyverse package loaded to complete this chapter - we are using ‘base R’ functions.</p>
 <p>First create a new .R file, and save as ‘Week_2_tidyverse.R’ in your Desktop WEHI_tidyR_course folder.</p>
 <p><br></p>
+<div class="figure">
+<img src="https://wegotthiscovered.com/wp-content/uploads/the-beatles.jpg" alt="wegotthiscovered.com/wp-content/uploads/the-beatles.jpg" />
+<p class="caption">wegotthiscovered.com/wp-content/uploads/the-beatles.jpg</p>
+</div>
 <p>To start, we will create a vector named ‘beatles’ containing the years of birth of The Beatles:</p>
 <p>John Lennon: 1940, Ringo Starr: 1940, Paul McCartney: 1942 and George Harrison: 1943.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">beatles &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1940</span>,<span class="dv">1940</span>,<span class="dv">1942</span>,<span class="dv">1943</span>)</a></code></pre></div>

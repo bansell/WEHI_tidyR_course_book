@@ -1,15 +1,17 @@
 
 # Week 2. Part 1 {-}
 
-# Subsetting vectors
+# Sub-setting vectors
 
-A very common task in data wrangling is filtering or 'subsetting' down to a smaller set of potentially interesting values. 
+A very common task in data wrangling is filtering or 'sub-setting' down to a smaller set of potentially interesting values. 
 
 This short chapter is intended to give you a basic understanding of the operations that R is performing when filtering and evaluating data using the functions introduced in Chapter 5. Note that it is not necessary to have the tidyverse package loaded to complete this chapter - we are using 'base R' functions.
 
 First create a new .R file, and save as 'Week_2_tidyverse.R' in your Desktop WEHI_tidyR_course folder.
 
 <br>
+
+![wegotthiscovered.com/wp-content/uploads/the-beatles.jpg](https://wegotthiscovered.com/wp-content/uploads/the-beatles.jpg)
 
 To start, we will create a vector named 'beatles' containing the years of birth of The Beatles:  
 
@@ -58,7 +60,7 @@ beatles[-3]
 
 ## Subset by condition
 
-In addition to subsetting a vector by the position of values, we can 'pose questions' about the set of values to R, which will be returned with TRUE or FALSE answers. 
+In addition to sub-setting a vector by the position of values, we can 'pose questions' about the set of values to R, which will be returned with TRUE or FALSE answers. 
 
 'Which Beatles date of birth is 1940'? To code this we ask for values 'exactly equal to' 1940, using the *==* sign.
 
@@ -84,9 +86,9 @@ beatles[c(TRUE,FALSE,FALSE,TRUE)]
 
 Note that the only values returned are in the 'TRUE' positions, in this case the values at position 1 and 4.  
 
-We can see that the process of subsetting depends on the presence of 'TRUE' or 'FALSE' at each position along the vector.  
+We can see that the process of sub-setting depends on the presence of 'TRUE' or 'FALSE' at each position along the vector.  
 
-In most cases when subsetting data, we want the values themselves, rather than the TRUE/FALSE evaluations.  
+In most cases when sub-setting data, we want the values themselves, rather than the TRUE/FALSE evaluations.  
 Now that we know that i) conditional requests return TRUE/FALSE values, and ii) TRUE/FALSE values are the basis of sub-setting vectors, we can substitute the TRUE/FALSE vector in the brackets above for a conditional statement:
 
 ```{r}
@@ -108,7 +110,7 @@ To get an even more succinct answer, we could request only the names associated 
 names( beatles[ beatles != 1942] )
 ```
 
-You will use these types of conditional statments regularly in the next chapter.
+You will use these types of conditional statements regularly in the next chapter.
 
 
 ## Challenge

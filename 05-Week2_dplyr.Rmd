@@ -27,7 +27,7 @@ The filter() function subsets the rows in a data frame by testing against a cond
 ![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-filter.png)
 
 
-Let's filter the mpg_df data for cars manufacturered in the year 1999:
+Let's filter the mpg_df data for cars manufactured in the year 1999:
 
 ```{r}
 mpg_df %>% filter(year == 1999)
@@ -50,7 +50,7 @@ We can also filter on character data. For example, let's take all vehicles in th
 mpg_df %>% filter(class=='midsize')
 ```
 
-Can you filter mpg_df for all vehicles _except_ the hyundais?
+Can you filter mpg_df for all vehicles _except_ the Hyundais?
 
 ### Logical operations
 
@@ -61,14 +61,14 @@ We can achieve more specific filters by combining conditions across columns. For
 mpg_df %>% filter(year == 1999 & cty > 18)
 ```
 
-To see the entire output you can pipe the output from filter into a View() commmand
+To see the entire output you can pipe the output from filter into a View() command
 
 ```{r, eval=FALSE}
 mpg_df %>% filter(year==1999 & cty > 18) %>% View()
 ```
 
 #### | or
-Alternatively we might want to filter for vehicles (i.e., rows) where the manufacturer is chevrolet _or_ the class is 'suv'. This requires the "|" symbol (shift + \\)
+Alternatively we might want to filter for vehicles (i.e., rows) where the manufacturer is Chevrolet _or_ the class is 'suv'. This requires the "|" symbol (shift + \\)
 
 
 ```{r}
@@ -79,7 +79,7 @@ mpg_df %>% filter(manufacturer=='chevrolet' | class=='suv')
 
 To take it a step further we can combine & and | in the same filter command. Adding curved brackets will help to clarify the order of operations.
 
-Let's filter for the vehicles  where the manufacturer is chevrolet _or_ the class is 'suv', _and_ all vehicles with highway mileage less than 20.
+Let's filter for the vehicles  where the manufacturer is Chevrolet _or_ the class is 'suv', _and_ all vehicles with highway mileage less than 20.
 
 ```{r}
 mpg_df %>% filter( (manufacturer=='chevrolet' | class=='suv') & hwy < 20) 
@@ -101,6 +101,16 @@ mpg_df %>% filter(str_detect(model,'4wd'))
 Note that the letter order and case have to be matched exactly.  
 
 How would you filter for all vehicles with automatic transmission?
+
+### %in% helper
+
+When we are interested in a subset of rows that can contain several different values, instead of writing a long OR command, its useful to just give a vector of values of interest.  
+For example, to take the subset of the vehicles in mpg_df that have 4, 5, or 6 cylinders, we can specify `cyl %in% c(4,5,6)`
+
+```{r}
+mpg_df %>% filter(cyl %in% c(4,5,6))
+```
+
 
 ### is.na() helper
 
@@ -169,7 +179,7 @@ mpg_df %>% select(1,3, cty, hwy)
  
 ### contains() helper function
 
-contains() is a helper function used with select(), which is analagous to the str_detect() helper used with filter().
+contains() is a helper function used with select(), which is analogous to the str_detect() helper used with filter().
 
 To select only columns with names containing the letter 'y':
 ```{r}
@@ -180,7 +190,7 @@ contains() is also useful for selecting all column names featuring a certain cha
 
 ### starts_with() helper function
 
-start_with() and ends_with() offer more specificity for select(). If we want all columns begining with the letter 'c':
+start_with() and ends_with() offer more specificity for select(). If we want all columns beginning with the letter 'c':
 ```{r}
 mpg_df %>% select(starts_with('c'))
 ```
@@ -363,7 +373,7 @@ diamond_df %>% select(-x,-y,-z) %>%
 ```
 Remember that we need two closing brackets, one for the mutate() function, and one for the ifelse() inside it.  
 
-It seems that the ifelse() function has worked. All the rows we can see are price < 5000 and labeled 'cheap'. But how can we be sure?  
+It seems that the ifelse() function has worked. All the rows we can see are price < 5000 and labelled 'cheap'. But how can we be sure?  
 One option to check the new labels is to plot the price column as a histogram, and fill the bars according to price_label: 
 
 
@@ -387,7 +397,7 @@ This command takes multiple conditions and tests them in order. This is importan
 
 case_when() takes a conditional command in the same format as the first command in ifelse(), however only the action for the TRUE condition is given, separated with a tilde `~`.  
 The catch-all command for rows that do not satisfy any other conditions, is given  at the end.  
-Let's use case_when() to make a label for diamonds based on their clarity super-groups. For simplicy, we select only the clarity column as input. The current clarity categories are:   
+Let's use case_when() to make a label for diamonds based on their clarity super-groups. For simplicity, we select only the clarity column as input. The current clarity categories are:   
 
 IF: internally flawless    
 VVS1 and 2: very very slight impurity 1 and 2  
@@ -409,8 +419,8 @@ diamond_df %>%
 
 ```
 
-Note that both VS1 and VS2 diamonds are now taged as 'V_slight', and similarliy  VVS1 and VVS2 are taged as 'VV_slight'. Because we have captured all clarity categories within the list of conditions, we dont expect the catch-all output, "other", to be present in the clarity_group column. We could use ` %>% count(clarity_group)`, introduced below, to check for the presence of unintended values such as 'other' or NA.
-These super-groups could now be used for coloring or faceting data in a plot, or creating summary statistics (see below).
+Note that both VS1 and VS2 diamonds are now tagged as 'V_slight', and similarly  VVS1 and VVS2 are tagged as 'VV_slight'. Because we have captured all clarity categories within the list of conditions, we don't expect the catch-all output, "other", to be present in the clarity_group column. We could use ` %>% count(clarity_group)`, introduced below, to check for the presence of unintended values such as 'other' or NA.
+These super-groups could now be used for colouring or faceting data in a plot, or creating summary statistics (see below).
 
 
 
@@ -437,7 +447,7 @@ diamond_df %>% summarize(mean_price = mean(price))
 
 The output is the smallest possible dataframe: 1 row X 1 column.  
 
-We can create additional summary statistics by adding them in a comma-separated sequence. For example, to calculate the standard deviation, mininum and maximum values, we create three additional columns: "sd_price", "min_price", and "max_price"
+We can create additional summary statistics by adding them in a comma-separated sequence. For example, to calculate the standard deviation, minimum and maximum values, we create three additional columns: "sd_price", "min_price", and "max_price"
 
 
 ```{r}
@@ -462,7 +472,7 @@ diamond_df %>% summarize(mean_price = mean(price),
 
 ```
 
-So far so good, however this seems like quite a lot of code to get the simple summary statistics.  The power of this function is really amplified in conjuction with the group_by() helper.
+So far so good, however this seems like quite a lot of code to get the simple summary statistics.  The power of this function is really amplified in conjunction with the group_by() helper.
 
 ## group_by() helper
 
@@ -636,6 +646,69 @@ weight_z %>% ggplot(aes(x=z)) + geom_density(aes(col=cut))
 
 Now you have worked through the key verbs of dplyr, and the associated helper functions which, together, allow you to efficiently subset, transform and summarize your data.  
 Whereas the diamond_df and mpg_df dataframes we have worked with so far are self-contained, readily available within R and clean, in the next chapter we will learn to read in external datasets, join different datasets and clean data.
+
+
+## Cheat sheets!
+
+Most of the figures in this chapter are taken from the dplyr cheat sheet. You can pull up a number of cheat sheets by clicking e.g. Help >> Cheatsheets >> Data Visualization with ggplot2  
+
+These are fantastic resources compiled by RStudio contributors. You could print these and have them on hand during your R coding work. While these cheat sheets are packed with information, its not immediate obvious how to use them.
+
+### ggplot example
+
+Say you want to try out **geom_text()** from the 'Two Variables' family of geoms in page 1.
+The pictogram at left gives a simple example of the shape of this geom, in place of a text description.
+To test out this geom, we first have to create the variable 'e' in bold text. At the top of the panel there is a code snippet for creating e:
+```{r, eval=FALSE}
+e <- ggplot(mpg, aes(cty,hwy))
+```
+
+Next we can run the bold code and everything between the bold brackets for geom_text():  
+```{r, eval=FALSE}
+e + geom_text(aes(label = cty), nudge_x = 1, nudge_y = 1, check_overlap = TRUE)
+```
+
+After the bold brackets are a list of sub-commands (known as 'arguments') that can be modified for geom_text(). x, y, alpha and colour will be familiar to you from Week 1. There are many additional arguments we don't have space to cover, but which have example code in the ?geom_text() Help page.  
+
+Having created 'e', you can also test out geom_quantile(), geom_rug() etc.
+
+
+
+### dplyr example
+
+Now pull up the dplyr cheat sheet:  
+Help >> Cheatsheets >> Data Transformation with dplyr  
+<br>
+To take the example of **sample_n** in page 1 of the dplyr cheat sheet.
+
+There is a lot of text here, but it can be split up into three parts:  
+
+1) The bold text indicates the function name: **sample_n**. The text inside the bold brackets are the main sub-commands (known as 'arguments') that the function requires:  
+**sample_n(**tbl, size, replace = FALSE, weight = NULL, .env = parent.frame()**)**  
+The first argument is often tbl, .tbl or .data, referring to the input data frame. 
+The values (= FALSE, = NULL etc.) following each argument are the 'default' values - they will be set this way unless the user changes their value.  
+You will see the same argument structure at the top of the Help tab if you run ?sample_n() in RStudio.
+
+2) The normal font text briefly describes what the function does:
+'Randomly select size rows.' NB this doesn't really make sense in isolation but will become clearer.  
+
+3) The italic font text gives a toy example of working code for this function. If you run the italic code in R you should get a result. The iris, mpg and diamonds data sets come pre-packaged with R, and are ready for use despite not being displayed in the Environment pane. These are the most common data-sets used in the cheat sheets.  
+Note that in this book, the input data is given first, followed by a pipe %>% into a particular function. It is also possible (and more compact) to give the input dataframe as the first argument, which is how the cheat sheet examples are written.
+
+
+```{r, eval=FALSE}
+sample_n(iris, 10, replace = TRUE)
+
+#This can also be written as:
+iris %>% sample_n(10, replace = TRUE)
+```
+
+So based on the cheat sheet explanation, the more elaborate code for sample_n() would be:
+```{r, eval=FALSE}
+sample_n(tbl = iris, size = 10, replace = TRUE, weight = NULL, .env = NULL)
+```
+
+Finally, although the explanation in 2. is hard to understand, look for 'size' in the function argument names, and where that argument appears in the example code. It is set to 10, and the example code returns 10 rows. Given more space, the explanation might read: 'Randomly select a sample of rows from an input dataframe, of size (n rows) as specified in the `size = ` argument'. 
 
 
 

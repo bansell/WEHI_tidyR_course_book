@@ -19,7 +19,7 @@ library(tidyverse)
 
 The ggplot2 package is widely used and valued for its simple, consistent approach to making plots.
 
-The 'grammar' of graphics relates to different components of a plot that function like different parts of linguistic grammar. For example, all plots require axes, so the x and y axes form one part of the 'language' of a plot.  Similarly, all plots have data represented between the axes, often as points, lines or bars. The visual way that the data is  represented forms another component of the grammar of graphics. Furthermore, the colour, shape or size of points and lines can be used to encode additional information in the plot. This information is usually clarified in a key, or legend, which can also be considered part of this 'grammar'.
+The 'grammar' of graphics relates to the different components of a plot that function like different parts of linguistic grammar. For example, all plots require axes, so the x and y axes form one part of the 'language' of a plot.  Similarly, all plots have data represented between the axes, often as points, lines or bars. The visual way that the data is  represented forms another component of the grammar of graphics. Furthermore, the colour, shape or size of points and lines can be used to encode additional information in the plot. This information is usually clarified in a key, or legend, which can also be considered part of this 'grammar'.
 
 The most common components of a ggplot are
 
@@ -43,7 +43,7 @@ The philosophy of ggplot is much better explained by the package author, Hadley 
 
 ## Building a ggplot
 
-We are going to use the mpg_df data set created previously. If this is not visible in your environement pane, you can recreate it now:
+We are going to use the mpg_df data set created previously. If this is not visible in your environment pane, you can recreate it now:
 
 ```{r}
 mpg_df <- mpg
@@ -86,13 +86,13 @@ mpg_df %>% ggplot(aes(x = displ, y = cty))
 ```
 
 
-So far we have the gridlines for our x and y axis. ggplot knows the variables required for the plot, and thus the scale, but has no information about _how_ to display the data points.
+So far we have the grid lines for our x and y axis. ggplot knows the variables required for the plot, and thus the scale, but has no information about _how_ to display the data points.
 
 ## Geometric representations geom()
 
 Given we want a scatter plot, we need to specify that the geometric representation of the data will be in point form, using geom_point(). 
 
-Here we are adding a **layer** (hence the + sign) of points to the plot. We can think of this as similar to e.g. Adobe Photoshop which uses layers of images that can be reordred and modified individually.  
+Here we are adding a **layer** (hence the + sign) of points to the plot. We can think of this as similar to e.g. Adobe Photoshop which uses layers of images that can be reordered and modified individually.  
 
 For ggplot, each layer will be added over the plot according to its position in the code. 
 
@@ -128,7 +128,7 @@ mpg_df %>% ggplot(aes(x = displ, y = cty)) +
 
 So now we can see that the subcompact class (purple points) tends to have small engines and good city mileage, whereas the SUVs (pink points) have very low city mileage and larger engines.
 
-As commands get longer, we suggest to add carriage returns (new lines), which are best inserted after the %>% or + symbols.  
+As commands get longer, we suggest to add carriage returns (new lines), which must be inserted _after_ the %>% or + symbols.  
 In most cases, R is blind to white space and new lines, so this is simply to make our code more readable.
 
 
@@ -150,7 +150,7 @@ mpg_df %>% ggplot(aes(x = displ, y = cty)) +
 
 ```
 
-Note that the trend line is blocking out cetain points, because it is the 'top layer' of the plot. The geom layers that appear early in the command are drawn first, and can be obscured by the geom layers that come after them.
+Note that the trend line is blocking out certain points, because it is the 'top layer' of the plot. The geom layers that appear early in the command are drawn first, and can be obscured by the geom layers that come after them.
 
 What happens if you switch the order of the geom_point() and geom_smooth() functions above? What do you notice about the trend line?
 
@@ -174,7 +174,7 @@ Note that the aesthetics and geoms including the regression line that were speci
 
 ## Coordinate space
 
-ggplot will automatically pick the scale for each axis, and the type of coordinate space. Most plots are in cartesian (linear X vs linear Y) coordinate space.
+ggplot will automatically pick the scale for each axis, and the type of coordinate space. Most plots are in Cartesian (linear X vs linear Y) coordinate space.
 
 For the mpg_df plot, let's say we want the x and y origin to be set at 0. To do this we can add in xlim() and ylim() functions, which define the limits of the axes:
 
@@ -231,8 +231,6 @@ mpg_df %>% ggplot(aes(x = displ, y = cty)) +
 
 Finally, the overall appearance of the plot can be modified using theme() functions. The default theme has a grey background which maximizes contrast with other contrasts.  
 You may prefer a 'classic' theme, a black & white theme or even theme_void(). Try them out.  
-
-There [ggthemes package](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) has plenty of other options.
 
 
 ```{r}

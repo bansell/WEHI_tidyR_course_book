@@ -28,7 +28,7 @@ set.seed(1234) ; diamond_df <- diamond_df %>% sample_n(2500)
 
 ## Big(ger) Data: 54,000 diamonds 
 
-When ploting a small dataset such as mpg_df, its possible to visualize every individual data point. This is impractical for large datasets, where we run into the problem of 'overplotting'. We therefore need approaches for managing over-plotting. These include but aren't limited to:
+When plotting a small dataset such as mpg_df, its possible to visualize every individual data point. This is impractical for large datasets, where we run into the problem of 'over-plotting'. We therefore need approaches for managing over-plotting. These include but aren't limited to:
 
 * reducing density
 * summing, and
@@ -139,13 +139,13 @@ g + geom_bar()
 ```
 
 
-To add more information, we could count the clarity groups per cut group. Adding clarity into the aesthetic as the bar fill color will automatically calculate and display these sub-groups.
+To add more information, we could count the clarity groups per cut group. Adding clarity into the aesthetic as the bar fill colour will automatically calculate and display these sub-groups.
 ```{r}
 diamond_df %>% ggplot(aes(x = cut, fill=clarity)) + geom_bar()
   
 ```
 
-We can rearrange the clarity groups into adjascent (dodged) bars by specifying a different position within geom_bar(): 
+We can rearrange the clarity groups into adjacent (dodged) bars by specifying a different position within geom_bar(): 
 
 ```{r}
 diamond_df %>% ggplot(aes(x = cut, fill=clarity)) + geom_bar(position='dodge')
@@ -170,7 +170,7 @@ To increase the resolution of the histogram, lets specify 200 bins:
 ```{r}
 diamond_df %>% ggplot(aes(x=price)) + geom_histogram(bins=200)
 ```
-Here we can see an interesting lack of data around $1000. Let's zoom in using xlim, and add some fill color.
+Here we can see an interesting lack of data around $1000. Let's zoom in using xlim, and add some fill colour.
 
 ```{r}
 diamond_df %>% ggplot(aes(x = price)) +
@@ -197,8 +197,8 @@ diamond_df %>% ggplot(aes(x = price)) + geom_density(aes(colour =cut))
 img from: https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png  
 <br>
 
-Box plots, or 'box & wisker plots' are another essential tool for data analysis, which are related to histograms and density plots. Box plots summarize the distribution of a set of values by displaying the minimum and maximum values, the median (i.e. middle-ranked value), and the range of the middle 50% of values (interquartile range).   
-The wisker line extending above and below the IQR box define  Q3 + (1.5 x IQR), and Q1 - (1.5 x IQR) respectively. You can read more about box plots [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51).  
+Box plots, or 'box & whisker plots' are another essential tool for data analysis, which are related to histograms and density plots. Box plots summarize the distribution of a set of values by displaying the minimum and maximum values, the median (i.e. middle-ranked value), and the range of the middle 50% of values (inter-quartile range).   
+The whisker line extending above and below the IQR box define  Q3 + (1.5 x IQR), and Q1 - (1.5 x IQR) respectively. You can read more about box plots [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51).  
 
 
 To create box plot from our data we use (no prizes here) geom_boxplot()!
@@ -209,7 +209,7 @@ diamond_df %>% ggplot(aes(x=cut, y=price)) + geom_boxplot()
 <br>
 The points indicate outlier values [i.e., those greater than Q3 + (1.5 x IQR)].  
 
-We can overlay a boxplot on the scatterplot for the entire dataset, to fully communicate both the raw and summary data. 
+We can overlay a boxplot on the scatter plot for the entire dataset, to fully communicate both the raw and summary data. 
 Here we reduce the width of the jitter points slightly, and set the IQR box to be fully transparent using alpha.  
 Note that this setting also hides the outlier points in geom_boxplot.
 
@@ -245,8 +245,8 @@ diamond_df %>%
 In fact, a box plot displays very similar information to a density plot, rotated 90°. Violin plots, which reflect the sample density, can be used together with a box plot to convey even more detail about the distribution of a set of values.  
 
 Here we limit the width of geom_boxplot to sit within geom_violin.  
-Because both geoms will be coloured in the same way, we can give the color aesthetic directly to ggplot().  
-Similarly, because we  dont want the legend, we will remove it using the theme() function.
+Because both geoms will be coloured in the same way, we can give the colour aesthetic directly to ggplot().  
+Similarly, because we  don't want the legend, we will remove it using the theme() function.
 
 
 
@@ -309,15 +309,5 @@ diamond_df %>%
 
 ```
 
-
-<!-- ##### TBC -->
-
-<!-- geom_vline/hline/abline -->
-<!-- lwd lty -->
-<!-- geom_hex -->
-<!-- facet nrow ncol -->
-<!-- other aes: alpha size shape lty -->
-<!-- 45 degree axis labels -->
-<!-- no bar plots for for distributions! [ TRex article and plos comp biol article ] -->
 
 

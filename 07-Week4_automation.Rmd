@@ -1,0 +1,397 @@
+# Week 4. Part 1 {-}
+
+# Automating your work
+
+
+Now that we have covered plotting, manipulating and tidying data in R, in this session we will combine those aspects of data analysis with some very basic programming to _automate_ a series of repetitive tasks.
+
+In this session we will work with a series of results files from the WEHI drug screening facility, available [here](https://www.dropbox.com/sh/fjs8p9zgv8eo1ru/AABl9xFsnU_959LzU81PYVVla?dl=0). Please save the screening_plates folder into your Desktop folder named WEHI_tidyR_course.  
+
+<br>
+
+Next create and save a new .R file, 'Week_4_tidyverse.R' in your Desktop WEHI_tidyR_course folder.
+
+
+## Experimental design
+
+Cells from a cancer cell line are grown in 1536-well plates. Each test well contains a different potential anti-cancer compound. There are also positive and negative control wells in each plate. After 24 hours, a cell viability reagent is added and the luminescence in each well, corresponding to cell viability, is measured.    
+
+
+Our task is to identify the screening 'hits' in each plate by:    
+a) making a plot displaying cell viability per well, and   
+b) calculating simple statistics to identify significant deviations from control cell viability. 
+
+## For loops
+ 
+Before embarking on this task, let's get familiar with a little function called the '**for loop**'. This is a staple of computer programming in any language, and allows us to perform the same task on any number of input values or datasets, known as 'looping through inputs'. 
+
+The **for loop** in R has a special structure requiring both standard `()` and curly brackets `{}`. A vector of values _for_ which the repetitive function is performed, is given within standard brackets.  
+The job to perform on each dataset is given in curly brackets.    
+A single value in the input vector is referred to as **i**. The value stored in this 'i' variable changes as the function 'loops through' the vector.
+
+Furthermore, the result calculated within the curly brackets must be 'printed' out the console using the **print()** function.
+
+
+Let's make a very simple for loop to multiply a series of input values by 50.  
+
+First, we will get the code working for a single input: the number 3. This value, stored in 'i', will be multiplied by 50, and the result assigned to a variable. Then the result variable will be printed so that we can see the answer.
+
+```{r}
+i <- 3
+result <- i * 50
+print(result)
+```
+
+
+Now let's create a vector called 'loop_values' that contains several values to loop through.
+
+```{r}
+loop_values <- c(1,3,5,8,13)
+```
+
+Finally we write the for loop
+```{r}
+for( i in loop_values){ 
+  result <- i * 50
+  print(result)}
+```
+
+Take a look at the value of i in your Environment pane. It now contains 13, not 3. This is because the for loop has run to completion, and so i contains the last value in the loop_values vector.  
+
+
+
+Around 1 minute into [this clip](https://youtu.be/k0xgjUhEG3U) Sheldon uses a similar loop function (not strictly a for loop) to identify a mutually agreeable activity to pursue with a new friend, Kripke. He is 'iterating' over a set of inputs `(Kripke's interests)` and calculating `{if he wants to participate}`.  
+
+
+
+## paste()
+
+
+OK now before we get sucked into a youtube vortex let's cover a second function that's very handy for automating tasks. paste() is used to combine values into a single value, in a similar fashion to [unite()](#unite) from Week 3.  
+paste() is not part of the tidyverse, but is often used to create variable names and values. This function requires two values, separated by a comma. By default the output value will contain a space separating the input values, however users can choose a different separator using the `sep =` command.
+
+To state Kripke's interests, we can paste two character values together to form a sentence :
+
+
+```{r}
+paste('Kripke prefers', 'horseriding')
+```
+
+paste() is more useful in the context of a for loop, where it can add context to the results by adding a fixed value (usually text) to a variable.
+
+Here we create a vector of Kripke's interests, and loop through them using paste(), to produce multiple sentences.
+
+```{r}
+
+interests <- c('horseriding','swimming','ventriloquism')
+
+for(i in interests){
+  
+  result <- paste('Kripke prefers', i)
+  
+  print(result)
+} 
+
+```
+
+
+
+## Catching loop results
+
+Although not required for this session, readers will eventually want to store the results of a for loop together in  a single variable. Beginners can skip down to Part 2, but for completeness, here we will look at two ways to 'catch' all results from a for loop.  
+
+### Catch in vector  
+  
+In order to catch results as a vector, we first need to set up an empty variable. As the loop progresses, this variable should accumulate the values resulting from each step.  
+
+To create an empty vector, we use the function vector()
+
+```{r}
+loop_output_v <- vector()
+```
+
+To make it clearer, the result generated by each step of the loop (a single-value vector), is now assigned to a variable named 'step_result_v'.  
+The trick is to concatenate each step result to the loop output vector, using c(). Crucially, at each step, loop_output_v is being _overwritten_ to contain both itself, and one additional value: the step_result_v.
+
+```{r}
+
+loop_output_v <- vector()
+
+for(i in interests){
+  
+  step_result_v <- paste('Kripke prefers', i)
+  
+  #retain the print() command to check that the loop is working
+  print(step_result_v)
+  
+  #overwrite loop_output_v to contain itself and one extra value
+  loop_output_v <- c(loop_output_v, step_result_v) 
+} 
+
+```
+
+We can now check the contents of the output
+
+```{r}
+loop_output_v
+```
+
+
+
+### Catch in data frame
+
+Alternatively, its possible to catch the loop output as a data frame. The main differences are that the step_result must be assigned into a dataframe rather than a vector, and we use bind_rows() instead of c(), to add rows to the output.
+
+
+First load the tidyverse:
+```{r, message=FALSE,warning=FALSE}
+library(tidyverse)
+```
+
+Then create an empty data frame:
+```{r, message=FALSE,warning=FALSE}
+loop_output_df <- data_frame()
+
+```
+
+Now write a loop which includes a step to create a 1x1 dataframe, using the data_frame() function. This dataframe stores step_result_v as a row in the column.
+
+The 1 x 1 dataframe is then appended or 'bound' to the loop_output_df using bind_rows().
+```{r,results='hide'}
+
+for(i in interests){
+  
+  #same as above
+  step_result_v <- paste('Kripke prefers', i) 
+  
+  #make 1 column x 1-row dataframe: 
+  #  The column name is 'sentence' 
+  #  The row contains the text in step_result_v
+  step_result_df <- data_frame('sentence' = step_result_v) 
+  
+  #check that each step is working
+  print(step_result_df)
+  
+  #overwrite the output dataframe with itself, and the extra row
+  loop_output_df <- bind_rows(loop_output_df, step_result_df)
+} 
+
+
+```
+
+Readers trying to achieve more complex loop function results with dataframes can check out the [map functions](https://r4ds.had.co.nz/iteration.html#the-map-functions) in R for Data Science.
+
+ 
+# Week 4. Part 2 {-} 
+
+## Analyse Plate 1
+
+With the skills for automation in hand, we will now analyse the first plate from the screening assay.  
+We aim to identify the screening 'hits' using both data visualization and statistics.
+
+First we load the tidyverse library and read the raw data (in .csv format) into a variable called 'screen_plate'
+
+```{r,message=FALSE,warning=FALSE}
+
+library(tidyverse)
+
+screen_plate <- read_csv('~/Desktop/WEHI_tidyR_course/screening_plates/PLATE1.csv')
+
+```
+
+We can check the dimensions of the data frame using dim(), and read the first 6 rows using head()
+```{r}
+screen_plate %>% dim()
+
+screen_plate %>% head()
+```
+
+So we have  a 32-row x 49-column data frame, and using head() we can see that all except the first column are numeric data (you should double-check this using the str() command, which reveals the type of data in each column).  
+The column names are designated C1, C2, C3 etc, and row identifier column ROW contains R1, R2, R3 etc.
+
+## Plotting the data
+
+Its good practice to look at your entire dataset rather than just relying on statistical summaries. Data visualization will reveal things about your data that basic summary statistics will not. For a nice exposition of this idea, see this [dinasaur-related blog post](https://www.autodeskresearch.com/publications/samestats).  
+
+
+![https://fluotics.com/wp-content/uploads/2018/12/1536-plate-2.jpg](https://fluotics.com/wp-content/uploads/2018/12/1536-plate-2.jpg)
+
+Given that the 1536-well plate is a grid, we want to make a plot that retains the 2-dimensional features of the plate, showing the relative location of each well.  
+
+The ggplot geom_tile() is the best solution for doing this. Let's grab the example code from the help page
+```{r}
+?geom_tile()
+
+#Copy and paste the code to make a toy data frame
+df <- data.frame(
+  x = rep(c(2, 5, 7, 9, 12), 2),
+  y = rep(c(1, 2), each = 5),
+  z = factor(rep(1:5, each = 2)),
+  w = rep(diff(c(0, 4, 6, 8, 10, 14)), 2)
+)
+
+#Run the 2nd example
+ggplot(df, aes(x, y, width = w)) +
+  geom_tile(aes(fill = z), colour = "grey50")
+```
+
+For screen_plate, we want the ROW ID of the dataframe represented on the y axis, and the columns along the x axis. The raw luminescence values will be used as the colour fill for each tile (as for column 'z' above). Therefore we need a dataframe with only 3 columns: corresponding to the x, y, and fill aesthetics. To achieve this we need to reshape the dataframe.
+
+Let's use pivot_longer() to create a long-format version of the data ("plate_long"). We keep the ROW column as is, and create two new columns: containing the current column IDs ('COL'), and the respective luminescence values ('LUMIN'). 
+
+```{r}
+plate_long <- screen_plate %>% 
+  pivot_longer(cols = starts_with('C'), names_to = 'COL', values_to = 'LUMIN')
+```
+
+
+Now we can  make the first plot
+```{r}
+plate_long %>% ggplot(aes(x=COL,y=ROW)) + geom_tile(aes(fill=LUMIN))
+```
+
+
+The structure in the data is clear, but the rows and columns are all jumbled. This is because they are currently character data, and would work better as integers (numeric data).
+
+### str_remove() helper
+
+To convert the ROW and COL data to numeric, its easiest to remove the letters from the data using str_remove().
+str_remove() requires first the column name to modify, and the 'pattern' (in our case the letter) to remove.
+
+This function, and other str_ family functions, are often used inside mutate() to create a new column containing the resulting data. However, they can be used to modify a vector of text values, as you will see later in the [extract filenames](#extract-filenames) section.
+
+```{r}
+plate_long %>% mutate(ROW_num = str_remove(ROW,'R'))
+```
+
+### as.numeric() helper
+
+ROW_num is still character data! We need to run a second mutate with as.numeric() to convert ROW_num into numeric data:
+
+```{r}
+plate_long %>% 
+  mutate(ROW_num = str_remove(ROW,'R')) %>% 
+  mutate(ROW_num = as.numeric(ROW_num))
+  
+```
+
+We now add two more mutate commands to achieve the same result for the COL IDs, and assign the results to plate_long_num
+```{r}
+plate_long_num <- plate_long %>% 
+  mutate(ROW_num = str_remove(ROW,'R')) %>% mutate(ROW_num = as.numeric(ROW_num)) %>% 
+  mutate(COL_num = str_remove(COL,'C')) %>% mutate(COL_num = as.numeric(COL_num))
+```
+
+
+Now let's run ggplot using the ROW_num and COl_num columns:
+```{r}
+plate_long_num %>% 
+   ggplot(aes(x=COL_num,y=ROW_num)) + geom_tile(aes(fill=LUMIN))
+```
+This is looking better. Finally for this plot we can use two scaling commands to  
+a) change the fill colours a colour-blind-friendly palette that accentuates the high and low values: `scale_fill_viridis_c()`,  
+b) and reverse the y axis to mimic the plate coordinates: `scale_y_reverse()`
+
+```{r}
+plate_long_num %>% 
+  ggplot(aes(x=COL_num,y=ROW_num)) + 
+  geom_tile(aes(fill=LUMIN)) +
+  scale_fill_viridis_c() +
+  scale_y_reverse()
+  
+```
+
+Now please create a new folder within WEHI_tidyR_course/ for the analysis results, called 'screening_results'. Let's save the current plot into the new folder using ggsave()
+
+```{r}
+
+ggsave('~/Desktop/WEHI_tidyR_course/screening_results/plate_tileplot.pdf', 
+       width=6, height=3.5)
+```
+
+## Statistical summary
+
+We can now see there are four entire columns of very low luminescence in screen_plate, corresponding to dead cells. These are the positive controls in columns 1,23,25 and 47. There are also four negative control columns (DMSO-treated cells) at positions 2, 24, 26 and 48. These should be happy and healthy.  
+
+Our task is to identify wells with luminescence values > 4 standard deviations from the mean (defined by negative controls), corresponding to a p value < 0.01.   
+
+To find these we should first label the columns in the long-format dataframe as 'test', 'posCTRL' or 'negCTRL'. Here we use case_when() and the %in% helper to create a column of labels named 'well_tag':
+
+```{r}
+plate_long_num %>% 
+  mutate(well_tag = case_when(COL_num %in% c(1,23,25,47) ~ 'posCTRL',
+                              COL_num %in% c(2,24,26,48) ~ 'negCTRL',
+                              TRUE ~ 'test'))
+```
+
+Let's store the new data_frame as plate_tagged, and count the number of each type of well.
+
+```{r}
+plate_tagged <- plate_long_num %>% 
+  mutate(well_tag = case_when(COL_num %in% c(1,23,25,47) ~ 'posCTRL',
+                              COL_num %in% c(2,24,26,48) ~ 'negCTRL',
+                              TRUE ~ 'test'))
+
+plate_tagged %>% count(well_tag)
+```
+
+
+Now we calculate the mean and standard deviation for the negative control wells only, and assign this summary to 'neg_summ'
+
+```{r}
+neg_summ <- plate_tagged %>% 
+  filter(well_tag=='negCTRL') %>% 
+  summarize(mean_neg = mean(LUMIN),
+            sd_neg= sd(LUMIN))
+```
+
+
+
+### pull() 
+
+For a single round of analysis, we might copy these statistics directly into an equation. However here we want the entire analysis to be repeatable on different input datasets, and so can't have any 'hard-coded' numeric values.
+
+To allow the mean and sd to have different values according to the input data, they have to be stored in variables which are then used in a z-score calculation. We need to extract each into a single-value vector.
+The pull() function is a handy way to 'pull' the values in a dataframe column out into a vector.
+
+```{r}
+meanNeg <- neg_summ %>% pull(mean_neg)
+
+sdNeg <- neg_summ %>% pull(sd_neg)
+```
+
+
+## Identify hits
+
+Now let's use the single values calculated for the mean and standard deviation of negative control wells in a mutate() command and calculate the z score for each well
+```{r}
+
+plate_tagged %>% filter(well_tag=='test') %>% 
+  mutate(z_score = (LUMIN - meanNeg) / sdNeg) 
+
+```
+
+
+We can store the result in a data frame 'plate_zScores', and make a quick density plot of the z scores to check the distribution (it should be normal and centred on 0)
+
+```{r}
+plate_zScores <- plate_tagged %>% 
+  filter(well_tag=='test') %>% 
+  mutate(z_score = (LUMIN - meanNeg) / sdNeg) 
+
+```
+
+
+Lastly we will create a results table called 'hits' for the wells with z scores < -4. These are the wells where the cells are dead or dying. There may also be wells where cells are growing _better_ than controls (z > 4). We will not consider those wells here.
+
+```{r}
+#use < (-4) to avoid typing the assignment operator
+hits <- plate_zScores %>% filter(z_score < (-4) )
+```
+
+And use write_csv() to save it in the to the screening_results folder:
+
+```{r}
+write_csv(hits, path = '~/Desktop/WEHI_tidyR_course/screening_results/plate_hits.csv')
+```
+

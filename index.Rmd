@@ -3,13 +3,16 @@ title: "Introduction to R - tidyverse"
 author: "Brendan R. E. Ansell @ansellbr3"
 site: bookdown::bookdown_site
 output:
-  bookdown::gitbook: default
+  bookdown::gitbook:
+    includes:
+      in_header: GA_script.html
 ---
 
 
 # Preface {-}
 
-This document contains the material covered in the **Introduction to R (tidyverse) course** taught at the Walter and Eliza Hall Institute of Medical Research. The course is taught to biomedical scientists, but the material and the teaching examples are very broad. Skills taught in this workshop can be applied to many disciplines in academia and industry.    
+This document contains the material covered in the **Introduction to R (tidyverse) course** taught at the Walter and Eliza Hall Institute of Medical Research. The course is taught to biomedical scientists, but the material and the teaching examples are very broad. Skills taught in this workshop can be applied to many disciplines in academia and industry.  
+There is no assumed knowledge of R or other computer languages - we start from scratch.  
 
 Chapters 1 through 5 make use of popular (non-biological) teaching data sets available through R. Chapters 6 onwards introduce some types biological data.  
 <br>
@@ -18,12 +21,22 @@ This material is designed to be taught in a workshop setting over consecutive we
   
 The majority of this material is inspired by / modified from from the excellent book [**R for Data Science**](https://r4ds.had.co.nz) by Hadley Wickham & Garrett Grolemund.
 
-I thank WEHI for suppoprting this initiative, and the Melbourne University Research Platforms Unit, Prof Melanie Bahlo, A/Prof Marnie Blewitt, A/Prof Anne Voss, Dr Luke Gandolfo, Dr Saskia Freytag, Stuart Lee and Jacob Munro who helped with discussion and development of this material.
+I thank WEHI for supporting this initiative, and the Melbourne University Research Platforms Unit, Prof. Melanie Bahlo, A/Prof. Marnie Blewitt, A/Prof. Anne Voss, Dr Luke Gandolfo, Dr Saskia Freytag, Stuart Lee, Shian Su and Jacob Munro who helped with discussion and development of this material. Thanks also to Kerry Ko and all of the tutors who have helped to organise, teach and promote the course.
 
+
+## How to use this book {-}
+
+
+
+To get the most out of this book, I encourage beginners to get your hands dirty with the actual work of coding in R. To do this its best to open a .R text file in RStudio (introduced in chapter 1) and type the code, presented in this book `in grey boxes`, directly into your text file.  
+This 'learning by doing' is vastly more effective than just copying and pasting the code blocks.    
+Furthermore, once you get more comfortable with coding in R, you can try to play around with the code (aka 'reverse engineer') to see what works, and whether you can fix it when it breaks. Remember you can always revert to the working code examples.   
+
+Its normal to hit hurdles and experience frustration when learning a new language, which is essentially what you are doing here. WEHI staff and students who have run into R problems are encouraged to attend the **R hacky hour** drop-in sessions on Thursdays fortnightly in the tearoom, and all readers can get help through online resources listed in the text.  
+I hope that the satisfaction of improving your skills, and the efficiencies you will gain in your work, will make persevering with R both worthwhile and enjoyable.  
 
 ## Before we begin {-}
 
 In order to use R interactively and easily, participants will need to [install R ](https://cloud.r-project.org) and then [download the **RStudio** software](https://rstudio.com/products/rstudio/download/). More detailed instructions are available [here](https://r4ds.had.co.nz/introduction.html#prerequisites).
-
 
 
