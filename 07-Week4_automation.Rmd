@@ -64,7 +64,7 @@ Around 1 minute into [this clip](https://youtu.be/k0xgjUhEG3U) Sheldon uses a si
 
 
 
-## paste()
+## paste(){#paste}
 
 
 OK now before we get sucked into a youtube vortex let's cover a second function that's very handy for automating tasks. paste() is used to combine values into a single value, in a similar fashion to [unite()](#unite) from Week 3.  

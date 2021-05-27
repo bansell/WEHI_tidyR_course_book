@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Sub-setting vectors | Introduction to R - tidyverse</title>
   <meta name="description" content="4 Sub-setting vectors | Introduction to R - tidyverse" />
-  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Sub-setting vectors | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 <link rel="prev" href="week-2-part-1.html"/>
 <link rel="next" href="week-2-part-2.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162666902-1"></script>
 <script>
@@ -60,26 +63,29 @@
 </script>
 
 
+
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -88,9 +94,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -123,6 +129,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -135,12 +142,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-1-part-1.html"><a href="week-1-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
-<li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a><ul>
+<li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-look-around-rstudio"><i class="fa fa-check"></i><b>1.1</b> A look around RStudio</a></li>
 <li class="chapter" data-level="1.2" data-path="welcome-to-r.html"><a href="welcome-to-r.html#console-pane"><i class="fa fa-check"></i><b>1.2</b> Console Pane</a></li>
 <li class="chapter" data-level="1.3" data-path="welcome-to-r.html"><a href="welcome-to-r.html#environmenthistory-pane"><i class="fa fa-check"></i><b>1.3</b> Environment/History Pane</a></li>
@@ -150,28 +159,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="welcome-to-r.html"><a href="welcome-to-r.html#executing-commands"><i class="fa fa-check"></i><b>1.7</b> Executing commands</a></li>
 <li class="chapter" data-level="1.8" data-path="welcome-to-r.html"><a href="welcome-to-r.html#simple-maths-in-r"><i class="fa fa-check"></i><b>1.8</b> Simple maths in R</a></li>
 <li class="chapter" data-level="1.9" data-path="welcome-to-r.html"><a href="welcome-to-r.html#help"><i class="fa fa-check"></i><b>1.9</b> Help!!</a></li>
-<li class="chapter" data-level="1.10" data-path="welcome-to-r.html"><a href="welcome-to-r.html#variables"><i class="fa fa-check"></i><b>1.10</b> Variables</a><ul>
+<li class="chapter" data-level="1.10" data-path="welcome-to-r.html"><a href="welcome-to-r.html#variables"><i class="fa fa-check"></i><b>1.10</b> Variables</a>
+<ul>
 <li class="chapter" data-level="1.10.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-note-on-variables"><i class="fa fa-check"></i><b>1.10.1</b> A note on variables</a></li>
 </ul></li>
-<li class="chapter" data-level="1.11" data-path="welcome-to-r.html"><a href="welcome-to-r.html#vectors"><i class="fa fa-check"></i><b>1.11</b> Vectors</a><ul>
+<li class="chapter" data-level="1.11" data-path="welcome-to-r.html"><a href="welcome-to-r.html#vectors"><i class="fa fa-check"></i><b>1.11</b> Vectors</a>
+<ul>
 <li class="chapter" data-level="1.11.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#creating-numeric-vectors"><i class="fa fa-check"></i><b>1.11.1</b> Creating numeric vectors</a></li>
 <li class="chapter" data-level="1.11.2" data-path="welcome-to-r.html"><a href="welcome-to-r.html#character-vectors"><i class="fa fa-check"></i><b>1.11.2</b> Character vectors</a></li>
 <li class="chapter" data-level="1.11.3" data-path="welcome-to-r.html"><a href="welcome-to-r.html#logical-vectors"><i class="fa fa-check"></i><b>1.11.3</b> Logical vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="1.12" data-path="welcome-to-r.html"><a href="welcome-to-r.html#packages"><i class="fa fa-check"></i><b>1.12</b> Packages</a><ul>
+<li class="chapter" data-level="1.12" data-path="welcome-to-r.html"><a href="welcome-to-r.html#packages"><i class="fa fa-check"></i><b>1.12</b> Packages</a>
+<ul>
 <li class="chapter" data-level="1.12.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#installing-packages"><i class="fa fa-check"></i><b>1.12.1</b> Installing packages</a></li>
 </ul></li>
 <li class="chapter" data-level="1.13" data-path="welcome-to-r.html"><a href="welcome-to-r.html#the-pipe"><i class="fa fa-check"></i><b>1.13</b> The pipe %&gt;%</a></li>
 <li class="chapter" data-level="1.14" data-path="welcome-to-r.html"><a href="welcome-to-r.html#data-frames"><i class="fa fa-check"></i><b>1.14</b> Data frames</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-1-part-2.html"><a href="week-1-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
-<li class="chapter" data-level="2" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html"><i class="fa fa-check"></i><b>2</b> Making beautiful plots</a><ul>
+<li class="chapter" data-level="2" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html"><i class="fa fa-check"></i><b>2</b> Making beautiful plots</a>
+<ul>
 <li class="chapter" data-level="" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#introductory-information"><i class="fa fa-check"></i>Introductory information</a></li>
 <li class="chapter" data-level="" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#ggplot2.-a-grammar-of-graphics"><i class="fa fa-check"></i>ggplot2. A grammar of graphics</a></li>
 <li class="chapter" data-level="2.1" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#building-a-ggplot"><i class="fa fa-check"></i><b>2.1</b> Building a ggplot</a></li>
 <li class="chapter" data-level="2.2" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#plot-background"><i class="fa fa-check"></i><b>2.2</b> Plot background</a></li>
 <li class="chapter" data-level="2.3" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#aesthetics-aes"><i class="fa fa-check"></i><b>2.3</b> Aesthetics aes()</a></li>
-<li class="chapter" data-level="2.4" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#geometric-representations-geom"><i class="fa fa-check"></i><b>2.4</b> Geometric representations geom()</a><ul>
+<li class="chapter" data-level="2.4" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#geometric-representations-geom"><i class="fa fa-check"></i><b>2.4</b> Geometric representations geom()</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#a-note-about-and"><i class="fa fa-check"></i><b>2.4.1</b> A note about %&gt;% and +</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#adding-colour"><i class="fa fa-check"></i><b>2.5</b> Adding colour</a></li>
@@ -182,11 +196,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#themes"><i class="fa fa-check"></i><b>2.10</b> Themes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-1-part-3.html"><a href="week-1-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
-<li class="chapter" data-level="3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html"><i class="fa fa-check"></i><b>3</b> Making <em>more</em> beautiful plots</a><ul>
+<li class="chapter" data-level="3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html"><i class="fa fa-check"></i><b>3</b> Making <em>more</em> beautiful plots</a>
+<ul>
 <li class="chapter" data-level="" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#introductory-information-1"><i class="fa fa-check"></i>Introductory information</a></li>
 <li class="chapter" data-level="3.1" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#bigger-data-54000-diamonds"><i class="fa fa-check"></i><b>3.1</b> Big(ger) Data: 54,000 diamonds</a></li>
 <li class="chapter" data-level="3.2" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#geom_jitter"><i class="fa fa-check"></i><b>3.2</b> geom_jitter()</a></li>
-<li class="chapter" data-level="3.3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#summary-plots"><i class="fa fa-check"></i><b>3.3</b> Summary plots</a><ul>
+<li class="chapter" data-level="3.3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#summary-plots"><i class="fa fa-check"></i><b>3.3</b> Summary plots</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#free-examples"><i class="fa fa-check"></i><b>3.3.1</b> Free examples!</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#histograms"><i class="fa fa-check"></i><b>3.4</b> Histograms</a></li>
@@ -197,7 +213,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#solution"><i class="fa fa-check"></i><b>3.9</b> Solution</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-2-part-1.html"><a href="week-2-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
-<li class="chapter" data-level="4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html"><i class="fa fa-check"></i><b>4</b> Sub-setting vectors</a><ul>
+<li class="chapter" data-level="4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html"><i class="fa fa-check"></i><b>4</b> Sub-setting vectors</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>4.1</b> Subset by position</a></li>
 <li class="chapter" data-level="4.2" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#adding-names"><i class="fa fa-check"></i><b>4.2</b> Adding names</a></li>
 <li class="chapter" data-level="4.3" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-condition"><i class="fa fa-check"></i><b>4.3</b> Subset by condition</a></li>
@@ -205,35 +222,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>4.5</b> Possible solutions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-2-part-2.html"><a href="week-2-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
-<li class="chapter" data-level="5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulating data with dplyr</a><ul>
-<li class="chapter" data-level="5.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>5.1</b> filter()</a><ul>
+<li class="chapter" data-level="5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulating data with dplyr</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>5.1</b> filter()</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#logical-operations"><i class="fa fa-check"></i><b>5.1.1</b> Logical operations</a></li>
 <li class="chapter" data-level="5.1.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#str_detect-helper-function"><i class="fa fa-check"></i><b>5.1.2</b> str_detect() helper function</a></li>
 <li class="chapter" data-level="5.1.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#in-helper"><i class="fa fa-check"></i><b>5.1.3</b> %in% helper</a></li>
 <li class="chapter" data-level="5.1.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#is.na-helper"><i class="fa fa-check"></i><b>5.1.4</b> is.na() helper</a></li>
 <li class="chapter" data-level="5.1.5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#complete.cases-helper"><i class="fa fa-check"></i><b>5.1.5</b> complete.cases() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#select"><i class="fa fa-check"></i><b>5.2</b> select()</a><ul>
+<li class="chapter" data-level="5.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#select"><i class="fa fa-check"></i><b>5.2</b> select()</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#contains-helper-function"><i class="fa fa-check"></i><b>5.2.1</b> contains() helper function</a></li>
 <li class="chapter" data-level="5.2.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#starts_with-helper-function"><i class="fa fa-check"></i><b>5.2.2</b> starts_with() helper function</a></li>
 <li class="chapter" data-level="5.2.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#everything-helper-function"><i class="fa fa-check"></i><b>5.2.3</b> everything() helper function</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#arrange"><i class="fa fa-check"></i><b>5.3</b> arrange()</a><ul>
+<li class="chapter" data-level="5.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#arrange"><i class="fa fa-check"></i><b>5.3</b> arrange()</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#desc-helper-function"><i class="fa fa-check"></i><b>5.3.1</b> desc() helper function</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#chaining-dplyr-functions"><i class="fa fa-check"></i><b>5.4</b> Chaining dplyr functions</a></li>
 <li class="chapter" data-level="5.5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#writing-data-to-a-file"><i class="fa fa-check"></i><b>5.5</b> Writing data to a file</a></li>
 <li class="chapter" data-level="5.6" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#chaining-dplyr-and-ggplot"><i class="fa fa-check"></i><b>5.6</b> Chaining dplyr and ggplot</a></li>
-<li class="chapter" data-level="5.7" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#mutate"><i class="fa fa-check"></i><b>5.7</b> mutate()</a><ul>
+<li class="chapter" data-level="5.7" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#mutate"><i class="fa fa-check"></i><b>5.7</b> mutate()</a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#challenge-2"><i class="fa fa-check"></i><b>5.7.1</b> Challenge</a></li>
 <li class="chapter" data-level="5.7.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#solution-1"><i class="fa fa-check"></i><b>5.7.2</b> Solution</a></li>
 <li class="chapter" data-level="5.7.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#ifelse-helper"><i class="fa fa-check"></i><b>5.7.3</b> ifelse() helper</a></li>
 <li class="chapter" data-level="5.7.4" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#case_when-helper"><i class="fa fa-check"></i><b>5.7.4</b> case_when() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#summarize"><i class="fa fa-check"></i><b>5.8</b> summarize()</a><ul>
+<li class="chapter" data-level="5.8" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#summarize"><i class="fa fa-check"></i><b>5.8</b> summarize()</a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#n-helper"><i class="fa fa-check"></i><b>5.8.1</b> n() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-helper"><i class="fa fa-check"></i><b>5.9</b> group_by() helper</a><ul>
+<li class="chapter" data-level="5.9" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-helper"><i class="fa fa-check"></i><b>5.9</b> group_by() helper</a>
+<ul>
 <li class="chapter" data-level="5.9.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-summarize"><i class="fa fa-check"></i><b>5.9.1</b> group_by() %&gt;% summarize()</a></li>
 <li class="chapter" data-level="5.9.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#group_by-mutate"><i class="fa fa-check"></i><b>5.9.2</b> group_by() %&gt;% mutate()</a></li>
 <li class="chapter" data-level="5.9.3" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#ungroup-helper"><i class="fa fa-check"></i><b>5.9.3</b> ungroup() helper</a></li>
@@ -243,67 +267,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.10" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#challenges"><i class="fa fa-check"></i><b>5.10</b> Challenges</a></li>
 <li class="chapter" data-level="5.11" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#solutions"><i class="fa fa-check"></i><b>5.11</b> Solutions</a></li>
 <li class="chapter" data-level="5.12" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#summary"><i class="fa fa-check"></i><b>5.12</b> Summary</a></li>
-<li class="chapter" data-level="5.13" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#cheat-sheets"><i class="fa fa-check"></i><b>5.13</b> Cheat sheets!</a><ul>
+<li class="chapter" data-level="5.13" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#cheat-sheets"><i class="fa fa-check"></i><b>5.13</b> Cheat sheets!</a>
+<ul>
 <li class="chapter" data-level="5.13.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#ggplot-example"><i class="fa fa-check"></i><b>5.13.1</b> ggplot example</a></li>
 <li class="chapter" data-level="5.13.2" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#dplyr-example"><i class="fa fa-check"></i><b>5.13.2</b> dplyr example</a></li>
 </ul></li>
 <li class="chapter" data-level="5.14" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#extra-resources"><i class="fa fa-check"></i><b>5.14</b> Extra resources</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-3.html"><a href="week-3.html"><i class="fa fa-check"></i>Week 3</a></li>
-<li class="chapter" data-level="6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html"><i class="fa fa-check"></i><b>6</b> Reading, tidying &amp; joining data</a><ul>
-<li class="chapter" data-level="6.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#reading-in-data"><i class="fa fa-check"></i><b>6.1</b> Reading in data</a><ul>
+<li class="chapter" data-level="6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html"><i class="fa fa-check"></i><b>6</b> Reading, tidying &amp; joining data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#reading-in-data"><i class="fa fa-check"></i><b>6.1</b> Reading in data</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#read_excel"><i class="fa fa-check"></i><b>6.1.1</b> read_excel()</a></li>
 <li class="chapter" data-level="6.1.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#read_csv"><i class="fa fa-check"></i><b>6.1.2</b> read_csv()</a></li>
 <li class="chapter" data-level="6.1.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#read_delim"><i class="fa fa-check"></i><b>6.1.3</b> read_delim()</a></li>
 <li class="chapter" data-level="6.1.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#read_tsv"><i class="fa fa-check"></i><b>6.1.4</b> read_tsv()</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#reshaping-data"><i class="fa fa-check"></i><b>6.2</b> Reshaping data</a><ul>
+<li class="chapter" data-level="6.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#reshaping-data"><i class="fa fa-check"></i><b>6.2</b> Reshaping data</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#pivot_wider"><i class="fa fa-check"></i><b>6.2.1</b> pivot_wider()</a></li>
 <li class="chapter" data-level="6.2.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#pivot_longer"><i class="fa fa-check"></i><b>6.2.2</b> pivot_longer()</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separating-and-uniting-columns"><i class="fa fa-check"></i><b>6.3</b> Separating and uniting columns</a><ul>
+<li class="chapter" data-level="6.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separating-and-uniting-columns"><i class="fa fa-check"></i><b>6.3</b> Separating and uniting columns</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate"><i class="fa fa-check"></i><b>6.3.1</b> separate()</a></li>
-<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#str_split-unnest"><i class="fa fa-check"></i><b>6.3.2</b> str_split() %&gt;% unnest()</a></li>
+<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate_rows"><i class="fa fa-check"></i><b>6.3.2</b> separate_rows()</a></li>
 <li class="chapter" data-level="6.3.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#rename"><i class="fa fa-check"></i><b>6.3.3</b> rename()</a></li>
-<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite-unite"><i class="fa fa-check"></i><b>6.3.4</b> unite() {unite}</a></li>
+<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite"><i class="fa fa-check"></i><b>6.3.4</b> unite()</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#removing-variables"><i class="fa fa-check"></i><b>6.4</b> Removing variables</a></li>
-<li class="chapter" data-level="6.5" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>6.5</b> Joining dataframes</a><ul>
+<li class="chapter" data-level="6.5" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>6.5</b> Joining dataframes</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#left_join"><i class="fa fa-check"></i><b>6.5.1</b> left_join()</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#plotting-challenge"><i class="fa fa-check"></i><b>6.6</b> Plotting challenge</a></li>
-<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#solution-2"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
+<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#bar-chart"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
 <li class="chapter" data-level="6.8" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#summary-1"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="week-4-part-1.html"><a href="week-4-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
-<li class="chapter" data-level="7" data-path="automating-your-work.html"><a href="automating-your-work.html"><i class="fa fa-check"></i><b>7</b> Automating your work</a><ul>
+<li class="chapter" data-level="7" data-path="automating-your-work.html"><a href="automating-your-work.html"><i class="fa fa-check"></i><b>7</b> Automating your work</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="automating-your-work.html"><a href="automating-your-work.html#experimental-design"><i class="fa fa-check"></i><b>7.1</b> Experimental design</a></li>
 <li class="chapter" data-level="7.2" data-path="automating-your-work.html"><a href="automating-your-work.html#for-loops"><i class="fa fa-check"></i><b>7.2</b> For loops</a></li>
 <li class="chapter" data-level="7.3" data-path="automating-your-work.html"><a href="automating-your-work.html#paste"><i class="fa fa-check"></i><b>7.3</b> paste()</a></li>
-<li class="chapter" data-level="7.4" data-path="automating-your-work.html"><a href="automating-your-work.html#catching-loop-results"><i class="fa fa-check"></i><b>7.4</b> Catching loop results</a><ul>
+<li class="chapter" data-level="7.4" data-path="automating-your-work.html"><a href="automating-your-work.html#catching-loop-results"><i class="fa fa-check"></i><b>7.4</b> Catching loop results</a>
+<ul>
 <li class="chapter" data-level="7.4.1" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-vector"><i class="fa fa-check"></i><b>7.4.1</b> Catch in vector</a></li>
 <li class="chapter" data-level="7.4.2" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-data-frame"><i class="fa fa-check"></i><b>7.4.2</b> Catch in data frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-2.html"><a href="week-4-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a><ul>
+<li class="chapter" data-level="" data-path="week-4-part-2.html"><a href="week-4-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
+<ul>
 <li class="chapter" data-level="7.5" data-path="week-4-part-2.html"><a href="week-4-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-part-2.html"><a href="week-4-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a><ul>
+<li class="chapter" data-level="7.6" data-path="week-4-part-2.html"><a href="week-4-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
+<ul>
 <li class="chapter" data-level="7.6.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
 <li class="chapter" data-level="7.6.2" data-path="week-4-part-2.html"><a href="week-4-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="week-4-part-2.html"><a href="week-4-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a><ul>
+<li class="chapter" data-level="7.7" data-path="week-4-part-2.html"><a href="week-4-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
+<ul>
 <li class="chapter" data-level="7.7.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
 </ul></li>
 <li class="chapter" data-level="7.8" data-path="week-4-part-2.html"><a href="week-4-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-3.html"><a href="week-4-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a><ul>
+<li class="chapter" data-level="" data-path="week-4-part-3.html"><a href="week-4-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
+<ul>
 <li class="chapter" data-level="7.9" data-path="week-4-part-3.html"><a href="week-4-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
 <li class="chapter" data-level="7.10" data-path="week-4-part-3.html"><a href="week-4-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
 <li class="chapter" data-level="7.11" data-path="week-4-part-3.html"><a href="week-4-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
 <li class="chapter" data-level="7.12" data-path="week-4-part-3.html"><a href="week-4-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i>Factors</a></li>
+<li class="chapter" data-level="8" data-path="what-the-factor.html"><a href="what-the-factor.html"><i class="fa fa-check"></i><b>8</b> What the factor?</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-in-plots"><i class="fa fa-check"></i><b>8.1</b> Factors in plots</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-facets"><i class="fa fa-check"></i><b>8.1.1</b> Factors and facets</a></li>
+<li class="chapter" data-level="8.1.2" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-bar-charts"><i class="fa fa-check"></i><b>8.1.2</b> Factors and bar charts</a></li>
+<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reordering-gene-plots"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="what-the-factor.html"><a href="what-the-factor.html#summary-2"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
-<li class="chapter" data-level="8" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>8</b> Factors</a></li>
 </ul>
 
       </nav>
@@ -321,78 +367,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sub-setting-vectors" class="section level1">
+<div id="sub-setting-vectors" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Sub-setting vectors</h1>
 <p>A very common task in data wrangling is filtering or ‘sub-setting’ down to a smaller set of potentially interesting values.</p>
 <p>This short chapter is intended to give you a basic understanding of the operations that R is performing when filtering and evaluating data using the functions introduced in Chapter 5. Note that it is not necessary to have the tidyverse package loaded to complete this chapter - we are using ‘base R’ functions.</p>
 <p>First create a new .R file, and save as ‘Week_2_tidyverse.R’ in your Desktop WEHI_tidyR_course folder.</p>
 <p><br></p>
 <div class="figure">
-<img src="https://wegotthiscovered.com/wp-content/uploads/the-beatles.jpg" alt="wegotthiscovered.com/wp-content/uploads/the-beatles.jpg" />
+<img src="https://wegotthiscovered.com/wp-content/uploads/the-beatles.jpg" alt="" />
 <p class="caption">wegotthiscovered.com/wp-content/uploads/the-beatles.jpg</p>
 </div>
 <p>To start, we will create a vector named ‘beatles’ containing the years of birth of The Beatles:</p>
 <p>John Lennon: 1940, Ringo Starr: 1940, Paul McCartney: 1942 and George Harrison: 1943.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">beatles &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1940</span>,<span class="dv">1940</span>,<span class="dv">1942</span>,<span class="dv">1943</span>)</a></code></pre></div>
-<div id="subset-by-position" class="section level2">
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="sub-setting-vectors.html#cb93-1" aria-hidden="true" tabindex="-1"></a>beatles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1940</span>,<span class="dv">1940</span>,<span class="dv">1942</span>,<span class="dv">1943</span>)</span></code></pre></div>
+<div id="subset-by-position" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Subset by position</h2>
 <p>To hone in on different values in this vector we can request them based on their position in order 1 through 4.
 We give the position of the value we want in square brackets. To print the value in position 1:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">beatles[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="sub-setting-vectors.html#cb94-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 1940</code></pre>
 <p>Importantly, we can subset for values at position 2 <em>and</em> 3 by including a vector of numbers defining those positions.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">beatles[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="sub-setting-vectors.html#cb96-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</span></code></pre></div>
 <pre><code>## [1] 1940 1942</code></pre>
 <p>We can also request everything <em>but</em> the value at a certain position, using the minus sign</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">beatles[<span class="op">-</span><span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="sub-setting-vectors.html#cb98-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="sc">-</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 1940 1940 1943</code></pre>
 </div>
-<div id="adding-names" class="section level2">
+<div id="adding-names" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Adding names</h2>
 <p>To add additional information to the values we can give each a name, supplied as a vector of words:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="kw">names</span>(beatles) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;John&#39;</span>,<span class="st">&#39;Ringo&#39;</span>,<span class="st">&#39;Paul&#39;</span>,<span class="st">&#39;George&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="sub-setting-vectors.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(beatles) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;John&#39;</span>,<span class="st">&#39;Ringo&#39;</span>,<span class="st">&#39;Paul&#39;</span>,<span class="st">&#39;George&#39;</span>)</span></code></pre></div>
 <p>Notice how the beatles variable has now changed slightly in the Environment panel.</p>
 <p>From now on every time a value is returned from the beatles vector, the Beatle member associated with that value is also returned.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">beatles[<span class="op">-</span><span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="sub-setting-vectors.html#cb101-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="sc">-</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>##   John  Ringo George 
 ##   1940   1940   1943</code></pre>
 </div>
-<div id="subset-by-condition" class="section level2">
+<div id="subset-by-condition" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Subset by condition</h2>
 <p>In addition to sub-setting a vector by the position of values, we can ‘pose questions’ about the set of values to R, which will be returned with TRUE or FALSE answers.</p>
 <p>‘Which Beatles date of birth is 1940’? To code this we ask for values ‘exactly equal to’ 1940, using the <em>==</em> sign.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">beatles <span class="op">==</span><span class="st"> </span><span class="dv">1940</span></a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="sub-setting-vectors.html#cb103-1" aria-hidden="true" tabindex="-1"></a>beatles <span class="sc">==</span> <span class="dv">1940</span></span></code></pre></div>
 <pre><code>##   John  Ringo   Paul George 
 ##   TRUE   TRUE  FALSE  FALSE</code></pre>
 <p>R returns ‘TRUE’ for values that satisfy our ‘condition’, and FALSE for those that don’t.</p>
 <p>‘Which member(s) date of birth is before 1943?’ To code this we use the less-than &lt; sign.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">beatles <span class="op">&lt;</span><span class="st"> </span><span class="dv">1943</span></a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="sub-setting-vectors.html#cb105-1" aria-hidden="true" tabindex="-1"></a>beatles <span class="sc">&lt;</span> <span class="dv">1943</span></span></code></pre></div>
 <pre><code>##   John  Ringo   Paul George 
 ##   TRUE   TRUE   TRUE  FALSE</code></pre>
 <p>R is assessing the value at each position, and returning an answer to our conditional question.</p>
 <p>A way to directly subset this vector is to directly provide a vector of TRUE and FALSE values within square brackets, in a similar manner to specifying the positions, above.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">beatles[<span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="sub-setting-vectors.html#cb107-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)]</span></code></pre></div>
 <pre><code>##   John George 
 ##   1940   1943</code></pre>
 <p>Note that the only values returned are in the ‘TRUE’ positions, in this case the values at position 1 and 4.</p>
 <p>We can see that the process of sub-setting depends on the presence of ‘TRUE’ or ‘FALSE’ at each position along the vector.</p>
 <p>In most cases when sub-setting data, we want the values themselves, rather than the TRUE/FALSE evaluations.<br />
 Now that we know that i) conditional requests return TRUE/FALSE values, and ii) TRUE/FALSE values are the basis of sub-setting vectors, we can substitute the TRUE/FALSE vector in the brackets above for a conditional statement:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">beatles[beatles <span class="op">&gt;</span><span class="st"> </span><span class="dv">1940</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="sub-setting-vectors.html#cb109-1" aria-hidden="true" tabindex="-1"></a>beatles[beatles <span class="sc">&gt;</span> <span class="dv">1940</span>]</span></code></pre></div>
 <pre><code>##   Paul George 
 ##   1942   1943</code></pre>
 <p>To check this, try running just the code within the square brackets.<br />
 It is timely to mention that in R, code is processed from the inside- to outside of brackets. Here, the conditional statement is evaluated and produces a vector of four TRUE / FALSE values. This logical vector is then used to sub-set the original vector, returning a subset of named numeric values.</p>
 <p>‘Which Beatles were not born in 1942?’ To answer this we need to use a ! symbol that ‘negates’, or inverts the condition:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">beatles[ beatles<span class="op">!=</span><span class="dv">1942</span> ]</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="sub-setting-vectors.html#cb111-1" aria-hidden="true" tabindex="-1"></a>beatles[ beatles<span class="sc">!=</span><span class="dv">1942</span> ]</span></code></pre></div>
 <pre><code>##   John  Ringo George 
 ##   1940   1940   1943</code></pre>
 <p>To get an even more succinct answer, we could request only the names associated with the numeric values:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="kw">names</span>( beatles[ beatles <span class="op">!=</span><span class="st"> </span><span class="dv">1942</span>] )</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="sub-setting-vectors.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>( beatles[ beatles <span class="sc">!=</span> <span class="dv">1942</span>] )</span></code></pre></div>
 <pre><code>## [1] &quot;John&quot;   &quot;Ringo&quot;  &quot;George&quot;</code></pre>
 <p>You will use these types of conditional statements regularly in the next chapter.</p>
 </div>
-<div id="challenge-1" class="section level2">
+<div id="challenge-1" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Challenge</h2>
 <p>Create three different commands to return information about the Beatles born before 1943. You can use positional information, and/or conditional requests.</p>
 <p><br>
@@ -402,21 +448,21 @@ It is timely to mention that in R, code is processed from the inside- to outside
 <br>
 <br></p>
 </div>
-<div id="possible-solutions" class="section level2">
+<div id="possible-solutions" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Possible solutions</h2>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">beatles[beatles <span class="op">&lt;</span><span class="st"> </span><span class="dv">1943</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="sub-setting-vectors.html#cb115-1" aria-hidden="true" tabindex="-1"></a>beatles[beatles <span class="sc">&lt;</span> <span class="dv">1943</span>]</span></code></pre></div>
 <pre><code>##  John Ringo  Paul 
 ##  1940  1940  1942</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">beatles[beatles <span class="op">!=</span><span class="st"> </span><span class="dv">1943</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="sub-setting-vectors.html#cb117-1" aria-hidden="true" tabindex="-1"></a>beatles[beatles <span class="sc">!=</span> <span class="dv">1943</span>]</span></code></pre></div>
 <pre><code>##  John Ringo  Paul 
 ##  1940  1940  1942</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">beatles[<span class="op">-</span><span class="dv">4</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="sub-setting-vectors.html#cb119-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="sc">-</span><span class="dv">4</span>]</span></code></pre></div>
 <pre><code>##  John Ringo  Paul 
 ##  1940  1940  1942</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">beatles[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="sub-setting-vectors.html#cb121-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)]</span></code></pre></div>
 <pre><code>##  John Ringo  Paul 
 ##  1940  1940  1942</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">beatles[<span class="kw">names</span>(beatles) <span class="op">!=</span><span class="st"> &#39;George&#39;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="sub-setting-vectors.html#cb123-1" aria-hidden="true" tabindex="-1"></a>beatles[<span class="fu">names</span>(beatles) <span class="sc">!=</span> <span class="st">&#39;George&#39;</span>]</span></code></pre></div>
 <pre><code>##  John Ringo  Paul 
 ##  1940  1940  1942</code></pre>
 
@@ -451,6 +497,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

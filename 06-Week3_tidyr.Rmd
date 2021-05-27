@@ -287,69 +287,44 @@ GO_entrez_sep <- GO_entrez %>%
 ```
 
 Next we have to deal with the long string of entrez IDs in the 'entrez_multi' column.  
-This is particularly tricky as there are uneven numbers of entrez IDs associated with each GO term.
-A separate() function will run in to problems when columns are highly uneven, and the maximum length of values is unknown.  
+This is particularly tricky as there are uneven numbers of entrez IDs associated with each GO term. This column violates the tidy data principle of one value per cell.
+Using a separate() function will run in to problems when columns are highly uneven, and the maximum number of values is unknown.  
 
-### str_split() %>% unnest()
+### separate_rows()
 
-Hopefully you will rarely come across a dataset this messy, but when you do a pair of functions called str_split() and unnest() will be a lifesaver.  
-While useful, these functions are quite complicated, so beginners can feel free to just copy and paste the code chunks below for now, and pick up again at unite().
+Hopefully you will rarely come across a dataset this messy, but when you do, separate_rows() will be a lifesaver. A previous version of this book introduced str_split() and unnest() which were very involved, and have been superseded by separate_rows() to the relief of R users and instructors alike.
+
+separate_rows() creates a new row for each value in an 'untidy' column like entrez_multi. Each individual entrez ID will be inserted into its own row, and the data in other columns will be duplicated in each new row. In this way, separate_rows() essentially performs a pivot_longer() function in order to tidy all of the previously combined, and unusable data.
 
 
-str_split() stands for 'string_split' which relates to splitting a long sequence of characters (aka a 'string') according to a particular delimiter. str_split() is similar to separate(), but instead of creating new columns, it creates a 'nested list' of values which are hidden from us. To split up the values according to a particular delimiter we use `pattern =`, which functions similarly to separate() `sep =` and read_delim() `delim = `.
+This function requires the column to be separated and converted into long-format, as well as the value separator (comma, in this case).
 
-The unnest() command that follows inserts each value in the nested list (corresponding to individual entrez IDs in our case) into is own row, and duplicates the data in other columns. In this way, unnest() essentially performs a pivot_longer() function in order to reveal all of the previously hidden values.
-
-Whereas the nested values aren't visible in the console output, you can see them presented as a vector if you pipe your output to View().
-
-First we give the str_split() command inside mutate() to create a new column containing the nested list of entrez IDs.
 ```{r}
-GO_entrez_sep %>% mutate(entz_nest = str_split(entrez_multi, pattern = ','))
+GO_entrez_sep %>% separate_rows(entrez_multi , sep=',')
 ```
+We can see that e.g. the six genes (entrez IDs) associated with the GO code 0002924 each now occupy their own row. The data is tidy, in long format.
 
-Now we can drop the entrez_multi column because we have captured it in entz_nest, and check the output using View()
-
-```{r, eval=FALSE}
-
-GO_entrez_sep %>% 
-  mutate(entz_nest = str_split(entrez_multi, pattern = ',')) %>% 
-  select( -entrez_multi ) %>% 
-  View()
-
-```
-
-Finally we can unnest() the entz_nest column, using `col = entz_nest`, which produces a long-form table
-```{r}
-GO_entrez_sep %>%
-  mutate(entz_nest = str_split(entrez_multi, pattern = ',')) %>% 
-  select( -entrez_multi ) %>%
-  unnest(col = entz_nest)
-```
 
 ### rename()
 
-Given that the entz_nest column is no longer a nested list, we might want to rename it. The rename() function can help here. It simply takes the form 'new column name' = 'existing name':
+Given that the entrez_multi column no longer contains multiple entrez IDs per row, we can rename it using the rename() function. It simply takes the form 'new column name' = 'existing name':
 
 ```{r}
 GO_entrez_sep %>% 
-  mutate(entz_nest = str_split(entrez_multi, pattern = ',')) %>% 
-  select( -entrez_multi ) %>% 
-  unnest(col = entz_nest) %>% 
-  rename(entrez_id = entz_nest)
+  separate_rows(entrez_multi, sep = ",") %>% 
+  rename(entrez_id = entrez_multi)
 ```
 
 We can write the results of this chain of commands into a new variable 'GO_entrez_sep_long'
 
 ```{r}
 GO_entrez_sep_long <- GO_entrez_sep %>% 
-  mutate(entz_nest = str_split(entrez_multi, pattern = ',')) %>% 
-  select( -entrez_multi ) %>% 
-  unnest(col = entz_nest) %>% 
-  rename(entrez_id = entz_nest)
+  separate_rows(entrez_multi,sep=",") %>% 
+  rename(entrez_id = entrez_multi)
 ```
 
 
-### unite() {unite}
+### unite() {#unite}
 
 
 The final step is to combine the GO prefix ('GO') and the code_only columns to produce a GO ID in the same form as that in the GOID column of GO_terms_long (created above).  
@@ -425,7 +400,7 @@ then the result would include the rows
 
 Our first task is to join the the entrez_logFC results table with the gene annotations in Hs_entz_annot_tidy. We will use the joint key 'entrez_id' (outlined in black).  
 
-```{r, out.width = '200%', echo = FALSE}
+```{r, out.width = '250%', echo = FALSE}
 knitr::include_graphics('images/join_1.png')
 ```
   
@@ -501,15 +476,12 @@ With the input data tidied and joined we have all of the information required to
 Your colleague has sketched out an idea for a plot. Can you now produce the plot below using complete_table and ggplot? 
 
 ```{r, echo=FALSE}
-
 complete_table %>% 
-  ggplot(aes(x = symbol, y = logFC)) + 
+  ggplot(aes(x = logFC, y = symbol)) +
   geom_col(aes(fill = DESCRIPTION), show.legend = FALSE) +
-  geom_hline(yintercept = 0, lty=2) +
+  geom_vline(xintercept = 0, lty=2) +
   facet_wrap(~DESCRIPTION, scales='free_y', ncol=1) +
-  ylim(-10,10) +
-  coord_flip() 
-  
+  xlim(-10,10) 
 ```
 
 
@@ -523,17 +495,14 @@ complete_table %>%
 <br>
 <br>
 
-## Solution
+## Solution{#bar-chart}
 ```{r}
-
 complete_table %>% 
-  ggplot(aes(x = symbol, y = logFC)) + 
+  ggplot(aes(x = logFC, y = symbol)) +
   geom_col(aes(fill = DESCRIPTION), show.legend = FALSE) +
-  geom_hline(yintercept = 0, lty=2) +
+  geom_vline(xintercept = 0, lty=2) +
   facet_wrap(~DESCRIPTION, scales='free_y', ncol=1) +
-  ylim(-10,10) +
-  coord_flip() 
-  
+  xlim(-10,10) 
 ```
 
 

@@ -306,7 +306,6 @@ diamond_df %>%
   ggplot(aes(x=carat, y=price, colour =clarity)) + 
   geom_point(size=0.2) +
   facet_wrap(~cut)
-
 ```
 
 

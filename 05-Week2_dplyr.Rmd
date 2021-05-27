@@ -12,7 +12,7 @@ dplyr features a handful of key functions, also termed 'verbs', which can be com
 
 We will explore the first of these verbs using the mpg_df dataset created earlier. If starting from a new Rstudio session you should open Week_2_tidyverse.R and run the following code:
 
-```{r, echo=FALSE,warning=FALSE,message=FALSE}
+```{r, echo=TRUE,warning=FALSE,message=FALSE}
 library(tidyverse)
 
 mpg_df <- mpg
