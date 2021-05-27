@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582703383459.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1948547082",
+    "id" : "6A96316B",
+    "lastKnownWriteTime" : 1582709663,
+    "last_content_update" : 1582709663185,
+    "path" : "~/Dropbox/R_teaching_materials/WEHI_IntroR_Course/WEHI_R_book/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "21,0",
+        "scrollLine" : "10",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

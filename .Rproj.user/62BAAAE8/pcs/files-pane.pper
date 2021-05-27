@@ -1,0 +1,17 @@
+{
+    "path" : "~/Dropbox/R_teaching_materials/WEHI_IntroR_Course/WEHI_R_book/_book",
+    "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 3
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

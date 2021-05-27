@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582705621392.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "619688917",
+    "id" : "7A2666E3",
+    "lastKnownWriteTime" : 1582706317,
+    "last_content_update" : 1582706317856,
+    "path" : "~/Dropbox/R_teaching_materials/WEHI_IntroR_Course/WEHI_R_book/02-Week1_ggplot2_p1.Rmd",
+    "project_path" : "02-Week1_ggplot2_p1.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

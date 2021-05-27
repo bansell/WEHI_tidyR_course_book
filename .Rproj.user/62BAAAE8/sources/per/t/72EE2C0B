@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1582703912578.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1477302456",
+    "id" : "72EE2C0B",
+    "lastKnownWriteTime" : 1582712017,
+    "last_content_update" : 1582712017876,
+    "path" : "~/Dropbox/R_teaching_materials/WEHI_IntroR_Course/WEHI_R_book/01-Week1_basics.Rmd",
+    "project_path" : "01-Week1_basics.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "32,0",
+        "scrollLine" : "24"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

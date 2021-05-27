@@ -1,0 +1,28 @@
+---
+title: "Introduction to R - tidyverse"
+author: "Brendan R. E. Ansell @ansellbr3"
+site: bookdown::bookdown_site
+---
+
+
+# Preface {-}
+
+This document contains the material covered in the **Introduction to R (tidyverse) course** taught at the Walter and Eliza Hall Institute of Medical Research. The course is taught to biomedical scientists, but the material and the teaching examples are very broad. Skills taught in this workshop can be applied to many disciplines in academia and industry.    
+Our aim with this material is to improve the transparency, reproducibility and efficiency of scientific research by enabling scientists to conduct data analysis and visualization in R.  
+The couse is taught over four 2.5h workshops. this material is designed to be taught in a workshop setting, however we have now made it available online for those who cannot attend the workshop, or want to refresh or develop their skills. 
+  
+The majority of this material is inspired by / modified from from the excellent book [**R for Data Science**](https://r4ds.had.co.nz) by Hadley Wickham & Garrett Grolemund.
+
+I thank WEHI for suppoprting this initiative, and the Melbourne University Research Platforms Unit, Prof Melanie Bahlo, A/Prof Marnie Blewitt, A/Prof Anne Voss, Dr Luke Gandolfo, Dr Saskia Freytag, Stuart Lee and Jacob Munro who helped with discussion and development of this material.
+
+## Other resources {-}
+
+There are many good resources for learning R and the tidyverse. [Some are listed here.](https://www.tidyverse.org/learn/)
+
+
+## Before we begin {-}
+
+In order to use R interactively and easily, participants will need to [install R ](https://cloud.r-project.org) and then [download the **RStudio** software](https://rstudio.com/products/rstudio/download/). More detailed instructions are available [here](https://r4ds.had.co.nz/introduction.html#prerequisites).
+
+
+

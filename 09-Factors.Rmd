@@ -1,0 +1,251 @@
+# Factors {-}
+
+# What the factor?
+
+Sooner or later in your R learning journey you will come face to face with _factors_. Factors are something I prefer to shield beginners from, but there's no avoiding this element of R. Understanding how to handle factors is often the key to  in travelling the 'last mile' to make your plots exactly the way you want them. Factors can also be extremely important for correctly setting up statistical models, although we will not cover that here.
+
+
+So what are factors? Essentially they are ordered labels for data values. 
+
+Consider the numbers 1 to 3. In elementary school, grade 1 is lower than grade 3. In the context of a running race however, place 1 is higher/better than place 3. 
+
+We intuitively use different 'ordering labels' in our heads for the same numbers, according to these two contexts.
+
+Another example is the flow of seasons throughout the calendar year.
+In the northern hemisphere the seasons follow Winter > Spring > Summer > Autumn. In the southern hemisphere the seasons flow Summer > Autumn > Winter > Spring. Spring should sit at position 2 in the Canadian context, and position 4 in the Australian context.
+
+In R we give ordered labels to data values by creating factors. To see what happens to a column of data when it is converted to a factor, we use the `str()` command, which stands for 'data structure'.
+
+Let's load the tidyverse and mutate the number of engine cylinders in the mpg data into factor.
+
+```{r, message=FALSE,warning=FALSE}
+library(tidyverse)
+
+mpg %>% mutate(cyl_factor = factor(cyl))
+```
+Notice that the cyl_factor column now has the <fct> factor data type, whereas the original cyl column is <int> integer data. 
+
+We can get a summary view of the data types in each column (i.e., the 'structure' of the data) by piping the code output into `str()`
+
+
+```{r}
+mpg %>% mutate(cyl_factor = factor(cyl)) %>% str()
+```
+
+Some more information is revealed about the newly created cyl_factor data. Specifically, it is a factor with 4 levels. 
+The levels indicate the order of the unique values in the factor. For example, level 1 is the '4' cyl category, level 2 is the '5' cyl and so forth.  
+
+You will also notice the sequence of numbers after the levels: 1111333111. This indicates that the values in each of the first 10 rows are a mix of the level 1 (value = 4) and level 3 (value = 6) factor. Let's verify this in the first 6 rows using `head()`.
+
+```{r}
+mpg %>% mutate(cyl_factor=factor(cyl)) %>% head()
+```
+
+Both the cyl and cyl_factor columns contain 4 4 4 4 6 6.
+
+If we first arrange the mpg data frame by cyl, how does the data structure for cyl_factor change?
+
+```{r}
+mpg %>% arrange(cyl) %>% mutate(cyl_factor = factor(cyl)) %>% str()
+```
+
+The level order is the same, but note that the sequence of numbers for the first 10 rows now only contains the factor level 1 (corresponding to 4).
+
+<br> 
+
+## Factors in plots
+
+The role of factors can be appreciated when making ggplots.  
+
+__In general, controlling the order of appearance of axis values or facets, requires manipulating the factor levels in the input data frame column given to `aes()`, or `facet_wrap( ~ )` respectively.__
+
+First let's make a scatter plot of the number of engine cylinders (x axis) vs city mileage (y axis) for each car. Each point is also coloured by the number of cylinders in that car:
+```{r}
+mpg %>% ggplot(aes(x=cyl,y=cty)) + geom_point(aes(col=cyl))
+```
+
+The colour scale is a dark-light gradient, which is appropriate because in the original mpg data frame, cyl contains numerical data.
+That is, the ascending number of cylinders are represented as progressively lighter colours.
+
+
+But when the cylinders are converted to factors...
+```{r}
+mpg %>% mutate(cyl_factor=factor(cyl)) %>% 
+  ggplot(aes(x=cyl_factor, y=cty)) + 
+  geom_point(aes(col=cyl_factor))
+```
+
+Now the colour scale is divergent, or discrete. This is because when cyl is a factor, the numbers 5,6,7,8 are simply treated as labels. They no longer have numerical meaning. We would see a similar plot if cyl was converted to character data using e.g. `cyl_chr = as.character(cyl)`
+
+To illustrate this difference in data type, try summing the numbers 4 through 8 when encoded as numeric data, and factor data respectively:
+```{r, error=TRUE}
+
+numeric_vector <- c(4,5,6,7,8)
+
+factor_vector <- factor(c(4,5,6,7,8))
+
+
+sum(numeric_vector)
+
+sum(factor_vector)
+```
+
+
+The order of the labels (termed 'factor levels') can be controlled using the `forcats` library which is available in the tidyverse. All of the forcats functions begin with `fct_`. Here we will reorder the levels of cyl_factor using `fct_relevel()` and observe the result. This function takes the name of the factor column, followed by the desired order of its unique values (≈ 'factor levels').
+
+
+```{r}
+mpg_cyl_relevel <- mpg %>% 
+  mutate(cyl_factor=factor(cyl)) %>% 
+  mutate(cyl_factor = fct_relevel( cyl_factor, '8','6','5','4')) 
+  
+mpg_cyl_relevel %>% str()
+```
+
+Now '8' will be level 1, '6' will be level 2 etc. Importantly, we dont have to type out every unique  value in the factor column. Those factor levels which are not specified will follow in a default order (alphabetical for character data; ascending for numerical data).  
+
+Now we plot the updated cyl_factor on the x axis:
+```{r}
+mpg_cyl_relevel %>%   ggplot(aes(x=cyl_factor, y=cty)) + geom_point(aes(col=cyl_factor))
+```
+The numerical order of the x axis has been reversed because '8' is level 1. Similarly, the data for 8 cylinder cars is now coloured red, which is the first of the default 4-colour scheme for ggplot.
+
+<br>
+
+### Factors and facets
+
+Factors are a useful way to control the order of facets as well. Say we want to plot the city vs highway mileage for each car, faceted by class. We want the compact and subcompact cars to appear next to each other in the facet order. We can create a class_factor column, and then assign these two car types to level 1 and 2 as follows:
+
+```{r}
+mpg_class_factor <- mpg %>% 
+  mutate(class_factor = factor(class)) %>% 
+  mutate(class_factor = fct_relevel(class_factor, levels = 'compact', 'subcompact')) 
+
+mpg_class_factor %>% 
+  ggplot(aes(x=cty,y=hwy)) + 
+  geom_point(aes(col=class_factor)) +
+  facet_wrap(~class_factor, scales='free') 
+```
+The compact and subcompact facets now appear first, whereas they would usually be far apart due to their distance in alphabetical order.
+
+
+### Factors and bar charts
+
+A special case where handling factors is particularly important is horizontal bar charts. These have the delightful quirk of inverting the alphabetical or numerical order of the y axis. If a simple reversal of the axis order is what you need, try adding the ggplot command `scale_y_discrete(limits=rev)`. If you need something more bespoke, then changing the factor levels of the data represented on the y axis may be required.
+
+
+To see the problem let's make a simple horizontal bar chart counting the number of cars per class
+```{r}
+mpg %>% 
+  ggplot(aes(y=class)) + geom_bar()
+```
+The y order from top to bottom is descending alphabetical followed by the numerical '2seater'. Say we want to bring the compact and subcompact classes to the top of the y axis, followed by other the values in numerical, then alphabetical order.
+
+This is a two-step problem. The simplest way to go about it is to
+1) bring compact and subcompact cars to the front of the factor levels using `fct_relevel()` as above; then,
+2) reverse the levels of the newly created factor levels using `fct_rev()`.
+
+
+```{r}
+mpg_class_relevel <- mpg %>% 
+  mutate(class_factor= factor(class)) %>% 
+  mutate(class_factor_relevel  = fct_relevel(class_factor,'compact','subcompact'))
+
+mpg_class_relevel %>%  ggplot(aes(y=class_factor_relevel)) + geom_bar()
+```
+The (sub-)compact classes now appear at the bottom of the y axis (indicating that they are the first two levels in the factor... I hope you've had a coffee recently!).
+
+
+Next we reverse the levels of the factor, to bring our classes of interest to the top:
+```{r}
+mpg_class_relevel_rev <- mpg_class_relevel %>% 
+                         mutate(class_factor_relevel_rev  = fct_rev(class_factor_relevel))
+
+mpg_class_relevel_rev %>% ggplot(aes(y=class_factor_relevel_rev)) + geom_bar()
+```
+Done!
+
+
+The last piece of this puzzle is to deal with the colour legend order.
+
+```{r}
+mpg_class_relevel_rev %>% 
+  ggplot(aes(y=class_factor_relevel_rev)) + 
+  geom_bar(aes(fill=class_factor_relevel_rev))
+```
+R has helpfully reordered the y axis but not the colour legend. To handle this we will use a quick fix, which is to simply reverse the order of colour legend as part of the ggplot command.
+
+Specifically this requires the `guides()` function, that can modify specific aspects of the plot appearance (independent of the contents of the input data frame). We will use this function to reverse the legend, which displays the values in the fill aesthetic given to geom_bar(). You can read more about guides [here](https://ggplot2.tidyverse.org/reference/guide_legend.html).
+
+
+```{r}
+mpg_class_relevel_rev %>% 
+  ggplot(aes(y=class_factor_relevel_rev)) + 
+  geom_bar(aes(fill=class_factor_relevel_rev)) +
+  guides(fill = guide_legend( reverse=T ))
+```
+<br>
+
+### Reordering gene plots
+
+The y axis order of the gene family [bar chart](#bar-chart) that we created in week 3, can be improved using a similar approach.
+
+First if `complete_table` is not currently in your R Environment, re-run the week 3 code to generate this data frame.  
+We left the plot at this stage:
+
+```{r}
+complete_table %>% 
+  ggplot(aes(x = logFC, y = symbol)) +
+  geom_col(aes(fill = DESCRIPTION), show.legend = FALSE) +
+  geom_vline(xintercept = 0, lty=2) +
+  facet_wrap(~DESCRIPTION, scales='free_y', ncol=1) +
+  xlim(-10,10) 
+```
+
+Note that the FUT genes in particular are not in numerical order on the y axis. To update the order let's first create a vector of the FUT genes in the desired order. To do this we will take advantage of the [paste()](#paste) function from week 3. Also note there is no FUT3 gene in the data list.
+
+```{r}
+FUT_genes <- paste('FUT', c(1,2,4:10), sep="")
+```
+
+Now we can create a new column of gene symbols in factor form, and relevel with the FUT_genes as the first factor levels. Remember that the remaining gene symbols will follow in alphabetical order.
+```{r}
+complete_table_relvl <- complete_table %>% 
+  mutate(sym_fct  = factor(symbol)) %>% 
+  mutate(sym_fct_relevel = fct_relevel(sym_fct, FUT_genes)) 
+```
+
+Use `str()` to check that fct_relevel has worked:
+```{r}
+complete_table_relvl %>% select(contains('sym')) %>% str()
+```
+So far so good, FUT1 and FUT2 are the first two levels.
+
+
+Lastly we will use `fct_rev()` to reverse the sym_fct_relevel column which gets around the default inversion of the y axis for bar charts: 
+```{r}
+complete_table_update <- complete_table_relvl %>% 
+  mutate(sym_fct_rev = fct_rev(sym_fct_relevel)) 
+```
+
+Now the gene symbols should appear in a sensible alphabetical and numeric order! As a final touch we also add a sensible label for the y axis.
+```{r}
+
+complete_table_update %>% 
+  ggplot(aes(x = logFC, y = sym_fct_rev)) +
+  geom_col(aes(fill = DESCRIPTION), show.legend = FALSE) +
+  geom_vline(xintercept = 0, lty=2) +
+  facet_wrap(~DESCRIPTION, scales='free_y', ncol=1) +
+  xlim(-10,10) + 
+  ylab('symbol')
+```
+
+
+
+## Summary
+
+Handling factors in R can be hard work, but mastering factors will allow you to control nearly every aspect of ggplot, as well as clarifying they way that many base R functions and statistical operations work.  
+This chapter has provided the tools to overcome some common frustrating hurdles in ggplot. You can learn more about the uses and manipulation of factors in [R for Data Science](https://r4ds.had.co.nz/factors.html).
+
+With even a basic understanding of factors under your belt, you are well on your way to mastering R.
+
