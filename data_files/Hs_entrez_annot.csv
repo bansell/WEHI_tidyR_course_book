@@ -1,0 +1,307 @@
+entrez_id,annot_type,annot_text
+21,symbol,ABCA3
+21,gene_name,ATP binding cassette subfamily A member 3
+90,symbol,ACVR1
+90,gene_name,activin A receptor type 1
+91,symbol,ACVR1B
+91,gene_name,activin A receptor type 1B
+156,symbol,ADRBK1
+156,gene_name,"adrenergic, beta, receptor kinase 1"
+207,symbol,AKT1
+207,gene_name,v-akt murine thymoma viral oncogene homolog 1
+566,symbol,AZU1
+566,gene_name,azurocidin 1
+596,symbol,BCL2
+596,gene_name,B-cell CLL/lymphoma 2
+655,symbol,BMP7
+655,gene_name,bone morphogenetic protein 7
+722,symbol,C4BPA
+722,gene_name,complement component 4 binding protein alpha
+725,symbol,C4BPB
+725,gene_name,complement component 4 binding protein beta
+790,symbol,CAD
+790,gene_name,"carbamoyl-phosphate synthetase 2, aspartate transcarbamylase, and dihydroorotase"
+801,symbol,CALM1
+801,gene_name,"calmodulin 1 (phosphorylase kinase, delta)"
+805,symbol,CALM2
+805,gene_name,"calmodulin 2 (phosphorylase kinase, delta)"
+808,symbol,CALM3
+808,gene_name,"calmodulin 3 (phosphorylase kinase, delta)"
+817,symbol,CAMK2D
+817,gene_name,calcium/calmodulin-dependent protein kinase II delta
+883,symbol,CCBL1
+883,gene_name,"cysteine conjugate-beta lyase, cytoplasmic"
+983,symbol,CDK1
+983,gene_name,cyclin-dependent kinase 1
+1020,symbol,CDK5
+1020,gene_name,cyclin-dependent kinase 5
+1111,symbol,CHEK1
+1111,gene_name,checkpoint kinase 1
+1116,symbol,CHI3L1
+1116,gene_name,chitinase 3 like 1
+1176,symbol,AP3S1
+1176,gene_name,adaptor related protein complex 3 sigma 1 subunit
+1195,symbol,CLK1
+1195,gene_name,CDC like kinase 1
+1201,symbol,CLN3
+1201,gene_name,"ceroid-lipofuscinosis, neuronal 3"
+1378,symbol,CR1
+1378,gene_name,complement component 3b/4b receptor 1 (Knops blood group)
+1780,symbol,DYNC1I1
+1780,gene_name,dynein cytoplasmic 1 intermediate chain 1
+1859,symbol,DYRK1A
+1859,gene_name,dual specificity tyrosine phosphorylation regulated kinase 1A
+1950,symbol,EGF
+1950,gene_name,epidermal growth factor
+2011,symbol,MARK2
+2011,gene_name,microtubule affinity regulating kinase 2
+2039,symbol,DMTN
+2039,gene_name,dematin actin binding protein
+2302,symbol,FOXJ1
+2302,gene_name,forkhead box J1
+2475,symbol,MTOR
+2475,gene_name,mechanistic target of rapamycin
+2523,symbol,FUT1
+2523,gene_name,fucosyltransferase 1 (H blood group)
+2524,symbol,FUT2
+2524,gene_name,fucosyltransferase 2
+2526,symbol,FUT4
+2526,gene_name,fucosyltransferase 4
+2527,symbol,FUT5
+2527,gene_name,fucosyltransferase 5
+2528,symbol,FUT6
+2528,gene_name,fucosyltransferase 6
+2529,symbol,FUT7
+2529,gene_name,"fucosyltransferase 7 (alpha (1,3) fucosyltransferase)"
+2530,symbol,FUT8
+2530,gene_name,"fucosyltransferase 8 (alpha (1,6) fucosyltransferase)"
+2625,symbol,GATA3
+2625,gene_name,GATA binding protein 3
+2641,symbol,GCG
+2641,gene_name,glucagon
+2647,symbol,BLOC1S1
+2647,gene_name,biogenesis of lysosomal organelles complex 1 subunit 1
+2806,symbol,GOT2
+2806,gene_name,glutamic-oxaloacetic transaminase 2
+2932,symbol,GSK3B
+2932,gene_name,glycogen synthase kinase 3 beta
+3064,symbol,HTT
+3064,gene_name,huntingtin
+3093,symbol,UBE2K
+3093,gene_name,ubiquitin conjugating enzyme E2K
+3156,symbol,HMGCR
+3156,gene_name,3-hydroxy-3-methylglutaryl-CoA reductase
+3799,symbol,KIF5B
+3799,gene_name,kinesin family member 5B
+4092,symbol,SMAD7
+4092,gene_name,SMAD family member 7
+4292,symbol,MLH1
+4292,gene_name,mutL homolog 1
+4294,symbol,MAP3K10
+4294,gene_name,mitogen-activated protein kinase kinase kinase 10
+4704,symbol,NDUFA9
+4704,gene_name,NADH:ubiquinone oxidoreductase subunit A9
+5048,symbol,PAFAH1B1
+5048,gene_name,platelet activating factor acetylhydrolase 1b regulatory subunit 1
+5170,symbol,PDPK1
+5170,gene_name,3-phosphoinositide dependent protein kinase 1
+5347,symbol,PLK1
+5347,gene_name,polo like kinase 1
+5470,symbol,PPEF2
+5470,gene_name,protein phosphatase with EF-hand domain 2
+5578,symbol,PRKCA
+5578,gene_name,protein kinase C alpha
+5579,symbol,PRKCB
+5579,gene_name,protein kinase C beta
+5580,symbol,PRKCD
+5580,gene_name,protein kinase C delta
+5585,symbol,PKN1
+5585,gene_name,protein kinase N1
+5590,symbol,PRKCZ
+5590,gene_name,protein kinase C zeta
+5594,symbol,MAPK1
+5594,gene_name,mitogen-activated protein kinase 1
+5599,symbol,MAPK8
+5599,gene_name,mitogen-activated protein kinase 8
+5777,symbol,PTPN6
+5777,gene_name,"protein tyrosine phosphatase, non-receptor type 6"
+5861,symbol,RAB1A
+5861,gene_name,"RAB1A, member RAS oncogene family"
+6845,symbol,VAMP7
+6845,gene_name,vesicle associated membrane protein 7
+6872,symbol,TAF1
+6872,gene_name,TATA-box binding protein associated factor 1
+7040,symbol,TGFB1
+7040,gene_name,transforming growth factor beta 1
+7046,symbol,TGFBR1
+7046,gene_name,transforming growth factor beta receptor I
+7048,symbol,TGFBR2
+7048,gene_name,transforming growth factor beta receptor II
+7225,symbol,TRPC6
+7225,gene_name,transient receptor potential cation channel subfamily C member 6
+7443,symbol,VRK1
+7443,gene_name,vaccinia related kinase 1
+7474,symbol,WNT5A
+7474,gene_name,wingless-type MMTV integration site family member 5A
+7786,symbol,MAP3K12
+7786,gene_name,mitogen-activated protein kinase kinase kinase 12
+8120,symbol,AP3B2
+8120,gene_name,adaptor related protein complex 3 beta 2 subunit
+8312,symbol,AXIN1
+8312,gene_name,axin 1
+8473,symbol,OGT
+8473,gene_name,O-linked N-acetylglucosamine (GlcNAc) transferase
+8546,symbol,AP3B1
+8546,gene_name,adaptor related protein complex 3 beta 1 subunit
+8658,symbol,TNKS
+8658,gene_name,tankyrase
+8767,symbol,RIPK2
+8767,gene_name,receptor interacting serine/threonine kinase 2
+8851,symbol,CDK5R1
+8851,gene_name,"cyclin-dependent kinase 5, regulatory subunit 1 (p35)"
+8877,symbol,SPHK1
+8877,gene_name,sphingosine kinase 1
+8943,symbol,AP3D1
+8943,gene_name,adaptor related protein complex 3 delta 1 subunit
+9001,symbol,HAP1
+9001,gene_name,huntingtin-associated protein 1
+9141,symbol,PDCD5
+9141,gene_name,programmed cell death 5
+9294,symbol,S1PR2
+9294,gene_name,sphingosine-1-phosphate receptor 2
+9371,symbol,KIF3B
+9371,gene_name,kinesin family member 3B
+9730,symbol,VPRBP
+9730,gene_name,Vpr (HIV-1) binding protein
+9943,symbol,OXSR1
+9943,gene_name,oxidative stress responsive 1
+10114,symbol,HIPK3
+10114,gene_name,homeodomain interacting protein kinase 3
+10125,symbol,RASGRP1
+10125,gene_name,RAS guanyl releasing protein 1
+10229,symbol,COQ7
+10229,gene_name,"coenzyme Q7 homolog, ubiquinone (yeast)"
+10239,symbol,AP3S2
+10239,gene_name,adaptor related protein complex 3 sigma 2 subunit
+10253,symbol,SPRY2
+10253,gene_name,sprouty RTK signaling antagonist 2
+10690,symbol,FUT9
+10690,gene_name,"fucosyltransferase 9 (alpha (1,3) fucosyltransferase)"
+10947,symbol,AP3M2
+10947,gene_name,adaptor related protein complex 3 mu 2 subunit
+11127,symbol,KIF3A
+11127,gene_name,kinesin family member 3A
+22853,symbol,LMTK2
+22853,gene_name,lemur tyrosine kinase 2
+22920,symbol,KIFAP3
+22920,gene_name,kinesin associated protein 3
+22933,symbol,SIRT2
+22933,gene_name,sirtuin 2
+23160,symbol,WDR43
+23160,gene_name,WD repeat domain 43
+23557,symbol,SNAPIN
+23557,gene_name,SNAP associated protein
+23590,symbol,PDSS1
+23590,gene_name,"prenyl (decaprenyl) diphosphate synthase, subunit 1"
+23645,symbol,PPP1R15A
+23645,gene_name,protein phosphatase 1 regulatory subunit 15A
+26258,symbol,BLOC1S6
+26258,gene_name,biogenesis of lysosomal organelles complex 1 subunit 6
+26985,symbol,AP3M1
+26985,gene_name,adaptor related protein complex 3 mu 1 subunit
+27074,symbol,LAMP3
+27074,gene_name,lysosomal associated membrane protein 3
+27235,symbol,COQ2
+27235,gene_name,coenzyme Q2 4-hydroxybenzoate polyprenyltransferase
+27347,symbol,STK39
+27347,gene_name,serine/threonine kinase 39
+28996,symbol,HIPK2
+28996,gene_name,homeodomain interacting protein kinase 2
+29914,symbol,UBIAD1
+29914,gene_name,UbiA prenyltransferase domain containing 1
+51004,symbol,COQ6
+51004,gene_name,coenzyme Q6 monooxygenase
+51117,symbol,COQ4
+51117,gene_name,coenzyme Q4
+51166,symbol,AADAT
+51166,gene_name,aminoadipate aminotransferase
+51422,symbol,PRKAG2
+51422,gene_name,protein kinase AMP-activated non-catalytic subunit gamma 2
+51701,symbol,NLK
+51701,gene_name,nemo-like kinase
+51719,symbol,CAB39
+51719,gene_name,calcium binding protein 39
+51763,symbol,INPP5K
+51763,gene_name,inositol polyphosphate-5-phosphatase K
+51805,symbol,COQ3
+51805,gene_name,coenzyme Q3 methyltransferase
+53904,symbol,MYO3A
+53904,gene_name,myosin IIIA
+54541,symbol,DDIT4
+54541,gene_name,DNA damage inducible transcript 4
+54820,symbol,NDE1
+54820,gene_name,nudE neurodevelopment protein 1
+55023,symbol,PHIP
+55023,gene_name,pleckstrin homology domain interacting protein
+55061,symbol,SUSD4
+55061,gene_name,sushi domain containing 4
+55330,symbol,BLOC1S4
+55330,gene_name,biogenesis of lysosomal organelles complex 1 subunit 4
+55366,symbol,LGR4
+55366,gene_name,leucine-rich repeat containing G protein-coupled receptor 4
+56267,symbol,CCBL2
+56267,gene_name,cysteine conjugate-beta lyase 2
+56288,symbol,PARD3
+56288,gene_name,par-3 family cell polarity regulator
+56997,symbol,ADCK3
+56997,gene_name,aarF domain containing kinase 3
+57017,symbol,COQ9
+57017,gene_name,coenzyme Q9
+57107,symbol,PDSS2
+57107,gene_name,"prenyl (decaprenyl) diphosphate synthase, subunit 2"
+57214,symbol,CEMIP
+57214,gene_name,"cell migration inducing protein, hyaluronan binding"
+63915,symbol,BLOC1S5
+63915,gene_name,biogenesis of lysosomal organelles complex 1 subunit 5
+63971,symbol,KIF13A
+63971,gene_name,kinesin family member 13A
+65125,symbol,WNK1
+65125,gene_name,WNK lysine deficient protein kinase 1
+65267,symbol,WNK3
+65267,gene_name,WNK lysine deficient protein kinase 3
+79443,symbol,FYCO1
+79443,gene_name,FYVE and coiled-coil domain containing 1
+81565,symbol,NDEL1
+81565,gene_name,nudE neurodevelopment protein 1 like 1
+83903,symbol,GSG2
+83903,gene_name,germ cell associated 2 (haspin)
+84062,symbol,DTNBP1
+84062,gene_name,dystrobrevin binding protein 1
+84274,symbol,COQ5
+84274,gene_name,"coenzyme Q5, methyltransferase"
+84750,symbol,FUT10
+84750,gene_name,"fucosyltransferase 10 (alpha (1,3) fucosyltransferase)"
+85366,symbol,MYLK2
+85366,gene_name,myosin light chain kinase 2
+117854,symbol,TRIM6
+117854,gene_name,tripartite motif containing 6
+120892,symbol,LRRK2
+120892,gene_name,leucine-rich repeat kinase 2
+124997,symbol,WDR81
+124997,gene_name,WD repeat domain 81
+140469,symbol,MYO3B
+140469,gene_name,myosin IIIB
+161742,symbol,SPRED1
+161742,gene_name,"sprouty related, EVH1 domain containing 1"
+200734,symbol,SPRED2
+200734,gene_name,"sprouty related, EVH1 domain containing 2"
+219736,symbol,STOX1
+219736,gene_name,storkhead box 1
+254263,symbol,CNIH2
+254263,gene_name,cornichon family AMPA receptor auxiliary protein 2
+282991,symbol,BLOC1S2
+282991,gene_name,biogenesis of lysosomal organelles complex 1 subunit 2
+388552,symbol,BLOC1S3
+388552,gene_name,biogenesis of lysosomal organelles complex 1 subunit 3
+728637,symbol,MEIKIN
+728637,gene_name,meiotic kinetochore factor
