@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 
-to_do.txt
 .DS_Store
 **/.DS_Store
+
+to_do.txt
