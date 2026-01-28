@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 What the factor? | Introduction to R - tidyverse</title>
   <meta name="description" content="8 What the factor? | Introduction to R - tidyverse" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 What the factor? | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="factors.html"/>
-<link rel="next" href="odds-ends.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -353,9 +353,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="what-the-factor.html"><a href="what-the-factor.html#summary-2"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
-<li class="chapter" data-level="9" data-path="factors-1.html"><a href="factors-1.html"><i class="fa fa-check"></i><b>9</b> Factors</a></li>
-<li class="chapter" data-level="" data-path="odds-ends-1.html"><a href="odds-ends-1.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
 </ul>
 
       </nav>
@@ -387,18 +384,18 @@ In the northern hemisphere the seasons follow Winter &gt; Spring &gt; Summer &gt
 <span id="cb334-2"><a href="what-the-factor.html#cb334-2" tabindex="-1"></a></span>
 <span id="cb334-3"><a href="what-the-factor.html#cb334-3" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 12
-##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  cyl_factor
-##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;fct&gt;     
-##  1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compa… 4         
-##  2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compa… 4         
-##  3 audi         a4           2    2008     4 manual(m6) f        20    31 p     compa… 4         
-##  4 audi         a4           2    2008     4 auto(av)   f        21    30 p     compa… 4         
-##  5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compa… 6         
-##  6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compa… 6         
-##  7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compa… 6         
-##  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compa… 4         
-##  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compa… 4         
-## 10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compa… 4         
+##    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class cyl_factor
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;fct&gt;     
+##  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp… 4         
+##  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp… 4         
+##  3 audi         a4           2    2008     4 manu… f        20    31 p     comp… 4         
+##  4 audi         a4           2    2008     4 auto… f        21    30 p     comp… 4         
+##  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp… 6         
+##  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp… 6         
+##  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp… 6         
+##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp… 4         
+##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp… 4         
+## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp… 4         
 ## # ℹ 224 more rows</code></pre>
 <p>Notice that the cyl_factor column now has the <fct> factor data type, whereas the original cyl column is <int> integer data.</p>
 <p>We can get a summary view of the data types in each column (i.e., the ‘structure’ of the data) by piping the code output into <code>str()</code></p>
@@ -421,14 +418,14 @@ The levels indicate the order of the unique values in the factor. For example, l
 <p>You will also notice the sequence of numbers after the levels: 1111333111. This indicates that the values in each of the first 10 rows are a mix of the level 1 (value = 4) and level 3 (value = 6) factor. Let’s verify this in the first 6 rows using <code>head()</code>.</p>
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="what-the-factor.html#cb338-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 12
-##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class   cyl_factor
-##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     
-## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact 4         
-## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compact 4         
-## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compact 4         
-## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compact 4         
-## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact 6         
-## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact 6</code></pre>
+##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  cyl_factor
+##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;fct&gt;     
+## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa… 4         
+## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa… 4         
+## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa… 4         
+## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa… 4         
+## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa… 6         
+## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa… 6</code></pre>
 <p>Both the cyl and cyl_factor columns contain 4 4 4 4 6 6.</p>
 <p>If we first arrange the mpg data frame by cyl, how does the data structure for cyl_factor change?</p>
 <div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="what-the-factor.html#cb340-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
@@ -603,8 +600,8 @@ This chapter has provided the tools to overcome some common frustrating hurdles 
           </div>
         </div>
       </div>
-<a href="factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="odds-ends.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="factors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

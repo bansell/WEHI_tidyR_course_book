@@ -1,0 +1,10 @@
+name: WEHI_tidyR_course_book
+title:
+username: bansell
+account: bansell
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 019c0200-7b17-a03c-29cf-8ece7c918a0b
+bundleId:
+url: https://connect.posit.cloud/bansell/content/019c0200-7b17-a03c-29cf-8ece7c918a0b
+version: 1

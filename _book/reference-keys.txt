@@ -130,4 +130,3 @@ factors-and-facets
 factors-and-bar-charts
 reorder_go_plot
 summary-2
-factors-1

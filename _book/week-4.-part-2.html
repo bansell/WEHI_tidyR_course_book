@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Week 4. Part 2 | Introduction to R - tidyverse</title>
   <meta name="description" content="Week 4. Part 2 | Introduction to R - tidyverse" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Week 4. Part 2 | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
@@ -353,9 +353,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="what-the-factor.html"><a href="what-the-factor.html#summary-2"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
-<li class="chapter" data-level="9" data-path="factors-1.html"><a href="factors-1.html"><i class="fa fa-check"></i><b>9</b> Factors</a></li>
-<li class="chapter" data-level="" data-path="odds-ends-1.html"><a href="odds-ends-1.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
 </ul>
 
       </nav>
@@ -388,19 +385,20 @@ We aim to identify the screening ‘hits’ using both data visualization and st
 <pre><code>## [1] 32 49</code></pre>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="week-4.-part-2.html#cb299-1" tabindex="-1"></a>screen_plate <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 49
-##   ROW      C1     C2     C3     C4     C5     C6     C7     C8     C9    C10    C11    C12    C13
-##   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1 R1    6174. 1.87e5 211526 205900 197694 209756 201435 174091 205579 196761 204813 208347 211597
-## 2 R2    6368. 1.98e5 190814 200780 216758 214997 185684 203572 199878 201356 198175 182754 208372
-## 3 R3    6959. 1.93e5 215258 197533 217146 191428 200699 198098 184296 194705 186234 192012 203523
-## 4 R4    6106. 1.85e5 186948 210031 213270 208650 175096 195469 194506 200694 223320 184593 213273
-## 5 R5    5919. 2.02e5 204239 185185 217024 195054 164089 209650 190217 190350 229037 190626 186747
-## 6 R6    5408. 2.04e5 220773 197154 204712 166208 194040 176697 218824 199691 194497 201629 190948
-## # ℹ 35 more variables: C14 &lt;dbl&gt;, C15 &lt;dbl&gt;, C16 &lt;dbl&gt;, C17 &lt;dbl&gt;, C18 &lt;dbl&gt;, C19 &lt;dbl&gt;,
-## #   C20 &lt;dbl&gt;, C21 &lt;dbl&gt;, C22 &lt;dbl&gt;, C23 &lt;dbl&gt;, C24 &lt;dbl&gt;, C25 &lt;dbl&gt;, C26 &lt;dbl&gt;, C27 &lt;dbl&gt;,
-## #   C28 &lt;dbl&gt;, C29 &lt;dbl&gt;, C30 &lt;dbl&gt;, C31 &lt;dbl&gt;, C32 &lt;dbl&gt;, C33 &lt;dbl&gt;, C34 &lt;dbl&gt;, C35 &lt;dbl&gt;,
-## #   C36 &lt;dbl&gt;, C37 &lt;dbl&gt;, C38 &lt;dbl&gt;, C39 &lt;dbl&gt;, C40 &lt;dbl&gt;, C41 &lt;dbl&gt;, C42 &lt;dbl&gt;, C43 &lt;dbl&gt;,
-## #   C44 &lt;dbl&gt;, C45 &lt;dbl&gt;, C46 &lt;dbl&gt;, C47 &lt;dbl&gt;, C48 &lt;dbl&gt;</code></pre>
+##   ROW      C1      C2     C3     C4     C5     C6     C7     C8     C9    C10    C11    C12
+##   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 R1    6174. 187493. 211526 205900 197694 209756 201435 174091 205579 196761 204813 208347
+## 2 R2    6368. 197641. 190814 200780 216758 214997 185684 203572 199878 201356 198175 182754
+## 3 R3    6959. 193279. 215258 197533 217146 191428 200699 198098 184296 194705 186234 192012
+## 4 R4    6106. 185390. 186948 210031 213270 208650 175096 195469 194506 200694 223320 184593
+## 5 R5    5919. 201540. 204239 185185 217024 195054 164089 209650 190217 190350 229037 190626
+## 6 R6    5408. 203746. 220773 197154 204712 166208 194040 176697 218824 199691 194497 201629
+## # ℹ 36 more variables: C13 &lt;dbl&gt;, C14 &lt;dbl&gt;, C15 &lt;dbl&gt;, C16 &lt;dbl&gt;, C17 &lt;dbl&gt;, C18 &lt;dbl&gt;,
+## #   C19 &lt;dbl&gt;, C20 &lt;dbl&gt;, C21 &lt;dbl&gt;, C22 &lt;dbl&gt;, C23 &lt;dbl&gt;, C24 &lt;dbl&gt;, C25 &lt;dbl&gt;,
+## #   C26 &lt;dbl&gt;, C27 &lt;dbl&gt;, C28 &lt;dbl&gt;, C29 &lt;dbl&gt;, C30 &lt;dbl&gt;, C31 &lt;dbl&gt;, C32 &lt;dbl&gt;,
+## #   C33 &lt;dbl&gt;, C34 &lt;dbl&gt;, C35 &lt;dbl&gt;, C36 &lt;dbl&gt;, C37 &lt;dbl&gt;, C38 &lt;dbl&gt;, C39 &lt;dbl&gt;,
+## #   C40 &lt;dbl&gt;, C41 &lt;dbl&gt;, C42 &lt;dbl&gt;, C43 &lt;dbl&gt;, C44 &lt;dbl&gt;, C45 &lt;dbl&gt;, C46 &lt;dbl&gt;,
+## #   C47 &lt;dbl&gt;, C48 &lt;dbl&gt;</code></pre>
 <p>So we have a 32-row x 49-column data frame, and using head() we can see that all except the first column are numeric data (you should double-check this using the str() command, which reveals the type of data in each column).<br />
 The column names are designated C1, C2, C3 etc, and row identifier column ROW contains R1, R2, R3 etc.</p>
 </div>
