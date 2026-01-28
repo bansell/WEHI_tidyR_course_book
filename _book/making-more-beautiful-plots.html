@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Making more beautiful plots | Introduction to R - tidyverse</title>
   <meta name="description" content="3 Making more beautiful plots | Introduction to R - tidyverse" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Making more beautiful plots | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -30,10 +29,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="week-1-part-3.html"/>
-<link rel="next" href="week-2-part-1.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="week-1.-part-3.html"/>
+<link rel="next" href="week-2.-part-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162666902-1"></script>
 <script>
@@ -65,6 +64,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -102,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -129,6 +129,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -147,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-1.html"><a href="week-1-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-1.html"><a href="week-1.-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
 <li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-look-around-rstudio"><i class="fa fa-check"></i><b>1.1</b> A look around RStudio</a></li>
@@ -176,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13" data-path="welcome-to-r.html"><a href="welcome-to-r.html#the-pipe"><i class="fa fa-check"></i><b>1.13</b> The pipe %&gt;%</a></li>
 <li class="chapter" data-level="1.14" data-path="welcome-to-r.html"><a href="welcome-to-r.html#data-frames"><i class="fa fa-check"></i><b>1.14</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-2.html"><a href="week-1-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-2.html"><a href="week-1.-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
 <li class="chapter" data-level="2" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html"><i class="fa fa-check"></i><b>2</b> Making beautiful plots</a>
 <ul>
 <li class="chapter" data-level="" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#introductory-information"><i class="fa fa-check"></i>Introductory information</a></li>
@@ -195,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#axis-labels"><i class="fa fa-check"></i><b>2.9</b> Axis labels</a></li>
 <li class="chapter" data-level="2.10" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#themes"><i class="fa fa-check"></i><b>2.10</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-3.html"><a href="week-1-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-3.html"><a href="week-1.-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
 <li class="chapter" data-level="3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html"><i class="fa fa-check"></i><b>3</b> Making <em>more</em> beautiful plots</a>
 <ul>
 <li class="chapter" data-level="" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#introductory-information-1"><i class="fa fa-check"></i>Introductory information</a></li>
@@ -212,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#challenge"><i class="fa fa-check"></i><b>3.8</b> Challenge</a></li>
 <li class="chapter" data-level="3.9" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#solution"><i class="fa fa-check"></i><b>3.9</b> Solution</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-2-part-1.html"><a href="week-2-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-2.-part-1.html"><a href="week-2.-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
 <li class="chapter" data-level="4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html"><i class="fa fa-check"></i><b>4</b> Sub-setting vectors</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>4.1</b> Subset by position</a></li>
@@ -221,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>4.4</b> Challenge</a></li>
 <li class="chapter" data-level="4.5" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>4.5</b> Possible solutions</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-2-part-2.html"><a href="week-2-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
+<li class="chapter" data-level="" data-path="week-2.-part-2.html"><a href="week-2.-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
 <li class="chapter" data-level="5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulating data with dplyr</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>5.1</b> filter()</a>
@@ -292,9 +296,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separating-and-uniting-columns"><i class="fa fa-check"></i><b>6.3</b> Separating and uniting columns</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate"><i class="fa fa-check"></i><b>6.3.1</b> separate()</a></li>
-<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate_rows"><i class="fa fa-check"></i><b>6.3.2</b> separate_rows()</a></li>
+<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#str_split-unnest"><i class="fa fa-check"></i><b>6.3.2</b> str_split() %&gt;% unnest()</a></li>
 <li class="chapter" data-level="6.3.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#rename"><i class="fa fa-check"></i><b>6.3.3</b> rename()</a></li>
-<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite"><i class="fa fa-check"></i><b>6.3.4</b> unite()</a></li>
+<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite-unite"><i class="fa fa-check"></i><b>6.3.4</b> unite() {unite}</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#removing-variables"><i class="fa fa-check"></i><b>6.4</b> Removing variables</a></li>
 <li class="chapter" data-level="6.5" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>6.5</b> Joining dataframes</a>
@@ -302,10 +306,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#left_join"><i class="fa fa-check"></i><b>6.5.1</b> left_join()</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#plotting-challenge"><i class="fa fa-check"></i><b>6.6</b> Plotting challenge</a></li>
-<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#bar-chart"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
+<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#solution-2"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
 <li class="chapter" data-level="6.8" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#summary-1"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-1.html"><a href="week-4-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-4.-part-1.html"><a href="week-4.-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
 <li class="chapter" data-level="7" data-path="automating-your-work.html"><a href="automating-your-work.html"><i class="fa fa-check"></i><b>7</b> Automating your work</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="automating-your-work.html"><a href="automating-your-work.html#experimental-design"><i class="fa fa-check"></i><b>7.1</b> Experimental design</a></li>
@@ -317,26 +321,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.2" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-data-frame"><i class="fa fa-check"></i><b>7.4.2</b> Catch in data frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-2.html"><a href="week-4-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
+<li class="chapter" data-level="" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
 <ul>
-<li class="chapter" data-level="7.5" data-path="week-4-part-2.html"><a href="week-4-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-part-2.html"><a href="week-4-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
+<li class="chapter" data-level="7.5" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
+<li class="chapter" data-level="7.6" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
-<li class="chapter" data-level="7.6.2" data-path="week-4-part-2.html"><a href="week-4-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
+<li class="chapter" data-level="7.6.1" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
+<li class="chapter" data-level="7.6.2" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="week-4-part-2.html"><a href="week-4-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
+<li class="chapter" data-level="7.7" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
+<li class="chapter" data-level="7.7.1" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="week-4-part-2.html"><a href="week-4-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
+<li class="chapter" data-level="7.8" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-3.html"><a href="week-4-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
+<li class="chapter" data-level="" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
 <ul>
-<li class="chapter" data-level="7.9" data-path="week-4-part-3.html"><a href="week-4-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
-<li class="chapter" data-level="7.10" data-path="week-4-part-3.html"><a href="week-4-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
-<li class="chapter" data-level="7.11" data-path="week-4-part-3.html"><a href="week-4-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
-<li class="chapter" data-level="7.12" data-path="week-4-part-3.html"><a href="week-4-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
+<li class="chapter" data-level="7.9" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
+<li class="chapter" data-level="7.10" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
+<li class="chapter" data-level="7.11" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
+<li class="chapter" data-level="7.12" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i>Factors</a></li>
 <li class="chapter" data-level="8" data-path="what-the-factor.html"><a href="what-the-factor.html"><i class="fa fa-check"></i><b>8</b> What the factor?</a>
@@ -345,11 +349,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-facets"><i class="fa fa-check"></i><b>8.1.1</b> Factors and facets</a></li>
 <li class="chapter" data-level="8.1.2" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-bar-charts"><i class="fa fa-check"></i><b>8.1.2</b> Factors and bar charts</a></li>
-<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reordering-gene-plots"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
+<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reorder_go_plot"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="what-the-factor.html"><a href="what-the-factor.html#summary-2"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
+<li class="chapter" data-level="9" data-path="factors-1.html"><a href="factors-1.html"><i class="fa fa-check"></i><b>9</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="odds-ends-1.html"><a href="odds-ends-1.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
 </ul>
 
       </nav>
@@ -367,19 +373,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="making-more-beautiful-plots" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Making <em>more</em> beautiful plots</h1>
-<div id="introductory-information-1" class="section level2 unnumbered">
-<h2>Introductory information</h2>
+<div id="making-more-beautiful-plots" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Making <em>more</em> beautiful plots<a href="making-more-beautiful-plots.html#making-more-beautiful-plots" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introductory-information-1" class="section level2 unnumbered hasAnchor">
+<h2>Introductory information<a href="making-more-beautiful-plots.html#introductory-information-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This tutorial leads on from the Week 1 Part 2 tutorial. We now explore approaches for plotting large datasets. If you have opened a new R session in RStudio, you can open your Week_1_tidyverse.R file, and reload the tidyverse package:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="making-more-beautiful-plots.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="making-more-beautiful-plots.html#cb61-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>We now create a larger data set in the global environment, called ‘diamond_df’. This is based on the diamonds data set that is provided as part of the tidyverse</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="making-more-beautiful-plots.html#cb62-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="ot">&lt;-</span> diamonds</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="making-more-beautiful-plots.html#cb62-1" tabindex="-1"></a>diamond_df <span class="ot">&lt;-</span> diamonds</span></code></pre></div>
 <p>N.B. If your computer is taking a long time to plot this data set in the steps below, then take a smaller sample of 2500 rows. I don’t recommend overwriting objects in general, but doing this will make the following section more accessible. Also note that your plots will look slightly different to those below.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="making-more-beautiful-plots.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) ; diamond_df <span class="ot">&lt;-</span> diamond_df <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">2500</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="making-more-beautiful-plots.html#cb63-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) ; diamond_df <span class="ot">&lt;-</span> diamond_df <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">2500</span>)</span></code></pre></div>
 </div>
-<div id="bigger-data-54000-diamonds" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Big(ger) Data: 54,000 diamonds</h2>
+<div id="bigger-data-54000-diamonds" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Big(ger) Data: 54,000 diamonds<a href="making-more-beautiful-plots.html#bigger-data-54000-diamonds" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When plotting a small dataset such as mpg_df, its possible to visualize every individual data point. This is impractical for large datasets, where we run into the problem of ‘over-plotting’. We therefore need approaches for managing over-plotting. These include but aren’t limited to:</p>
 <ul>
 <li>reducing density</li>
@@ -390,14 +396,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 As for mpg, this data is available through the tidyverse package.</p>
 <p><a href="https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png" class="uri">https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png</a></p>
 <p>First let’s view the first 6 rows of the diamond_df dataset</p>
-<div class="figure">
-<img src="https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png" alt="" />
-<p class="caption">diamond anatomy</p>
+<div class="float">
+<img src="https://www.diamonds.pro/wp-content/uploads/2019/02/diamond-depth-and-table.png" alt="diamond anatomy" />
+<div class="figcaption">diamond anatomy</div>
 </div>
 <p>img from: <a href="https://www.diamond.pro/education/diamond-depth-and-table/" class="uri">https://www.diamond.pro/education/diamond-depth-and-table/</a><br />
 <br></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="making-more-beautiful-plots.html#cb64-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 10
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="making-more-beautiful-plots.html#cb64-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
@@ -408,144 +414,145 @@ As for mpg, this data is available through the tidyverse package.</p>
 ## 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
 <p>You can read the definitions of each measurement (column name) in the help manual for the original (‘hidden’) dataset by typing <code>?diamonds</code></p>
 <p>We can get the number of rows and columns (the ‘dimensions’) of this dataset using the dim() function:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="making-more-beautiful-plots.html#cb66-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">dim</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="making-more-beautiful-plots.html#cb66-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">dim</span>()</span></code></pre></div>
 <pre><code>## [1] 53940    10</code></pre>
 <p>First let’s make a scatter plot comparing the price of diamonds (y) by cut (x):</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="making-more-beautiful-plots.html#cb68-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb68-2"><a href="making-more-beautiful-plots.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="making-more-beautiful-plots.html#cb68-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="making-more-beautiful-plots.html#cb68-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>Because there are 54K points here the plot is essentially useless. What can we do to get more information about the relationship?</p>
 </div>
-<div id="geom_jitter" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> geom_jitter()</h2>
+<div id="geom_jitter" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> geom_jitter()<a href="making-more-beautiful-plots.html#geom_jitter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The geom_jitter() command adds some random scatter to the points which can reduce over-plotting. Note that to avoid mis-representing the price, we should set the jitter height to 0.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="making-more-beautiful-plots.html#cb69-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb69-2"><a href="making-more-beautiful-plots.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="making-more-beautiful-plots.html#cb69-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="making-more-beautiful-plots.html#cb69-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>This is somewhat improved but far from good. Next we will make the points more transparent using the ‘alpha’ setting within geom_jitter.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="making-more-beautiful-plots.html#cb70-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb70-2"><a href="making-more-beautiful-plots.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="making-more-beautiful-plots.html#cb70-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb70-2"><a href="making-more-beautiful-plots.html#cb70-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>The density below $5000 can be further reduced by limiting the size of the points, again within the geom_jitter() command.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="making-more-beautiful-plots.html#cb71-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb71-2"><a href="making-more-beautiful-plots.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
-<span id="cb71-3"><a href="making-more-beautiful-plots.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="making-more-beautiful-plots.html#cb71-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="making-more-beautiful-plots.html#cb71-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
+<span id="cb71-3"><a href="making-more-beautiful-plots.html#cb71-3" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>Now we can see much more detail in the data, including an interesting lack of data around the $3000 mark in the Very Good and Premium cut data. This could be due to other features such as size, carat or clarity. We will return to these possibilities later.</p>
 </div>
-<div id="summary-plots" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Summary plots</h2>
+<div id="summary-plots" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Summary plots<a href="making-more-beautiful-plots.html#summary-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Its clear that the cut group sizes are uneven. To get a quick summary of the numbers of diamonds per group, we can make a bar plot. Here we specify <em>only</em> the group we wish to count (i.e. the number of diamonds of each cut) as the x aesthetic. Importantly, the group size is summed and displayed automatically when we specify geom_bar().</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="making-more-beautiful-plots.html#cb72-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb72-2"><a href="making-more-beautiful-plots.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="making-more-beautiful-plots.html#cb72-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="making-more-beautiful-plots.html#cb72-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Alternatively, if we want to find the <em>total value</em> of the diamonds in each group, we use a related geom that sums the values in a column (rather than the number of rows), called geom_col. Here we give price, that is, the column whose values we want to sum, as the y axis aesthetic.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="making-more-beautiful-plots.html#cb73-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb73-2"><a href="making-more-beautiful-plots.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="making-more-beautiful-plots.html#cb73-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="making-more-beautiful-plots.html#cb73-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>From this we can see the total value of the Ideal cut diamonds alone is &gt; $70 million!</p>
-<div id="free-examples" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Free examples!</h3>
+<div id="free-examples" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Free examples!<a href="making-more-beautiful-plots.html#free-examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you are unsure how to use a function in R, the help page will usually have Example code at the bottom.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="making-more-beautiful-plots.html#cb74-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="making-more-beautiful-plots.html#cb74-1" tabindex="-1"></a>?<span class="fu">geom_bar</span>()</span></code></pre></div>
 <p>You can copy and paste these examples and they should work first time. The code below is taken directly from the first example for geom_bar():</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="making-more-beautiful-plots.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_bar is designed to make it easy to create bar charts that show</span></span>
-<span id="cb75-2"><a href="making-more-beautiful-plots.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># counts (or sums of weights)</span></span>
-<span id="cb75-3"><a href="making-more-beautiful-plots.html#cb75-3" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class))</span>
-<span id="cb75-4"><a href="making-more-beautiful-plots.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cars in each class:</span></span>
-<span id="cb75-5"><a href="making-more-beautiful-plots.html#cb75-5" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="making-more-beautiful-plots.html#cb75-1" tabindex="-1"></a><span class="co"># geom_bar is designed to make it easy to create bar charts that show</span></span>
+<span id="cb75-2"><a href="making-more-beautiful-plots.html#cb75-2" tabindex="-1"></a><span class="co"># counts (or sums of weights)</span></span>
+<span id="cb75-3"><a href="making-more-beautiful-plots.html#cb75-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class))</span>
+<span id="cb75-4"><a href="making-more-beautiful-plots.html#cb75-4" tabindex="-1"></a><span class="co"># Number of cars in each class:</span></span>
+<span id="cb75-5"><a href="making-more-beautiful-plots.html#cb75-5" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>To add more information, we could count the clarity groups per cut group. Adding clarity into the aesthetic as the bar fill colour will automatically calculate and display these sub-groups.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="making-more-beautiful-plots.html#cb76-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill=</span>clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="making-more-beautiful-plots.html#cb76-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill=</span>clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>We can rearrange the clarity groups into adjacent (dodged) bars by specifying a different position within geom_bar():</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="making-more-beautiful-plots.html#cb77-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill=</span>clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&#39;dodge&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="making-more-beautiful-plots.html#cb77-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill=</span>clarity)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&#39;dodge&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 </div>
 </div>
-<div id="histograms" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Histograms</h2>
+<div id="histograms" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Histograms<a href="making-more-beautiful-plots.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When dealing with large datasets especially for statistical testing, histograms are essential for understanding the distribution of values.<br />
 Like geom_bar() above, geom_histogram() requires only a single x aesthetic, specifying the values to be displayed. Further, the values will be automatically sorted into 30 bins and the number of rows of data per bin summed up.
 Here we plot the distribution of prices across the entire dataset.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="making-more-beautiful-plots.html#cb78-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="making-more-beautiful-plots.html#cb78-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>To increase the resolution of the histogram, lets specify 200 bins:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="making-more-beautiful-plots.html#cb80-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">200</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="making-more-beautiful-plots.html#cb80-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">200</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 Here we can see an interesting lack of data around $1000. Let’s zoom in using xlim, and add some fill colour.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="making-more-beautiful-plots.html#cb81-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
-<span id="cb81-2"><a href="making-more-beautiful-plots.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">200</span>, <span class="at">fill =</span> <span class="st">&#39;dodgerblue&#39;</span>) <span class="sc">+</span></span>
-<span id="cb81-3"><a href="making-more-beautiful-plots.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">2500</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 26398 rows containing non-finite values (stat_bin).</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_bar).</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="making-more-beautiful-plots.html#cb81-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span></span>
+<span id="cb81-2"><a href="making-more-beautiful-plots.html#cb81-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">200</span>, <span class="at">fill =</span> <span class="st">&#39;dodgerblue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb81-3"><a href="making-more-beautiful-plots.html#cb81-3" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">2500</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 26398 rows containing non-finite outside the scale range (`stat_bin()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>There are virtually no diamonds around the $1500 mark. What could be the reason for this?</p>
 <p>R will give a warning that some data is not represented in the plot. This is part of the ggplot philosophy that ‘data should not go missing silently.’</p>
 </div>
-<div id="density-plots" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Density plots</h2>
+<div id="density-plots" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Density plots<a href="making-more-beautiful-plots.html#density-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Whereas it can be difficult to represent multiple sub-groups in a histogram, density plots are another essential tool for exploring your data. These are essentially smoothed histograms, where the area under the curve for each sub-group will sum to 1. This allows us to compare sub-groups of different size.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="making-more-beautiful-plots.html#cb84-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">colour =</span>cut))</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="making-more-beautiful-plots.html#cb84-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">colour =</span>cut))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
-<div id="box-plots" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Box plots</h2>
+<div id="box-plots" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Box plots<a href="making-more-beautiful-plots.html#box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png" alt="anatomy of a box plot" />
 img from: <a href="https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png" class="uri">https://miro.medium.com/max/18000/1*2c21SkzJMf3frPXPAR_gZA.png</a><br />
 <br></p>
 <p>Box plots, or ‘box &amp; whisker plots’ are another essential tool for data analysis, which are related to histograms and density plots. Box plots summarize the distribution of a set of values by displaying the minimum and maximum values, the median (i.e. middle-ranked value), and the range of the middle 50% of values (inter-quartile range).<br />
 The whisker line extending above and below the IQR box define Q3 + (1.5 x IQR), and Q1 - (1.5 x IQR) respectively. You can read more about box plots <a href="https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51">here</a>.</p>
 <p>To create box plot from our data we use (no prizes here) geom_boxplot()!</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="making-more-beautiful-plots.html#cb85-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="making-more-beautiful-plots.html#cb85-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 <br>
 The points indicate outlier values [i.e., those greater than Q3 + (1.5 x IQR)].</p>
 <p>We can overlay a boxplot on the scatter plot for the entire dataset, to fully communicate both the raw and summary data.
 Here we reduce the width of the jitter points slightly, and set the IQR box to be fully transparent using alpha.<br />
 Note that this setting also hides the outlier points in geom_boxplot.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="making-more-beautiful-plots.html#cb86-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb86-2"><a href="making-more-beautiful-plots.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
-<span id="cb86-3"><a href="making-more-beautiful-plots.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb86-4"><a href="making-more-beautiful-plots.html#cb86-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="making-more-beautiful-plots.html#cb86-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb86-2"><a href="making-more-beautiful-plots.html#cb86-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
+<span id="cb86-3"><a href="making-more-beautiful-plots.html#cb86-3" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb86-4"><a href="making-more-beautiful-plots.html#cb86-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>Because its now difficult to see the box plots, we can colour <em>only</em> the geom_boxplot by setting the colour aesthetic <em>within</em> that geom:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="making-more-beautiful-plots.html#cb87-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb87-2"><a href="making-more-beautiful-plots.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
-<span id="cb87-3"><a href="making-more-beautiful-plots.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb87-4"><a href="making-more-beautiful-plots.html#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>, <span class="fu">aes</span>(<span class="at">colour =</span>cut))</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="making-more-beautiful-plots.html#cb87-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb87-2"><a href="making-more-beautiful-plots.html#cb87-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
+<span id="cb87-3"><a href="making-more-beautiful-plots.html#cb87-3" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb87-4"><a href="making-more-beautiful-plots.html#cb87-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>, <span class="fu">aes</span>(<span class="at">colour =</span>cut))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>The legend contains the same information as the x axis, and is therefore redundant. We can drop the legend by giving an additional command to geom_boxplot:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="making-more-beautiful-plots.html#cb88-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb88-2"><a href="making-more-beautiful-plots.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
-<span id="cb88-3"><a href="making-more-beautiful-plots.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb88-4"><a href="making-more-beautiful-plots.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>, <span class="fu">aes</span>(<span class="at">colour =</span>cut), <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="making-more-beautiful-plots.html#cb88-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb88-2"><a href="making-more-beautiful-plots.html#cb88-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
+<span id="cb88-3"><a href="making-more-beautiful-plots.html#cb88-3" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height=</span><span class="dv">0</span>, <span class="at">alpha=</span><span class="fl">0.25</span>, <span class="at">size=</span><span class="fl">0.5</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb88-4"><a href="making-more-beautiful-plots.html#cb88-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>, <span class="fu">aes</span>(<span class="at">colour =</span>cut), <span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>In fact, a box plot displays very similar information to a density plot, rotated 90°. Violin plots, which reflect the sample density, can be used together with a box plot to convey even more detail about the distribution of a set of values.</p>
 <p>Here we limit the width of geom_boxplot to sit within geom_violin.<br />
 Because both geoms will be coloured in the same way, we can give the colour aesthetic directly to ggplot().<br />
 Similarly, because we don’t want the legend, we will remove it using the theme() function.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="making-more-beautiful-plots.html#cb89-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb89-2"><a href="making-more-beautiful-plots.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price, <span class="at">colour =</span>cut)) <span class="sc">+</span> </span>
-<span id="cb89-3"><a href="making-more-beautiful-plots.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>, <span class="at">width=</span><span class="fl">0.15</span>) <span class="sc">+</span></span>
-<span id="cb89-4"><a href="making-more-beautiful-plots.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha=</span><span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb89-5"><a href="making-more-beautiful-plots.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="making-more-beautiful-plots.html#cb89-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb89-2"><a href="making-more-beautiful-plots.html#cb89-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price, <span class="at">colour =</span>cut)) <span class="sc">+</span> </span>
+<span id="cb89-3"><a href="making-more-beautiful-plots.html#cb89-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha=</span><span class="dv">0</span>, <span class="at">width=</span><span class="fl">0.15</span>) <span class="sc">+</span></span>
+<span id="cb89-4"><a href="making-more-beautiful-plots.html#cb89-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha=</span><span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb89-5"><a href="making-more-beautiful-plots.html#cb89-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 </div>
-<div id="saving-plots" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> Saving plots</h2>
+<div id="saving-plots" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Saving plots<a href="making-more-beautiful-plots.html#saving-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ggplot includes a neat function ggsave() which allows us to save plots in many formats</p>
 <p>By default ggsave() will save the most recent plot. It writes a file depending on the extension you provide. To save the plot that is currently in your Plots window:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="making-more-beautiful-plots.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;~/Desktop/WEHI_tidyR_course/my_ggplot.pdf&#39;</span>, <span class="at">width=</span><span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="making-more-beautiful-plots.html#cb90-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&#39;~/Desktop/WEHI_tidyR_course/my_ggplot.pdf&#39;</span>, <span class="at">width=</span><span class="dv">5</span>,<span class="at">height=</span><span class="dv">4</span>)</span></code></pre></div>
 <p>To save a specific plot, its possible to store the plot as a variable, which is given to ggsave():</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="making-more-beautiful-plots.html#cb91-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>displ, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class))</span>
-<span id="cb91-2"><a href="making-more-beautiful-plots.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-3"><a href="making-more-beautiful-plots.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> myplot, <span class="st">&#39;~/Desktop/WEHI_tidyR_course/my_ggplot.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="making-more-beautiful-plots.html#cb91-1" tabindex="-1"></a>myplot <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>displ, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class))</span>
+<span id="cb91-2"><a href="making-more-beautiful-plots.html#cb91-2" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="making-more-beautiful-plots.html#cb91-3" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> myplot, <span class="st">&#39;~/Desktop/WEHI_tidyR_course/my_ggplot.pdf&#39;</span>, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>In general, if you want to increase the size of points and text, then reduce the dimensions of the plot; and vice versa.</p>
 </div>
-<div id="challenge" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> Challenge</h2>
+<div id="challenge" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Challenge<a href="making-more-beautiful-plots.html#challenge" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Based on what you’ve learnt, can you make a scatter plot that shows the relationship between diamond carat and price, with points coloured by clarity (reduced in size to 0.2), and faceted by cut?</p>
 <p>What do you notice about the distribution of carat?</p>
 <p>More generally, what has this exploratory data analysis taught us about human psychology when it comes to diamonds?</p>
@@ -559,12 +566,12 @@ Similarly, because we don’t want the legend, we will remove it using the theme
 <br>
 <br></p>
 </div>
-<div id="solution" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> Solution</h2>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="making-more-beautiful-plots.html#cb92-1" aria-hidden="true" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
-<span id="cb92-2"><a href="making-more-beautiful-plots.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour =</span>clarity)) <span class="sc">+</span> </span>
-<span id="cb92-3"><a href="making-more-beautiful-plots.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb92-4"><a href="making-more-beautiful-plots.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut)</span></code></pre></div>
+<div id="solution" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Solution<a href="making-more-beautiful-plots.html#solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="making-more-beautiful-plots.html#cb92-1" tabindex="-1"></a>diamond_df <span class="sc">%&gt;%</span> </span>
+<span id="cb92-2"><a href="making-more-beautiful-plots.html#cb92-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>carat, <span class="at">y=</span>price, <span class="at">colour =</span>clarity)) <span class="sc">+</span> </span>
+<span id="cb92-3"><a href="making-more-beautiful-plots.html#cb92-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb92-4"><a href="making-more-beautiful-plots.html#cb92-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 
 </div>
@@ -574,12 +581,11 @@ Similarly, because we don’t want the legend, we will remove it using the theme
           </div>
         </div>
       </div>
-<a href="week-1-part-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="week-2-part-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="week-1.-part-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-2.-part-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -590,38 +596,42 @@ Similarly, because we don’t want the legend, we will remove it using the theme
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

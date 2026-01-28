@@ -2,6 +2,7 @@
 
 # What the factor?
 
+
 Sooner or later in your R learning journey you will come face to face with _factors_. Factors are something I prefer to shield beginners from, but there's no avoiding this element of R. Understanding how to handle factors is often the key to  in travelling the 'last mile' to make your plots exactly the way you want them. Factors can also be extremely important for correctly setting up statistical models, although we will not cover that here.
 
 
@@ -119,7 +120,7 @@ Factors are a useful way to control the order of facets as well. Say we want to 
 ```{r}
 mpg_class_factor <- mpg %>% 
   mutate(class_factor = factor(class)) %>% 
-  mutate(class_factor = fct_relevel(class_factor, levels = 'compact', 'subcompact')) 
+  mutate(class_factor = fct_relevel(class_factor, 'compact', 'subcompact')) 
 
 mpg_class_factor %>% 
   ggplot(aes(x=cty,y=hwy)) + 
@@ -186,11 +187,21 @@ mpg_class_relevel_rev %>%
 ```
 <br>
 
-### Reordering gene plots
+### Reordering gene plots {#reorder_go_plot}
 
-The y axis order of the gene family [bar chart](#bar-chart) that we created in week 3, can be improved using a similar approach.
+The y axis order of the gene family [bar chart](#bar-chart) that we created in [week 3](#week3), can be improved using a similar approach.
 
-First if `complete_table` is not currently in your R Environment, re-run the week 3 code to generate this data frame.  
+First if `complete_table` is not currently in your R Environment, you could re-run the week 3 code to generate this data frame. Alternatively, download complete_table.tsv from [this folder](https://www.dropbox.com/sh/hihrdes1gom7e9h/AABKerUadszjBANjYXcPaTaVa?dl=0) into your Desktop WEHI_tidyR_course/data_files folder, and import the table using read_tsv():
+
+```{r, eval=FALSE}
+complete_table <- read_tsv('~/Desktop/WEHI_tidyR_course/data_files/complete_table.tsv')
+```
+
+```{r, eval=TRUE,include=FALSE,echo=FALSE}
+complete_table <- read_tsv('data_files/complete_table.tsv')
+```
+
+
 We left the plot at this stage:
 
 ```{r}

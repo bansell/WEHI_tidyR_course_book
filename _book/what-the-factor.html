@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 What the factor? | Introduction to R - tidyverse</title>
   <meta name="description" content="8 What the factor? | Introduction to R - tidyverse" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 What the factor? | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="factors.html"/>
 <link rel="next" href="odds-ends.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162666902-1"></script>
 <script>
@@ -65,6 +64,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -102,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -129,6 +129,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -147,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-1.html"><a href="week-1-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-1.html"><a href="week-1.-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
 <li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-look-around-rstudio"><i class="fa fa-check"></i><b>1.1</b> A look around RStudio</a></li>
@@ -176,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13" data-path="welcome-to-r.html"><a href="welcome-to-r.html#the-pipe"><i class="fa fa-check"></i><b>1.13</b> The pipe %&gt;%</a></li>
 <li class="chapter" data-level="1.14" data-path="welcome-to-r.html"><a href="welcome-to-r.html#data-frames"><i class="fa fa-check"></i><b>1.14</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-2.html"><a href="week-1-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-2.html"><a href="week-1.-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
 <li class="chapter" data-level="2" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html"><i class="fa fa-check"></i><b>2</b> Making beautiful plots</a>
 <ul>
 <li class="chapter" data-level="" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#introductory-information"><i class="fa fa-check"></i>Introductory information</a></li>
@@ -195,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#axis-labels"><i class="fa fa-check"></i><b>2.9</b> Axis labels</a></li>
 <li class="chapter" data-level="2.10" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#themes"><i class="fa fa-check"></i><b>2.10</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-3.html"><a href="week-1-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-3.html"><a href="week-1.-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
 <li class="chapter" data-level="3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html"><i class="fa fa-check"></i><b>3</b> Making <em>more</em> beautiful plots</a>
 <ul>
 <li class="chapter" data-level="" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#introductory-information-1"><i class="fa fa-check"></i>Introductory information</a></li>
@@ -212,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#challenge"><i class="fa fa-check"></i><b>3.8</b> Challenge</a></li>
 <li class="chapter" data-level="3.9" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#solution"><i class="fa fa-check"></i><b>3.9</b> Solution</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-2-part-1.html"><a href="week-2-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-2.-part-1.html"><a href="week-2.-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
 <li class="chapter" data-level="4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html"><i class="fa fa-check"></i><b>4</b> Sub-setting vectors</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>4.1</b> Subset by position</a></li>
@@ -221,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>4.4</b> Challenge</a></li>
 <li class="chapter" data-level="4.5" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>4.5</b> Possible solutions</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-2-part-2.html"><a href="week-2-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
+<li class="chapter" data-level="" data-path="week-2.-part-2.html"><a href="week-2.-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
 <li class="chapter" data-level="5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulating data with dplyr</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>5.1</b> filter()</a>
@@ -292,9 +296,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separating-and-uniting-columns"><i class="fa fa-check"></i><b>6.3</b> Separating and uniting columns</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate"><i class="fa fa-check"></i><b>6.3.1</b> separate()</a></li>
-<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate_rows"><i class="fa fa-check"></i><b>6.3.2</b> separate_rows()</a></li>
+<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#str_split-unnest"><i class="fa fa-check"></i><b>6.3.2</b> str_split() %&gt;% unnest()</a></li>
 <li class="chapter" data-level="6.3.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#rename"><i class="fa fa-check"></i><b>6.3.3</b> rename()</a></li>
-<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite"><i class="fa fa-check"></i><b>6.3.4</b> unite()</a></li>
+<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite-unite"><i class="fa fa-check"></i><b>6.3.4</b> unite() {unite}</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#removing-variables"><i class="fa fa-check"></i><b>6.4</b> Removing variables</a></li>
 <li class="chapter" data-level="6.5" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>6.5</b> Joining dataframes</a>
@@ -302,10 +306,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#left_join"><i class="fa fa-check"></i><b>6.5.1</b> left_join()</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#plotting-challenge"><i class="fa fa-check"></i><b>6.6</b> Plotting challenge</a></li>
-<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#bar-chart"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
+<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#solution-2"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
 <li class="chapter" data-level="6.8" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#summary-1"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-1.html"><a href="week-4-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-4.-part-1.html"><a href="week-4.-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
 <li class="chapter" data-level="7" data-path="automating-your-work.html"><a href="automating-your-work.html"><i class="fa fa-check"></i><b>7</b> Automating your work</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="automating-your-work.html"><a href="automating-your-work.html#experimental-design"><i class="fa fa-check"></i><b>7.1</b> Experimental design</a></li>
@@ -317,26 +321,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.2" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-data-frame"><i class="fa fa-check"></i><b>7.4.2</b> Catch in data frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-2.html"><a href="week-4-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
+<li class="chapter" data-level="" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
 <ul>
-<li class="chapter" data-level="7.5" data-path="week-4-part-2.html"><a href="week-4-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-part-2.html"><a href="week-4-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
+<li class="chapter" data-level="7.5" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
+<li class="chapter" data-level="7.6" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
-<li class="chapter" data-level="7.6.2" data-path="week-4-part-2.html"><a href="week-4-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
+<li class="chapter" data-level="7.6.1" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
+<li class="chapter" data-level="7.6.2" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="week-4-part-2.html"><a href="week-4-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
+<li class="chapter" data-level="7.7" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
+<li class="chapter" data-level="7.7.1" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="week-4-part-2.html"><a href="week-4-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
+<li class="chapter" data-level="7.8" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-3.html"><a href="week-4-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
+<li class="chapter" data-level="" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
 <ul>
-<li class="chapter" data-level="7.9" data-path="week-4-part-3.html"><a href="week-4-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
-<li class="chapter" data-level="7.10" data-path="week-4-part-3.html"><a href="week-4-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
-<li class="chapter" data-level="7.11" data-path="week-4-part-3.html"><a href="week-4-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
-<li class="chapter" data-level="7.12" data-path="week-4-part-3.html"><a href="week-4-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
+<li class="chapter" data-level="7.9" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
+<li class="chapter" data-level="7.10" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
+<li class="chapter" data-level="7.11" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
+<li class="chapter" data-level="7.12" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i>Factors</a></li>
 <li class="chapter" data-level="8" data-path="what-the-factor.html"><a href="what-the-factor.html"><i class="fa fa-check"></i><b>8</b> What the factor?</a>
@@ -345,11 +349,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-facets"><i class="fa fa-check"></i><b>8.1.1</b> Factors and facets</a></li>
 <li class="chapter" data-level="8.1.2" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-bar-charts"><i class="fa fa-check"></i><b>8.1.2</b> Factors and bar charts</a></li>
-<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reordering-gene-plots"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
+<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reorder_go_plot"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="what-the-factor.html"><a href="what-the-factor.html#summary-2"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
+<li class="chapter" data-level="9" data-path="factors-1.html"><a href="factors-1.html"><i class="fa fa-check"></i><b>9</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="odds-ends-1.html"><a href="odds-ends-1.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
 </ul>
 
       </nav>
@@ -367,8 +373,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="what-the-factor" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> What the factor?</h1>
+<div id="what-the-factor" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> What the factor?<a href="what-the-factor.html#what-the-factor" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Sooner or later in your R learning journey you will come face to face with <em>factors</em>. Factors are something I prefer to shield beginners from, but there’s no avoiding this element of R. Understanding how to handle factors is often the key to in travelling the ‘last mile’ to make your plots exactly the way you want them. Factors can also be extremely important for correctly setting up statistical models, although we will not cover that here.</p>
 <p>So what are factors? Essentially they are ordered labels for data values.</p>
 <p>Consider the numbers 1 to 3. In elementary school, grade 1 is lower than grade 3. In the context of a running race however, place 1 is higher/better than place 3.</p>
@@ -377,27 +383,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 In the northern hemisphere the seasons follow Winter &gt; Spring &gt; Summer &gt; Autumn. In the southern hemisphere the seasons flow Summer &gt; Autumn &gt; Winter &gt; Spring. Spring should sit at position 2 in the Canadian context, and position 4 in the Australian context.</p>
 <p>In R we give ordered labels to data values by creating factors. To see what happens to a column of data when it is converted to a factor, we use the <code>str()</code> command, which stands for ‘data structure’.</p>
 <p>Let’s load the tidyverse and mutate the number of engine cylinders in the mpg data into factor.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="what-the-factor.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb332-2"><a href="what-the-factor.html#cb332-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb332-3"><a href="what-the-factor.html#cb332-3" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl))</span></code></pre></div>
-<pre><code>## # A tibble: 234 x 12
-##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class   cyl_factor
-##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     
-##  1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact 4         
-##  2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact 4         
-##  3 audi         a4           2    2008     4 manual(m6) f        20    31 p     compact 4         
-##  4 audi         a4           2    2008     4 auto(av)   f        21    30 p     compact 4         
-##  5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compact 6         
-##  6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compact 6         
-##  7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compact 6         
-##  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact 4         
-##  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact 4         
-## 10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact 4         
-## # … with 224 more rows</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="what-the-factor.html#cb334-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb334-2"><a href="what-the-factor.html#cb334-2" tabindex="-1"></a></span>
+<span id="cb334-3"><a href="what-the-factor.html#cb334-3" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl))</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 12
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  cyl_factor
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;fct&gt;     
+##  1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compa… 4         
+##  2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compa… 4         
+##  3 audi         a4           2    2008     4 manual(m6) f        20    31 p     compa… 4         
+##  4 audi         a4           2    2008     4 auto(av)   f        21    30 p     compa… 4         
+##  5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compa… 6         
+##  6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compa… 6         
+##  7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compa… 6         
+##  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compa… 4         
+##  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compa… 4         
+## 10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compa… 4         
+## # ℹ 224 more rows</code></pre>
 <p>Notice that the cyl_factor column now has the <fct> factor data type, whereas the original cyl column is <int> integer data.</p>
 <p>We can get a summary view of the data types in each column (i.e., the ‘structure’ of the data) by piping the code output into <code>str()</code></p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="what-the-factor.html#cb334-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
-<pre><code>## tibble[,12] [234 × 12] (S3: tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="what-the-factor.html#cb336-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>## tibble [234 × 12] (S3: tbl_df/tbl/data.frame)
 ##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
 ##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
 ##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
@@ -413,8 +419,8 @@ In the northern hemisphere the seasons follow Winter &gt; Spring &gt; Summer &gt
 <p>Some more information is revealed about the newly created cyl_factor data. Specifically, it is a factor with 4 levels.
 The levels indicate the order of the unique values in the factor. For example, level 1 is the ‘4’ cyl category, level 2 is the ‘5’ cyl and so forth.</p>
 <p>You will also notice the sequence of numbers after the levels: 1111333111. This indicates that the values in each of the first 10 rows are a mix of the level 1 (value = 4) and level 3 (value = 6) factor. Let’s verify this in the first 6 rows using <code>head()</code>.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="what-the-factor.html#cb336-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 12
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="what-the-factor.html#cb338-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 12
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class   cyl_factor
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt;     
 ## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact 4         
@@ -425,8 +431,8 @@ The levels indicate the order of the unique values in the factor. For example, l
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact 6</code></pre>
 <p>Both the cyl and cyl_factor columns contain 4 4 4 4 6 6.</p>
 <p>If we first arrange the mpg data frame by cyl, how does the data structure for cyl_factor change?</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="what-the-factor.html#cb338-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
-<pre><code>## tibble[,12] [234 × 12] (S3: tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="what-the-factor.html#cb340-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>## tibble [234 × 12] (S3: tbl_df/tbl/data.frame)
 ##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
 ##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
 ##  $ displ       : num [1:234] 1.8 1.8 2 2 1.8 1.8 2 2 2.4 2.4 ...
@@ -441,38 +447,38 @@ The levels indicate the order of the unique values in the factor. For example, l
 ##  $ cyl_factor  : Factor w/ 4 levels &quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;8&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>The level order is the same, but note that the sequence of numbers for the first 10 rows now only contains the factor level 1 (corresponding to 4).</p>
 <p><br></p>
-<div id="factors-in-plots" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Factors in plots</h2>
+<div id="factors-in-plots" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Factors in plots<a href="what-the-factor.html#factors-in-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The role of factors can be appreciated when making ggplots.</p>
 <p><strong>In general, controlling the order of appearance of axis values or facets, requires manipulating the factor levels in the input data frame column given to <code>aes()</code>, or <code>facet_wrap( ~ )</code> respectively.</strong></p>
 <p>First let’s make a scatter plot of the number of engine cylinders (x axis) vs city mileage (y axis) for each car. Each point is also coloured by the number of cylinders in that car:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="what-the-factor.html#cb340-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cyl,<span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>cyl))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="what-the-factor.html#cb342-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cyl,<span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>cyl))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
 <p>The colour scale is a dark-light gradient, which is appropriate because in the original mpg data frame, cyl contains numerical data.
 That is, the ascending number of cylinders are represented as progressively lighter colours.</p>
 <p>But when the cylinders are converted to factors…</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="what-the-factor.html#cb341-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> </span>
-<span id="cb341-2"><a href="what-the-factor.html#cb341-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cyl_factor, <span class="at">y=</span>cty)) <span class="sc">+</span> </span>
-<span id="cb341-3"><a href="what-the-factor.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>cyl_factor))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="what-the-factor.html#cb343-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> </span>
+<span id="cb343-2"><a href="what-the-factor.html#cb343-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cyl_factor, <span class="at">y=</span>cty)) <span class="sc">+</span> </span>
+<span id="cb343-3"><a href="what-the-factor.html#cb343-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>cyl_factor))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
 <p>Now the colour scale is divergent, or discrete. This is because when cyl is a factor, the numbers 5,6,7,8 are simply treated as labels. They no longer have numerical meaning. We would see a similar plot if cyl was converted to character data using e.g. <code>cyl_chr = as.character(cyl)</code></p>
 <p>To illustrate this difference in data type, try summing the numbers 4 through 8 when encoded as numeric data, and factor data respectively:</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="what-the-factor.html#cb342-1" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb342-2"><a href="what-the-factor.html#cb342-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb342-3"><a href="what-the-factor.html#cb342-3" aria-hidden="true" tabindex="-1"></a>factor_vector <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>))</span>
-<span id="cb342-4"><a href="what-the-factor.html#cb342-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb342-5"><a href="what-the-factor.html#cb342-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb342-6"><a href="what-the-factor.html#cb342-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(numeric_vector)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="what-the-factor.html#cb344-1" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb344-2"><a href="what-the-factor.html#cb344-2" tabindex="-1"></a></span>
+<span id="cb344-3"><a href="what-the-factor.html#cb344-3" tabindex="-1"></a>factor_vector <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>))</span>
+<span id="cb344-4"><a href="what-the-factor.html#cb344-4" tabindex="-1"></a></span>
+<span id="cb344-5"><a href="what-the-factor.html#cb344-5" tabindex="-1"></a></span>
+<span id="cb344-6"><a href="what-the-factor.html#cb344-6" tabindex="-1"></a><span class="fu">sum</span>(numeric_vector)</span></code></pre></div>
 <pre><code>## [1] 30</code></pre>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="what-the-factor.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(factor_vector)</span></code></pre></div>
-<pre><code>## Error in Summary.factor(structure(1:5, .Label = c(&quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, : &#39;sum&#39; not meaningful for factors</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="what-the-factor.html#cb346-1" tabindex="-1"></a><span class="fu">sum</span>(factor_vector)</span></code></pre></div>
+<pre><code>## Error in Summary.factor(structure(1:5, levels = c(&quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, : &#39;sum&#39; not meaningful for factors</code></pre>
 <p>The order of the labels (termed ‘factor levels’) can be controlled using the <code>forcats</code> library which is available in the tidyverse. All of the forcats functions begin with <code>fct_</code>. Here we will reorder the levels of cyl_factor using <code>fct_relevel()</code> and observe the result. This function takes the name of the factor column, followed by the desired order of its unique values (≈ ‘factor levels’).</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="what-the-factor.html#cb346-1" aria-hidden="true" tabindex="-1"></a>mpg_cyl_relevel <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb346-2"><a href="what-the-factor.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> </span>
-<span id="cb346-3"><a href="what-the-factor.html#cb346-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">fct_relevel</span>( cyl_factor, <span class="st">&#39;8&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;5&#39;</span>,<span class="st">&#39;4&#39;</span>)) </span>
-<span id="cb346-4"><a href="what-the-factor.html#cb346-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb346-5"><a href="what-the-factor.html#cb346-5" aria-hidden="true" tabindex="-1"></a>mpg_cyl_relevel <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
-<pre><code>## tibble[,12] [234 × 12] (S3: tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="what-the-factor.html#cb348-1" tabindex="-1"></a>mpg_cyl_relevel <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb348-2"><a href="what-the-factor.html#cb348-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl_factor=</span><span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span> </span>
+<span id="cb348-3"><a href="what-the-factor.html#cb348-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl_factor =</span> <span class="fu">fct_relevel</span>( cyl_factor, <span class="st">&#39;8&#39;</span>,<span class="st">&#39;6&#39;</span>,<span class="st">&#39;5&#39;</span>,<span class="st">&#39;4&#39;</span>)) </span>
+<span id="cb348-4"><a href="what-the-factor.html#cb348-4" tabindex="-1"></a>  </span>
+<span id="cb348-5"><a href="what-the-factor.html#cb348-5" tabindex="-1"></a>mpg_cyl_relevel <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>## tibble [234 × 12] (S3: tbl_df/tbl/data.frame)
 ##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
 ##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
 ##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
@@ -487,104 +493,105 @@ That is, the ascending number of cylinders are represented as progressively ligh
 ##  $ cyl_factor  : Factor w/ 4 levels &quot;8&quot;,&quot;6&quot;,&quot;5&quot;,&quot;4&quot;: 4 4 4 4 2 2 2 4 4 4 ...</code></pre>
 <p>Now ‘8’ will be level 1, ‘6’ will be level 2 etc. Importantly, we dont have to type out every unique value in the factor column. Those factor levels which are not specified will follow in a default order (alphabetical for character data; ascending for numerical data).</p>
 <p>Now we plot the updated cyl_factor on the x axis:</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="what-the-factor.html#cb348-1" aria-hidden="true" tabindex="-1"></a>mpg_cyl_relevel <span class="sc">%&gt;%</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cyl_factor, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>cyl_factor))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-228-1.png" width="672" />
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="what-the-factor.html#cb350-1" tabindex="-1"></a>mpg_cyl_relevel <span class="sc">%&gt;%</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cyl_factor, <span class="at">y=</span>cty)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>cyl_factor))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-231-1.png" width="672" />
 The numerical order of the x axis has been reversed because ‘8’ is level 1. Similarly, the data for 8 cylinder cars is now coloured red, which is the first of the default 4-colour scheme for ggplot.</p>
 <p><br></p>
-<div id="factors-and-facets" class="section level3" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> Factors and facets</h3>
+<div id="factors-and-facets" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Factors and facets<a href="what-the-factor.html#factors-and-facets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Factors are a useful way to control the order of facets as well. Say we want to plot the city vs highway mileage for each car, faceted by class. We want the compact and subcompact cars to appear next to each other in the facet order. We can create a class_factor column, and then assign these two car types to level 1 and 2 as follows:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="what-the-factor.html#cb349-1" aria-hidden="true" tabindex="-1"></a>mpg_class_factor <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb349-2"><a href="what-the-factor.html#cb349-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor =</span> <span class="fu">factor</span>(class)) <span class="sc">%&gt;%</span> </span>
-<span id="cb349-3"><a href="what-the-factor.html#cb349-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor =</span> <span class="fu">fct_relevel</span>(class_factor, <span class="at">levels =</span> <span class="st">&#39;compact&#39;</span>, <span class="st">&#39;subcompact&#39;</span>)) </span>
-<span id="cb349-4"><a href="what-the-factor.html#cb349-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-5"><a href="what-the-factor.html#cb349-5" aria-hidden="true" tabindex="-1"></a>mpg_class_factor <span class="sc">%&gt;%</span> </span>
-<span id="cb349-6"><a href="what-the-factor.html#cb349-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cty,<span class="at">y=</span>hwy)) <span class="sc">+</span> </span>
-<span id="cb349-7"><a href="what-the-factor.html#cb349-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>class_factor)) <span class="sc">+</span></span>
-<span id="cb349-8"><a href="what-the-factor.html#cb349-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class_factor, <span class="at">scales=</span><span class="st">&#39;free&#39;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-229-1.png" width="672" />
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="what-the-factor.html#cb351-1" tabindex="-1"></a>mpg_class_factor <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb351-2"><a href="what-the-factor.html#cb351-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor =</span> <span class="fu">factor</span>(class)) <span class="sc">%&gt;%</span> </span>
+<span id="cb351-3"><a href="what-the-factor.html#cb351-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor =</span> <span class="fu">fct_relevel</span>(class_factor, <span class="st">&#39;compact&#39;</span>, <span class="st">&#39;subcompact&#39;</span>)) </span>
+<span id="cb351-4"><a href="what-the-factor.html#cb351-4" tabindex="-1"></a></span>
+<span id="cb351-5"><a href="what-the-factor.html#cb351-5" tabindex="-1"></a>mpg_class_factor <span class="sc">%&gt;%</span> </span>
+<span id="cb351-6"><a href="what-the-factor.html#cb351-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>cty,<span class="at">y=</span>hwy)) <span class="sc">+</span> </span>
+<span id="cb351-7"><a href="what-the-factor.html#cb351-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>class_factor)) <span class="sc">+</span></span>
+<span id="cb351-8"><a href="what-the-factor.html#cb351-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>class_factor, <span class="at">scales=</span><span class="st">&#39;free&#39;</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-232-1.png" width="672" />
 The compact and subcompact facets now appear first, whereas they would usually be far apart due to their distance in alphabetical order.</p>
 </div>
-<div id="factors-and-bar-charts" class="section level3" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> Factors and bar charts</h3>
+<div id="factors-and-bar-charts" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Factors and bar charts<a href="what-the-factor.html#factors-and-bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A special case where handling factors is particularly important is horizontal bar charts. These have the delightful quirk of inverting the alphabetical or numerical order of the y axis. If a simple reversal of the axis order is what you need, try adding the ggplot command <code>scale_y_discrete(limits=rev)</code>. If you need something more bespoke, then changing the factor levels of the data represented on the y axis may be required.</p>
 <p>To see the problem let’s make a simple horizontal bar chart counting the number of cars per class</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="what-the-factor.html#cb350-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb350-2"><a href="what-the-factor.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-230-1.png" width="672" />
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="what-the-factor.html#cb352-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb352-2"><a href="what-the-factor.html#cb352-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-233-1.png" width="672" />
 The y order from top to bottom is descending alphabetical followed by the numerical ‘2seater’. Say we want to bring the compact and subcompact classes to the top of the y axis, followed by other the values in numerical, then alphabetical order.</p>
 <p>This is a two-step problem. The simplest way to go about it is to
 1) bring compact and subcompact cars to the front of the factor levels using <code>fct_relevel()</code> as above; then,
 2) reverse the levels of the newly created factor levels using <code>fct_rev()</code>.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="what-the-factor.html#cb351-1" aria-hidden="true" tabindex="-1"></a>mpg_class_relevel <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb351-2"><a href="what-the-factor.html#cb351-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor=</span> <span class="fu">factor</span>(class)) <span class="sc">%&gt;%</span> </span>
-<span id="cb351-3"><a href="what-the-factor.html#cb351-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor_relevel  =</span> <span class="fu">fct_relevel</span>(class_factor,<span class="st">&#39;compact&#39;</span>,<span class="st">&#39;subcompact&#39;</span>))</span>
-<span id="cb351-4"><a href="what-the-factor.html#cb351-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-5"><a href="what-the-factor.html#cb351-5" aria-hidden="true" tabindex="-1"></a>mpg_class_relevel <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-231-1.png" width="672" />
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="what-the-factor.html#cb353-1" tabindex="-1"></a>mpg_class_relevel <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb353-2"><a href="what-the-factor.html#cb353-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor=</span> <span class="fu">factor</span>(class)) <span class="sc">%&gt;%</span> </span>
+<span id="cb353-3"><a href="what-the-factor.html#cb353-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class_factor_relevel  =</span> <span class="fu">fct_relevel</span>(class_factor,<span class="st">&#39;compact&#39;</span>,<span class="st">&#39;subcompact&#39;</span>))</span>
+<span id="cb353-4"><a href="what-the-factor.html#cb353-4" tabindex="-1"></a></span>
+<span id="cb353-5"><a href="what-the-factor.html#cb353-5" tabindex="-1"></a>mpg_class_relevel <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-234-1.png" width="672" />
 The (sub-)compact classes now appear at the bottom of the y axis (indicating that they are the first two levels in the factor… I hope you’ve had a coffee recently!).</p>
 <p>Next we reverse the levels of the factor, to bring our classes of interest to the top:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="what-the-factor.html#cb352-1" aria-hidden="true" tabindex="-1"></a>mpg_class_relevel_rev <span class="ot">&lt;-</span> mpg_class_relevel <span class="sc">%&gt;%</span> </span>
-<span id="cb352-2"><a href="what-the-factor.html#cb352-2" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">mutate</span>(<span class="at">class_factor_relevel_rev  =</span> <span class="fu">fct_rev</span>(class_factor_relevel))</span>
-<span id="cb352-3"><a href="what-the-factor.html#cb352-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb352-4"><a href="what-the-factor.html#cb352-4" aria-hidden="true" tabindex="-1"></a>mpg_class_relevel_rev <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel_rev)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-232-1.png" width="672" />
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="what-the-factor.html#cb354-1" tabindex="-1"></a>mpg_class_relevel_rev <span class="ot">&lt;-</span> mpg_class_relevel <span class="sc">%&gt;%</span> </span>
+<span id="cb354-2"><a href="what-the-factor.html#cb354-2" tabindex="-1"></a>                         <span class="fu">mutate</span>(<span class="at">class_factor_relevel_rev  =</span> <span class="fu">fct_rev</span>(class_factor_relevel))</span>
+<span id="cb354-3"><a href="what-the-factor.html#cb354-3" tabindex="-1"></a></span>
+<span id="cb354-4"><a href="what-the-factor.html#cb354-4" tabindex="-1"></a>mpg_class_relevel_rev <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel_rev)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-235-1.png" width="672" />
 Done!</p>
 <p>The last piece of this puzzle is to deal with the colour legend order.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="what-the-factor.html#cb353-1" aria-hidden="true" tabindex="-1"></a>mpg_class_relevel_rev <span class="sc">%&gt;%</span> </span>
-<span id="cb353-2"><a href="what-the-factor.html#cb353-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel_rev)) <span class="sc">+</span> </span>
-<span id="cb353-3"><a href="what-the-factor.html#cb353-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>class_factor_relevel_rev))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-233-1.png" width="672" />
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="what-the-factor.html#cb355-1" tabindex="-1"></a>mpg_class_relevel_rev <span class="sc">%&gt;%</span> </span>
+<span id="cb355-2"><a href="what-the-factor.html#cb355-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel_rev)) <span class="sc">+</span> </span>
+<span id="cb355-3"><a href="what-the-factor.html#cb355-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>class_factor_relevel_rev))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-236-1.png" width="672" />
 R has helpfully reordered the y axis but not the colour legend. To handle this we will use a quick fix, which is to simply reverse the order of colour legend as part of the ggplot command.</p>
 <p>Specifically this requires the <code>guides()</code> function, that can modify specific aspects of the plot appearance (independent of the contents of the input data frame). We will use this function to reverse the legend, which displays the values in the fill aesthetic given to geom_bar(). You can read more about guides <a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">here</a>.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="what-the-factor.html#cb354-1" aria-hidden="true" tabindex="-1"></a>mpg_class_relevel_rev <span class="sc">%&gt;%</span> </span>
-<span id="cb354-2"><a href="what-the-factor.html#cb354-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel_rev)) <span class="sc">+</span> </span>
-<span id="cb354-3"><a href="what-the-factor.html#cb354-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>class_factor_relevel_rev)) <span class="sc">+</span></span>
-<span id="cb354-4"><a href="what-the-factor.html#cb354-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>( <span class="at">reverse=</span>T ))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-234-1.png" width="672" />
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="what-the-factor.html#cb356-1" tabindex="-1"></a>mpg_class_relevel_rev <span class="sc">%&gt;%</span> </span>
+<span id="cb356-2"><a href="what-the-factor.html#cb356-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>class_factor_relevel_rev)) <span class="sc">+</span> </span>
+<span id="cb356-3"><a href="what-the-factor.html#cb356-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill=</span>class_factor_relevel_rev)) <span class="sc">+</span></span>
+<span id="cb356-4"><a href="what-the-factor.html#cb356-4" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>( <span class="at">reverse=</span>T ))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-237-1.png" width="672" />
 <br></p>
 </div>
-<div id="reordering-gene-plots" class="section level3" number="8.1.3">
-<h3><span class="header-section-number">8.1.3</span> Reordering gene plots</h3>
-<p>The y axis order of the gene family <a href="reading-tidying-joining-data.html#bar-chart">bar chart</a> that we created in week 3, can be improved using a similar approach.</p>
-<p>First if <code>complete_table</code> is not currently in your R Environment, re-run the week 3 code to generate this data frame.<br />
-We left the plot at this stage:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="what-the-factor.html#cb355-1" aria-hidden="true" tabindex="-1"></a>complete_table <span class="sc">%&gt;%</span> </span>
-<span id="cb355-2"><a href="what-the-factor.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> logFC, <span class="at">y =</span> symbol)) <span class="sc">+</span></span>
-<span id="cb355-3"><a href="what-the-factor.html#cb355-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> DESCRIPTION), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb355-4"><a href="what-the-factor.html#cb355-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb355-5"><a href="what-the-factor.html#cb355-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>DESCRIPTION, <span class="at">scales=</span><span class="st">&#39;free_y&#39;</span>, <span class="at">ncol=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb355-6"><a href="what-the-factor.html#cb355-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<div id="reorder_go_plot" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Reordering gene plots<a href="what-the-factor.html#reorder_go_plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The y axis order of the gene family <a href="#bar-chart">bar chart</a> that we created in <a href="#week3">week 3</a>, can be improved using a similar approach.</p>
+<p>First if <code>complete_table</code> is not currently in your R Environment, you could re-run the week 3 code to generate this data frame. Alternatively, download complete_table.tsv from <a href="https://www.dropbox.com/sh/hihrdes1gom7e9h/AABKerUadszjBANjYXcPaTaVa?dl=0">this folder</a> into your Desktop WEHI_tidyR_course/data_files folder, and import the table using read_tsv():</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="what-the-factor.html#cb357-1" tabindex="-1"></a>complete_table <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&#39;~/Desktop/WEHI_tidyR_course/data_files/complete_table.tsv&#39;</span>)</span></code></pre></div>
+<p>We left the plot at this stage:</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="what-the-factor.html#cb358-1" tabindex="-1"></a>complete_table <span class="sc">%&gt;%</span> </span>
+<span id="cb358-2"><a href="what-the-factor.html#cb358-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> logFC, <span class="at">y =</span> symbol)) <span class="sc">+</span></span>
+<span id="cb358-3"><a href="what-the-factor.html#cb358-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> DESCRIPTION), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb358-4"><a href="what-the-factor.html#cb358-4" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb358-5"><a href="what-the-factor.html#cb358-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>DESCRIPTION, <span class="at">scales=</span><span class="st">&#39;free_y&#39;</span>, <span class="at">ncol=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb358-6"><a href="what-the-factor.html#cb358-6" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>) </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
 <p>Note that the FUT genes in particular are not in numerical order on the y axis. To update the order let’s first create a vector of the FUT genes in the desired order. To do this we will take advantage of the <a href="automating-your-work.html#paste">paste()</a> function from week 3. Also note there is no FUT3 gene in the data list.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="what-the-factor.html#cb356-1" aria-hidden="true" tabindex="-1"></a>FUT_genes <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;FUT&#39;</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="what-the-factor.html#cb359-1" tabindex="-1"></a>FUT_genes <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&#39;FUT&#39;</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>Now we can create a new column of gene symbols in factor form, and relevel with the FUT_genes as the first factor levels. Remember that the remaining gene symbols will follow in alphabetical order.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="what-the-factor.html#cb357-1" aria-hidden="true" tabindex="-1"></a>complete_table_relvl <span class="ot">&lt;-</span> complete_table <span class="sc">%&gt;%</span> </span>
-<span id="cb357-2"><a href="what-the-factor.html#cb357-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sym_fct  =</span> <span class="fu">factor</span>(symbol)) <span class="sc">%&gt;%</span> </span>
-<span id="cb357-3"><a href="what-the-factor.html#cb357-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sym_fct_relevel =</span> <span class="fu">fct_relevel</span>(sym_fct, FUT_genes)) </span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="what-the-factor.html#cb360-1" tabindex="-1"></a>complete_table_relvl <span class="ot">&lt;-</span> complete_table <span class="sc">%&gt;%</span> </span>
+<span id="cb360-2"><a href="what-the-factor.html#cb360-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sym_fct  =</span> <span class="fu">factor</span>(symbol)) <span class="sc">%&gt;%</span> </span>
+<span id="cb360-3"><a href="what-the-factor.html#cb360-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sym_fct_relevel =</span> <span class="fu">fct_relevel</span>(sym_fct, FUT_genes)) </span></code></pre></div>
 <p>Use <code>str()</code> to check that fct_relevel has worked:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="what-the-factor.html#cb358-1" aria-hidden="true" tabindex="-1"></a>complete_table_relvl <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&#39;sym&#39;</span>)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
-<pre><code>## tibble[,3] [19 × 3] (S3: tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="what-the-factor.html#cb361-1" tabindex="-1"></a>complete_table_relvl <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&#39;sym&#39;</span>)) <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>## tibble [19 × 3] (S3: tbl_df/tbl/data.frame)
 ##  $ symbol         : chr [1:19] &quot;C4BPA&quot; &quot;C4BPB&quot; &quot;CR1&quot; &quot;FOXJ1&quot; ...
 ##  $ sym_fct        : Factor w/ 19 levels &quot;AADAT&quot;,&quot;C4BPA&quot;,..: 2 3 6 7 18 19 8 10 11 12 ...
 ##  $ sym_fct_relevel: Factor w/ 19 levels &quot;FUT1&quot;,&quot;FUT2&quot;,..: 11 12 15 16 18 19 1 2 3 4 ...</code></pre>
 <p>So far so good, FUT1 and FUT2 are the first two levels.</p>
 <p>Lastly we will use <code>fct_rev()</code> to reverse the sym_fct_relevel column which gets around the default inversion of the y axis for bar charts:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="what-the-factor.html#cb360-1" aria-hidden="true" tabindex="-1"></a>complete_table_update <span class="ot">&lt;-</span> complete_table_relvl <span class="sc">%&gt;%</span> </span>
-<span id="cb360-2"><a href="what-the-factor.html#cb360-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sym_fct_rev =</span> <span class="fu">fct_rev</span>(sym_fct_relevel)) </span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="what-the-factor.html#cb363-1" tabindex="-1"></a>complete_table_update <span class="ot">&lt;-</span> complete_table_relvl <span class="sc">%&gt;%</span> </span>
+<span id="cb363-2"><a href="what-the-factor.html#cb363-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sym_fct_rev =</span> <span class="fu">fct_rev</span>(sym_fct_relevel)) </span></code></pre></div>
 <p>Now the gene symbols should appear in a sensible alphabetical and numeric order! As a final touch we also add a sensible label for the y axis.</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="what-the-factor.html#cb361-1" aria-hidden="true" tabindex="-1"></a>complete_table_update <span class="sc">%&gt;%</span> </span>
-<span id="cb361-2"><a href="what-the-factor.html#cb361-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> logFC, <span class="at">y =</span> sym_fct_rev)) <span class="sc">+</span></span>
-<span id="cb361-3"><a href="what-the-factor.html#cb361-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> DESCRIPTION), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb361-4"><a href="what-the-factor.html#cb361-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb361-5"><a href="what-the-factor.html#cb361-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>DESCRIPTION, <span class="at">scales=</span><span class="st">&#39;free_y&#39;</span>, <span class="at">ncol=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb361-6"><a href="what-the-factor.html#cb361-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>) <span class="sc">+</span> </span>
-<span id="cb361-7"><a href="what-the-factor.html#cb361-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;symbol&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="what-the-factor.html#cb364-1" tabindex="-1"></a>complete_table_update <span class="sc">%&gt;%</span> </span>
+<span id="cb364-2"><a href="what-the-factor.html#cb364-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> logFC, <span class="at">y =</span> sym_fct_rev)) <span class="sc">+</span></span>
+<span id="cb364-3"><a href="what-the-factor.html#cb364-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> DESCRIPTION), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb364-4"><a href="what-the-factor.html#cb364-4" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb364-5"><a href="what-the-factor.html#cb364-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>DESCRIPTION, <span class="at">scales=</span><span class="st">&#39;free_y&#39;</span>, <span class="at">ncol=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb364-6"><a href="what-the-factor.html#cb364-6" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>) <span class="sc">+</span> </span>
+<span id="cb364-7"><a href="what-the-factor.html#cb364-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;symbol&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 </div>
 </div>
-<div id="summary-2" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Summary</h2>
+<div id="summary-2" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Summary<a href="what-the-factor.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Handling factors in R can be hard work, but mastering factors will allow you to control nearly every aspect of ggplot, as well as clarifying they way that many base R functions and statistical operations work.<br />
 This chapter has provided the tools to overcome some common frustrating hurdles in ggplot. You can learn more about the uses and manipulation of factors in <a href="https://r4ds.had.co.nz/factors.html">R for Data Science</a>.</p>
 <p>With even a basic understanding of factors under your belt, you are well on your way to mastering R.</p>
@@ -601,7 +608,6 @@ This chapter has provided the tools to overcome some common frustrating hurdles 
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -612,38 +618,42 @@ This chapter has provided the tools to overcome some common frustrating hurdles 
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

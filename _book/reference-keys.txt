@@ -97,14 +97,14 @@ pivot_wider
 pivot_longer
 separating-and-uniting-columns
 separate
-separate_rows
+str_split-unnest
 rename
-unite
+unite-unite
 removing-variables
 joining-dataframes
 left_join
 plotting-challenge
-bar-chart
+solution-2
 summary-1
 automating-your-work
 experimental-design
@@ -128,5 +128,6 @@ what-the-factor
 factors-in-plots
 factors-and-facets
 factors-and-bar-charts
-reordering-gene-plots
+reorder_go_plot
 summary-2
+factors-1

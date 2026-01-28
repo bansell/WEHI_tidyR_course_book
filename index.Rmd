@@ -2,7 +2,6 @@
 title: "Introduction to R - tidyverse"
 author: "Brendan R. E. Ansell @ansellbr3"
 site: bookdown::bookdown_site
-delete_merged_file: true
 output:
   bookdown::gitbook:
     includes:

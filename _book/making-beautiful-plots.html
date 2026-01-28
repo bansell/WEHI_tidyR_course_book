@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Making beautiful plots | Introduction to R - tidyverse</title>
   <meta name="description" content="2 Making beautiful plots | Introduction to R - tidyverse" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Making beautiful plots | Introduction to R - tidyverse" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -30,10 +29,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="week-1-part-2.html"/>
-<link rel="next" href="week-1-part-3.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="week-1.-part-2.html"/>
+<link rel="next" href="week-1.-part-3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162666902-1"></script>
 <script>
@@ -65,6 +64,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -102,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -129,6 +129,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -147,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i>How to use this book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#before-we-begin"><i class="fa fa-check"></i>Before we begin</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-1.html"><a href="week-1-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-1.html"><a href="week-1.-part-1.html"><i class="fa fa-check"></i>Week 1. Part 1</a></li>
 <li class="chapter" data-level="1" data-path="welcome-to-r.html"><a href="welcome-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to R!</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="welcome-to-r.html"><a href="welcome-to-r.html#a-look-around-rstudio"><i class="fa fa-check"></i><b>1.1</b> A look around RStudio</a></li>
@@ -176,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13" data-path="welcome-to-r.html"><a href="welcome-to-r.html#the-pipe"><i class="fa fa-check"></i><b>1.13</b> The pipe %&gt;%</a></li>
 <li class="chapter" data-level="1.14" data-path="welcome-to-r.html"><a href="welcome-to-r.html#data-frames"><i class="fa fa-check"></i><b>1.14</b> Data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-2.html"><a href="week-1-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-2.html"><a href="week-1.-part-2.html"><i class="fa fa-check"></i>Week 1. Part 2</a></li>
 <li class="chapter" data-level="2" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html"><i class="fa fa-check"></i><b>2</b> Making beautiful plots</a>
 <ul>
 <li class="chapter" data-level="" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#introductory-information"><i class="fa fa-check"></i>Introductory information</a></li>
@@ -195,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#axis-labels"><i class="fa fa-check"></i><b>2.9</b> Axis labels</a></li>
 <li class="chapter" data-level="2.10" data-path="making-beautiful-plots.html"><a href="making-beautiful-plots.html#themes"><i class="fa fa-check"></i><b>2.10</b> Themes</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-1-part-3.html"><a href="week-1-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
+<li class="chapter" data-level="" data-path="week-1.-part-3.html"><a href="week-1.-part-3.html"><i class="fa fa-check"></i>Week 1. Part 3</a></li>
 <li class="chapter" data-level="3" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html"><i class="fa fa-check"></i><b>3</b> Making <em>more</em> beautiful plots</a>
 <ul>
 <li class="chapter" data-level="" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#introductory-information-1"><i class="fa fa-check"></i>Introductory information</a></li>
@@ -212,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.8" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#challenge"><i class="fa fa-check"></i><b>3.8</b> Challenge</a></li>
 <li class="chapter" data-level="3.9" data-path="making-more-beautiful-plots.html"><a href="making-more-beautiful-plots.html#solution"><i class="fa fa-check"></i><b>3.9</b> Solution</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-2-part-1.html"><a href="week-2-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-2.-part-1.html"><a href="week-2.-part-1.html"><i class="fa fa-check"></i>Week 2. Part 1</a></li>
 <li class="chapter" data-level="4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html"><i class="fa fa-check"></i><b>4</b> Sub-setting vectors</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#subset-by-position"><i class="fa fa-check"></i><b>4.1</b> Subset by position</a></li>
@@ -221,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#challenge-1"><i class="fa fa-check"></i><b>4.4</b> Challenge</a></li>
 <li class="chapter" data-level="4.5" data-path="sub-setting-vectors.html"><a href="sub-setting-vectors.html#possible-solutions"><i class="fa fa-check"></i><b>4.5</b> Possible solutions</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-2-part-2.html"><a href="week-2-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
+<li class="chapter" data-level="" data-path="week-2.-part-2.html"><a href="week-2.-part-2.html"><i class="fa fa-check"></i>Week 2. Part 2</a></li>
 <li class="chapter" data-level="5" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html"><i class="fa fa-check"></i><b>5</b> Manipulating data with dplyr</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="manipulating-data-with-dplyr.html"><a href="manipulating-data-with-dplyr.html#filter"><i class="fa fa-check"></i><b>5.1</b> filter()</a>
@@ -292,9 +296,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separating-and-uniting-columns"><i class="fa fa-check"></i><b>6.3</b> Separating and uniting columns</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate"><i class="fa fa-check"></i><b>6.3.1</b> separate()</a></li>
-<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#separate_rows"><i class="fa fa-check"></i><b>6.3.2</b> separate_rows()</a></li>
+<li class="chapter" data-level="6.3.2" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#str_split-unnest"><i class="fa fa-check"></i><b>6.3.2</b> str_split() %&gt;% unnest()</a></li>
 <li class="chapter" data-level="6.3.3" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#rename"><i class="fa fa-check"></i><b>6.3.3</b> rename()</a></li>
-<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite"><i class="fa fa-check"></i><b>6.3.4</b> unite()</a></li>
+<li class="chapter" data-level="6.3.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#unite-unite"><i class="fa fa-check"></i><b>6.3.4</b> unite() {unite}</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#removing-variables"><i class="fa fa-check"></i><b>6.4</b> Removing variables</a></li>
 <li class="chapter" data-level="6.5" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#joining-dataframes"><i class="fa fa-check"></i><b>6.5</b> Joining dataframes</a>
@@ -302,10 +306,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.1" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#left_join"><i class="fa fa-check"></i><b>6.5.1</b> left_join()</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#plotting-challenge"><i class="fa fa-check"></i><b>6.6</b> Plotting challenge</a></li>
-<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#bar-chart"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
+<li class="chapter" data-level="6.7" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#solution-2"><i class="fa fa-check"></i><b>6.7</b> Solution</a></li>
 <li class="chapter" data-level="6.8" data-path="reading-tidying-joining-data.html"><a href="reading-tidying-joining-data.html#summary-1"><i class="fa fa-check"></i><b>6.8</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-1.html"><a href="week-4-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
+<li class="chapter" data-level="" data-path="week-4.-part-1.html"><a href="week-4.-part-1.html"><i class="fa fa-check"></i>Week 4. Part 1</a></li>
 <li class="chapter" data-level="7" data-path="automating-your-work.html"><a href="automating-your-work.html"><i class="fa fa-check"></i><b>7</b> Automating your work</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="automating-your-work.html"><a href="automating-your-work.html#experimental-design"><i class="fa fa-check"></i><b>7.1</b> Experimental design</a></li>
@@ -317,26 +321,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.2" data-path="automating-your-work.html"><a href="automating-your-work.html#catch-in-data-frame"><i class="fa fa-check"></i><b>7.4.2</b> Catch in data frame</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-2.html"><a href="week-4-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
+<li class="chapter" data-level="" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html"><i class="fa fa-check"></i>Week 4. Part 2</a>
 <ul>
-<li class="chapter" data-level="7.5" data-path="week-4-part-2.html"><a href="week-4-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-part-2.html"><a href="week-4-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
+<li class="chapter" data-level="7.5" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#analyse-plate-1"><i class="fa fa-check"></i><b>7.5</b> Analyse Plate 1</a></li>
+<li class="chapter" data-level="7.6" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#plotting-the-data"><i class="fa fa-check"></i><b>7.6</b> Plotting the data</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
-<li class="chapter" data-level="7.6.2" data-path="week-4-part-2.html"><a href="week-4-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
+<li class="chapter" data-level="7.6.1" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#str_remove-helper"><i class="fa fa-check"></i><b>7.6.1</b> str_remove() helper</a></li>
+<li class="chapter" data-level="7.6.2" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#as.numeric-helper"><i class="fa fa-check"></i><b>7.6.2</b> as.numeric() helper</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="week-4-part-2.html"><a href="week-4-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
+<li class="chapter" data-level="7.7" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#statistical-summary"><i class="fa fa-check"></i><b>7.7</b> Statistical summary</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="week-4-part-2.html"><a href="week-4-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
+<li class="chapter" data-level="7.7.1" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#pull"><i class="fa fa-check"></i><b>7.7.1</b> pull()</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="week-4-part-2.html"><a href="week-4-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
+<li class="chapter" data-level="7.8" data-path="week-4.-part-2.html"><a href="week-4.-part-2.html#identify-hits"><i class="fa fa-check"></i><b>7.8</b> Identify hits</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="week-4-part-3.html"><a href="week-4-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
+<li class="chapter" data-level="" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html"><i class="fa fa-check"></i>Week 4. Part 3</a>
 <ul>
-<li class="chapter" data-level="7.9" data-path="week-4-part-3.html"><a href="week-4-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
-<li class="chapter" data-level="7.10" data-path="week-4-part-3.html"><a href="week-4-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
-<li class="chapter" data-level="7.11" data-path="week-4-part-3.html"><a href="week-4-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
-<li class="chapter" data-level="7.12" data-path="week-4-part-3.html"><a href="week-4-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
+<li class="chapter" data-level="7.9" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#list.files"><i class="fa fa-check"></i><b>7.9</b> list.files()</a></li>
+<li class="chapter" data-level="7.10" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#extract-filenames"><i class="fa fa-check"></i><b>7.10</b> Extract filenames</a></li>
+<li class="chapter" data-level="7.11" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#variable-inputs-outputs"><i class="fa fa-check"></i><b>7.11</b> Variable inputs &amp; outputs</a></li>
+<li class="chapter" data-level="7.12" data-path="week-4.-part-3.html"><a href="week-4.-part-3.html#looping-through-plates"><i class="fa fa-check"></i><b>7.12</b> Looping through plates</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i>Factors</a></li>
 <li class="chapter" data-level="8" data-path="what-the-factor.html"><a href="what-the-factor.html"><i class="fa fa-check"></i><b>8</b> What the factor?</a>
@@ -345,11 +349,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-facets"><i class="fa fa-check"></i><b>8.1.1</b> Factors and facets</a></li>
 <li class="chapter" data-level="8.1.2" data-path="what-the-factor.html"><a href="what-the-factor.html#factors-and-bar-charts"><i class="fa fa-check"></i><b>8.1.2</b> Factors and bar charts</a></li>
-<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reordering-gene-plots"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
+<li class="chapter" data-level="8.1.3" data-path="what-the-factor.html"><a href="what-the-factor.html#reorder_go_plot"><i class="fa fa-check"></i><b>8.1.3</b> Reordering gene plots</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="what-the-factor.html"><a href="what-the-factor.html#summary-2"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="odds-ends.html"><a href="odds-ends.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
+<li class="chapter" data-level="9" data-path="factors-1.html"><a href="factors-1.html"><i class="fa fa-check"></i><b>9</b> Factors</a></li>
+<li class="chapter" data-level="" data-path="odds-ends-1.html"><a href="odds-ends-1.html"><i class="fa fa-check"></i>Odds &amp; Ends</a></li>
 </ul>
 
       </nav>
@@ -367,16 +373,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="making-beautiful-plots" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Making beautiful plots</h1>
-<div id="introductory-information" class="section level2 unnumbered">
-<h2>Introductory information</h2>
+<div id="making-beautiful-plots" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Making beautiful plots<a href="making-beautiful-plots.html#making-beautiful-plots" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introductory-information" class="section level2 unnumbered hasAnchor">
+<h2>Introductory information<a href="making-beautiful-plots.html#introductory-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This tutorial leads on from the Week 1 Part 1 tutorial. If you have opened a new R session in RStudio, you can open and continue to work in your Week_1_tidyverse.R file.</p>
 <p>First, reload the tidyverse package:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="making-beautiful-plots.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="making-beautiful-plots.html#cb39-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="ggplot2.-a-grammar-of-graphics" class="section level2 unnumbered">
-<h2>ggplot2. A grammar of graphics</h2>
+<div id="ggplot2.-a-grammar-of-graphics" class="section level2 unnumbered hasAnchor">
+<h2>ggplot2. A grammar of graphics<a href="making-beautiful-plots.html#ggplot2.-a-grammar-of-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The ggplot2 package is widely used and valued for its simple, consistent approach to making plots.</p>
 <p>The ‘grammar’ of graphics relates to the different components of a plot that function like different parts of linguistic grammar. For example, all plots require axes, so the x and y axes form one part of the ‘language’ of a plot. Similarly, all plots have data represented between the axes, often as points, lines or bars. The visual way that the data is represented forms another component of the grammar of graphics. Furthermore, the colour, shape or size of points and lines can be used to encode additional information in the plot. This information is usually clarified in a key, or legend, which can also be considered part of this ‘grammar’.</p>
 <p>The most common components of a ggplot are</p>
@@ -391,13 +397,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will cover each below.</p>
 <p>The philosophy of ggplot is much better explained by the package author, Hadley Wickham <a href="https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/331924275X/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=sl1&amp;tag=hadlwick-20&amp;linkId=a961c648243cf3ab7f2bb237b5a4ba1a">here</a>. For now, we just need to be aware that ggplots are constructed by specifying the different components that we want to display, based on underlying information in a data frame.</p>
 </div>
-<div id="building-a-ggplot" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Building a ggplot</h2>
+<div id="building-a-ggplot" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Building a ggplot<a href="making-beautiful-plots.html#building-a-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We are going to use the mpg_df data set created previously. If this is not visible in your environment pane, you can recreate it now:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="making-beautiful-plots.html#cb40-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="ot">&lt;-</span> mpg</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="making-beautiful-plots.html#cb40-1" tabindex="-1"></a>mpg_df <span class="ot">&lt;-</span> mpg</span></code></pre></div>
 <p>Let’s check the first 6 rows of information contained in the mpg_df data frame, using the head() function:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="making-beautiful-plots.html#cb41-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 11
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="making-beautiful-plots.html#cb41-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 11
 ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class  
 ##   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
 ## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact
@@ -408,133 +414,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</code></pre>
 <p>Here, we aim to produce a scatter plot of the engine volume (‘displacement’) vs fuel efficiency/mileage in the city (‘cty’), for each class of vehicle. The points on the plot will be coloured based on the vehicle class (right-most column).</p>
 </div>
-<div id="plot-background" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Plot background</h2>
+<div id="plot-background" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Plot background<a href="making-beautiful-plots.html#plot-background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To start building the plot, we first specify the data frame that contains the relevant data. Here we are ‘sending the mpg_df data set into the ggplot function’:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="making-beautiful-plots.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#render plot background</span></span>
-<span id="cb43-2"><a href="making-beautiful-plots.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="making-beautiful-plots.html#cb43-3" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="making-beautiful-plots.html#cb43-1" tabindex="-1"></a><span class="co">#render plot background</span></span>
+<span id="cb43-2"><a href="making-beautiful-plots.html#cb43-2" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="making-beautiful-plots.html#cb43-3" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Running this command will produce an empty grey panel. This is because we need to specify how different columns of the data frame should be represented in the plot.</p>
 </div>
-<div id="aesthetics-aes" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Aesthetics aes()</h2>
+<div id="aesthetics-aes" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Aesthetics aes()<a href="making-beautiful-plots.html#aesthetics-aes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can call in different columns of data from mpg_df based on their column names. Column names are given as ‘aesthetic’ elements to the ggplot function, and are wrapped in the <strong>aes()</strong> function.</p>
 <p>Because we want a scatter plot, each point will have an x and a y coordinate. We want the x axis to represent engine volume ( x = displ ), and the y axis to represent the city mileage ( y = cty ).</p>
 <p>We give these specifications separated by a comma. Note that quotes are not required when giving variables within aes().<br />
 Those interested in why quotes aren’t required can read here about <a href="https://edwinth.github.io/blog/nse/">non-standard evaluation</a>.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="making-beautiful-plots.html#cb44-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty))    </span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="making-beautiful-plots.html#cb44-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty))    </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>So far we have the grid lines for our x and y axis. ggplot knows the variables required for the plot, and thus the scale, but has no information about <em>how</em> to display the data points.</p>
 </div>
-<div id="geometric-representations-geom" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Geometric representations geom()</h2>
+<div id="geometric-representations-geom" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Geometric representations geom()<a href="making-beautiful-plots.html#geometric-representations-geom" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Given we want a scatter plot, we need to specify that the geometric representation of the data will be in point form, using geom_point().</p>
 <p>Here we are adding a <strong>layer</strong> (hence the + sign) of points to the plot. We can think of this as similar to e.g. Adobe Photoshop which uses layers of images that can be reordered and modified individually.</p>
 <p>For ggplot, each layer will be added over the plot according to its position in the code.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="making-beautiful-plots.html#cb45-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="making-beautiful-plots.html#cb45-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Now we have the scatter plot! Each row in the mpg_df data set now has an x coordinate, a y coordinate, and a designated geometric representation (point).</p>
 <p>From this we can see that vehicles with smaller engines (lower displacement) tend to have higher mileage in the city.</p>
-<div id="a-note-about-and" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> A note about %&gt;% and +</h3>
+<div id="a-note-about-and" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> A note about %&gt;% and +<a href="making-beautiful-plots.html#a-note-about-and" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ggplot2, an early component of the tidyverse package, was written before the pipe was introduced. The + sign in ggplot2 functions in a similar way to the pipe in other functions in the tidyverse: by allowing code to be written from left to right.</p>
 </div>
 </div>
-<div id="adding-colour" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Adding colour</h2>
+<div id="adding-colour" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Adding colour<a href="making-beautiful-plots.html#adding-colour" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The current plot could be more informative, to include information about the class of each vehicle.</p>
 <p>In order to achieve this we need to use aes() again, and specify which column in mpg_df we want to be represented as the colour of the points.<br />
 Here, the aes() function containing the relevant column name, is given within the geom_point() function.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="making-beautiful-plots.html#cb46-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb46-2"><a href="making-beautiful-plots.html#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) </span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="making-beautiful-plots.html#cb46-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="making-beautiful-plots.html#cb46-2" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>So now we can see that the subcompact class (purple points) tends to have small engines and good city mileage, whereas the SUVs (pink points) have very low city mileage and larger engines.</p>
 <p>As commands get longer, we suggest to add carriage returns (new lines), which must be inserted <em>after</em> the %&gt;% or + symbols.<br />
 In most cases, R is blind to white space and new lines, so this is simply to make our code more readable.</p>
 </div>
-<div id="adding-layers" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Adding layers</h2>
+<div id="adding-layers" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Adding layers<a href="making-beautiful-plots.html#adding-layers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can see the relationship between engine size and mileage. But what if we want to model this relationship with a trend line? We can add another ‘layer’ to this plot, using a different geometric representation of the data. In this case a trend line, which is in fact a summary of the data rather than a representation of each point.</p>
 <p>The geom_smooth() function draws a trend line through the data. The default behaviour is to draw a
 local regression line (curve) through the points, however these can be hard to interpret.
 We want to add a straight line based on a linear model (‘lm’) of the relationship between x and y.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="making-beautiful-plots.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add another layer of data representation.</span></span>
-<span id="cb47-2"><a href="making-beautiful-plots.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="making-beautiful-plots.html#cb47-3" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb47-4"><a href="making-beautiful-plots.html#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb47-5"><a href="making-beautiful-plots.html#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>) </span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="making-beautiful-plots.html#cb47-1" tabindex="-1"></a><span class="co">#add another layer of data representation.</span></span>
+<span id="cb47-2"><a href="making-beautiful-plots.html#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="making-beautiful-plots.html#cb47-3" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb47-4"><a href="making-beautiful-plots.html#cb47-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb47-5"><a href="making-beautiful-plots.html#cb47-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>) </span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>Note that the trend line is blocking out certain points, because it is the ‘top layer’ of the plot. The geom layers that appear early in the command are drawn first, and can be obscured by the geom layers that come after them.</p>
 <p>What happens if you switch the order of the geom_point() and geom_smooth() functions above? What do you notice about the trend line?</p>
 </div>
-<div id="facets" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Facets</h2>
+<div id="facets" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Facets<a href="making-beautiful-plots.html#facets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In some cases we want to break up a single plot into sub-plots, called ‘faceting’. Facets are commonly used when there is too much data to display clearly in a single plot. We will revisit faceting below, however for now, let’s try to facet the mpg_df plot according to vehicle engine size (displ).<br />
 To do this we use the tilde symbol ‘~’ to indicate the column name that will form each facet.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="making-beautiful-plots.html#cb49-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb49-2"><a href="making-beautiful-plots.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb49-3"><a href="making-beautiful-plots.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>) <span class="sc">+</span></span>
-<span id="cb49-4"><a href="making-beautiful-plots.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> class)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="making-beautiful-plots.html#cb49-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb49-2"><a href="making-beautiful-plots.html#cb49-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="making-beautiful-plots.html#cb49-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>) <span class="sc">+</span></span>
+<span id="cb49-4"><a href="making-beautiful-plots.html#cb49-4" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> class)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>Note that the aesthetics and geoms including the regression line that were specified for the original plot, are applied to each of the facets.</p>
 </div>
-<div id="coordinate-space" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Coordinate space</h2>
+<div id="coordinate-space" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Coordinate space<a href="making-beautiful-plots.html#coordinate-space" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ggplot will automatically pick the scale for each axis, and the type of coordinate space. Most plots are in Cartesian (linear X vs linear Y) coordinate space.</p>
 <p>For the mpg_df plot, let’s say we want the x and y origin to be set at 0. To do this we can add in xlim() and ylim() functions, which define the limits of the axes:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="making-beautiful-plots.html#cb51-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb51-2"><a href="making-beautiful-plots.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb51-3"><a href="making-beautiful-plots.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
-<span id="cb51-4"><a href="making-beautiful-plots.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="making-beautiful-plots.html#cb51-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb51-2"><a href="making-beautiful-plots.html#cb51-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="making-beautiful-plots.html#cb51-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
+<span id="cb51-4"><a href="making-beautiful-plots.html#cb51-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>Further, we can control the coordinate space using coord() functions. Say we want to flip the x and y axes, we add coord_flip():</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="making-beautiful-plots.html#cb53-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb53-2"><a href="making-beautiful-plots.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb53-3"><a href="making-beautiful-plots.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
-<span id="cb53-4"><a href="making-beautiful-plots.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb53-5"><a href="making-beautiful-plots.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="making-beautiful-plots.html#cb53-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb53-2"><a href="making-beautiful-plots.html#cb53-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb53-3"><a href="making-beautiful-plots.html#cb53-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
+<span id="cb53-4"><a href="making-beautiful-plots.html#cb53-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb53-5"><a href="making-beautiful-plots.html#cb53-5" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 </div>
-<div id="axis-labels" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> Axis labels</h2>
+<div id="axis-labels" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Axis labels<a href="making-beautiful-plots.html#axis-labels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By default, the axis labels will be the column names we gave as aesthetics aes(). We can change the axis labels using the xlab() and ylab() functions. Given that column names are often short and can be cryptic, this functionality is particularly important for effectively communicating results.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="making-beautiful-plots.html#cb55-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb55-2"><a href="making-beautiful-plots.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb55-3"><a href="making-beautiful-plots.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
-<span id="cb55-4"><a href="making-beautiful-plots.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb55-5"><a href="making-beautiful-plots.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Engine size (L)&#39;</span>) <span class="sc">+</span></span>
-<span id="cb55-6"><a href="making-beautiful-plots.html#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Miles per gallon in the city&#39;</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="making-beautiful-plots.html#cb55-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb55-2"><a href="making-beautiful-plots.html#cb55-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb55-3"><a href="making-beautiful-plots.html#cb55-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
+<span id="cb55-4"><a href="making-beautiful-plots.html#cb55-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb55-5"><a href="making-beautiful-plots.html#cb55-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Engine size (L)&#39;</span>) <span class="sc">+</span></span>
+<span id="cb55-6"><a href="making-beautiful-plots.html#cb55-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Miles per gallon in the city&#39;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <p>We can also add a title and subtitle with ggtitle()</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="making-beautiful-plots.html#cb57-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb57-2"><a href="making-beautiful-plots.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb57-3"><a href="making-beautiful-plots.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
-<span id="cb57-4"><a href="making-beautiful-plots.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb57-5"><a href="making-beautiful-plots.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Engine size (L)&#39;</span>) <span class="sc">+</span></span>
-<span id="cb57-6"><a href="making-beautiful-plots.html#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Miles per gallon in the city&#39;</span>) <span class="sc">+</span></span>
-<span id="cb57-7"><a href="making-beautiful-plots.html#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&#39;Engine size affects mileage&#39;</span>, <span class="at">subtitle =</span> <span class="st">&#39;Some extra info here too&#39;</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="making-beautiful-plots.html#cb57-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb57-2"><a href="making-beautiful-plots.html#cb57-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb57-3"><a href="making-beautiful-plots.html#cb57-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
+<span id="cb57-4"><a href="making-beautiful-plots.html#cb57-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb57-5"><a href="making-beautiful-plots.html#cb57-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Engine size (L)&#39;</span>) <span class="sc">+</span></span>
+<span id="cb57-6"><a href="making-beautiful-plots.html#cb57-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Miles per gallon in the city&#39;</span>) <span class="sc">+</span></span>
+<span id="cb57-7"><a href="making-beautiful-plots.html#cb57-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&#39;Engine size affects mileage&#39;</span>, <span class="at">subtitle =</span> <span class="st">&#39;Some extra info here too&#39;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 </div>
-<div id="themes" class="section level2" number="2.10">
-<h2><span class="header-section-number">2.10</span> Themes</h2>
+<div id="themes" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Themes<a href="making-beautiful-plots.html#themes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Finally, the overall appearance of the plot can be modified using theme() functions. The default theme has a grey background which maximizes contrast with other contrasts.<br />
 You may prefer a ‘classic’ theme, a black &amp; white theme or even theme_void(). Try them out.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="making-beautiful-plots.html#cb59-1" aria-hidden="true" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
-<span id="cb59-2"><a href="making-beautiful-plots.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
-<span id="cb59-3"><a href="making-beautiful-plots.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
-<span id="cb59-4"><a href="making-beautiful-plots.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
-<span id="cb59-5"><a href="making-beautiful-plots.html#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Engine size (L)&#39;</span>) <span class="sc">+</span></span>
-<span id="cb59-6"><a href="making-beautiful-plots.html#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Miles per gallon in the city&#39;</span>) <span class="sc">+</span></span>
-<span id="cb59-7"><a href="making-beautiful-plots.html#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&#39;Engine size affects mileage&#39;</span>, <span class="at">subtitle =</span> <span class="st">&#39;Some extra info here too&#39;</span>) <span class="sc">+</span></span>
-<span id="cb59-8"><a href="making-beautiful-plots.html#cb59-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="making-beautiful-plots.html#cb59-1" tabindex="-1"></a>mpg_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb59-2"><a href="making-beautiful-plots.html#cb59-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> class)) <span class="sc">+</span></span>
+<span id="cb59-3"><a href="making-beautiful-plots.html#cb59-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)  <span class="sc">+</span></span>
+<span id="cb59-4"><a href="making-beautiful-plots.html#cb59-4" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb59-5"><a href="making-beautiful-plots.html#cb59-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Engine size (L)&#39;</span>) <span class="sc">+</span></span>
+<span id="cb59-6"><a href="making-beautiful-plots.html#cb59-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Miles per gallon in the city&#39;</span>) <span class="sc">+</span></span>
+<span id="cb59-7"><a href="making-beautiful-plots.html#cb59-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&#39;Engine size affects mileage&#39;</span>, <span class="at">subtitle =</span> <span class="st">&#39;Some extra info here too&#39;</span>) <span class="sc">+</span></span>
+<span id="cb59-8"><a href="making-beautiful-plots.html#cb59-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <!-- ## -> [1 day of work] -->
 
@@ -545,12 +551,11 @@ You may prefer a ‘classic’ theme, a black &amp; white theme or even theme_vo
           </div>
         </div>
       </div>
-<a href="week-1-part-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="week-1-part-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="week-1.-part-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-1.-part-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -561,38 +566,42 @@ You may prefer a ‘classic’ theme, a black &amp; white theme or even theme_vo
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
